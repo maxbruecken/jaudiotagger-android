@@ -245,12 +245,7 @@ public class MP3File extends AudioFile
             }
             finally
             {
-                //Workaround for 4724038 on Windows
                 bb.clear();
-                if (bb != null && bb.isDirect())
-                {
-                    ((sun.nio.ch.DirectBuffer) bb).cleaner().clean();
-                }
             }
         }
         else

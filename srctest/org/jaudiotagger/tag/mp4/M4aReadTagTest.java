@@ -1,6 +1,9 @@
 package org.jaudiotagger.tag.mp4;
 
+import android.graphics.Bitmap;
+
 import junit.framework.TestCase;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -14,12 +17,16 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.mp4.atom.Mp4ContentTypeValue;
 import org.jaudiotagger.tag.mp4.atom.Mp4RatingValue;
-import org.jaudiotagger.tag.mp4.field.*;
+import org.jaudiotagger.tag.mp4.field.Mp4DiscNoField;
+import org.jaudiotagger.tag.mp4.field.Mp4FieldType;
+import org.jaudiotagger.tag.mp4.field.Mp4GenreField;
+import org.jaudiotagger.tag.mp4.field.Mp4TagCoverField;
+import org.jaudiotagger.tag.mp4.field.Mp4TagReverseDnsField;
+import org.jaudiotagger.tag.mp4.field.Mp4TagTextNumberField;
+import org.jaudiotagger.tag.mp4.field.Mp4TrackField;
 import org.jaudiotagger.tag.reference.GenreTypes;
+import org.jaudiotagger.utils.BitmapUtils;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -172,8 +179,7 @@ public class M4aReadTagTest extends TestCase
             assertEquals(0xff, coverArtField.getData()[2] & 0xff);
             assertEquals(0xe0, coverArtField.getData()[3] & 0xff);
             //Recreate the image
-            BufferedImage bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(coverArtField.getData())));
+            Bitmap bi = BitmapUtils.decodeByteArray(coverArtField.getData());
             assertNotNull(bi);
 
         }
@@ -316,8 +322,7 @@ public class M4aReadTagTest extends TestCase
             //Check type png
             assertEquals(Mp4FieldType.COVERART_PNG, coverArtField.getFieldType());            
             //Recreate the image
-            BufferedImage bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(coverArtField.getData())));
+            Bitmap bi = BitmapUtils.decodeByteArray(coverArtField.getData());
             assertNotNull(bi);
 
             //These fields seemed to have changed in Media Monkey 3.0.6
@@ -546,8 +551,7 @@ public class M4aReadTagTest extends TestCase
             assertEquals(0x47, coverArtField.getData()[3] & 0xff);
 
             //Recreate the image
-            BufferedImage bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(coverArtField.getData())));
+            Bitmap bi = BitmapUtils.decodeByteArray(coverArtField.getData());
             assertNotNull(bi);
 
             //Check 2nd field
@@ -561,8 +565,7 @@ public class M4aReadTagTest extends TestCase
             assertEquals(0x47, coverArtField.getData()[3] & 0xff);
 
             //Recreate the image
-            bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(coverArtField.getData())));
+            bi = BitmapUtils.decodeByteArray(coverArtField.getData());
             assertNotNull(bi);
 
             //Check 3rd Field
@@ -576,8 +579,7 @@ public class M4aReadTagTest extends TestCase
             assertEquals(0xff, coverArtField.getData()[2] & 0xff);
             assertEquals(0xe0, coverArtField.getData()[3] & 0xff);
             //Recreate the image
-            bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(coverArtField.getData())));
+            bi = BitmapUtils.decodeByteArray(coverArtField.getData());
             assertNotNull(bi);
 
         }
@@ -727,8 +729,7 @@ public class M4aReadTagTest extends TestCase
             assertEquals(0xff, coverArtField.getData()[2] & 0xff);
             assertEquals(0xe0, coverArtField.getData()[3] & 0xff);
             //Recreate the image
-            BufferedImage bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(coverArtField.getData())));
+            Bitmap bi = BitmapUtils.decodeByteArray(coverArtField.getData());
             assertNotNull(bi);
 
         }

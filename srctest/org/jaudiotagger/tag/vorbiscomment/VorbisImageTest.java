@@ -1,14 +1,14 @@
 package org.jaudiotagger.tag.vorbiscomment;
 
+import android.graphics.Bitmap;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.images.Artwork;
 import org.jaudiotagger.tag.vorbiscomment.util.Base64Coder;
+import org.jaudiotagger.utils.BitmapUtils;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.RandomAccessFile;
@@ -100,9 +100,8 @@ public class VorbisImageTest extends AbstractTestCase
             //VorbisImage base64 image, and reconstruct
             assertEquals(base64image, tag.getFirst(VorbisCommentFieldKey.COVERART));
             assertEquals("image/png", tag.getFirst(VorbisCommentFieldKey.COVERARTMIME));
-            BufferedImage bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(Base64Coder.
-                    decode(tag.getFirst(VorbisCommentFieldKey.COVERART).toCharArray()))));
+            Bitmap bi = BitmapUtils.decodeByteArray(Base64Coder.
+                    decode(tag.getFirst(VorbisCommentFieldKey.COVERART).toCharArray()));
             assertNotNull(bi);
         }
         catch (Exception e)
@@ -138,9 +137,8 @@ public class VorbisImageTest extends AbstractTestCase
             String base64image = new String(testdata);
             assertEquals(base64image, tag.getFirst(VorbisCommentFieldKey.COVERART));
             assertEquals("image/png", tag.getFirst(VorbisCommentFieldKey.COVERARTMIME));
-            BufferedImage bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(Base64Coder.
-                    decode(tag.getFirst(VorbisCommentFieldKey.COVERART).toCharArray()))));
+            Bitmap bi = BitmapUtils.decodeByteArray(Base64Coder.
+                    decode(tag.getFirst(VorbisCommentFieldKey.COVERART).toCharArray()));
             assertNotNull(bi);
         }
         catch (Exception e)
@@ -176,8 +174,7 @@ public class VorbisImageTest extends AbstractTestCase
             //VorbisImage base64 image, and reconstruct
             assertEquals("image/png", tag.getArtworkMimeType());
             byte[] newImageData = tag.getArtworkBinaryData();
-            BufferedImage bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(newImageData)));
+            Bitmap bi = BitmapUtils.decodeByteArray(newImageData);
             assertNotNull(bi);
         }
         catch (Exception e)

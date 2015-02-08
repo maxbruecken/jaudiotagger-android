@@ -1,74 +1,18 @@
 package org.jaudiotagger.tag.images;
 
 import org.jaudiotagger.audio.flac.metadatablock.MetadataBlockDataPicture;
-import org.jaudiotagger.tag.id3.valuepair.ImageFormats;
-import org.jaudiotagger.tag.reference.PictureTypes;
 
-import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageInputStream;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.net.URL;
 
 /**
  * Represents artwork in a format independent way
  */
-public class StandardArtwork implements Artwork
-{
-    private byte[]          binaryData;
-    private String          mimeType="";
-    private String          description="";
-    private boolean         isLinked=false;
-    private String          imageUrl="";
-    private int             pictureType=-1;
-    private int             width;
-    private int             height;
+public class StandardArtwork extends AbstractArtwork {
 
     public StandardArtwork()
     {
-
-    }
-    public byte[] getBinaryData()
-    {
-        return binaryData;
-    }
-
-    public void setBinaryData(byte[] binaryData)
-    {
-        this.binaryData = binaryData;
-    }
-
-    public String getMimeType()
-    {
-        return mimeType;
-    }
-
-    public void setMimeType(String mimeType)
-    {
-        this.mimeType = mimeType;
-    }
-
-    public String getDescription()
-    {
-        return description;
-    }
-
-    public int getHeight()
-    {
-        return height;
-    }
-
-    public int getWidth()
-    {
-        return width;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
+        super(StandardArtwork.class);
     }
 
     /**
@@ -78,54 +22,12 @@ public class StandardArtwork implements Artwork
      */
     public boolean setImageFromData()
     {
-        try
-        {
-            BufferedImage image = (BufferedImage)getImage();
-            setWidth(image.getWidth());
-            setHeight(image.getHeight());
-        }
-        catch(IOException ioe)
-        {
-            return false;
-        }
-        return true;
+        throw new UnsupportedOperationException("StandardArtwork not supported on android");
     }
 
     public Object getImage() throws IOException
     {
-        ImageInputStream iis = ImageIO.createImageInputStream(new ByteArrayInputStream(getBinaryData()));
-        BufferedImage bi = ImageIO.read(iis);
-        return bi;
-    }
-
-    public boolean isLinked()
-    {
-        return isLinked;
-    }
-
-    public void setLinked(boolean linked)
-    {
-        isLinked = linked;
-    }
-
-    public String getImageUrl()
-    {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl)
-    {
-        this.imageUrl = imageUrl;
-    }
-
-    public int getPictureType()
-    {
-        return pictureType;
-    }
-
-    public void setPictureType(int pictureType)
-    {
-        this.pictureType = pictureType;
+        throw new UnsupportedOperationException("StandardArtwork not supported on android");
     }
 
     /**
@@ -136,29 +38,8 @@ public class StandardArtwork implements Artwork
      */
     public void setFromFile(File file)  throws IOException
     {
-        RandomAccessFile imageFile = new RandomAccessFile(file, "r");
-        byte[] imagedata = new byte[(int) imageFile.length()];
-        imageFile.read(imagedata);
-        imageFile.close();
-
-        setBinaryData(imagedata);
-        setMimeType(ImageFormats.getMimeTypeForBinarySignature(imagedata));
-        setDescription("");
-        setPictureType(PictureTypes.DEFAULT_ID);
+        throw new UnsupportedOperationException("StandardArtwork not supported on android");
     }
-
-    /**
-     * Create Linked Artwork from URL
-     *
-     * @param url
-     * @throws java.io.IOException
-     */
-    public void setLinkedFromURL(String url)  throws IOException
-    {
-        setLinked(true);
-        setImageUrl(url);
-    }
-
 
     /**
      * Create Artwork from File
@@ -182,29 +63,6 @@ public class StandardArtwork implements Artwork
     }
 
     /**
-     * Populate Artwork from MetadataBlockDataPicture as used by Flac and VorbisComment
-     *
-     * @param coverArt
-     */
-    public void setFromMetadataBlockDataPicture(MetadataBlockDataPicture coverArt)
-    {
-        setMimeType(coverArt.getMimeType());
-        setDescription(coverArt.getDescription());
-        setPictureType(coverArt.getPictureType());       
-        if(coverArt.isImageUrl())
-        {
-            setLinked(coverArt.isImageUrl());
-            setImageUrl(coverArt.getImageUrl());
-        }
-        else
-        {
-            setBinaryData(coverArt.getImageData());
-        }
-        setWidth(coverArt.getWidth());
-        setHeight(coverArt.getHeight());
-    }
-
-    /**
      * Create artwork from Flac block
      *
      * @param coverArt
@@ -217,13 +75,4 @@ public class StandardArtwork implements Artwork
         return artwork;
     }
 
-    public void setWidth(int width)
-    {
-        this.width = width;
-    }
-
-    public void setHeight(int height)
-    {
-        this.height = height;
-    }
 }

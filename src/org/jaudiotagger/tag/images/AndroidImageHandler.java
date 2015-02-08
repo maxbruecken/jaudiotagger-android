@@ -1,7 +1,9 @@
 package org.jaudiotagger.tag.images;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
+import android.graphics.Bitmap;
+
+import org.jaudiotagger.utils.BitmapUtils;
+
 import java.io.IOException;
 
 /**
@@ -35,7 +37,13 @@ public class AndroidImageHandler implements ImageHandler
      */
     public void reduceQuality(Artwork artwork, int maxSize) throws IOException
     {
-        throw new UnsupportedOperationException();
+        while(artwork.getBinaryData().length > maxSize)
+        {
+            Bitmap srcImage = (Bitmap)artwork.getImage();
+            int w = srcImage.getWidth();
+            int newSize = w / 2;
+            makeSmaller(artwork,newSize);
+        }
     }
      /**
      * Resize image using Java 2D
@@ -43,9 +51,14 @@ public class AndroidImageHandler implements ImageHandler
       * @param size
       * @throws java.io.IOException
       */
-    public void makeSmaller(Artwork artwork,int size) throws IOException
+    public void makeSmaller(Artwork artwork, int size) throws IOException
     {
-        throw new UnsupportedOperationException();
+        byte[] data = BitmapUtils.getBytes(scaleBitmap(artwork, size));
+        artwork.setBinaryData(data);
+    }
+
+    private Bitmap scaleBitmap(Artwork artwork, int size) throws IOException {
+        return BitmapUtils.scaleBitmap((Bitmap) artwork.getImage(), size);
     }
 
     public boolean isMimeTypeWritable(String mimeType)
@@ -56,23 +69,22 @@ public class AndroidImageHandler implements ImageHandler
     /**
      *  Write buffered image as required format
      *
-     * @param bi
-     * @param mimeType
+     * @param artwork
      * @return
      * @throws IOException
      */
-    public byte[] writeImage(BufferedImage bi,String mimeType) throws IOException
+    public void writeImage(Artwork artwork) throws IOException
     {
         throw new UnsupportedOperationException();
     }
 
     /**
      *
-     * @param bi
+     * @param artwork
      * @return
      * @throws IOException
      */
-    public byte[] writeImageAsPng(BufferedImage bi) throws IOException
+    public void writeImageAsPng(Artwork artwork) throws IOException
     {
         throw new UnsupportedOperationException();
     }

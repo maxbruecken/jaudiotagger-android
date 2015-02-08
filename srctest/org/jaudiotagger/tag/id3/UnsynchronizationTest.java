@@ -1,5 +1,7 @@
 package org.jaudiotagger.tag.id3;
 
+import android.graphics.Bitmap;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -7,13 +9,11 @@ import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.logging.Hex;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagOptionSingleton;
-import org.jaudiotagger.tag.images.Artwork;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyAPIC;
+import org.jaudiotagger.tag.images.Artwork;
 import org.jaudiotagger.tag.images.ArtworkFactory;
+import org.jaudiotagger.utils.BitmapUtils;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 
 /**
@@ -231,8 +231,8 @@ public class UnsynchronizationTest extends AbstractTestCase
                 }
             }
             assertTrue(matches);
-            BufferedImage bi = ImageIO.read(new ByteArrayInputStream(artworkNotsynced.getBinaryData()));
-            bi = ImageIO.read(new ByteArrayInputStream(artworkUnsynced.getBinaryData()));
+            Bitmap bi = BitmapUtils.decodeByteArray(artworkNotsynced.getBinaryData());
+            bi = BitmapUtils.decodeByteArray(artworkUnsynced.getBinaryData());
         }
         catch (Exception e)
         {

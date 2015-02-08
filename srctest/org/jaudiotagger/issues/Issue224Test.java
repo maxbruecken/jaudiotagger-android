@@ -1,5 +1,7 @@
 package org.jaudiotagger.issues;
 
+import android.graphics.Bitmap;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -8,10 +10,8 @@ import org.jaudiotagger.tag.TagField;
 import org.jaudiotagger.tag.id3.ID3v23Frame;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyAPIC;
+import org.jaudiotagger.utils.BitmapUtils;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 
 /**
@@ -44,7 +44,7 @@ public class Issue224Test extends AbstractTestCase
             assertTrue(((ID3v23Frame) coverArtField).getBody() instanceof FrameBodyAPIC);
             FrameBodyAPIC body = (FrameBodyAPIC) ((ID3v23Frame) coverArtField).getBody();
             byte[] imageRawData = body.getImageData();
-            BufferedImage bi = ImageIO.read(ImageIO.createImageInputStream(new ByteArrayInputStream(imageRawData)));
+            Bitmap bi = BitmapUtils.decodeByteArray(imageRawData);
             assertEquals(953, bi.getWidth());
             assertEquals(953, bi.getHeight());
 

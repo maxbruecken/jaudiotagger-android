@@ -1,6 +1,9 @@
 package org.jaudiotagger.audio.flac;
 
+import android.graphics.Bitmap;
+
 import junit.framework.TestCase;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -10,9 +13,8 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.flac.FlacTag;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
 import org.jaudiotagger.tag.reference.PictureTypes;
+import org.jaudiotagger.utils.BitmapUtils;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
 
 /**
@@ -98,7 +100,7 @@ public class FlacHeaderTest extends TestCase
             //not where we run the program from
             File file = new File("testdatatmp", image.getImageUrl());
             assertTrue(file.exists());
-            BufferedImage bi = ImageIO.read(file);
+            Bitmap bi = BitmapUtils.decodeFile(file);
             assertEquals(200, bi.getWidth());
             assertEquals(200, bi.getHeight());
 

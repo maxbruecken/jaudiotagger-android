@@ -1,8 +1,11 @@
 package org.jaudiotagger.tag.id3;
 
+import android.graphics.Bitmap;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -12,12 +15,19 @@ import org.jaudiotagger.tag.TagField;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.TagTextField;
 import org.jaudiotagger.tag.datatype.DataTypes;
-import org.jaudiotagger.tag.id3.framebody.*;
+import org.jaudiotagger.tag.id3.framebody.AbstractFrameBodyTextInfo;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyAPIC;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyCOMM;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyPOPM;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyTALB;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyTPE1;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyTPE1Test;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyTXXX;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyUFID;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyUSLT;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.jaudiotagger.utils.BitmapUtils;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
@@ -483,7 +493,7 @@ public class NewInterfaceTest extends TestCase
         assertEquals(11, af.getTag().getFieldCount());
 
         //Actually createField the image from the read data
-        BufferedImage bi = null;
+        Bitmap bi = null;
         TagField imageField = af.getTag().getFields(FieldKey.COVER_ART).get(0);
         if (imageField instanceof AbstractID3v2Frame)
         {
@@ -491,7 +501,7 @@ public class NewInterfaceTest extends TestCase
             if (!imageFrameBody.isImageUrl())
             {
                 byte[] imageRawData = (byte[]) imageFrameBody.getObjectValue(DataTypes.OBJ_PICTURE_DATA);
-                bi = ImageIO.read(new ByteArrayInputStream(imageRawData));
+                bi = BitmapUtils.decodeByteArray(imageRawData);
             }
         }
         assertNotNull(bi);

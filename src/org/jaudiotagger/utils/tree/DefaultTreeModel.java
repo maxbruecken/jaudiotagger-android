@@ -7,9 +7,12 @@
 
 package org.jaudiotagger.utils.tree;
 
-import java.util.*;
-import java.awt.*;
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.EventListener;
+import java.util.Vector;
 
 
 /**
@@ -25,7 +28,6 @@ import java.io.*;
  * the same version of Swing.  As of 1.4, support for long term storage
  * of all JavaBeans<sup><font size="-2">TM</font></sup>
  * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
  *
  * @version 1.58 03/23/10
  * @author Rob Davis

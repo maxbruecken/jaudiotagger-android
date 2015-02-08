@@ -1,23 +1,21 @@
 package org.jaudiotagger.tag.wma;
 
+import android.graphics.Bitmap;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.tag.asf.AsfFieldKey;
-import org.jaudiotagger.tag.asf.AsfTag;
-import org.jaudiotagger.tag.asf.AsfTagCoverField;
-import org.jaudiotagger.tag.asf.AsfTagTextField;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagField;
 import org.jaudiotagger.tag.TagTextField;
-import org.jaudiotagger.tag.reference.PictureTypes;
+import org.jaudiotagger.tag.asf.AsfFieldKey;
+import org.jaudiotagger.tag.asf.AsfTag;
+import org.jaudiotagger.tag.asf.AsfTagCoverField;
+import org.jaudiotagger.tag.asf.AsfTagTextField;
+import org.jaudiotagger.utils.BitmapUtils;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.RandomAccessFile;
 import java.util.List;
 
 /**
@@ -520,7 +518,6 @@ public class WmaSimpleTest extends AbstractTestCase
             assertEquals(200, coverartField.getImage().getWidth());
             assertEquals(200, coverartField.getImage().getHeight());
             assertEquals(3, coverartField.getPictureType());
-            assertEquals(BufferedImage.TYPE_BYTE_INDEXED, coverartField.getImage().getType());
 
             /***** TO SOME MANUAL CHECKING *****************/
 
@@ -558,12 +555,10 @@ public class WmaSimpleTest extends AbstractTestCase
             assertEquals("image/gif", mimeType);
             assertEquals("coverart", name);
 
-            BufferedImage bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(tagField.getRawContent(), endOfName, tagField.getRawContent().length - endOfName)));
+            Bitmap bi = BitmapUtils.decodeByteArray(tagField.getRawContent(), endOfName, tagField.getRawContent().length - endOfName);
             assertNotNull(bi);
             assertEquals(200, bi.getWidth());
             assertEquals(200, bi.getHeight());
-            assertEquals(BufferedImage.TYPE_BYTE_INDEXED, bi.getType());
 
         }
         catch (Exception e)
@@ -606,7 +601,6 @@ public class WmaSimpleTest extends AbstractTestCase
             assertEquals(200, coverartField.getImage().getWidth());
             assertEquals(200, coverartField.getImage().getHeight());
             assertEquals(12, coverartField.getPictureType());
-            assertEquals(BufferedImage.TYPE_BYTE_INDEXED, coverartField.getImage().getType());
 
             //First byte of data is immediatley after the 2 byte Descriptor value
             assertEquals(12, tagField.getRawContent()[0]);
@@ -641,12 +635,10 @@ public class WmaSimpleTest extends AbstractTestCase
             assertEquals("image/gif", mimeType);
             assertEquals("", name);
 
-            BufferedImage bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(tagField.getRawContent(), endOfName, tagField.getRawContent().length - endOfName)));
+            Bitmap bi = BitmapUtils.decodeByteArray(tagField.getRawContent(), endOfName, tagField.getRawContent().length - endOfName);
             assertNotNull(bi);
             assertEquals(200, bi.getWidth());
             assertEquals(200, bi.getHeight());
-            assertEquals(BufferedImage.TYPE_BYTE_INDEXED, bi.getType());
 
         }
         catch (Exception e)
@@ -724,12 +716,10 @@ public class WmaSimpleTest extends AbstractTestCase
             assertEquals("image/png", mimeType);
             assertEquals("coveerart", name);
 
-            BufferedImage bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(tagField.getRawContent(), endOfName, tagField.getRawContent().length - endOfName)));
+            Bitmap bi = BitmapUtils.decodeByteArray(tagField.getRawContent(), endOfName, tagField.getRawContent().length - endOfName);
             assertNotNull(bi);
             assertEquals(200, bi.getWidth());
             assertEquals(200, bi.getHeight());
-//            assertEquals(BufferedImage.TYPE_CUSTOM, bi.getType());
 
         }
         catch (Exception e)
@@ -774,8 +764,6 @@ public class WmaSimpleTest extends AbstractTestCase
             assertEquals(5046, coverartField.getImageDataSize());
             assertEquals(coverartField.getRawImageData().length, coverartField.getImageDataSize());
 
-            assertEquals(BufferedImage.TYPE_3BYTE_BGR, coverartField.getImage().getType());
-
             /***** TO SOME MANUAL CHECKING *****************/
 
             //First byte of data is immediatley after the 2 byte Descriptor value
@@ -812,12 +800,10 @@ public class WmaSimpleTest extends AbstractTestCase
             assertEquals("image/jpeg", mimeType);
             assertEquals("coveerart", name);
 
-            BufferedImage bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(tagField.getRawContent(), endOfName, tagField.getRawContent().length - endOfName)));
+            Bitmap bi = BitmapUtils.decodeByteArray(tagField.getRawContent(), endOfName, tagField.getRawContent().length - endOfName);
             assertNotNull(bi);
             assertEquals(200, bi.getWidth());
             assertEquals(200, bi.getHeight());
-            assertEquals(BufferedImage.TYPE_3BYTE_BGR, bi.getType());
 
         }
         catch (Exception e)

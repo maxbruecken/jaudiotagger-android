@@ -1,5 +1,7 @@
 package org.jaudiotagger.tag.vorbiscomment;
 
+import android.graphics.Bitmap;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -8,10 +10,8 @@ import org.jaudiotagger.audio.ogg.util.OggPageHeader;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagField;
 import org.jaudiotagger.tag.vorbiscomment.util.Base64Coder;
+import org.jaudiotagger.utils.BitmapUtils;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.util.List;
@@ -208,9 +208,8 @@ public class VorbisWriteTagTest extends AbstractTestCase
             //VorbisImage base64 image, and reconstruct
             assertEquals("image/png", vorbisTag.getFirst(VorbisCommentFieldKey.COVERARTMIME));
             assertEquals(base64image, vorbisTag.getFirst(VorbisCommentFieldKey.COVERART));
-            BufferedImage bi = ImageIO.read(ImageIO
-                    .createImageInputStream(new ByteArrayInputStream(Base64Coder.
-                    decode(vorbisTag.getFirst(VorbisCommentFieldKey.COVERART).toCharArray()))));
+            Bitmap bi = BitmapUtils.decodeByteArray(Base64Coder.
+                    decode(vorbisTag.getFirst(VorbisCommentFieldKey.COVERART).toCharArray()));
             assertNotNull(bi);
 
 

@@ -4,16 +4,14 @@ import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.FieldKey;
-import org.jaudiotagger.tag.TagField;
-import org.jaudiotagger.tag.id3.AbstractID3v2Frame;
-import org.jaudiotagger.tag.id3.ID3v11Tag;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
-import org.jaudiotagger.tag.id3.ID3v24Tag;
 
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test when write multiple strings using UTF16 with BOM that it writes the BOM

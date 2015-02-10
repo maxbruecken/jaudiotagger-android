@@ -9,9 +9,12 @@ import org.jaudiotagger.tag.id3.ID3v23Frame;
 import org.jaudiotagger.tag.id3.ID3v23Frames;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTCOP;
-import org.jaudiotagger.tag.id3.framebody.FrameBodyTENC;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test read large mp3 with extended header

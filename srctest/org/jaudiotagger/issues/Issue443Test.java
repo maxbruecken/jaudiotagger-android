@@ -1,16 +1,16 @@
 package org.jaudiotagger.issues;
 
 import org.jaudiotagger.AbstractTestCase;
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.Tag;
-import org.jaudiotagger.tag.TagOptionSingleton;
-import org.jaudiotagger.tag.id3.*;
-import org.jaudiotagger.tag.id3.framebody.FrameBodyTRDA;
-import org.jaudiotagger.tag.reference.ID3V2Version;
+import org.jaudiotagger.tag.id3.ID3v1Tag;
+import org.jaudiotagger.tag.id3.ID3v23Tag;
 
 import java.io.File;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Default ID3 Tag when have ID3v1 but no id3 v2 tag

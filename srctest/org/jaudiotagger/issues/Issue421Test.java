@@ -5,10 +5,10 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
-import org.jaudiotagger.tag.mp4.Mp4FieldKey;
-import org.jaudiotagger.tag.mp4.Mp4Tag;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Hide the differences between the two genre fields used by the mp4 format

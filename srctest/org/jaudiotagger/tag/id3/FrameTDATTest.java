@@ -10,6 +10,10 @@ import org.jaudiotagger.tag.id3.framebody.FrameBodyTIME;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTYER;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 /**
  */
 public class FrameTDATTest extends AbstractTestCase

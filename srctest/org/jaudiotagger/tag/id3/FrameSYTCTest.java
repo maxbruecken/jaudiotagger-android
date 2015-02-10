@@ -9,6 +9,9 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
 /**
  * Testing Sytc.
  */

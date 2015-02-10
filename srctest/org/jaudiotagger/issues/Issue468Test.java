@@ -3,36 +3,39 @@ package org.jaudiotagger.issues;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.tag.FieldDataInvalidException;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.flac.FlacTag;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import java.io.File;
+
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Test
  */
 public class Issue468Test extends AbstractTestCase
 {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
     public void testReadFlac() throws Exception
     {
-        Exception ex=null;
-        try
-        {
-            File testFile = AbstractTestCase.copyAudioToTmp("test.flac");
-            AudioFile af = AudioFileIO.read(testFile);
-            assertNotNull(af.getTag());
-            FlacTag tag = (FlacTag)af.getTag();
-            tag.setField( tag.createArtworkField(null, 1, "","", 100, 200, 128, 1));
-            af.commit();
+        thrown.expect(FieldDataInvalidException.class);
+        thrown.expectMessage("ImageData cannot be null");
 
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            ex=e;
-        }
-        assertNotNull(ex);
-        assertTrue(ex instanceof org.jaudiotagger.tag.FieldDataInvalidException);
-        assertEquals("ImageData cannot be null", ex.getMessage());
+        File testFile = AbstractTestCase.copyAudioToTmp("test.flac");
+        AudioFile af = AudioFileIO.read(testFile);
+        assertNotNull(af.getTag());
+        FlacTag tag = (FlacTag)af.getTag();
+        tag.setField( tag.createArtworkField(null, 1, "","", 100, 200, 128, 1));
+        af.commit();
     }
 }

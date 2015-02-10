@@ -1,11 +1,7 @@
 package org.jaudiotagger.issues;
 
 import org.jaudiotagger.AbstractTestCase;
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
-import org.jaudiotagger.tag.FieldKey;
-import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.ID3v24Frame;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
@@ -15,6 +11,8 @@ import org.jaudiotagger.tag.id3.framebody.FrameBodyTXXXTest;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test Android ByteBuffer fix

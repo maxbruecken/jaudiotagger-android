@@ -9,6 +9,10 @@ import org.jaudiotagger.tag.FieldKey;
 import java.io.File;
 import java.io.RandomAccessFile;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 /**
  * Test
  */

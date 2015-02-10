@@ -1,5 +1,6 @@
 package org.jaudiotagger.tag.reference;
 
+import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 
 /**

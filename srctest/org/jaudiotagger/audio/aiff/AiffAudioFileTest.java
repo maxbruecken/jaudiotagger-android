@@ -12,9 +12,12 @@ import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.AudioHeader;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
+import org.junit.Assert;
+import org.junit.Test;
 
-public class AiffAudioFileTest extends TestCase {
+public class AiffAudioFileTest {
 
+    @Test
     public void testReadAiff() {
         Exception exceptionCaught = null;
 
@@ -31,12 +34,12 @@ public class AiffAudioFileTest extends TestCase {
         try {
             AudioFile f = AudioFileIO.read(testFile);
             AudioHeader ah = f.getAudioHeader();
-            assertTrue (ah instanceof AiffAudioHeader);
+            Assert.assertTrue(ah instanceof AiffAudioHeader);
         }
         catch (Exception e) {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
+        Assert.assertNull(exceptionCaught);
         
 /*        testFile = AbstractTestCase.copyAudioToTmp("M1F1-int8-AFsp.aif");
         try {

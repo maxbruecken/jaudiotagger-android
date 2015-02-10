@@ -1,5 +1,6 @@
 package org.jaudiotagger.issues;
 
+import static org.junit.Assert.*;
 import android.graphics.Bitmap;
 
 import org.jaudiotagger.AbstractTestCase;

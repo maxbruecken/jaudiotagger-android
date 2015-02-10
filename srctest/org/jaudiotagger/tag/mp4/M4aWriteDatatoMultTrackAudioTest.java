@@ -7,6 +7,8 @@ import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp4.Mp4AtomTree;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.RandomAccessFile;
@@ -14,12 +16,12 @@ import java.io.RandomAccessFile;
 /**
  * Write tags  for a file which contains  multiple tracks such as winamp encoder
  */
-public class M4aWriteDatatoMultTrackAudioTest extends TestCase
-{
+public class M4aWriteDatatoMultTrackAudioTest {
     /**
      * Test to write file that has  multiple tracks such as winamp encoder
      * <p/>
      */
+    @Test
     public void testWriteFileOption1SameSize()
     {
         Exception exceptionCaught = null;
@@ -49,7 +51,7 @@ public class M4aWriteDatatoMultTrackAudioTest extends TestCase
             atomTree.printAtomTree();
 
             //Ease of use methods for common fields
-            assertEquals("AUTHOR", tag.getFirst(FieldKey.ARTIST));
+            Assert.assertEquals("AUTHOR", tag.getFirst(FieldKey.ARTIST));
 
 
         }
@@ -58,13 +60,14 @@ public class M4aWriteDatatoMultTrackAudioTest extends TestCase
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
+        Assert.assertNull(exceptionCaught);
     }
 
     /**
      * Test to write file that has MDAT at start BEFORE MOOV atom, this is what Facc 1.25 does
      * <p/>
      */
+    @Test
     public void testWriteFileOption3SmallerSizeCreateFree()
     {
         Exception exceptionCaught = null;
@@ -94,8 +97,8 @@ public class M4aWriteDatatoMultTrackAudioTest extends TestCase
             atomTree.printAtomTree();
 
             //Ease of use methods for common fields
-            assertEquals("A", tag.getFirst(FieldKey.ARTIST));
-            assertEquals("T", tag.getFirst(FieldKey.TITLE));
+            Assert.assertEquals("A", tag.getFirst(FieldKey.ARTIST));
+            Assert.assertEquals("T", tag.getFirst(FieldKey.TITLE));
 
         }
         catch (Exception e)
@@ -103,13 +106,14 @@ public class M4aWriteDatatoMultTrackAudioTest extends TestCase
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
+        Assert.assertNull(exceptionCaught);
     }
 
     /**
      * Test to write file that has MDAT at start BEFORE MOOV atom, this is what Facc 1.25 does
      * <p/>
      */
+    @Test
     public void testWriteFileOption4SmallerSizeNoFree()
     {
         Exception exceptionCaught = null;
@@ -138,7 +142,7 @@ public class M4aWriteDatatoMultTrackAudioTest extends TestCase
             atomTree.printAtomTree();
 
             //Ease of use methods for common fields
-            assertEquals("AR", tag.getFirst(FieldKey.ARTIST));
+            Assert.assertEquals("AR", tag.getFirst(FieldKey.ARTIST));
 
         }
         catch (Exception e)
@@ -146,7 +150,7 @@ public class M4aWriteDatatoMultTrackAudioTest extends TestCase
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
+        Assert.assertNull(exceptionCaught);
     }
 
 
@@ -155,6 +159,7 @@ public class M4aWriteDatatoMultTrackAudioTest extends TestCase
      * <p/>
      * TODO:Test incomplete
      */
+    @Test
     public void testWriteFileOption8CannoutUseTopLevelFree()
     {
         Exception exceptionCaught = null;
@@ -197,49 +202,50 @@ public class M4aWriteDatatoMultTrackAudioTest extends TestCase
 
             //AudioInfo
             //Time in seconds
-            assertEquals(30, f.getAudioHeader().getTrackLength());
-            assertEquals(44100, f.getAudioHeader().getSampleRateAsNumber());
+            Assert.assertEquals(30, f.getAudioHeader().getTrackLength());
+            Assert.assertEquals(44100, f.getAudioHeader().getSampleRateAsNumber());
 
             //Stereo thing doesnt work
             //assertEquals(new String("2"),f.getAudioHeader().getChannels());
 
             //Ease of use methods for common fields
-            assertEquals("VERYLONGARTISTNAME", tag.getFirst(FieldKey.ARTIST));
-            assertEquals("VERYLONGALBUMTNAME", tag.getFirst(FieldKey.ALBUM));
+            Assert.assertEquals("VERYLONGARTISTNAME", tag.getFirst(FieldKey.ARTIST));
+            Assert.assertEquals("VERYLONGALBUMTNAME", tag.getFirst(FieldKey.ALBUM));
 
-            assertEquals("A1", tag.getFirst(FieldKey.ALBUM_ARTIST));
-            assertEquals("A2", tag.getFirst(FieldKey.ALBUM_ARTIST_SORT));
-            assertEquals("A3", tag.getFirst(FieldKey.ALBUM_SORT));
-            assertEquals("A4", tag.getFirst(FieldKey.AMAZON_ID));
-            assertEquals("A5", tag.getFirst(FieldKey.ARTIST_SORT));
-            assertEquals("200", tag.getFirst(FieldKey.BPM));
-            assertEquals("C1", tag.getFirst(FieldKey.COMMENT));
-            assertEquals("C2", tag.getFirst(FieldKey.COMPOSER));
-            assertEquals("C3", tag.getFirst(FieldKey.COMPOSER_SORT));
-            assertEquals("1", tag.getFirst(FieldKey.DISC_NO));
+            Assert.assertEquals("A1", tag.getFirst(FieldKey.ALBUM_ARTIST));
+            Assert.assertEquals("A2", tag.getFirst(FieldKey.ALBUM_ARTIST_SORT));
+            Assert.assertEquals("A3", tag.getFirst(FieldKey.ALBUM_SORT));
+            Assert.assertEquals("A4", tag.getFirst(FieldKey.AMAZON_ID));
+            Assert.assertEquals("A5", tag.getFirst(FieldKey.ARTIST_SORT));
+            Assert.assertEquals("200", tag.getFirst(FieldKey.BPM));
+            Assert.assertEquals("C1", tag.getFirst(FieldKey.COMMENT));
+            Assert.assertEquals("C2", tag.getFirst(FieldKey.COMPOSER));
+            Assert.assertEquals("C3", tag.getFirst(FieldKey.COMPOSER_SORT));
+            Assert.assertEquals("1", tag.getFirst(FieldKey.DISC_NO));
 
-            assertEquals("1", tag.getFirst(FieldKey.MUSICBRAINZ_ARTISTID));
-            assertEquals("2", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASEID));
-            assertEquals("3", tag.getFirst(FieldKey.MUSICBRAINZ_TRACK_ID));
-            assertEquals("4", tag.getFirst(FieldKey.MUSICBRAINZ_DISC_ID));
-            assertEquals("5", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_COUNTRY));
-            assertEquals("6", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_STATUS));
-            assertEquals("7", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_TYPE));
-            assertEquals("8", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASEARTISTID));
-            assertEquals("9", tag.getFirst(FieldKey.MUSICIP_ID));
-            assertEquals("Classic Rock", tag.getFirst(FieldKey.GENRE));
+            Assert.assertEquals("1", tag.getFirst(FieldKey.MUSICBRAINZ_ARTISTID));
+            Assert.assertEquals("2", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASEID));
+            Assert.assertEquals("3", tag.getFirst(FieldKey.MUSICBRAINZ_TRACK_ID));
+            Assert.assertEquals("4", tag.getFirst(FieldKey.MUSICBRAINZ_DISC_ID));
+            Assert.assertEquals("5", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_COUNTRY));
+            Assert.assertEquals("6", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_STATUS));
+            Assert.assertEquals("7", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_TYPE));
+            Assert.assertEquals("8", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASEARTISTID));
+            Assert.assertEquals("9", tag.getFirst(FieldKey.MUSICIP_ID));
+            Assert.assertEquals("Classic Rock", tag.getFirst(FieldKey.GENRE));
         }
         catch (Exception e)
         {
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
+        Assert.assertNull(exceptionCaught);
     }
 
     /**
      * Larger Size can use top free atom
      */
+    @Test
     public void testWriteFileOption6LargerCanUseTopLevelFree()
     {
         Exception exceptionCaught = null;
@@ -282,49 +288,50 @@ public class M4aWriteDatatoMultTrackAudioTest extends TestCase
 
             //AudioInfo
             //Time in seconds
-            assertEquals(30, f.getAudioHeader().getTrackLength());
-            assertEquals(44100, f.getAudioHeader().getSampleRateAsNumber());
+            Assert.assertEquals(30, f.getAudioHeader().getTrackLength());
+            Assert.assertEquals(44100, f.getAudioHeader().getSampleRateAsNumber());
 
             //Stereo thing doesnt work
             //assertEquals(new String("2"),f.getAudioHeader().getChannels());
 
             //Ease of use methods for common fields
-            assertEquals("VERYLONGARTISTNAME", tag.getFirst(FieldKey.ARTIST));
-            assertEquals("VERYLONGALBUMTNAME", tag.getFirst(FieldKey.ALBUM));
+            Assert.assertEquals("VERYLONGARTISTNAME", tag.getFirst(FieldKey.ARTIST));
+            Assert.assertEquals("VERYLONGALBUMTNAME", tag.getFirst(FieldKey.ALBUM));
 
-            assertEquals("A1", tag.getFirst(FieldKey.ALBUM_ARTIST));
-            assertEquals("A2", tag.getFirst(FieldKey.ALBUM_ARTIST_SORT));
-            assertEquals("A3", tag.getFirst(FieldKey.ALBUM_SORT));
-            assertEquals("A4", tag.getFirst(FieldKey.AMAZON_ID));
-            assertEquals("A5", tag.getFirst(FieldKey.ARTIST_SORT));
-            assertEquals("200", tag.getFirst(FieldKey.BPM));
-            assertEquals("C1", tag.getFirst(FieldKey.COMMENT));
-            assertEquals("C2", tag.getFirst(FieldKey.COMPOSER));
-            assertEquals("C3", tag.getFirst(FieldKey.COMPOSER_SORT));
-            assertEquals("1", tag.getFirst(FieldKey.DISC_NO));
+            Assert.assertEquals("A1", tag.getFirst(FieldKey.ALBUM_ARTIST));
+            Assert.assertEquals("A2", tag.getFirst(FieldKey.ALBUM_ARTIST_SORT));
+            Assert.assertEquals("A3", tag.getFirst(FieldKey.ALBUM_SORT));
+            Assert.assertEquals("A4", tag.getFirst(FieldKey.AMAZON_ID));
+            Assert.assertEquals("A5", tag.getFirst(FieldKey.ARTIST_SORT));
+            Assert.assertEquals("200", tag.getFirst(FieldKey.BPM));
+            Assert.assertEquals("C1", tag.getFirst(FieldKey.COMMENT));
+            Assert.assertEquals("C2", tag.getFirst(FieldKey.COMPOSER));
+            Assert.assertEquals("C3", tag.getFirst(FieldKey.COMPOSER_SORT));
+            Assert.assertEquals("1", tag.getFirst(FieldKey.DISC_NO));
 
-            assertEquals("1", tag.getFirst(FieldKey.MUSICBRAINZ_ARTISTID));
-            assertEquals("2", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASEID));
-            assertEquals("3", tag.getFirst(FieldKey.MUSICBRAINZ_TRACK_ID));
-            assertEquals("4", tag.getFirst(FieldKey.MUSICBRAINZ_DISC_ID));
-            assertEquals("5", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_COUNTRY));
-            assertEquals("6", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_STATUS));
-            assertEquals("7", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_TYPE));
-            assertEquals("8", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASEARTISTID));
-            assertEquals("9", tag.getFirst(FieldKey.MUSICIP_ID));
-            assertEquals("Classic Rock", tag.getFirst(FieldKey.GENRE));
+            Assert.assertEquals("1", tag.getFirst(FieldKey.MUSICBRAINZ_ARTISTID));
+            Assert.assertEquals("2", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASEID));
+            Assert.assertEquals("3", tag.getFirst(FieldKey.MUSICBRAINZ_TRACK_ID));
+            Assert.assertEquals("4", tag.getFirst(FieldKey.MUSICBRAINZ_DISC_ID));
+            Assert.assertEquals("5", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_COUNTRY));
+            Assert.assertEquals("6", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_STATUS));
+            Assert.assertEquals("7", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_TYPE));
+            Assert.assertEquals("8", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASEARTISTID));
+            Assert.assertEquals("9", tag.getFirst(FieldKey.MUSICIP_ID));
+            Assert.assertEquals("Classic Rock", tag.getFirst(FieldKey.GENRE));
         }
         catch (Exception e)
         {
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
+        Assert.assertNull(exceptionCaught);
     }
 
     /**
      * Larger Size can use top free atom
      */
+    @Test
     public void testWriteFileOption7LargerCanUseTopLevelFree()
     {
         Exception exceptionCaught = null;
@@ -378,37 +385,37 @@ public class M4aWriteDatatoMultTrackAudioTest extends TestCase
 
             //AudioInfo
             //Time in seconds
-            assertEquals(30, f.getAudioHeader().getTrackLength());
-            assertEquals(44100, f.getAudioHeader().getSampleRateAsNumber());
+            Assert.assertEquals(30, f.getAudioHeader().getTrackLength());
+            Assert.assertEquals(44100, f.getAudioHeader().getSampleRateAsNumber());
 
             //Stereo thing doesnt work
             //assertEquals(new String("2"),f.getAudioHeader().getChannels());
 
             //Ease of use methods for common fields
-            assertEquals("VERYLONGARTISTNAME", tag.getFirst(FieldKey.ARTIST));
-            assertEquals("VERYLONGALBUMTNAME", tag.getFirst(FieldKey.ALBUM));
+            Assert.assertEquals("VERYLONGARTISTNAME", tag.getFirst(FieldKey.ARTIST));
+            Assert.assertEquals("VERYLONGALBUMTNAME", tag.getFirst(FieldKey.ALBUM));
 
-            assertEquals("A1", tag.getFirst(FieldKey.ALBUM_ARTIST));
-            assertEquals("A2", tag.getFirst(FieldKey.ALBUM_ARTIST_SORT));
-            assertEquals("A3", tag.getFirst(FieldKey.ALBUM_SORT));
-            assertEquals("A4", tag.getFirst(FieldKey.AMAZON_ID));
-            assertEquals("A5", tag.getFirst(FieldKey.ARTIST_SORT));
-            assertEquals("200", tag.getFirst(FieldKey.BPM));
-            assertEquals("C1", tag.getFirst(FieldKey.COMMENT));
-            assertEquals("C2", tag.getFirst(FieldKey.COMPOSER));
-            assertEquals("C3", tag.getFirst(FieldKey.COMPOSER_SORT));
-            assertEquals("1", tag.getFirst(FieldKey.DISC_NO));
+            Assert.assertEquals("A1", tag.getFirst(FieldKey.ALBUM_ARTIST));
+            Assert.assertEquals("A2", tag.getFirst(FieldKey.ALBUM_ARTIST_SORT));
+            Assert.assertEquals("A3", tag.getFirst(FieldKey.ALBUM_SORT));
+            Assert.assertEquals("A4", tag.getFirst(FieldKey.AMAZON_ID));
+            Assert.assertEquals("A5", tag.getFirst(FieldKey.ARTIST_SORT));
+            Assert.assertEquals("200", tag.getFirst(FieldKey.BPM));
+            Assert.assertEquals("C1", tag.getFirst(FieldKey.COMMENT));
+            Assert.assertEquals("C2", tag.getFirst(FieldKey.COMPOSER));
+            Assert.assertEquals("C3", tag.getFirst(FieldKey.COMPOSER_SORT));
+            Assert.assertEquals("1", tag.getFirst(FieldKey.DISC_NO));
 
-            assertEquals("1", tag.getFirst(FieldKey.MUSICBRAINZ_ARTISTID));
-            assertEquals("2", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASEID));
-            assertEquals("3", tag.getFirst(FieldKey.MUSICBRAINZ_TRACK_ID));
-            assertEquals("4", tag.getFirst(FieldKey.MUSICBRAINZ_DISC_ID));
-            assertEquals("5", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_COUNTRY));
-            assertEquals("6", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_STATUS));
-            assertEquals("7", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_TYPE));
-            assertEquals("8", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASEARTISTID));
-            assertEquals("9", tag.getFirst(FieldKey.MUSICIP_ID));
-            assertEquals("Classic Rock", tag.getFirst(FieldKey.GENRE));
+            Assert.assertEquals("1", tag.getFirst(FieldKey.MUSICBRAINZ_ARTISTID));
+            Assert.assertEquals("2", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASEID));
+            Assert.assertEquals("3", tag.getFirst(FieldKey.MUSICBRAINZ_TRACK_ID));
+            Assert.assertEquals("4", tag.getFirst(FieldKey.MUSICBRAINZ_DISC_ID));
+            Assert.assertEquals("5", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_COUNTRY));
+            Assert.assertEquals("6", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_STATUS));
+            Assert.assertEquals("7", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASE_TYPE));
+            Assert.assertEquals("8", tag.getFirst(FieldKey.MUSICBRAINZ_RELEASEARTISTID));
+            Assert.assertEquals("9", tag.getFirst(FieldKey.MUSICIP_ID));
+            Assert.assertEquals("Classic Rock", tag.getFirst(FieldKey.GENRE));
 
             //Visual check of atom tree
             testFile = new File("testdatatmp", "testWriteMultiTrack7.m4a");
@@ -421,7 +428,7 @@ public class M4aWriteDatatoMultTrackAudioTest extends TestCase
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
+        Assert.assertNull(exceptionCaught);
     }
 
 

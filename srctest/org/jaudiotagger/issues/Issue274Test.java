@@ -9,6 +9,8 @@ import org.jaudiotagger.audio.mp3.MP3File;
 
 import java.io.File;
 
+import static org.junit.Assert.assertNull;
+
 /** Flac Reading
  */
 public class Issue274Test extends AbstractTestCase

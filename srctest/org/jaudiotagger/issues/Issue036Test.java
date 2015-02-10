@@ -1,5 +1,6 @@
 package org.jaudiotagger.issues;
 
+import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.id3.*;

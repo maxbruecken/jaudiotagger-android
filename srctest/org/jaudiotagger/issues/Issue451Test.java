@@ -14,6 +14,8 @@ import org.jaudiotagger.tag.id3.valuepair.ImageFormats;
 import java.io.File;
 import java.io.RandomAccessFile;
 
+import static org.junit.Assert.assertNull;
+
 /**
  * Test
  */

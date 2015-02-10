@@ -14,14 +14,26 @@ import org.jaudiotagger.tag.flac.FlacTag;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
 import org.jaudiotagger.tag.reference.PictureTypes;
 import org.jaudiotagger.utils.BitmapUtils;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * basic Flac tests
  */
-public class FlacHeaderTest extends TestCase
+@Config(emulateSdk = 18)
+@RunWith(RobolectricTestRunner.class)
+public class FlacHeaderTest
 {
+    @Test
     public void testReadFileWithVorbisComment()
     {
         Exception exceptionCaught = null;
@@ -117,6 +129,7 @@ public class FlacHeaderTest extends TestCase
     /**
      * Only contains vorbis comment with minimum encoder info
      */
+    @Test
     public void testReadFileWithOnlyVorbisCommentEncoder()
     {
         Exception exceptionCaught = null;

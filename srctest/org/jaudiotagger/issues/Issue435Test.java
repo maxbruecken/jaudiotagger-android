@@ -16,6 +16,9 @@ import org.jaudiotagger.tag.reference.ID3V2Version;
 
 import java.io.File;
 
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 /**
  * TDRA - TDRC
  */

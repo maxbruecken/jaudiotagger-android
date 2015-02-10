@@ -7,6 +7,9 @@ import org.jaudiotagger.tag.FieldKey;
 
 import java.io.File;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 /**
  * Test read m4a without udta/meta atom
  */

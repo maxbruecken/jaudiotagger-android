@@ -15,6 +15,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import static org.junit.Assert.assertNull;
+
 /**
  * Test trying to read non existent mp3 file
  */

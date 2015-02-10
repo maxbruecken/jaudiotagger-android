@@ -1,5 +1,6 @@
 package org.jaudiotagger.tag.id3.framebody;
 
+import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
 

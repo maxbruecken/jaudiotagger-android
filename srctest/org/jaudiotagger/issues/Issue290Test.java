@@ -7,6 +7,9 @@ import org.jaudiotagger.tag.FieldKey;
 
 import java.io.File;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 /**
  *File corrupt after write
  */

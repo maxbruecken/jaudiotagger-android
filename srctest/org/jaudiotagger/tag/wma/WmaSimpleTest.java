@@ -1,5 +1,6 @@
 package org.jaudiotagger.tag.wma;
 
+import static org.junit.Assert.*;
 import android.graphics.Bitmap;
 
 import org.jaudiotagger.AbstractTestCase;

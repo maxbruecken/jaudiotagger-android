@@ -5,11 +5,13 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
-import org.jaudiotagger.tag.TagTextField;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
-import org.jaudiotagger.tag.reference.Languages;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Mp3s can handle writing multiple fields which actually map to a single field using generic interface

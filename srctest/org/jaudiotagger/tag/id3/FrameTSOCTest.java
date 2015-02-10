@@ -1,5 +1,6 @@
 package org.jaudiotagger.tag.id3;
 
+import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTSOC;

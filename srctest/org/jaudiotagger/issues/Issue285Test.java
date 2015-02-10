@@ -7,6 +7,8 @@ import org.jaudiotagger.tag.FieldKey;
 
 import java.io.File;
 
+import static org.junit.Assert.assertNull;
+
 /**
  * Converting FrameBodyUnsupported with known identifier to FrameBodyIPLS (v23) causing NoSuchMethodException.
  * Not really sure why this is happening but we should check and take action instead of failing as we currently do
@@ -47,5 +49,7 @@ public class Issue285Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
-    
+
+
+
 }

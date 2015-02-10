@@ -9,6 +9,8 @@ import org.jaudiotagger.tag.images.ArtworkFactory;
 
 import java.io.File;
 
+import static org.junit.Assert.assertNull;
+
 /**
  * Writing to Ogg file
  */

@@ -12,6 +12,8 @@ import junit.framework.TestCase;
 import org.jaudiotagger.audio.asf.data.AsfHeader;
 import org.jaudiotagger.audio.asf.data.GUID;
 import org.jaudiotagger.audio.asf.util.Utils;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * Tests the correctness of the methods in {@link Utils}.<br>
@@ -20,8 +22,7 @@ import org.jaudiotagger.audio.asf.util.Utils;
  * 
  * @author Christian Laireiter
  */
-public class UtilsTest extends TestCase
-{
+public class UtilsTest {
 
     /**
      * Every bit in this 8 byte array is set.
@@ -47,6 +48,7 @@ public class UtilsTest extends TestCase
      * Test method for
      * {@link org.jaudiotagger.audio.asf.util.Utils#checkStringLengthNullSafe(java.lang.String)}
      */
+    @Test
     public void testCheckStringLengthNullSafe()
     {
         Utils.checkStringLengthNullSafe(null);
@@ -66,32 +68,34 @@ public class UtilsTest extends TestCase
         {
             caught = true;
         }
-        assertTrue(caught);
+        Assert.assertTrue(caught);
     }
 
     /**
      * Test method for
      * {@link org.jaudiotagger.audio.asf.util.Utils#getBytes(long, int)}.
      */
+    @Test
     public void testGetBytes()
     {
-        assertTrue(Arrays.equals(MAX_UINT16, Utils.getBytes(Short.MAX_VALUE * 2 + 1, 2)));
-        assertTrue(Arrays.equals(MAX_UINT32, Utils.getBytes(Integer.MAX_VALUE * 2 + 1, 4)));
-        assertTrue(Arrays.equals(MAX_LONG_64, Utils.getBytes(Long.MAX_VALUE, 8)));
+        Assert.assertTrue(Arrays.equals(MAX_UINT16, Utils.getBytes(Short.MAX_VALUE * 2 + 1, 2)));
+        Assert.assertTrue(Arrays.equals(MAX_UINT32, Utils.getBytes(Integer.MAX_VALUE * 2 + 1, 4)));
+        Assert.assertTrue(Arrays.equals(MAX_LONG_64, Utils.getBytes(Long.MAX_VALUE, 8)));
     }
 
     /**
      * Test method for
      * {@link org.jaudiotagger.audio.asf.util.Utils#isBlank(java.lang.String)}.
      */
+    @Test
     public void testIsBlank()
     {
-        assertTrue(Utils.isBlank(null));
-        assertTrue(Utils.isBlank("")); //$NON-NLS-1$
-        assertTrue(Utils.isBlank(" 		")); //$NON-NLS-1$
-        assertFalse(Utils.isBlank("a")); //$NON-NLS-1$
-        assertFalse(Utils.isBlank("   a")); //$NON-NLS-1$
-        assertFalse(Utils.isBlank("		a")); //$NON-NLS-1$
+        Assert.assertTrue(Utils.isBlank(null));
+        Assert.assertTrue(Utils.isBlank("")); //$NON-NLS-1$
+        Assert.assertTrue(Utils.isBlank(" 		")); //$NON-NLS-1$
+        Assert.assertFalse(Utils.isBlank("a")); //$NON-NLS-1$
+        Assert.assertFalse(Utils.isBlank("   a")); //$NON-NLS-1$
+        Assert.assertFalse(Utils.isBlank("		a")); //$NON-NLS-1$
     }
 
     /**
@@ -100,10 +104,11 @@ public class UtilsTest extends TestCase
      * .
      * @throws IOException Never
      */
+    @Test
     public void testReadBig64InputStream() throws IOException
     {
         BigInteger big64 = Utils.readBig64(new ByteArrayInputStream(MAX_LONG_64));
-        assertEquals(Long.MAX_VALUE, big64.longValue());
+        Assert.assertEquals(Long.MAX_VALUE, big64.longValue());
     }
 
     /**
@@ -112,6 +117,7 @@ public class UtilsTest extends TestCase
      * .
      * @throws IOException On I/O Errors.
      */
+    @Test
     public void testReadCharacterSizedStringInputStream() throws IOException
     {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -119,7 +125,7 @@ public class UtilsTest extends TestCase
         bos.write(Utils.getBytes(charSized.length() + 1, 2));
         bos.write(Utils.getBytes(charSized, AsfHeader.ASF_CHARSET));
         bos.write(AsfHeader.ZERO_TERM);
-        assertEquals(charSized, Utils.readCharacterSizedString(new ByteArrayInputStream(bos.toByteArray())));
+        Assert.assertEquals(charSized, Utils.readCharacterSizedString(new ByteArrayInputStream(bos.toByteArray())));
     }
 
     /**
@@ -128,6 +134,7 @@ public class UtilsTest extends TestCase
      * .
      * @throws IOException Should not
      */
+    @Test
     public void testReadGUIDInputStream() throws IOException
     {
         for (int i = 0; i < GUID.KNOWN_GUIDS.length; i++)
@@ -136,7 +143,7 @@ public class UtilsTest extends TestCase
             bos.write(GUID.KNOWN_GUIDS[i].getBytes());
             ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
             GUID readGUID = Utils.readGUID(bis);
-            assertTrue(readGUID.equals(GUID.KNOWN_GUIDS[i]));
+            Assert.assertTrue(readGUID.equals(GUID.KNOWN_GUIDS[i]));
         }
     }
 
@@ -148,10 +155,11 @@ public class UtilsTest extends TestCase
      * @throws IOException
      *             Never
      */
+    @Test
     public void testReadUINT16InputStream() throws IOException
     {
         long value = Utils.readUINT16(new ByteArrayInputStream(MAX_UINT16));
-        assertEquals(Short.MAX_VALUE * 2 + 1, value);
+        Assert.assertEquals(Short.MAX_VALUE * 2 + 1, value);
     }
 
     /**
@@ -162,10 +170,11 @@ public class UtilsTest extends TestCase
      * @throws IOException
      *             Never
      */
+    @Test
     public void testReadUINT32InputStream() throws IOException
     {
         long value = Utils.readUINT32(new ByteArrayInputStream(MAX_UINT32));
-        assertEquals((long) Integer.MAX_VALUE * 2 + 1, value);
+        Assert.assertEquals((long) Integer.MAX_VALUE * 2 + 1, value);
     }
 
     /**
@@ -174,10 +183,11 @@ public class UtilsTest extends TestCase
      * .
      * @throws IOException Never
      */
+    @Test
     public void testReadUINT64InputStream() throws IOException
     {
         long value = Utils.readUINT64(new ByteArrayInputStream(MAX_LONG_64));
-        assertEquals(Long.MAX_VALUE, value);
+        Assert.assertEquals(Long.MAX_VALUE, value);
     }
 
     /**
@@ -188,6 +198,7 @@ public class UtilsTest extends TestCase
      * @throws IOException
      *             Never
      */
+    @Test
     public void testReadUTF16LEStrInputStream() throws IOException
     {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -197,24 +208,24 @@ public class UtilsTest extends TestCase
         bos.write(Utils.getBytes(testValue, AsfHeader.ASF_CHARSET));
         bos.write(AsfHeader.ZERO_TERM);
         String string = Utils.readUTF16LEStr(new ByteArrayInputStream(bos.toByteArray()));
-        assertEquals(testValue, string);
+        Assert.assertEquals(testValue, string);
         bos.reset();
         // Test without zero term
         Utils.writeUINT16(testValue.length() * 2, bos);
         bos.write(Utils.getBytes(testValue, AsfHeader.ASF_CHARSET));
         string = Utils.readUTF16LEStr(new ByteArrayInputStream(bos.toByteArray()));
-        assertEquals(testValue, string);
+        Assert.assertEquals(testValue, string);
         bos.reset();
         // Test zero length zero term
         Utils.writeUINT16(2, bos);
         bos.write(AsfHeader.ZERO_TERM);
         string = Utils.readUTF16LEStr(new ByteArrayInputStream(bos.toByteArray()));
-        assertEquals("", string); //$NON-NLS-1$
+        Assert.assertEquals("", string); //$NON-NLS-1$
         bos.reset();
         // Test zero length
         Utils.writeUINT16(0, bos);
         string = Utils.readUTF16LEStr(new ByteArrayInputStream(bos.toByteArray()));
-        assertEquals("", string); //$NON-NLS-1$
+        Assert.assertEquals("", string); //$NON-NLS-1$
     }
 
     /**
@@ -225,11 +236,12 @@ public class UtilsTest extends TestCase
      * @throws IOException
      *             Never
      */
+    @Test
     public void testWriteUINT16() throws IOException
     {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         Utils.writeUINT16(Short.MAX_VALUE * 2 + 1, bos);
-        assertTrue(Arrays.equals(MAX_UINT16, bos.toByteArray()));
+        Assert.assertTrue(Arrays.equals(MAX_UINT16, bos.toByteArray()));
     }
 
     /**
@@ -240,11 +252,12 @@ public class UtilsTest extends TestCase
      * @throws IOException
      *             Never
      */
+    @Test
     public void testWriteUINT32() throws IOException
     {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         Utils.writeUINT32((long) Integer.MAX_VALUE * 2 + 1, bos);
-        assertTrue(Arrays.equals(MAX_UINT32, bos.toByteArray()));
+        Assert.assertTrue(Arrays.equals(MAX_UINT32, bos.toByteArray()));
     }
 
     /**
@@ -255,11 +268,12 @@ public class UtilsTest extends TestCase
      * @throws IOException
      *             Never
      */
+    @Test
     public void testWriteUINT64() throws IOException
     {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         Utils.writeUINT64(Long.MAX_VALUE, bos);
-        assertTrue(Arrays.equals(MAX_LONG_64, bos.toByteArray()));
+        Assert.assertTrue(Arrays.equals(MAX_LONG_64, bos.toByteArray()));
     }
 
 }

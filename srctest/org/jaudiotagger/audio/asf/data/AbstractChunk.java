@@ -6,6 +6,11 @@ import junit.framework.TestCase;
 
 import java.math.BigInteger;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Specifies methods for creating {@link Chunk} objects.<br>
  * 

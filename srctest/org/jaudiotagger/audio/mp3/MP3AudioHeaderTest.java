@@ -21,6 +21,8 @@ import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -28,9 +30,9 @@ import java.util.Date;
 
 /**
  */
-public class MP3AudioHeaderTest extends TestCase
-{
+public class MP3AudioHeaderTest {
 
+    @Test
     public void testReadV1L3VbrOld()
     {
         Exception exceptionCaught = null;
@@ -45,22 +47,23 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals("44100", mp3AudioHeader.getSampleRate());
-        assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
-        assertTrue(mp3AudioHeader.isVariableBitRate());
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
-        assertTrue(mp3AudioHeader.isOriginal());
-        assertFalse(mp3AudioHeader.isCopyrighted());
-        assertFalse(mp3AudioHeader.isPrivate());
-        assertFalse(mp3AudioHeader.isProtected());
-        assertEquals("~127", mp3AudioHeader.getBitRate());
-        assertEquals("mp3", mp3AudioHeader.getEncodingType());
-        assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals("44100", mp3AudioHeader.getSampleRate());
+        Assert.assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
+        Assert.assertTrue(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
+        Assert.assertTrue(mp3AudioHeader.isOriginal());
+        Assert.assertFalse(mp3AudioHeader.isCopyrighted());
+        Assert.assertFalse(mp3AudioHeader.isPrivate());
+        Assert.assertFalse(mp3AudioHeader.isProtected());
+        Assert.assertEquals("~127", mp3AudioHeader.getBitRate());
+        Assert.assertEquals("mp3", mp3AudioHeader.getEncodingType());
+        Assert.assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
     }
 
+    @Test
     public void testReadV1L3VbrNew()
     {
         Exception exceptionCaught = null;
@@ -75,22 +78,23 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals("44100", mp3AudioHeader.getSampleRate());
-        assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
-        assertTrue(mp3AudioHeader.isVariableBitRate());
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
-        assertTrue(mp3AudioHeader.isOriginal());
-        assertFalse(mp3AudioHeader.isCopyrighted());
-        assertFalse(mp3AudioHeader.isPrivate());
-        assertFalse(mp3AudioHeader.isProtected());
-        assertEquals("~127", mp3AudioHeader.getBitRate());
-        assertEquals("mp3", mp3AudioHeader.getEncodingType());
-        assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals("44100", mp3AudioHeader.getSampleRate());
+        Assert.assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
+        Assert.assertTrue(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
+        Assert.assertTrue(mp3AudioHeader.isOriginal());
+        Assert.assertFalse(mp3AudioHeader.isCopyrighted());
+        Assert.assertFalse(mp3AudioHeader.isPrivate());
+        Assert.assertFalse(mp3AudioHeader.isProtected());
+        Assert.assertEquals("~127", mp3AudioHeader.getBitRate());
+        Assert.assertEquals("mp3", mp3AudioHeader.getEncodingType());
+        Assert.assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
     }
 
+    @Test
     public void testReadV1L3Cbr128()
     {
         Exception exceptionCaught = null;
@@ -105,22 +109,23 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals("44100", mp3AudioHeader.getSampleRate());
-        assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
-        assertFalse(mp3AudioHeader.isVariableBitRate());
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
-        assertTrue(mp3AudioHeader.isOriginal());
-        assertFalse(mp3AudioHeader.isCopyrighted());
-        assertFalse(mp3AudioHeader.isPrivate());
-        assertFalse(mp3AudioHeader.isProtected());
-        assertEquals("128", mp3AudioHeader.getBitRate());
-        assertEquals("mp3", mp3AudioHeader.getEncodingType());
-        assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals("44100", mp3AudioHeader.getSampleRate());
+        Assert.assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
+        Assert.assertFalse(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
+        Assert.assertTrue(mp3AudioHeader.isOriginal());
+        Assert.assertFalse(mp3AudioHeader.isCopyrighted());
+        Assert.assertFalse(mp3AudioHeader.isPrivate());
+        Assert.assertFalse(mp3AudioHeader.isProtected());
+        Assert.assertEquals("128", mp3AudioHeader.getBitRate());
+        Assert.assertEquals("mp3", mp3AudioHeader.getEncodingType());
+        Assert.assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
     }
 
+    @Test
     public void testReadV1L3Cbr192()
     {
         Exception exceptionCaught = null;
@@ -135,23 +140,24 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals("44100", mp3AudioHeader.getSampleRate());
-        assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
-        assertFalse(mp3AudioHeader.isVariableBitRate());
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
-        assertTrue(mp3AudioHeader.isOriginal());
-        assertFalse(mp3AudioHeader.isCopyrighted());
-        assertFalse(mp3AudioHeader.isPrivate());
-        assertFalse(mp3AudioHeader.isProtected());
-        assertEquals("192", mp3AudioHeader.getBitRate());
-        assertEquals("mp3", mp3AudioHeader.getEncodingType());
-        assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals("44100", mp3AudioHeader.getSampleRate());
+        Assert.assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
+        Assert.assertFalse(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
+        Assert.assertTrue(mp3AudioHeader.isOriginal());
+        Assert.assertFalse(mp3AudioHeader.isCopyrighted());
+        Assert.assertFalse(mp3AudioHeader.isPrivate());
+        Assert.assertFalse(mp3AudioHeader.isProtected());
+        Assert.assertEquals("192", mp3AudioHeader.getBitRate());
+        Assert.assertEquals("mp3", mp3AudioHeader.getEncodingType());
+        Assert.assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
     }
 
 
+    @Test
     public void testReadV2L3VbrOld()
     {
         Exception exceptionCaught = null;
@@ -166,22 +172,23 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals("22050", mp3AudioHeader.getSampleRate());
-        assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
-        assertTrue(mp3AudioHeader.isVariableBitRate());
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
-        assertTrue(mp3AudioHeader.isOriginal());
-        assertFalse(mp3AudioHeader.isCopyrighted());
-        assertFalse(mp3AudioHeader.isPrivate());
-        assertFalse(mp3AudioHeader.isProtected());
-        assertEquals("~127", mp3AudioHeader.getBitRate());
-        assertEquals("mp3", mp3AudioHeader.getEncodingType());
-        assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals("22050", mp3AudioHeader.getSampleRate());
+        Assert.assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
+        Assert.assertTrue(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
+        Assert.assertTrue(mp3AudioHeader.isOriginal());
+        Assert.assertFalse(mp3AudioHeader.isCopyrighted());
+        Assert.assertFalse(mp3AudioHeader.isPrivate());
+        Assert.assertFalse(mp3AudioHeader.isProtected());
+        Assert.assertEquals("~127", mp3AudioHeader.getBitRate());
+        Assert.assertEquals("mp3", mp3AudioHeader.getEncodingType());
+        Assert.assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
     }
 
+    @Test
     public void testReadV2L3MonoVbrNew()
     {
         Exception exceptionCaught = null;
@@ -196,22 +203,23 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals("22050", mp3AudioHeader.getSampleRate());
-        assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
-        assertTrue(mp3AudioHeader.isVariableBitRate());
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
-        assertTrue(mp3AudioHeader.isOriginal());
-        assertFalse(mp3AudioHeader.isCopyrighted());
-        assertFalse(mp3AudioHeader.isPrivate());
-        assertFalse(mp3AudioHeader.isProtected());
-        assertEquals("~127", mp3AudioHeader.getBitRate());
-        assertEquals("mp3", mp3AudioHeader.getEncodingType());
-        assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals("22050", mp3AudioHeader.getSampleRate());
+        Assert.assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
+        Assert.assertTrue(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
+        Assert.assertTrue(mp3AudioHeader.isOriginal());
+        Assert.assertFalse(mp3AudioHeader.isCopyrighted());
+        Assert.assertFalse(mp3AudioHeader.isPrivate());
+        Assert.assertFalse(mp3AudioHeader.isProtected());
+        Assert.assertEquals("~127", mp3AudioHeader.getBitRate());
+        Assert.assertEquals("mp3", mp3AudioHeader.getEncodingType());
+        Assert.assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
     }
 
+    @Test
     public void testReadV1L2Stereo()
     {
         Exception exceptionCaught = null;
@@ -226,22 +234,23 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals("44100", mp3AudioHeader.getSampleRate());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals("44100", mp3AudioHeader.getSampleRate());
         //assertEquals("00:13", mp3AudioHeader.getTrackLengthAsString()); Incorrectly returning 6
-        assertFalse(mp3AudioHeader.isVariableBitRate());
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_II)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_STEREO)), mp3AudioHeader.getChannels());
-        assertFalse(mp3AudioHeader.isOriginal());
-        assertFalse(mp3AudioHeader.isCopyrighted());
-        assertFalse(mp3AudioHeader.isPrivate());
-        assertFalse(mp3AudioHeader.isProtected());
-        assertEquals("192", mp3AudioHeader.getBitRate());
-        assertEquals("mp3", mp3AudioHeader.getEncodingType());
-        assertEquals("", mp3AudioHeader.getEncoder());
+        Assert.assertFalse(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_II)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_STEREO)), mp3AudioHeader.getChannels());
+        Assert.assertFalse(mp3AudioHeader.isOriginal());
+        Assert.assertFalse(mp3AudioHeader.isCopyrighted());
+        Assert.assertFalse(mp3AudioHeader.isPrivate());
+        Assert.assertFalse(mp3AudioHeader.isProtected());
+        Assert.assertEquals("192", mp3AudioHeader.getBitRate());
+        Assert.assertEquals("mp3", mp3AudioHeader.getEncodingType());
+        Assert.assertEquals("", mp3AudioHeader.getEncoder());
     }
 
+    @Test
     public void testReadV1L2Mono()
     {
         Exception exceptionCaught = null;
@@ -256,22 +265,23 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals("44100", mp3AudioHeader.getSampleRate());
-        assertEquals("00:13", mp3AudioHeader.getTrackLengthAsString());
-        assertFalse(mp3AudioHeader.isVariableBitRate());
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_II)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
-        assertFalse(mp3AudioHeader.isOriginal());
-        assertFalse(mp3AudioHeader.isCopyrighted());
-        assertFalse(mp3AudioHeader.isPrivate());
-        assertFalse(mp3AudioHeader.isProtected());
-        assertEquals("192", mp3AudioHeader.getBitRate());
-        assertEquals("mp3", mp3AudioHeader.getEncodingType());
-        assertEquals("", mp3AudioHeader.getEncoder());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals("44100", mp3AudioHeader.getSampleRate());
+        Assert.assertEquals("00:13", mp3AudioHeader.getTrackLengthAsString());
+        Assert.assertFalse(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_II)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
+        Assert.assertFalse(mp3AudioHeader.isOriginal());
+        Assert.assertFalse(mp3AudioHeader.isCopyrighted());
+        Assert.assertFalse(mp3AudioHeader.isPrivate());
+        Assert.assertFalse(mp3AudioHeader.isProtected());
+        Assert.assertEquals("192", mp3AudioHeader.getBitRate());
+        Assert.assertEquals("mp3", mp3AudioHeader.getEncodingType());
+        Assert.assertEquals("", mp3AudioHeader.getEncoder());
     }
 
+    @Test
     public void testReadV25L3VbrOld()
     {
         Exception exceptionCaught = null;
@@ -286,22 +296,23 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals("12000", mp3AudioHeader.getSampleRate());
-        assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
-        assertTrue(mp3AudioHeader.isVariableBitRate());
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2_5)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
-        assertTrue(mp3AudioHeader.isOriginal());
-        assertFalse(mp3AudioHeader.isCopyrighted());
-        assertFalse(mp3AudioHeader.isPrivate());
-        assertFalse(mp3AudioHeader.isProtected());
-        assertEquals("~128", mp3AudioHeader.getBitRate());
-        assertEquals("mp3", mp3AudioHeader.getEncodingType());
-        assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals("12000", mp3AudioHeader.getSampleRate());
+        Assert.assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
+        Assert.assertTrue(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2_5)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
+        Assert.assertTrue(mp3AudioHeader.isOriginal());
+        Assert.assertFalse(mp3AudioHeader.isCopyrighted());
+        Assert.assertFalse(mp3AudioHeader.isPrivate());
+        Assert.assertFalse(mp3AudioHeader.isProtected());
+        Assert.assertEquals("~128", mp3AudioHeader.getBitRate());
+        Assert.assertEquals("mp3", mp3AudioHeader.getEncodingType());
+        Assert.assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
     }
 
+    @Test
     public void testReadV25L3()
     {
         Exception exceptionCaught = null;
@@ -316,22 +327,23 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals("12000", mp3AudioHeader.getSampleRate());
-        assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
-        assertFalse(mp3AudioHeader.isVariableBitRate());
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2_5)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
-        assertTrue(mp3AudioHeader.isOriginal());
-        assertFalse(mp3AudioHeader.isCopyrighted());
-        assertFalse(mp3AudioHeader.isPrivate());
-        assertFalse(mp3AudioHeader.isProtected());
-        assertEquals("16", mp3AudioHeader.getBitRate());
-        assertEquals("mp3", mp3AudioHeader.getEncodingType());
-        assertEquals("", mp3AudioHeader.getEncoder());   //No Lame header so blank
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals("12000", mp3AudioHeader.getSampleRate());
+        Assert.assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
+        Assert.assertFalse(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2_5)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
+        Assert.assertTrue(mp3AudioHeader.isOriginal());
+        Assert.assertFalse(mp3AudioHeader.isCopyrighted());
+        Assert.assertFalse(mp3AudioHeader.isPrivate());
+        Assert.assertFalse(mp3AudioHeader.isProtected());
+        Assert.assertEquals("16", mp3AudioHeader.getBitRate());
+        Assert.assertEquals("mp3", mp3AudioHeader.getEncodingType());
+        Assert.assertEquals("", mp3AudioHeader.getEncoder());   //No Lame header so blank
     }
 
+    @Test
     public void testReadV25L3VbrNew()
     {
         Exception exceptionCaught = null;
@@ -346,22 +358,23 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals("12000", mp3AudioHeader.getSampleRate());
-        assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
-        assertTrue(mp3AudioHeader.isVariableBitRate());
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2_5)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
-        assertTrue(mp3AudioHeader.isOriginal());
-        assertFalse(mp3AudioHeader.isCopyrighted());
-        assertFalse(mp3AudioHeader.isPrivate());
-        assertFalse(mp3AudioHeader.isProtected());
-        assertEquals("~128", mp3AudioHeader.getBitRate());
-        assertEquals("mp3", mp3AudioHeader.getEncodingType());
-        assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals("12000", mp3AudioHeader.getSampleRate());
+        Assert.assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
+        Assert.assertTrue(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2_5)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_MONO)), mp3AudioHeader.getChannels());
+        Assert.assertTrue(mp3AudioHeader.isOriginal());
+        Assert.assertFalse(mp3AudioHeader.isCopyrighted());
+        Assert.assertFalse(mp3AudioHeader.isPrivate());
+        Assert.assertFalse(mp3AudioHeader.isProtected());
+        Assert.assertEquals("~128", mp3AudioHeader.getBitRate());
+        Assert.assertEquals("mp3", mp3AudioHeader.getEncodingType());
+        Assert.assertEquals("LAME3.96r", mp3AudioHeader.getEncoder());
     }
 
+    @Test
     public void testReadV2L2()
     {
         Exception exceptionCaught = null;
@@ -376,23 +389,24 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals("24000", mp3AudioHeader.getSampleRate());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals("24000", mp3AudioHeader.getSampleRate());
 
-        assertFalse(mp3AudioHeader.isVariableBitRate());
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_II)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_JOINT_STEREO)), mp3AudioHeader.getChannels());
+        Assert.assertFalse(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_II)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_JOINT_STEREO)), mp3AudioHeader.getChannels());
         //assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString()); not working returning 0
-        assertTrue(mp3AudioHeader.isOriginal());
-        assertFalse(mp3AudioHeader.isCopyrighted());
-        assertFalse(mp3AudioHeader.isPrivate());
-        assertTrue(mp3AudioHeader.isProtected());
-        assertEquals("16", mp3AudioHeader.getBitRate());
-        assertEquals("mp3", mp3AudioHeader.getEncodingType());
-        assertEquals("", mp3AudioHeader.getEncoder());   //No Lame header so blank
+        Assert.assertTrue(mp3AudioHeader.isOriginal());
+        Assert.assertFalse(mp3AudioHeader.isCopyrighted());
+        Assert.assertFalse(mp3AudioHeader.isPrivate());
+        Assert.assertTrue(mp3AudioHeader.isProtected());
+        Assert.assertEquals("16", mp3AudioHeader.getBitRate());
+        Assert.assertEquals("mp3", mp3AudioHeader.getEncodingType());
+        Assert.assertEquals("", mp3AudioHeader.getEncoder());   //No Lame header so blank
     }
 
+    @Test
     public void testReadV2L3Stereo()
     {
         Exception exceptionCaught = null;
@@ -407,27 +421,28 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals("24000", mp3AudioHeader.getSampleRate());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals("24000", mp3AudioHeader.getSampleRate());
         //assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString());
-        assertFalse(mp3AudioHeader.isVariableBitRate());
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_JOINT_STEREO)), mp3AudioHeader.getChannels());
+        Assert.assertFalse(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_2)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_JOINT_STEREO)), mp3AudioHeader.getChannels());
         //assertEquals("00:14", mp3AudioHeader.getTrackLengthAsString()); not working returning 0
-        assertTrue(mp3AudioHeader.isOriginal());
-        assertFalse(mp3AudioHeader.isCopyrighted());
-        assertFalse(mp3AudioHeader.isPrivate());
-        assertFalse(mp3AudioHeader.isProtected());
-        assertEquals("64", mp3AudioHeader.getBitRate());
-        assertEquals("mp3", mp3AudioHeader.getEncodingType());
-        assertEquals("LAME3.97 ", mp3AudioHeader.getEncoder());   //TODO should we be removing trailing space
+        Assert.assertTrue(mp3AudioHeader.isOriginal());
+        Assert.assertFalse(mp3AudioHeader.isCopyrighted());
+        Assert.assertFalse(mp3AudioHeader.isPrivate());
+        Assert.assertFalse(mp3AudioHeader.isProtected());
+        Assert.assertEquals("64", mp3AudioHeader.getBitRate());
+        Assert.assertEquals("mp3", mp3AudioHeader.getEncodingType());
+        Assert.assertEquals("LAME3.97 ", mp3AudioHeader.getEncoder());   //TODO should we be removing trailing space
     }
 
 
     /**
      * Test trying to parse an mp3 file which is not a valid MP3 fails gracefully with expected exception
      */
+    @Test
     public void testIssue79()
     {
         Exception exceptionCaught = null;
@@ -442,7 +457,7 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertTrue(exceptionCaught instanceof InvalidAudioFrameException);
+        Assert.assertTrue(exceptionCaught instanceof InvalidAudioFrameException);
     }
 
 
@@ -450,6 +465,7 @@ public class MP3AudioHeaderTest extends TestCase
      * Test trying to parse an mp3 file which is not a valid MP3 and is extremely small
      * Should fail gracefully
      */
+    @Test
     public void testIssue81()
     {
         Exception exceptionCaught = null;
@@ -464,12 +480,13 @@ public class MP3AudioHeaderTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertTrue(exceptionCaught instanceof InvalidAudioFrameException);
+        Assert.assertTrue(exceptionCaught instanceof InvalidAudioFrameException);
     }
 
     /**
      * Test trying to parse an mp3 file which is a valid MP3 but problems with frame
      */
+    @Test
     public void testIssue199()
     {
         Exception exceptionCaught = null;
@@ -485,13 +502,14 @@ public class MP3AudioHeaderTest extends TestCase
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertTrue(exceptionCaught == null);
+        Assert.assertTrue(exceptionCaught == null);
     }
 
     /**
      * Test mp3s display tracks over an hour correctly, dont actually have any such track so have to emulate
      * the mp3 rather than calling it directly.
      */
+    @Test
     public void testIssue85()
     {
         Exception exceptionCaught = null;
@@ -505,15 +523,15 @@ public class MP3AudioHeaderTest extends TestCase
         {
             int lengthLessThanHour = 3500;
             Date timeIn = timeInFormat.parse(String.valueOf(lengthLessThanHour));
-            assertEquals("58:20", timeOutFormat.format(timeIn));
+            Assert.assertEquals("58:20", timeOutFormat.format(timeIn));
 
             int lengthIsAnHour = 3600;
             timeIn = timeInFormat.parse(String.valueOf(lengthIsAnHour));
-            assertEquals("01:00:00", timeOutOverAnHourFormat.format(timeIn));
+            Assert.assertEquals("01:00:00", timeOutOverAnHourFormat.format(timeIn));
 
             int lengthMoreThanHour = 4000;
             timeIn = timeInFormat.parse(String.valueOf(lengthMoreThanHour));
-            assertEquals("01:06:40", timeOutOverAnHourFormat.format(timeIn));
+            Assert.assertEquals("01:06:40", timeOutOverAnHourFormat.format(timeIn));
 
         }
         catch (Exception e)
@@ -521,7 +539,7 @@ public class MP3AudioHeaderTest extends TestCase
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertTrue(exceptionCaught == null);
+        Assert.assertTrue(exceptionCaught == null);
     }
 
     /**
@@ -529,6 +547,7 @@ public class MP3AudioHeaderTest extends TestCase
      * jaudiotagger to end up reading mp3 header from too early causing audio header to be
      * read incorrectly
      */
+    @Test
     public void testIssue110()
     {
         File orig = new File("testdata", "test28.mp3");
@@ -550,12 +569,13 @@ public class MP3AudioHeaderTest extends TestCase
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertTrue(exceptionCaught == null);
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_JOINT_STEREO)), mp3AudioHeader.getChannels());
+        Assert.assertTrue(exceptionCaught == null);
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_JOINT_STEREO)), mp3AudioHeader.getChannels());
     }
 
+    @Test
     public void testReadVRBIFrame()
     {
         File orig = new File("testdata", "test30.mp3");
@@ -577,16 +597,17 @@ public class MP3AudioHeaderTest extends TestCase
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertTrue(exceptionCaught == null);
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_STEREO)), mp3AudioHeader.getChannels());
-        assertTrue(mp3AudioHeader.isVariableBitRate());
-        assertEquals(147, mp3AudioHeader.getBitRateAsNumber());
-        assertEquals("Fraunhofer", mp3AudioHeader.getEncoder());
+        Assert.assertTrue(exceptionCaught == null);
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_STEREO)), mp3AudioHeader.getChannels());
+        Assert.assertTrue(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(147, mp3AudioHeader.getBitRateAsNumber());
+        Assert.assertEquals("Fraunhofer", mp3AudioHeader.getEncoder());
 
     }
 
+    @Test
     public void testWriteToFileWithVRBIFrame()
     {
         File orig = new File("testdata", "test30.mp3");
@@ -623,15 +644,15 @@ public class MP3AudioHeaderTest extends TestCase
             exceptionCaught = e;
         }
         //change has been made and VBRI Frame is left intact
-        assertEquals("FREDDY", mp3file.getID3v2Tag().getFirst(FieldKey.TITLE));
+        Assert.assertEquals("FREDDY", mp3file.getID3v2Tag().getFirst(FieldKey.TITLE));
 
-        assertTrue(exceptionCaught == null);
-        assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
-        assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
-        assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_STEREO)), mp3AudioHeader.getChannels());
-        assertTrue(mp3AudioHeader.isVariableBitRate());
-        assertEquals(147, mp3AudioHeader.getBitRateAsNumber());
-        assertEquals("Fraunhofer", mp3AudioHeader.getEncoder());
+        Assert.assertTrue(exceptionCaught == null);
+        Assert.assertEquals(MPEGFrameHeader.mpegVersionMap.get(new Integer(MPEGFrameHeader.VERSION_1)), mp3AudioHeader.getMpegVersion());
+        Assert.assertEquals(MPEGFrameHeader.mpegLayerMap.get(new Integer(MPEGFrameHeader.LAYER_III)), mp3AudioHeader.getMpegLayer());
+        Assert.assertEquals(MPEGFrameHeader.modeMap.get(new Integer(MPEGFrameHeader.MODE_STEREO)), mp3AudioHeader.getChannels());
+        Assert.assertTrue(mp3AudioHeader.isVariableBitRate());
+        Assert.assertEquals(147, mp3AudioHeader.getBitRateAsNumber());
+        Assert.assertEquals("Fraunhofer", mp3AudioHeader.getEncoder());
 
     }
 }

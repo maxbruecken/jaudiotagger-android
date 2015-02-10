@@ -1,5 +1,6 @@
 package org.jaudiotagger.issues;
 
+import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;

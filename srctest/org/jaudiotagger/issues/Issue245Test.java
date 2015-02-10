@@ -12,17 +12,29 @@ import org.jaudiotagger.tag.id3.ID3v24Tag;
 import org.jaudiotagger.tag.id3.valuepair.ImageFormats;
 import org.jaudiotagger.tag.images.ArtworkFactory;
 import org.jaudiotagger.tag.images.Images;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Support For Common Interface for reading and writing coverart
  */
+@Config(emulateSdk = 18)
+@RunWith(RobolectricTestRunner.class)
 public class Issue245Test extends AbstractTestCase
 {
     /**
      * Test writing Artwork  to Mp3 ID3v24
      */
+    @Test
     public void testWriteArtworkFieldsToMp3ID3v24()
     {
         File testFile = null;
@@ -76,6 +88,7 @@ public class Issue245Test extends AbstractTestCase
     /**
      * Test writing Artwork  to Mp3 ID3v23
      */
+    @Test
     public void testWriteArtworkFieldsToMp3ID3v23()
     {
         File testFile = null;
@@ -129,6 +142,7 @@ public class Issue245Test extends AbstractTestCase
     /**
      * Test writing Artwork  to Mp3 ID3v22
      */
+    @Test
     public void testWriteArtworkFieldsToMp3ID3v22()
     {
         File testFile = null;
@@ -181,6 +195,7 @@ public class Issue245Test extends AbstractTestCase
     /**
      * Test reading/writing artwork to Ogg
      */
+    @Test
     public void testReadWriteArtworkFieldsToOggVorbis()
     {
         File testFile = null;
@@ -234,6 +249,7 @@ public class Issue245Test extends AbstractTestCase
     /**
      * Test reading/writing artwork to Flac
      */
+    @Test
     public void testReadWriteArtworkFieldsToFlac()
     {
         File testFile = null;
@@ -292,6 +308,7 @@ public class Issue245Test extends AbstractTestCase
     /**
      * Test reading/writing artwork to Wma
      */
+    @Test
     public void testReadWriteArtworkFieldsToWma()
     {
         File testFile = null;
@@ -350,6 +367,7 @@ public class Issue245Test extends AbstractTestCase
     /**
      * Test reading/writing artwork to Mp4
      */
+    @Test
     public void testReadWriteArtworkFieldsToMp4()
     {
         File testFile = null;
@@ -405,6 +423,7 @@ public class Issue245Test extends AbstractTestCase
     /**
      * Test Artwork cannot be written to Wav
      */
+    @Test
     public void testReadWriteArtworkFieldsToWav()
     {
         File testFile = null;
@@ -472,6 +491,7 @@ public class Issue245Test extends AbstractTestCase
     /**
      * Test Artwork cannot be written to Real
      */
+    @Test
     public void testReadWriteArtworkFieldsToReal()
     {
         File testFile = null;

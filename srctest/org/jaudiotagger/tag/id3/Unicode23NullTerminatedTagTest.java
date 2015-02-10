@@ -1,41 +1,22 @@
 package org.jaudiotagger.tag.id3;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
+import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyWXXX;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyWXXXTest;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
-import org.jaudiotagger.tag.TagOptionSingleton;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.File;
 
 /**
  *
  */
-public class Unicode23NullTerminatedTagTest extends TestCase
-{
-    /**
-     * Constructor
-     *
-     * @param arg0
-     */
-    public Unicode23NullTerminatedTagTest(String arg0)
-    {
-        super(arg0);
-    }
-
-    /**
-     * Command line entrance.
-     *
-     * @param args
-     */
-    public static void main(String[] args)
-    {
-        junit.textui.TestRunner.run(Unicode23NullTerminatedTagTest.suite());
-    }
+public class Unicode23NullTerminatedTagTest {
 
     /////////////////////////////////////////////////////////////////////////
     // TestCase classes to override
@@ -44,7 +25,8 @@ public class Unicode23NullTerminatedTagTest extends TestCase
     /**
      *
      */
-    protected void setUp()
+    @Before
+    public void setUp()
     {
         TagOptionSingleton.getInstance().setToDefault();
     }
@@ -52,25 +34,9 @@ public class Unicode23NullTerminatedTagTest extends TestCase
     /**
      *
      */
-    protected void tearDown()
+    @After
+    public void tearDown()
     {
-    }
-
-    /**
-     *
-     */
-//    protected void runTest()
-//    {
-//    }
-
-    /**
-     * Builds the Test Suite.
-     *
-     * @return the Test Suite.
-     */
-    public static Test suite()
-    {
-        return new TestSuite(Unicode23NullTerminatedTagTest.class);
     }
 
     /////////////////////////////////////////////////////////////////////////
@@ -84,6 +50,7 @@ public class Unicode23NullTerminatedTagTest extends TestCase
      *
      * @throws Exception
      */
+    @Test
     public void testCreateISO8859EncodedNullTerminatedString() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -102,11 +69,11 @@ public class Unicode23NullTerminatedTagTest extends TestCase
             exceptionCaught = e;
         }
 
-        assertNull(exceptionCaught);
-        assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, fb.getIdentifier());
-        assertEquals(TextEncoding.ISO_8859_1, fb.getTextEncoding());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_STRING, fb.getDescription());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, fb.getUrlLink());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, fb.getIdentifier());
+        Assert.assertEquals(TextEncoding.ISO_8859_1, fb.getTextEncoding());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_STRING, fb.getDescription());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, fb.getUrlLink());
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -118,10 +85,10 @@ public class Unicode23NullTerminatedTagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL);
         FrameBodyWXXX body = (FrameBodyWXXX) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, body.getIdentifier());
-        assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_STRING, body.getDescription());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, body.getUrlLink());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_STRING, body.getDescription());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, body.getUrlLink());
 
     }
 
@@ -131,6 +98,7 @@ public class Unicode23NullTerminatedTagTest extends TestCase
      *
      * @throws Exception
      */
+    @Test
     public void testCreateUTF16BOMLEEncodedNullTerminatedString() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -150,10 +118,10 @@ public class Unicode23NullTerminatedTagTest extends TestCase
             exceptionCaught = e;
         }
 
-        assertNull(exceptionCaught);
-        assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, fb.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, fb.getTextEncoding());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_STRING, fb.getDescription());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, fb.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, fb.getTextEncoding());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_STRING, fb.getDescription());
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -165,10 +133,10 @@ public class Unicode23NullTerminatedTagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL);
         FrameBodyWXXX body = (FrameBodyWXXX) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_STRING, body.getDescription());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, body.getUrlLink());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_STRING, body.getDescription());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, body.getUrlLink());
 
     }
 
@@ -178,6 +146,7 @@ public class Unicode23NullTerminatedTagTest extends TestCase
      *
      * @throws Exception
      */
+    @Test
     public void testCreateUTF16BOMBEEncodedNullTerminatedString() throws Exception
     {
         TagOptionSingleton.getInstance().setEncodeUTF16BomAsLittleEndian(false);
@@ -198,10 +167,10 @@ public class Unicode23NullTerminatedTagTest extends TestCase
             exceptionCaught = e;
         }
 
-        assertNull(exceptionCaught);
-        assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, fb.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, fb.getTextEncoding());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_STRING, fb.getDescription());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, fb.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, fb.getTextEncoding());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_STRING, fb.getDescription());
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -213,10 +182,10 @@ public class Unicode23NullTerminatedTagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL);
         FrameBodyWXXX body = (FrameBodyWXXX) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_STRING, body.getDescription());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, body.getUrlLink());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_STRING, body.getDescription());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, body.getUrlLink());
 
     }
 
@@ -226,6 +195,7 @@ public class Unicode23NullTerminatedTagTest extends TestCase
      *
      * @throws Exception
      */
+    @Test
     public void testCreateUTF16AutoEncodedNullTerminatedString() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -244,11 +214,11 @@ public class Unicode23NullTerminatedTagTest extends TestCase
             exceptionCaught = e;
         }
 
-        assertNull(exceptionCaught);
-        assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, fb.getIdentifier());
-        assertEquals(TextEncoding.ISO_8859_1, fb.getTextEncoding());
-        assertEquals(FrameBodyWXXXTest.WXXX_UNICODE_REQUIRED_TEST_STRING, fb.getDescription());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, fb.getUrlLink());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, fb.getIdentifier());
+        Assert.assertEquals(TextEncoding.ISO_8859_1, fb.getTextEncoding());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_UNICODE_REQUIRED_TEST_STRING, fb.getDescription());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, fb.getUrlLink());
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -260,10 +230,10 @@ public class Unicode23NullTerminatedTagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL);
         FrameBodyWXXX body = (FrameBodyWXXX) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
-        assertEquals(FrameBodyWXXXTest.WXXX_UNICODE_REQUIRED_TEST_STRING, body.getDescription());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, body.getUrlLink());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_UNICODE_REQUIRED_TEST_STRING, body.getDescription());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, body.getUrlLink());
 
     }
 
@@ -272,6 +242,7 @@ public class Unicode23NullTerminatedTagTest extends TestCase
      *
      * @throws Exception
      */
+    @Test
     public void testCreateUTF16BEEncodedNullTerminatedString() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -291,11 +262,11 @@ public class Unicode23NullTerminatedTagTest extends TestCase
             exceptionCaught = e;
         }
 
-        assertNull(exceptionCaught);
-        assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, fb.getIdentifier());
-        assertEquals(TextEncoding.UTF_16BE, fb.getTextEncoding());
-        assertEquals(FrameBodyWXXXTest.WXXX_UNICODE_REQUIRED_TEST_STRING, fb.getDescription());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, fb.getUrlLink());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, fb.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16BE, fb.getTextEncoding());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_UNICODE_REQUIRED_TEST_STRING, fb.getDescription());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, fb.getUrlLink());
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -307,10 +278,10 @@ public class Unicode23NullTerminatedTagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL);
         FrameBodyWXXX body = (FrameBodyWXXX) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_16BE, body.getTextEncoding());
-        assertEquals(FrameBodyWXXXTest.WXXX_UNICODE_REQUIRED_TEST_STRING, body.getDescription());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, body.getUrlLink());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16BE, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_UNICODE_REQUIRED_TEST_STRING, body.getDescription());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, body.getUrlLink());
 
     }
 
@@ -319,6 +290,7 @@ public class Unicode23NullTerminatedTagTest extends TestCase
      *
      * @throws Exception
      */
+    @Test
     public void testCreateUTF8EncodedNullTerminatedString() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -338,11 +310,11 @@ public class Unicode23NullTerminatedTagTest extends TestCase
             exceptionCaught = e;
         }
 
-        assertNull(exceptionCaught);
-        assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, fb.getIdentifier());
-        assertEquals(TextEncoding.UTF_8, fb.getTextEncoding());
-        assertEquals(FrameBodyWXXXTest.WXXX_UNICODE_REQUIRED_TEST_STRING, fb.getDescription());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, fb.getUrlLink());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, fb.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_8, fb.getTextEncoding());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_UNICODE_REQUIRED_TEST_STRING, fb.getDescription());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, fb.getUrlLink());
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -354,10 +326,10 @@ public class Unicode23NullTerminatedTagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL);
         FrameBodyWXXX body = (FrameBodyWXXX) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_8, body.getTextEncoding());
-        assertEquals(FrameBodyWXXXTest.WXXX_UNICODE_REQUIRED_TEST_STRING, body.getDescription());
-        assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, body.getUrlLink());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_USER_DEFINED_URL, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_8, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_UNICODE_REQUIRED_TEST_STRING, body.getDescription());
+        Assert.assertEquals(FrameBodyWXXXTest.WXXX_TEST_URL, body.getUrlLink());
 
     }
 }

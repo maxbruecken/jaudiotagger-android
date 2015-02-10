@@ -10,6 +10,9 @@ import org.jaudiotagger.tag.reference.ID3V2Version;
 
 import java.io.File;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Test setting subtitle and title
  */

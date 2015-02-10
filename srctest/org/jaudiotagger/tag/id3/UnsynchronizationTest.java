@@ -1,5 +1,6 @@
 package org.jaudiotagger.tag.id3;
 
+import static org.junit.Assert.*;
 import android.graphics.Bitmap;
 
 import org.jaudiotagger.AbstractTestCase;

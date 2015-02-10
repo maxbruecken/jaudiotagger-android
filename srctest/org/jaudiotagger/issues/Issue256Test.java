@@ -11,6 +11,8 @@ import org.jaudiotagger.tag.Tag;
 import java.io.File;
 import java.io.RandomAccessFile;
 
+import static org.junit.Assert.assertNull;
+
 /**
  * Test Writing to new urls with common interface
  */

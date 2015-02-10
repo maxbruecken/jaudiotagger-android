@@ -11,6 +11,10 @@ import org.jaudiotagger.tag.id3.ID3v23Tag;
 
 import java.io.File;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+
 /**
  * Test reading Version 2 Layer III file correctly
  */

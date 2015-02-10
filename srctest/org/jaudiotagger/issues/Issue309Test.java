@@ -6,6 +6,8 @@ import org.jaudiotagger.audio.AudioFileIO;
 
 import java.io.File;
 
+import static org.junit.Assert.assertNotNull;
+
 /**
  * Reading mp4 with corrupt length recorded in tag ending up in middle of free atom should fail
  */

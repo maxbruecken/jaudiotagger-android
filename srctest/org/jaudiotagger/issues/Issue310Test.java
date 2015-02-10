@@ -10,6 +10,9 @@ import org.jaudiotagger.tag.images.ArtworkFactory;
 import java.io.File;
 import java.io.RandomAccessFile;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 /**
  * FIles with extra tag atom
  */

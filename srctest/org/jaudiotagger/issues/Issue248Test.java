@@ -5,6 +5,8 @@ import org.jaudiotagger.audio.mp3.MP3File;
 
 import java.io.File;
 
+import static org.junit.Assert.assertEquals;
+
 
 public class Issue248Test extends AbstractTestCase
 {

@@ -1,8 +1,5 @@
 package org.jaudiotagger.tag.id3;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.TagOptionSingleton;
@@ -10,6 +7,10 @@ import org.jaudiotagger.tag.datatype.DataTypes;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTPE1;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTPE1Test;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.RandomAccessFile;
@@ -19,27 +20,7 @@ import java.nio.channels.FileChannel;
 /**
  *
  */
-public class Unicode23TagTest extends TestCase
-{
-    /**
-     * Constructor
-     *
-     * @param arg0
-     */
-    public Unicode23TagTest(String arg0)
-    {
-        super(arg0);
-    }
-
-    /**
-     * Command line entrance.
-     *
-     * @param args
-     */
-    public static void main(String[] args)
-    {
-        junit.textui.TestRunner.run(Unicode23TagTest.suite());
-    }
+public class Unicode23TagTest {
 
     /////////////////////////////////////////////////////////////////////////
     // TestCase classes to override
@@ -48,7 +29,8 @@ public class Unicode23TagTest extends TestCase
     /**
      *
      */
-    protected void setUp()
+    @Before
+    public void setUp()
     {
         TagOptionSingleton.getInstance().setToDefault();
     }
@@ -56,27 +38,10 @@ public class Unicode23TagTest extends TestCase
     /**
      *
      */
-    protected void tearDown()
+    @After
+    public void tearDown()
     {
     }
-
-    /**
-     *
-     */
-//    protected void runTest()
-//    {
-//    }
-
-    /**
-     * Builds the Test Suite.
-     *
-     * @return the Test Suite.
-     */
-    public static Test suite()
-    {
-        return new TestSuite(Unicode23TagTest.class);
-    }
-
 
     /**
      * Create a String that only contains text within IS8859 charset so should be
@@ -84,6 +49,7 @@ public class Unicode23TagTest extends TestCase
      *
      * @throws Exception
      */
+    @Test
     public void testCreateISO8859EncodedSizeTerminatedString() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -102,10 +68,10 @@ public class Unicode23TagTest extends TestCase
             exceptionCaught = e;
         }
 
-        assertNull(exceptionCaught);
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
-        assertEquals(TextEncoding.ISO_8859_1, fb.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, fb.getText());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
+        Assert.assertEquals(TextEncoding.ISO_8859_1, fb.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, fb.getText());
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -117,9 +83,9 @@ public class Unicode23TagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         FrameBodyTPE1 body = (FrameBodyTPE1) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
-        assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
     }
 
     /**
@@ -128,6 +94,7 @@ public class Unicode23TagTest extends TestCase
      *
      * @throws Exception
      */
+    @Test
     public void testCreateUTF16BOMLEEncodedSizeTerminatedString() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3", new File("testv23utf16bomle.mp3"));
@@ -147,10 +114,10 @@ public class Unicode23TagTest extends TestCase
             exceptionCaught = e;
         }
 
-        assertNull(exceptionCaught);
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, fb.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, fb.getText());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, fb.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, fb.getText());
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -162,9 +129,9 @@ public class Unicode23TagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         FrameBodyTPE1 body = (FrameBodyTPE1) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
     }
 
     /**
@@ -173,6 +140,7 @@ public class Unicode23TagTest extends TestCase
      *
      * @throws Exception
      */
+    @Test
     public void testCreateUTF16BOMBEEncodedSizeTerminatedString() throws Exception
     {
         TagOptionSingleton.getInstance().setEncodeUTF16BomAsLittleEndian(false);
@@ -193,10 +161,10 @@ public class Unicode23TagTest extends TestCase
             exceptionCaught = e;
         }
 
-        assertNull(exceptionCaught);
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, fb.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, fb.getText());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, fb.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, fb.getText());
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -208,9 +176,9 @@ public class Unicode23TagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         FrameBodyTPE1 body = (FrameBodyTPE1) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
     }
 
 
@@ -220,6 +188,7 @@ public class Unicode23TagTest extends TestCase
      *
      * @throws Exception
      */
+    @Test
     public void testCreateUTF16AutoEncodedSizeTerminatedString() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3", new File("testv23utf16bomberequired.mp3"));
@@ -238,10 +207,10 @@ public class Unicode23TagTest extends TestCase
             exceptionCaught = e;
         }
 
-        assertNull(exceptionCaught);
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
-        assertEquals(TextEncoding.ISO_8859_1, fb.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_UNICODE_REQUIRED_TEST_STRING, fb.getText());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
+        Assert.assertEquals(TextEncoding.ISO_8859_1, fb.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_UNICODE_REQUIRED_TEST_STRING, fb.getText());
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -253,9 +222,9 @@ public class Unicode23TagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         FrameBodyTPE1 body = (FrameBodyTPE1) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_UNICODE_REQUIRED_TEST_STRING, body.getText());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_UNICODE_REQUIRED_TEST_STRING, body.getText());
     }
 
     /**
@@ -263,6 +232,7 @@ public class Unicode23TagTest extends TestCase
      *
      * @throws Exception
      */
+    @Test
     public void testCreateUTF16BEEncodedSizeTerminatedString() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -282,10 +252,10 @@ public class Unicode23TagTest extends TestCase
             exceptionCaught = e;
         }
 
-        assertNull(exceptionCaught);
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
-        assertEquals(TextEncoding.UTF_16BE, fb.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_UNICODE_REQUIRED_TEST_STRING, fb.getText());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16BE, fb.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_UNICODE_REQUIRED_TEST_STRING, fb.getText());
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -297,9 +267,9 @@ public class Unicode23TagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         FrameBodyTPE1 body = (FrameBodyTPE1) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_UNICODE_REQUIRED_TEST_STRING, body.getText());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_UNICODE_REQUIRED_TEST_STRING, body.getText());
     }
 
     /**
@@ -307,6 +277,7 @@ public class Unicode23TagTest extends TestCase
      *
      * @throws Exception
      */
+    @Test
     public void testCreateUTF8EncodedSizeTerminatedString() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -326,10 +297,10 @@ public class Unicode23TagTest extends TestCase
             exceptionCaught = e;
         }
 
-        assertNull(exceptionCaught);
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
-        assertEquals(TextEncoding.UTF_8, fb.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_UNICODE_REQUIRED_TEST_STRING, fb.getText());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_8, fb.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_UNICODE_REQUIRED_TEST_STRING, fb.getText());
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -341,12 +312,13 @@ public class Unicode23TagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         FrameBodyTPE1 body = (FrameBodyTPE1) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_UNICODE_REQUIRED_TEST_STRING, body.getText());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_UNICODE_REQUIRED_TEST_STRING, body.getText());
     }
 
 
+    @Test
     public void testFixv23TagsWithInvalidEncoding() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue109.id3", "testV1.mp3");
@@ -358,8 +330,8 @@ public class Unicode23TagTest extends TestCase
         //Currently contains tags with invalid textencodings
         ID3v23Frame artistFrame = (ID3v23Frame) v23tag.getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         FrameBodyTPE1 body = (FrameBodyTPE1) artistFrame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_8, body.getTextEncoding());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_8, body.getTextEncoding());
 
         //Save
         mp3File.save();
@@ -371,12 +343,13 @@ public class Unicode23TagTest extends TestCase
         //Currently contains tags with invalid textencodings
         artistFrame = (ID3v23Frame) v23tag.getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         body = (FrameBodyTPE1) artistFrame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
 
         //Text Encoding has been corrected
-        assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
+        Assert.assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
     }
 
+    @Test
     public void testFixv23TagsWithInvalidEncodingAndDefaultOverridden() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue109.id3", "testV1.mp3");
@@ -388,8 +361,8 @@ public class Unicode23TagTest extends TestCase
         //Currently contains tags with invalid textencodings
         ID3v23Frame artistFrame = (ID3v23Frame) v23tag.getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         FrameBodyTPE1 body = (FrameBodyTPE1) artistFrame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_8, body.getTextEncoding());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_8, body.getTextEncoding());
 
         //Modify tag options
         //So will default to default on save (default is ISO8859)
@@ -405,16 +378,17 @@ public class Unicode23TagTest extends TestCase
         //Currently contains tags with invalid textencodings
         artistFrame = (ID3v23Frame) v23tag.getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         body = (FrameBodyTPE1) artistFrame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
 
         //Text Encoding has been corrected ( note the text could use ISO_8859 but because the user has selected
         //a Unicode text encoding the default behaviour is to just conver to a valid text encoding for this id3 version
-        assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
+        Assert.assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
     }
 
     /**
      * @throws Exception
      */
+    @Test
     public void testCreateUTF16BOMLEEvenIfNotNeededIfDefaultSetEncodedSizeTerminatedString() throws Exception
     {
         //Modify tag options
@@ -434,7 +408,7 @@ public class Unicode23TagTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
+        Assert.assertNull(exceptionCaught);
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -446,9 +420,9 @@ public class Unicode23TagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         FrameBodyTPE1 body = (FrameBodyTPE1) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
 
 //Check Bytes
         FileChannel fc = new RandomAccessFile(testFile, "r").getChannel();
@@ -457,33 +431,34 @@ public class Unicode23TagTest extends TestCase
         fc.close();
 
         //Frame Header
-        assertTrue((buffer.get(10) & 0xff) == 'T');
-        assertTrue((buffer.get(11) & 0xff) == 'P');
-        assertTrue((buffer.get(12) & 0xff) == 'E');
-        assertTrue((buffer.get(13) & 0xff) == '1');
+        Assert.assertTrue((buffer.get(10) & 0xff) == 'T');
+        Assert.assertTrue((buffer.get(11) & 0xff) == 'P');
+        Assert.assertTrue((buffer.get(12) & 0xff) == 'E');
+        Assert.assertTrue((buffer.get(13) & 0xff) == '1');
 
         //Charset
-        assertTrue((buffer.get(20) & 0xff) == 0x01);
+        Assert.assertTrue((buffer.get(20) & 0xff) == 0x01);
 
         //BOM
-        assertTrue((buffer.get(21) & 0xff) == 0xFF);
-        assertTrue((buffer.get(22) & 0xff) == 0xFE);
+        Assert.assertTrue((buffer.get(21) & 0xff) == 0xFF);
+        Assert.assertTrue((buffer.get(22) & 0xff) == 0xFE);
 
         //Data, least significant byte (which contaisn the data is first in each pair)
-        assertTrue((buffer.get(23) & 0xff) == 'b');
-        assertTrue((buffer.get(24) & 0xff) == 0x00);
-        assertTrue((buffer.get(25) & 0xff) == 'e');
-        assertTrue((buffer.get(26) & 0xff) == 0x00);
-        assertTrue((buffer.get(27) & 0xff) == 'c');
-        assertTrue((buffer.get(28) & 0xff) == 0x00);
-        assertTrue((buffer.get(29) & 0xff) == 'k');
-        assertTrue((buffer.get(28) & 0xff) == 0x00);
+        Assert.assertTrue((buffer.get(23) & 0xff) == 'b');
+        Assert.assertTrue((buffer.get(24) & 0xff) == 0x00);
+        Assert.assertTrue((buffer.get(25) & 0xff) == 'e');
+        Assert.assertTrue((buffer.get(26) & 0xff) == 0x00);
+        Assert.assertTrue((buffer.get(27) & 0xff) == 'c');
+        Assert.assertTrue((buffer.get(28) & 0xff) == 0x00);
+        Assert.assertTrue((buffer.get(29) & 0xff) == 'k');
+        Assert.assertTrue((buffer.get(28) & 0xff) == 0x00);
 
     }
 
     /**
      * @throws Exception
      */
+    @Test
     public void testCreateUTF16AndResetEvenIfNotNeededIfDefaultSetEncodedSizeTerminatedString() throws Exception
     {
 
@@ -500,7 +475,7 @@ public class Unicode23TagTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
+        Assert.assertNull(exceptionCaught);
 
         //Modify tag options so rewrites all frames even if already created
         //So will default to default on save (default is ISO8859) has to be done before the frame is created
@@ -517,9 +492,9 @@ public class Unicode23TagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         FrameBodyTPE1 body = (FrameBodyTPE1) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
 
         //Check Bytes
         FileChannel fc = new RandomAccessFile(testFile, "r").getChannel();
@@ -528,33 +503,34 @@ public class Unicode23TagTest extends TestCase
         fc.close();
 
         //Frame Header
-        assertTrue((buffer.get(10) & 0xff) == 'T');
-        assertTrue((buffer.get(11) & 0xff) == 'P');
-        assertTrue((buffer.get(12) & 0xff) == 'E');
-        assertTrue((buffer.get(13) & 0xff) == '1');
+        Assert.assertTrue((buffer.get(10) & 0xff) == 'T');
+        Assert.assertTrue((buffer.get(11) & 0xff) == 'P');
+        Assert.assertTrue((buffer.get(12) & 0xff) == 'E');
+        Assert.assertTrue((buffer.get(13) & 0xff) == '1');
 
         //Charset
-        assertTrue((buffer.get(20) & 0xff) == 0x01);
+        Assert.assertTrue((buffer.get(20) & 0xff) == 0x01);
 
         //BOM
-        assertTrue((buffer.get(21) & 0xff) == 0xFF);
-        assertTrue((buffer.get(22) & 0xff) == 0xFE);
+        Assert.assertTrue((buffer.get(21) & 0xff) == 0xFF);
+        Assert.assertTrue((buffer.get(22) & 0xff) == 0xFE);
 
         //Data, least significant byte (which contaisn the data is first in each pair)
-        assertTrue((buffer.get(23) & 0xff) == 'b');
-        assertTrue((buffer.get(24) & 0xff) == 0x00);
-        assertTrue((buffer.get(25) & 0xff) == 'e');
-        assertTrue((buffer.get(26) & 0xff) == 0x00);
-        assertTrue((buffer.get(27) & 0xff) == 'c');
-        assertTrue((buffer.get(28) & 0xff) == 0x00);
-        assertTrue((buffer.get(29) & 0xff) == 'k');
-        assertTrue((buffer.get(28) & 0xff) == 0x00);
+        Assert.assertTrue((buffer.get(23) & 0xff) == 'b');
+        Assert.assertTrue((buffer.get(24) & 0xff) == 0x00);
+        Assert.assertTrue((buffer.get(25) & 0xff) == 'e');
+        Assert.assertTrue((buffer.get(26) & 0xff) == 0x00);
+        Assert.assertTrue((buffer.get(27) & 0xff) == 'c');
+        Assert.assertTrue((buffer.get(28) & 0xff) == 0x00);
+        Assert.assertTrue((buffer.get(29) & 0xff) == 'k');
+        Assert.assertTrue((buffer.get(28) & 0xff) == 0x00);
 
     }
 
     /**
      * @throws Exception
      */
+    @Test
     public void testCreateUTF16AndResetEvenIfNotNeededIfDefaultSetEncodedSizeTerminatedStringUnsnced() throws Exception
     {
 
@@ -571,7 +547,7 @@ public class Unicode23TagTest extends TestCase
         {
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
+        Assert.assertNull(exceptionCaught);
 
         //Modify tag options so rewrites all frames even if already created
         //So will default to default on save (default is ISO8859) has to be done before the frame is created
@@ -590,9 +566,9 @@ public class Unicode23TagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         FrameBodyTPE1 body = (FrameBodyTPE1) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
-        assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.UTF_16, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
 
         //Check Bytes
         FileChannel fc = new RandomAccessFile(testFile, "r").getChannel();
@@ -601,28 +577,28 @@ public class Unicode23TagTest extends TestCase
         fc.close();
 
         //Frame Header
-        assertTrue((buffer.get(10) & 0xff) == 'T');
-        assertTrue((buffer.get(11) & 0xff) == 'P');
-        assertTrue((buffer.get(12) & 0xff) == 'E');
-        assertTrue((buffer.get(13) & 0xff) == '1');
+        Assert.assertTrue((buffer.get(10) & 0xff) == 'T');
+        Assert.assertTrue((buffer.get(11) & 0xff) == 'P');
+        Assert.assertTrue((buffer.get(12) & 0xff) == 'E');
+        Assert.assertTrue((buffer.get(13) & 0xff) == '1');
 
         //Charset
-        assertTrue((buffer.get(20) & 0xff) == 0x01);
+        Assert.assertTrue((buffer.get(20) & 0xff) == 0x01);
 
         //BOM
-        assertTrue((buffer.get(21) & 0xff) == 0xFF);
-        assertTrue((buffer.get(22) & 0xff) == 0x00);        //Unsync applied
-        assertTrue((buffer.get(23) & 0xff) == 0xFE);
+        Assert.assertTrue((buffer.get(21) & 0xff) == 0xFF);
+        Assert.assertTrue((buffer.get(22) & 0xff) == 0x00);        //Unsync applied
+        Assert.assertTrue((buffer.get(23) & 0xff) == 0xFE);
 
         //Data, least significant byte (which contaisn the data is first in each pair)
-        assertTrue((buffer.get(24) & 0xff) == 'b');
-        assertTrue((buffer.get(25) & 0xff) == 0x00);
-        assertTrue((buffer.get(26) & 0xff) == 'e');
-        assertTrue((buffer.get(27) & 0xff) == 0x00);
-        assertTrue((buffer.get(28) & 0xff) == 'c');
-        assertTrue((buffer.get(29) & 0xff) == 0x00);
-        assertTrue((buffer.get(30) & 0xff) == 'k');
-        assertTrue((buffer.get(31) & 0xff) == 0x00);
+        Assert.assertTrue((buffer.get(24) & 0xff) == 'b');
+        Assert.assertTrue((buffer.get(25) & 0xff) == 0x00);
+        Assert.assertTrue((buffer.get(26) & 0xff) == 'e');
+        Assert.assertTrue((buffer.get(27) & 0xff) == 0x00);
+        Assert.assertTrue((buffer.get(28) & 0xff) == 'c');
+        Assert.assertTrue((buffer.get(29) & 0xff) == 0x00);
+        Assert.assertTrue((buffer.get(30) & 0xff) == 'k');
+        Assert.assertTrue((buffer.get(31) & 0xff) == 0x00);
 
     }
 
@@ -630,6 +606,7 @@ public class Unicode23TagTest extends TestCase
     /**
      * @throws Exception
      */
+    @Test
     public void testDoesntCreateUTF16IfDefaultSetEncodedSizeTerminatedStringifOverriddenUsingSetBody() throws Exception
     {
 
@@ -654,10 +631,10 @@ public class Unicode23TagTest extends TestCase
         }
 
 
-        assertNull(exceptionCaught);
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
-        assertEquals(TextEncoding.ISO_8859_1, fb.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, fb.getText());
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, fb.getIdentifier());
+        Assert.assertEquals(TextEncoding.ISO_8859_1, fb.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, fb.getText());
 
         //Create and Save
         ID3v23Tag tag = new ID3v23Tag();
@@ -669,9 +646,9 @@ public class Unicode23TagTest extends TestCase
         mp3File = new MP3File(testFile);
         frame = (ID3v23Frame) mp3File.getID3v2Tag().getFrame(ID3v23Frames.FRAME_ID_V3_ARTIST);
         FrameBodyTPE1 body = (FrameBodyTPE1) frame.getBody();
-        assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
-        assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
-        assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
+        Assert.assertEquals(ID3v23Frames.FRAME_ID_V3_ARTIST, body.getIdentifier());
+        Assert.assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
+        Assert.assertEquals(FrameBodyTPE1Test.TPE1_TEST_STRING, body.getText());
 
         //Check Bytes
         FileChannel fc = new RandomAccessFile(testFile, "r").getChannel();
@@ -680,19 +657,19 @@ public class Unicode23TagTest extends TestCase
         fc.close();
 
         //Frame Header
-        assertTrue((buffer.get(10) & 0xff) == 'T');
-        assertTrue((buffer.get(11) & 0xff) == 'P');
-        assertTrue((buffer.get(12) & 0xff) == 'E');
-        assertTrue((buffer.get(13) & 0xff) == '1');
+        Assert.assertTrue((buffer.get(10) & 0xff) == 'T');
+        Assert.assertTrue((buffer.get(11) & 0xff) == 'P');
+        Assert.assertTrue((buffer.get(12) & 0xff) == 'E');
+        Assert.assertTrue((buffer.get(13) & 0xff) == '1');
 
         //Charset ISO8859
-        assertTrue((buffer.get(20) & 0xff) == 0x00);
+        Assert.assertTrue((buffer.get(20) & 0xff) == 0x00);
 
         //Data
-        assertTrue((buffer.get(21) & 0xff) == 'b');
-        assertTrue((buffer.get(22) & 0xff) == 'e');
-        assertTrue((buffer.get(23) & 0xff) == 'c');
-        assertTrue((buffer.get(24) & 0xff) == 'k');
+        Assert.assertTrue((buffer.get(21) & 0xff) == 'b');
+        Assert.assertTrue((buffer.get(22) & 0xff) == 'e');
+        Assert.assertTrue((buffer.get(23) & 0xff) == 'c');
+        Assert.assertTrue((buffer.get(24) & 0xff) == 'k');
     }
 
 }

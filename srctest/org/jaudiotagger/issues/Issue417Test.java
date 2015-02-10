@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
+import static org.junit.Assert.*;
 
 import java.io.File;
 

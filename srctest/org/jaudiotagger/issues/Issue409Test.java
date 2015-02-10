@@ -6,6 +6,8 @@ import org.jaudiotagger.tag.FieldKey;
 
 import java.io.File;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Test
  */

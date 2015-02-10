@@ -2,9 +2,11 @@ package org.jaudiotagger.audio.asf.data;
 
 import org.jaudiotagger.AbstractTestCase;
 
-import junit.framework.TestCase;
-
 import java.util.Locale;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.fail;
 
 /**
  * Tests the correctness of {@link GUID}.

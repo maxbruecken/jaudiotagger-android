@@ -3,12 +3,14 @@ package org.jaudiotagger.tag.id3;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyDeprecated;
-import org.jaudiotagger.tag.id3.framebody.FrameBodyTDAT;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTIME;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTYER;
 
 import java.io.File;
 import java.util.List;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test DeprecatedFrames

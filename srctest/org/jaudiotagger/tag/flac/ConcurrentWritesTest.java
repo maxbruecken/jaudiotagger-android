@@ -1,5 +1,14 @@
 package org.jaudiotagger.tag.flac;
 
+import org.jaudiotagger.AbstractTestCase;
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.tag.FieldKey;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,19 +17,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import junit.framework.TestCase;
-import org.jaudiotagger.AbstractTestCase;
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.tag.FieldKey;
+import static org.junit.Assert.assertEquals;
 
-public class ConcurrentWritesTest extends TestCase
-{
+public class ConcurrentWritesTest {
 
     private static final int THREADS = 100;
     private final File[] files = new File[THREADS];
 
-    @Override
+    @Before
     public void setUp()
     {
         for (int counter = 0; counter < THREADS; counter++)
@@ -30,12 +34,13 @@ public class ConcurrentWritesTest extends TestCase
         }
     }
 
-    @Override
+    @After
     public void tearDown()
     {
         for (File file : files) file.delete();
     }
 
+    @Test
     public void testConcurrentWrites() throws Exception
     {
 
@@ -48,7 +53,7 @@ public class ConcurrentWritesTest extends TestCase
 
         for (Future<Boolean> result : results)
         {
-            assertTrue(result.get());
+            Assert.assertTrue(result.get());
         }
     }
 

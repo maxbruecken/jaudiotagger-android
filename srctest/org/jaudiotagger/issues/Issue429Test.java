@@ -13,6 +13,9 @@ import org.jaudiotagger.tag.reference.ID3V2Version;
 
 import java.io.File;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
  * COnverting ID3tags using generic methods
  */

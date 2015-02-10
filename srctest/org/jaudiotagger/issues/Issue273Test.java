@@ -10,6 +10,9 @@ import org.jaudiotagger.tag.id3.framebody.FrameBodyCOMM;
 
 import java.io.File;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 /** COMM Frames with non-standard lang values
  */
 public class Issue273Test extends AbstractTestCase

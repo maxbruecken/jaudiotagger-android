@@ -8,6 +8,9 @@ import org.jaudiotagger.tag.id3.ID3v23Tag;
 
 import java.io.File;
 
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Test Creating Null fields
  */

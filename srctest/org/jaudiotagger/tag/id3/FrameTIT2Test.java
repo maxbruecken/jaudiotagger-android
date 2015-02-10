@@ -6,6 +6,9 @@ import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTPE1;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 /**
  */
 public class FrameTIT2Test extends AbstractTestCase

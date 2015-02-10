@@ -1,5 +1,6 @@
 package org.jaudiotagger.audio.asf.data;
 
+import static org.junit.Assert.*;
 import org.jaudiotagger.logging.ErrorMessage;
 
 import java.math.BigInteger;

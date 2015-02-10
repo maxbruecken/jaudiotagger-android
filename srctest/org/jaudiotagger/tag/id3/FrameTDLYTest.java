@@ -2,8 +2,10 @@ package org.jaudiotagger.tag.id3;
 
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTDLY;
-import org.jaudiotagger.tag.id3.framebody.FrameBodyTDTG;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 
 public class FrameTDLYTest extends AbstractTestCase

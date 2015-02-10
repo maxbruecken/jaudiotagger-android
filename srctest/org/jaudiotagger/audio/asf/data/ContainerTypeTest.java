@@ -2,6 +2,9 @@ package org.jaudiotagger.audio.asf.data;
 
 import junit.framework.TestCase;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.math.BigInteger;
 
 /**
@@ -12,7 +15,7 @@ import java.math.BigInteger;
  * 
  * @author Christian Laireiter
  */
-public class ContainerTypeTest extends TestCase {
+public class ContainerTypeTest {
 
     /**
      * Helper method for creating string with <code>charAmount</code> of 'a's.<br>
@@ -34,14 +37,15 @@ public class ContainerTypeTest extends TestCase {
      * {@link org.jaudiotagger.audio.asf.data.ContainerType#areInCorrectOrder(org.jaudiotagger.audio.asf.data.ContainerType, org.jaudiotagger.audio.asf.data.ContainerType)}
      * .
      */
+    @Test
     public void testAreInCorrectOrder() {
         for (int i = 0; i < ContainerType.values().length; i++) {
             for (int j = i + 1; j < ContainerType.values().length; j++) {
-                assertTrue(ContainerType.areInCorrectOrder(ContainerType
+                Assert.assertTrue(ContainerType.areInCorrectOrder(ContainerType
                         .getOrdered()[i], ContainerType.getOrdered()[j]));
             }
             for (int j = 0; j < i; j++) {
-                assertFalse(ContainerType.areInCorrectOrder(ContainerType
+                Assert.assertFalse(ContainerType.areInCorrectOrder(ContainerType
                         .getOrdered()[i], ContainerType.getOrdered()[j]));
             }
         }
@@ -52,11 +56,12 @@ public class ContainerTypeTest extends TestCase {
      * {@link org.jaudiotagger.audio.asf.data.ContainerType#assertConstraints(java.lang.String, byte[], int, int, int)}
      * .
      */
+    @Test
     public void testAssertConstraints() {
         try {
             ContainerType.CONTENT_BRANDING.assertConstraints(null, null, 0, 0,
                     0);
-            fail("Exception should have occurred");
+            Assert.fail("Exception should have occurred");
         } catch (IllegalArgumentException e) {
             // expected
         }
@@ -67,32 +72,33 @@ public class ContainerTypeTest extends TestCase {
      * {@link org.jaudiotagger.audio.asf.data.ContainerType#checkConstraints(java.lang.String, byte[], int, int, int)}
      * .
      */
+    @Test
     public void testCheckCtonstraints() {
-        assertNotNull(ContainerType.CONTENT_DESCRIPTION.checkConstraints(null,
+        Assert.assertNotNull(ContainerType.CONTENT_DESCRIPTION.checkConstraints(null,
                 null, 0, 0, 0));
-        assertNotNull(ContainerType.CONTENT_DESCRIPTION.checkConstraints(
+        Assert.assertNotNull(ContainerType.CONTENT_DESCRIPTION.checkConstraints(
                 "name", null, 0, 0, 0));
-        assertNotNull(ContainerType.CONTENT_DESCRIPTION.checkConstraints(
+        Assert.assertNotNull(ContainerType.CONTENT_DESCRIPTION.checkConstraints(
                 createAString(65536), new byte[0], 0, 0, 0));
-        assertNotNull(ContainerType.CONTENT_DESCRIPTION.checkConstraints(
+        Assert.assertNotNull(ContainerType.CONTENT_DESCRIPTION.checkConstraints(
                 "name", createAString(65536).getBytes(), 0, 0, 0));
-        assertNotNull(ContainerType.CONTENT_DESCRIPTION.checkConstraints(
+        Assert.assertNotNull(ContainerType.CONTENT_DESCRIPTION.checkConstraints(
                 "name", createAString(30).getBytes(), 5, 0, 0));
-        assertNull(ContainerType.METADATA_LIBRARY_OBJECT.checkConstraints(
+        Assert.assertNull(ContainerType.METADATA_LIBRARY_OBJECT.checkConstraints(
                 "name", createAString(30).getBytes(), 5, 0, 0));
-        assertNotNull(ContainerType.METADATA_LIBRARY_OBJECT.checkConstraints(
+        Assert.assertNotNull(ContainerType.METADATA_LIBRARY_OBJECT.checkConstraints(
                 "name", createAString(30).getBytes(),
                 MetadataDescriptor.TYPE_BOOLEAN, -1, 0));
-        assertNotNull(ContainerType.METADATA_LIBRARY_OBJECT.checkConstraints(
+        Assert.assertNotNull(ContainerType.METADATA_LIBRARY_OBJECT.checkConstraints(
                 "name", createAString(30).getBytes(),
                 MetadataDescriptor.TYPE_BOOLEAN, 128, 0));
-        assertNotNull(ContainerType.METADATA_OBJECT.checkConstraints("name",
+        Assert.assertNotNull(ContainerType.METADATA_OBJECT.checkConstraints("name",
                 createAString(30).getBytes(), MetadataDescriptor.TYPE_BOOLEAN,
                 0, 2));
-        assertNull(ContainerType.METADATA_LIBRARY_OBJECT.checkConstraints(
+        Assert.assertNull(ContainerType.METADATA_LIBRARY_OBJECT.checkConstraints(
                 "name", createAString(30).getBytes(),
                 MetadataDescriptor.TYPE_BOOLEAN, 0, 3));
-        assertNull(ContainerType.METADATA_LIBRARY_OBJECT.checkConstraints(
+        Assert.assertNull(ContainerType.METADATA_LIBRARY_OBJECT.checkConstraints(
                 "name", createAString(30).getBytes(),
                 MetadataDescriptor.TYPE_BOOLEAN, 0, 126));
     }
@@ -102,16 +108,17 @@ public class ContainerTypeTest extends TestCase {
      * {@link org.jaudiotagger.audio.asf.data.ContainerType#getContainerGUID()}
      * .
      */
+    @Test
     public void testGetContainerGUID() {
-        assertEquals(GUID.GUID_CONTENTDESCRIPTION,
+        Assert.assertEquals(GUID.GUID_CONTENTDESCRIPTION,
                 ContainerType.CONTENT_DESCRIPTION.getContainerGUID());
-        assertEquals(GUID.GUID_CONTENT_BRANDING,
+        Assert.assertEquals(GUID.GUID_CONTENT_BRANDING,
                 ContainerType.CONTENT_BRANDING.getContainerGUID());
-        assertEquals(GUID.GUID_EXTENDED_CONTENT_DESCRIPTION,
+        Assert.assertEquals(GUID.GUID_EXTENDED_CONTENT_DESCRIPTION,
                 ContainerType.EXTENDED_CONTENT.getContainerGUID());
-        assertEquals(GUID.GUID_METADATA, ContainerType.METADATA_OBJECT
+        Assert.assertEquals(GUID.GUID_METADATA, ContainerType.METADATA_OBJECT
                 .getContainerGUID());
-        assertEquals(GUID.GUID_METADATA_LIBRARY,
+        Assert.assertEquals(GUID.GUID_METADATA_LIBRARY,
                 ContainerType.METADATA_LIBRARY_OBJECT.getContainerGUID());
     }
 
@@ -120,18 +127,19 @@ public class ContainerTypeTest extends TestCase {
      * {@link org.jaudiotagger.audio.asf.data.ContainerType#getMaximumDataLength()}
      * .
      */
+    @Test
     public void testGetMaximumDataLength() {
         final BigInteger wordSize = new BigInteger("FFFF", 16);
         final BigInteger dwordSize = new BigInteger("FFFFFFFF", 16);
-        assertEquals(wordSize, ContainerType.CONTENT_DESCRIPTION
+        Assert.assertEquals(wordSize, ContainerType.CONTENT_DESCRIPTION
                 .getMaximumDataLength());
-        assertEquals(dwordSize, ContainerType.CONTENT_BRANDING
+        Assert.assertEquals(dwordSize, ContainerType.CONTENT_BRANDING
                 .getMaximumDataLength());
-        assertEquals(wordSize, ContainerType.EXTENDED_CONTENT
+        Assert.assertEquals(wordSize, ContainerType.EXTENDED_CONTENT
                 .getMaximumDataLength());
-        assertEquals(wordSize, ContainerType.METADATA_OBJECT
+        Assert.assertEquals(wordSize, ContainerType.METADATA_OBJECT
                 .getMaximumDataLength());
-        assertEquals(dwordSize, ContainerType.METADATA_LIBRARY_OBJECT
+        Assert.assertEquals(dwordSize, ContainerType.METADATA_LIBRARY_OBJECT
                 .getMaximumDataLength());
     }
 
@@ -139,16 +147,17 @@ public class ContainerTypeTest extends TestCase {
      * Test method for
      * {@link org.jaudiotagger.audio.asf.data.ContainerType#getOrdered()}.
      */
+    @Test
     public void testGetOrdered() {
-        assertSame(ContainerType.CONTENT_DESCRIPTION, ContainerType
+        Assert.assertSame(ContainerType.CONTENT_DESCRIPTION, ContainerType
                 .getOrdered()[0]);
-        assertSame(ContainerType.CONTENT_BRANDING,
+        Assert.assertSame(ContainerType.CONTENT_BRANDING,
                 ContainerType.getOrdered()[1]);
-        assertSame(ContainerType.EXTENDED_CONTENT,
+        Assert.assertSame(ContainerType.EXTENDED_CONTENT,
                 ContainerType.getOrdered()[2]);
-        assertSame(ContainerType.METADATA_OBJECT,
+        Assert.assertSame(ContainerType.METADATA_OBJECT,
                 ContainerType.getOrdered()[3]);
-        assertSame(ContainerType.METADATA_LIBRARY_OBJECT, ContainerType
+        Assert.assertSame(ContainerType.METADATA_LIBRARY_OBJECT, ContainerType
                 .getOrdered()[4]);
     }
 
@@ -156,12 +165,13 @@ public class ContainerTypeTest extends TestCase {
      * Test method for
      * {@link org.jaudiotagger.audio.asf.data.ContainerType#isGuidEnabled()}.
      */
+    @Test
     public void testIsGuidEnabled() {
-        assertFalse(ContainerType.CONTENT_DESCRIPTION.isGuidEnabled());
-        assertFalse(ContainerType.CONTENT_BRANDING.isGuidEnabled());
-        assertFalse(ContainerType.EXTENDED_CONTENT.isGuidEnabled());
-        assertFalse(ContainerType.METADATA_OBJECT.isGuidEnabled());
-        assertTrue(ContainerType.METADATA_LIBRARY_OBJECT.isLanguageEnabled());
+        Assert.assertFalse(ContainerType.CONTENT_DESCRIPTION.isGuidEnabled());
+        Assert.assertFalse(ContainerType.CONTENT_BRANDING.isGuidEnabled());
+        Assert.assertFalse(ContainerType.EXTENDED_CONTENT.isGuidEnabled());
+        Assert.assertFalse(ContainerType.METADATA_OBJECT.isGuidEnabled());
+        Assert.assertTrue(ContainerType.METADATA_LIBRARY_OBJECT.isLanguageEnabled());
     }
 
     /**
@@ -169,24 +179,26 @@ public class ContainerTypeTest extends TestCase {
      * {@link org.jaudiotagger.audio.asf.data.ContainerType#isLanguageEnabled()}
      * .
      */
+    @Test
     public void testIsLanguageEnabled() {
-        assertFalse(ContainerType.CONTENT_DESCRIPTION.isLanguageEnabled());
-        assertFalse(ContainerType.CONTENT_BRANDING.isLanguageEnabled());
-        assertFalse(ContainerType.EXTENDED_CONTENT.isLanguageEnabled());
-        assertFalse(ContainerType.METADATA_OBJECT.isLanguageEnabled());
-        assertTrue(ContainerType.METADATA_LIBRARY_OBJECT.isLanguageEnabled());
+        Assert.assertFalse(ContainerType.CONTENT_DESCRIPTION.isLanguageEnabled());
+        Assert.assertFalse(ContainerType.CONTENT_BRANDING.isLanguageEnabled());
+        Assert.assertFalse(ContainerType.EXTENDED_CONTENT.isLanguageEnabled());
+        Assert.assertFalse(ContainerType.METADATA_OBJECT.isLanguageEnabled());
+        Assert.assertTrue(ContainerType.METADATA_LIBRARY_OBJECT.isLanguageEnabled());
     }
 
     /**
      * Test method for
      * {@link org.jaudiotagger.audio.asf.data.ContainerType#isMultiValued()}.
      */
+    @Test
     public void testIsMultiValued() {
-        assertFalse(ContainerType.CONTENT_DESCRIPTION.isMultiValued());
-        assertFalse(ContainerType.CONTENT_BRANDING.isMultiValued());
-        assertFalse(ContainerType.EXTENDED_CONTENT.isMultiValued());
-        assertTrue(ContainerType.METADATA_OBJECT.isMultiValued());
-        assertTrue(ContainerType.METADATA_LIBRARY_OBJECT.isMultiValued());
+        Assert.assertFalse(ContainerType.CONTENT_DESCRIPTION.isMultiValued());
+        Assert.assertFalse(ContainerType.CONTENT_BRANDING.isMultiValued());
+        Assert.assertFalse(ContainerType.EXTENDED_CONTENT.isMultiValued());
+        Assert.assertTrue(ContainerType.METADATA_OBJECT.isMultiValued());
+        Assert.assertTrue(ContainerType.METADATA_LIBRARY_OBJECT.isMultiValued());
     }
 
     /**
@@ -194,12 +206,13 @@ public class ContainerTypeTest extends TestCase {
      * {@link org.jaudiotagger.audio.asf.data.ContainerType#isStreamNumberEnabled()}
      * .
      */
+    @Test
     public void testIsStreamNumberEnabled() {
-        assertFalse(ContainerType.CONTENT_DESCRIPTION.isStreamNumberEnabled());
-        assertFalse(ContainerType.CONTENT_BRANDING.isStreamNumberEnabled());
-        assertFalse(ContainerType.EXTENDED_CONTENT.isStreamNumberEnabled());
-        assertTrue(ContainerType.METADATA_OBJECT.isStreamNumberEnabled());
-        assertTrue(ContainerType.METADATA_LIBRARY_OBJECT.isGuidEnabled());
+        Assert.assertFalse(ContainerType.CONTENT_DESCRIPTION.isStreamNumberEnabled());
+        Assert.assertFalse(ContainerType.CONTENT_BRANDING.isStreamNumberEnabled());
+        Assert.assertFalse(ContainerType.EXTENDED_CONTENT.isStreamNumberEnabled());
+        Assert.assertTrue(ContainerType.METADATA_OBJECT.isStreamNumberEnabled());
+        Assert.assertTrue(ContainerType.METADATA_LIBRARY_OBJECT.isGuidEnabled());
     }
 
     /**
@@ -207,44 +220,45 @@ public class ContainerTypeTest extends TestCase {
      * {@link org.jaudiotagger.audio.asf.data.ContainerType#isWithinValueRange(long)}
      * .
      */
+    @Test
     public void testIsWithinThanValueRange() {
         final BigInteger wordSize = new BigInteger("FFFF", 16);
         final BigInteger dwordSize = new BigInteger("FFFFFFFF", 16);
         // Content Description
-        assertTrue(ContainerType.CONTENT_DESCRIPTION.isWithinValueRange(0));
-        assertTrue(ContainerType.CONTENT_DESCRIPTION
+        Assert.assertTrue(ContainerType.CONTENT_DESCRIPTION.isWithinValueRange(0));
+        Assert.assertTrue(ContainerType.CONTENT_DESCRIPTION
                 .isWithinValueRange(wordSize.longValue()));
-        assertFalse(ContainerType.CONTENT_DESCRIPTION.isWithinValueRange(-1));
-        assertFalse(ContainerType.CONTENT_DESCRIPTION
+        Assert.assertFalse(ContainerType.CONTENT_DESCRIPTION.isWithinValueRange(-1));
+        Assert.assertFalse(ContainerType.CONTENT_DESCRIPTION
                 .isWithinValueRange((wordSize.longValue() + 1l)));
         // Content Branding
-        assertTrue(ContainerType.CONTENT_BRANDING.isWithinValueRange(0));
-        assertTrue(ContainerType.CONTENT_BRANDING.isWithinValueRange(dwordSize
+        Assert.assertTrue(ContainerType.CONTENT_BRANDING.isWithinValueRange(0));
+        Assert.assertTrue(ContainerType.CONTENT_BRANDING.isWithinValueRange(dwordSize
                 .longValue()));
-        assertFalse(ContainerType.CONTENT_BRANDING.isWithinValueRange(-1));
-        assertFalse(ContainerType.CONTENT_BRANDING
+        Assert.assertFalse(ContainerType.CONTENT_BRANDING.isWithinValueRange(-1));
+        Assert.assertFalse(ContainerType.CONTENT_BRANDING
                 .isWithinValueRange((dwordSize.longValue() + 1l)));
         // Extended Content Description
-        assertTrue(ContainerType.EXTENDED_CONTENT.isWithinValueRange(0));
-        assertTrue(ContainerType.EXTENDED_CONTENT.isWithinValueRange(wordSize
+        Assert.assertTrue(ContainerType.EXTENDED_CONTENT.isWithinValueRange(0));
+        Assert.assertTrue(ContainerType.EXTENDED_CONTENT.isWithinValueRange(wordSize
                 .longValue()));
-        assertFalse(ContainerType.EXTENDED_CONTENT.isWithinValueRange(-1));
-        assertFalse(ContainerType.EXTENDED_CONTENT
+        Assert.assertFalse(ContainerType.EXTENDED_CONTENT.isWithinValueRange(-1));
+        Assert.assertFalse(ContainerType.EXTENDED_CONTENT
                 .isWithinValueRange((wordSize.longValue() + 1l)));
         // Metadata Object
-        assertTrue(ContainerType.METADATA_OBJECT.isWithinValueRange(0));
-        assertTrue(ContainerType.METADATA_OBJECT.isWithinValueRange(wordSize
+        Assert.assertTrue(ContainerType.METADATA_OBJECT.isWithinValueRange(0));
+        Assert.assertTrue(ContainerType.METADATA_OBJECT.isWithinValueRange(wordSize
                 .longValue()));
-        assertFalse(ContainerType.METADATA_OBJECT.isWithinValueRange(-1));
-        assertFalse(ContainerType.METADATA_OBJECT.isWithinValueRange((wordSize
+        Assert.assertFalse(ContainerType.METADATA_OBJECT.isWithinValueRange(-1));
+        Assert.assertFalse(ContainerType.METADATA_OBJECT.isWithinValueRange((wordSize
                 .longValue() + 1l)));
         // Metadata Library Object
-        assertTrue(ContainerType.METADATA_LIBRARY_OBJECT.isWithinValueRange(0));
-        assertTrue(ContainerType.METADATA_LIBRARY_OBJECT
+        Assert.assertTrue(ContainerType.METADATA_LIBRARY_OBJECT.isWithinValueRange(0));
+        Assert.assertTrue(ContainerType.METADATA_LIBRARY_OBJECT
                 .isWithinValueRange(dwordSize.longValue()));
-        assertFalse(ContainerType.METADATA_LIBRARY_OBJECT
+        Assert.assertFalse(ContainerType.METADATA_LIBRARY_OBJECT
                 .isWithinValueRange(-1));
-        assertFalse(ContainerType.METADATA_LIBRARY_OBJECT
+        Assert.assertFalse(ContainerType.METADATA_LIBRARY_OBJECT
                 .isWithinValueRange(dwordSize.longValue() + 1l));
     }
 

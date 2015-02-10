@@ -3,6 +3,8 @@ package org.jaudiotagger.audio.ogg;
 import junit.framework.TestCase;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.ogg.util.OggPageHeader;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.RandomAccessFile;
@@ -12,8 +14,8 @@ import java.util.Date;
 /**
  * Basic Vorbis tests
  */
-public class OggPageTest extends TestCase
-{
+public class OggPageTest {
+    @Test
     public void testReadOggPagesNew()
     {
         System.out.println("start:"+new Date());
@@ -37,10 +39,10 @@ public class OggPageTest extends TestCase
                 {
                     packetLengthTotal += packetAndStartLength.getLength();
                 }
-                assertEquals(pageHeader.getPageLength(), packetLengthTotal);
+                Assert.assertEquals(pageHeader.getPageLength(), packetLengthTotal);
                 if (lastPageHeader != null)
                 {
-                    assertEquals(lastPageHeader.getPageSequence() + 1, pageHeader.getPageSequence());
+                    Assert.assertEquals(lastPageHeader.getPageSequence() + 1, pageHeader.getPageSequence());
                 }
                 System.out.println("pageHeader finishes at:" + bb.position());
                 System.out.println(pageHeader + "\n");
@@ -50,7 +52,7 @@ public class OggPageTest extends TestCase
 
             }
             System.out.println(raf.length() + ":"+raf.getFilePointer());
-            assertEquals(raf.length(), raf.getFilePointer());
+            Assert.assertEquals(raf.length(), raf.getFilePointer());
 
         }
         catch (Exception e)
@@ -58,14 +60,15 @@ public class OggPageTest extends TestCase
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals(10, count);
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(10, count);
         System.out.println("end:"+new Date());
 
     }
     /**
      * Test Read Ogg Pages ok
      */
+    @Test
     public void testReadAllOggPages()
     {
         System.out.println("start:"+new Date());
@@ -86,10 +89,10 @@ public class OggPageTest extends TestCase
                 {
                     packetLengthTotal += packetAndStartLength.getLength();
                 }
-                assertEquals(pageHeader.getPageLength(), packetLengthTotal);
+                Assert.assertEquals(pageHeader.getPageLength(), packetLengthTotal);
                 if (lastPageHeader != null)
                 {
-                    assertEquals(lastPageHeader.getPageSequence() + 1, pageHeader.getPageSequence());
+                    Assert.assertEquals(lastPageHeader.getPageSequence() + 1, pageHeader.getPageSequence());
                 }
                 System.out.println("pageHeader finishes at:" + raf.getFilePointer());
                 System.out.println(pageHeader + "\n");
@@ -98,7 +101,7 @@ public class OggPageTest extends TestCase
                 lastPageHeader = pageHeader;
 
             }
-            assertEquals(raf.length(), raf.getFilePointer());
+            Assert.assertEquals(raf.length(), raf.getFilePointer());
 
         }
         catch (Exception e)
@@ -106,14 +109,15 @@ public class OggPageTest extends TestCase
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals(10, count);
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(10, count);
         System.out.println("end:"+new Date());
     }
 
     /**
      * test Read Ogg Pages ok
      */
+    @Test
     public void testReadAllOggPagesLargeFile()
     {
         Exception exceptionCaught = null;
@@ -133,7 +137,7 @@ public class OggPageTest extends TestCase
                 raf.seek(raf.getFilePointer() + pageHeader.getPageLength());
                 count++;
             }
-            assertEquals(raf.length(), raf.getFilePointer());
+            Assert.assertEquals(raf.length(), raf.getFilePointer());
 
         }
         catch (Exception e)
@@ -141,13 +145,14 @@ public class OggPageTest extends TestCase
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals(25, count);
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(25, count);
     }
 
      /**
      * test Read Ogg Pages ok
      */
+    @Test
     public void testReadAllOggPagesLargeFileNew()
     {
         Exception exceptionCaught = null;
@@ -171,7 +176,7 @@ public class OggPageTest extends TestCase
                 bb.position(bb.position() + pageHeader.getPageLength());
                 count++;
             }
-            assertEquals(raf.length(), raf.getFilePointer());
+            Assert.assertEquals(raf.length(), raf.getFilePointer());
 
         }
         catch (Exception e)
@@ -179,7 +184,7 @@ public class OggPageTest extends TestCase
             e.printStackTrace();
             exceptionCaught = e;
         }
-        assertNull(exceptionCaught);
-        assertEquals(25, count);
+        Assert.assertNull(exceptionCaught);
+        Assert.assertEquals(25, count);
     }
 }

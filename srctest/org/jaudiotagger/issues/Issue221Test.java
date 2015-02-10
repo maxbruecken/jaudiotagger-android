@@ -10,6 +10,9 @@ import org.jaudiotagger.tag.vorbiscomment.VorbisCommentTag;
 
 import java.io.FileOutputStream;
 
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Test Creating Null fields
  */

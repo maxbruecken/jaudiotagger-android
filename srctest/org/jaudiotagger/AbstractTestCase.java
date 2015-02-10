@@ -18,17 +18,21 @@ package org.jaudiotagger;
 import junit.framework.TestCase;
 import org.jaudiotagger.logging.ErrorMessage;
 import org.jaudiotagger.tag.TagOptionSingleton;
+import org.junit.Assert;
+import org.junit.Before;
 
 import java.io.*;
 import java.util.EnumMap;
 import java.util.regex.Pattern;
 
+import static org.junit.Assert.assertTrue;
+
 /**
  *
  */
-public abstract class AbstractTestCase extends TestCase {
+public abstract class AbstractTestCase {
 
-    @Override
+    @Before
     public void setUp()
     {
         TagOptionSingleton.getInstance().setToDefault();    

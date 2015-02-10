@@ -9,6 +9,8 @@ import org.jaudiotagger.audio.mp4.Mp4AtomTree;
 import java.io.File;
 import java.io.RandomAccessFile;
 
+import static org.junit.Assert.assertTrue;
+
 /**
  * Test Writing to new urls with common interface
  */

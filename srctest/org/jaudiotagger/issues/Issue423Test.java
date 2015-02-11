@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -16,6 +17,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue423Test extends AbstractTestCase
 {
+    @Test
     public void testGetAllMp4() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test2.m4a");
@@ -30,6 +32,8 @@ public class Issue423Test extends AbstractTestCase
         assertEquals("title",tag.getAll(FieldKey.TITLE).get(0));
         ;
     }
+
+    @Test
 
     public void testGetAllMp3() throws Exception
     {
@@ -48,6 +52,8 @@ public class Issue423Test extends AbstractTestCase
         ;
     }
 
+    @Test
+
     public void testGetAllOgg() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.ogg");
@@ -65,6 +71,8 @@ public class Issue423Test extends AbstractTestCase
         ;
     }
 
+    @Test
+
     public void testGetAllFlac() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.flac");
@@ -81,6 +89,8 @@ public class Issue423Test extends AbstractTestCase
         assertEquals("title",tag.getAll(FieldKey.TITLE).get(0));
         ;
     }
+
+    @Test
 
     public void testGetAllWma() throws Exception
     {

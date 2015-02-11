@@ -1,7 +1,11 @@
 package org.jaudiotagger.audio.asf.data;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+
 import java.math.BigInteger;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test for {@link LanguageList}.<br>
@@ -23,6 +27,7 @@ public class LanguageListTest extends AbstractChunk<LanguageList> {
      * {@link org.jaudiotagger.audio.asf.data.LanguageList#addLanguage(java.lang.String)}
      * .
      */
+    @Test
     public void testLanguage() {
         final LanguageList chunk = createChunk(0, BigInteger.ZERO);
         chunk.addLanguage("language");

@@ -6,6 +6,7 @@ import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.images.Artwork;
 import org.jaudiotagger.tag.images.ArtworkFactory;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -17,6 +18,8 @@ import static org.junit.Assert.assertNull;
 public class Issue308Test extends AbstractTestCase
 {
     public static int countExceptions =0;
+
+    @Test
 
     public void testAddingLargeImageToOgg() throws Exception
     {

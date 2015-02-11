@@ -1,6 +1,5 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -9,14 +8,20 @@ import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.id3.ID3v1Tag;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.images.ArtworkFactory;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Testing that adding large artwork doesn't overwrite mp3 audio data
  */
 public class Issue374Test extends AbstractTestCase
 {
+    @Test
     public void testIssue() throws Exception
     {
         File testdatadir = new File("testdata");

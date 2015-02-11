@@ -1,19 +1,22 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp4.Mp4AtomTree;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.RandomAccessFile;
+
+import static org.junit.Assert.assertNull;
 
 /**
  * Test writing mp4
  */
 public class Issue387Test extends AbstractTestCase
 {
+    @Test
     public void testIssue() throws Exception
     {
         Exception caught = null;

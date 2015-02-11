@@ -7,6 +7,7 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.reference.ID3V2Version;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -18,6 +19,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue397Test extends AbstractTestCase
 {
+    @Test
     public void testSetSubtitleForMp4() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test2.m4a");
@@ -41,6 +43,8 @@ public class Issue397Test extends AbstractTestCase
         assertEquals("subtitle",tag.getFirst(FieldKey.SUBTITLE));
         assertEquals(1,tag.getAll(FieldKey.SUBTITLE).size());
     }
+
+    @Test
 
     public void testSetSubtitleForMp3v22() throws Exception
     {
@@ -68,6 +72,8 @@ public class Issue397Test extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testSetSubtitleForMp3v23() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -94,6 +100,8 @@ public class Issue397Test extends AbstractTestCase
         
     }
 
+    @Test
+
     public void testSetSubtitleForMp3v24() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -119,6 +127,8 @@ public class Issue397Test extends AbstractTestCase
         assertEquals(1,tag.getAll(FieldKey.SUBTITLE).size());
     }
 
+    @Test
+
     public void testSetSubtitleForOgg() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.ogg");
@@ -143,6 +153,8 @@ public class Issue397Test extends AbstractTestCase
         assertEquals(1,tag.getAll(FieldKey.SUBTITLE).size());
     }
 
+    @Test
+
     public void testSetSubtitleForFlac() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.flac");
@@ -166,6 +178,8 @@ public class Issue397Test extends AbstractTestCase
         assertEquals("subtitle",tag.getFirst(FieldKey.SUBTITLE));
         assertEquals(1,tag.getAll(FieldKey.SUBTITLE).size());
     }
+
+    @Test
 
     public void testSetSubtitleForWma() throws Exception
     {

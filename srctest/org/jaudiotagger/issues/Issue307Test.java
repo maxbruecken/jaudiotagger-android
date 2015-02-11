@@ -1,13 +1,16 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.ID3v23Frame;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyIPLS;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test Reading dodgy IPLS frame shouldnt cause file not to be loaded
@@ -15,6 +18,8 @@ import java.io.File;
 public class Issue307Test extends AbstractTestCase
 {
     public static int countExceptions =0;
+
+    @Test
 
     public void testMultiThreadedMP3HeaderAccess() throws Exception
     {

@@ -1,15 +1,21 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
-import org.jaudiotagger.tag.id3.*;
-import org.jaudiotagger.tag.id3.framebody.FrameBodyTIPL;
-import org.jaudiotagger.tag.id3.framebody.FrameBodyUnsupported;
-import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
+import org.jaudiotagger.tag.id3.ID3v22Frame;
+import org.jaudiotagger.tag.id3.ID3v22Frames;
+import org.jaudiotagger.tag.id3.ID3v23Frame;
+import org.jaudiotagger.tag.id3.ID3v23Frames;
+import org.jaudiotagger.tag.id3.ID3v24Frame;
+import org.jaudiotagger.tag.id3.ID3v24Frames;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyUnsupported;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Converting FrameBodyUnsupported with known identifier to FrameBodyIPLS (v23) causing NoSuchMethodException.
@@ -17,6 +23,7 @@ import java.io.File;
  */
 public class Issue284Test extends AbstractTestCase
 {
+    @Test
     public void testConvertv23v24()
     {
         File orig = new File("testdata", "testV1.mp3");
@@ -48,6 +55,8 @@ public class Issue284Test extends AbstractTestCase
 
         assertNull(exceptionCaught);
     }
+
+    @Test
 
     public void testConvertv22v24()
     {
@@ -81,6 +90,8 @@ public class Issue284Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
+
     public void testConvertv24v23()
     {
         File orig = new File("testdata", "testV1.mp3");
@@ -113,6 +124,8 @@ public class Issue284Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
+
     public void testConvertv24v22()
     {
         File orig = new File("testdata", "testV1.mp3");
@@ -144,6 +157,8 @@ public class Issue284Test extends AbstractTestCase
 
         assertNull(exceptionCaught);
     }
+
+    @Test
 
     public void testConvertv22v23()
     {

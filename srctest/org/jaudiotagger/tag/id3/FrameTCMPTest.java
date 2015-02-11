@@ -1,13 +1,18 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTCMP;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTCMPTest;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test TCMP Frame
@@ -21,6 +26,8 @@ public class FrameTCMPTest extends AbstractTestCase
         frame.setBody(fb);
         return frame;
     }
+
+    @Test
 
     public void testCreateID3v24Frame()
     {
@@ -47,6 +54,9 @@ public class FrameTCMPTest extends AbstractTestCase
     }
 
 
+    @Test
+
+
     public void testCreateID3v23Frame()
     {
         Exception exceptionCaught = null;
@@ -70,6 +80,8 @@ public class FrameTCMPTest extends AbstractTestCase
         assertFalse(ID3v23Frames.getInstanceOf().isSupportedFrames(frame.getIdentifier()));
 
     }
+
+    @Test
 
     public void testCreateID3v22Frame()
     {
@@ -95,6 +107,8 @@ public class FrameTCMPTest extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testSaveToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3",new File("test1000.mp3"));
@@ -112,6 +126,8 @@ public class FrameTCMPTest extends AbstractTestCase
         FrameBodyTCMP body = (FrameBodyTCMP) frame.getBody();
         assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
     }
+
+    @Test
 
     public void testSaveEmptyFrameToFile() throws Exception
     {
@@ -133,6 +149,8 @@ public class FrameTCMPTest extends AbstractTestCase
         FrameBodyTCMP body = (FrameBodyTCMP) frame.getBody();
         assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
     }
+
+    @Test
 
     public void testConvertV24ToV23() throws Exception
     {
@@ -156,6 +174,8 @@ public class FrameTCMPTest extends AbstractTestCase
         FrameBodyTCMP body = (FrameBodyTCMP) frame.getBody();
         assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
     }
+
+    @Test
 
     public void testConvertV22ToV24() throws Exception
     {

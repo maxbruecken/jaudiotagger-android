@@ -1,20 +1,24 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.mp4.Mp4Tag;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.RandomAccessFile;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test Writing to mp4 with top level free data atoms but free atoms and mdat are before ilst so not useful
  */
 public class Issue240Test extends AbstractTestCase
 {
+    @Test
     public void testWritelargeDataToFile()
     {
         File orig = new File("testdata", "test34.m4a");

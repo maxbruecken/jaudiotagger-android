@@ -1,6 +1,5 @@
 package org.jaudiotagger.tag.wma;
 
-import static org.junit.Assert.*;
 import android.graphics.Bitmap;
 
 import org.jaudiotagger.AbstractTestCase;
@@ -15,16 +14,29 @@ import org.jaudiotagger.tag.asf.AsfTag;
 import org.jaudiotagger.tag.asf.AsfTagCoverField;
 import org.jaudiotagger.tag.asf.AsfTagTextField;
 import org.jaudiotagger.utils.BitmapUtils;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import java.io.File;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * User: paul
  * Date: 07-Dec-2007
  */
+@Config(emulateSdk = 18)
+@RunWith(RobolectricTestRunner.class)
 public class WmaSimpleTest extends AbstractTestCase
 {
+    @Test
     public void testReadFileFromPicardQtInvalidHeaderSizeException()
     {
         File orig = new File("testdata", "test2.wma");
@@ -55,6 +67,7 @@ public class WmaSimpleTest extends AbstractTestCase
      * Checking our fields match the fields used by media Monkey 3 (Defacto Standard) by ensuring we can read fields written
      * in Media Monkey
      */
+    @Test
     public void testReadFileFromMediaMonkey3()
     {
         Exception exceptionCaught = null;
@@ -139,6 +152,7 @@ public class WmaSimpleTest extends AbstractTestCase
      * Checking our fields match the fields used by picard Qt3 (Defacto Standard for Musicbrainz fields) by ensuring we can read fields written
      * in Picard Qt
      */
+    @Test
     public void testReadFileFromPicardQt()
     {
         File orig = new File("testdata", "test2.wma");
@@ -259,6 +273,9 @@ public class WmaSimpleTest extends AbstractTestCase
     }
 
 
+    @Test
+
+
     public void testWriteFile()
     {
         Exception exceptionCaught = null;
@@ -347,6 +364,7 @@ public class WmaSimpleTest extends AbstractTestCase
     /**
      * Just create fields for all the tag field keys defined, se if we hit any problems
      */
+    @Test
     public void testTagFieldKeyWrite()
     {
         Exception exceptionCaught = null;
@@ -403,6 +421,7 @@ public class WmaSimpleTest extends AbstractTestCase
     /**
      * Lets now check the value explicity are what we expect
      */
+    @Test
     public void testTagFieldKeyWrite2()
     {
         Exception exceptionCaught = null;
@@ -457,6 +476,8 @@ public class WmaSimpleTest extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
+
     public void testIsMultiValues()
     {
         assertFalse(AsfFieldKey.isMultiValued(AsfFieldKey.ALBUM.getFieldName()));
@@ -465,6 +486,7 @@ public class WmaSimpleTest extends AbstractTestCase
     /**
      * Shouldnt fail just ecause header size doesnt match file size because file plays ok in winamp
      */
+    @Test
     public void testReadFileWithHeaderSizeDoesntMatchFileSize()
     {
         File orig = new File("testdata", "test3.wma");
@@ -489,6 +511,8 @@ public class WmaSimpleTest extends AbstractTestCase
         }
         assertNull(exceptionCaught);
     }
+
+    @Test
 
     public void testReadFileWithGifArtwork()
     {
@@ -573,6 +597,7 @@ public class WmaSimpleTest extends AbstractTestCase
     /**
      * Contains image field, but only has image type and image, it doesnt have a label
      */
+    @Test
     public void testReadFileWithGifArtworkNoDescription()
     {
         File orig = new File("testdata", "test4.wma");
@@ -649,6 +674,8 @@ public class WmaSimpleTest extends AbstractTestCase
         }
         assertNull(exceptionCaught);
     }
+
+    @Test
 
     public void testReadFileWithPngArtwork()
     {
@@ -730,6 +757,8 @@ public class WmaSimpleTest extends AbstractTestCase
         }
         assertNull(exceptionCaught);
     }
+
+    @Test
 
     public void testReadFileWithJpgArtwork()
     {
@@ -818,6 +847,7 @@ public class WmaSimpleTest extends AbstractTestCase
     /**
      * Write png , old method
      */
+    @Test
     public void testWritePngArtworkToFile()
     {
         File orig = new File("testdata", "test7.wma");
@@ -872,6 +902,8 @@ public class WmaSimpleTest extends AbstractTestCase
 
    /* TODO multiple fields for WMA
 
+    @Test
+
     public void testWriteMultipleFields() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test1.wma", new File("testWriteMultiple.wma"));
@@ -886,6 +918,8 @@ public class WmaSimpleTest extends AbstractTestCase
         assertEquals(2,tagFields.size());
     }
     */
+
+    @Test
 
     public void testDeleteFields() throws Exception
     {

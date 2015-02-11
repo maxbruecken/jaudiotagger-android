@@ -1,11 +1,16 @@
 package org.jaudiotagger.audio.asf.data;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.logging.ErrorMessage;
+import org.junit.Test;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * Tests the content description container.
@@ -62,6 +67,7 @@ public class ContentDescriptionTest extends
      * {@link org.jaudiotagger.audio.asf.data.ContentDescription#setAuthor(java.lang.String)}
      * .
      */
+    @Test
     public void testSetAuthor() {
         final ContentDescription chunk = createChunk(0, BigInteger.ZERO);
         assertTrue(chunk.isEmpty());
@@ -86,6 +92,7 @@ public class ContentDescriptionTest extends
      * {@link org.jaudiotagger.audio.asf.data.ContentDescription#setComment(java.lang.String)}
      * .
      */
+    @Test
     public void testSetComment() {
         final ContentDescription chunk = createChunk(0, BigInteger.ZERO);
         assertTrue(chunk.isEmpty());
@@ -110,6 +117,7 @@ public class ContentDescriptionTest extends
      * {@link org.jaudiotagger.audio.asf.data.ContentDescription#setCopyright(java.lang.String)}
      * .
      */
+    @Test
     public void testSetCopyRight() {
         final ContentDescription chunk = createChunk(0, BigInteger.ZERO);
         assertTrue(chunk.isEmpty());
@@ -134,6 +142,7 @@ public class ContentDescriptionTest extends
      * {@link org.jaudiotagger.audio.asf.data.ContentDescription#setRating(java.lang.String)}
      * .
      */
+    @Test
     public void testSetRating() {
         final ContentDescription chunk = createChunk(0, BigInteger.ZERO);
         assertTrue(chunk.isEmpty());
@@ -158,6 +167,7 @@ public class ContentDescriptionTest extends
      * {@link org.jaudiotagger.audio.asf.data.ContentDescription#setTitle(java.lang.String)}
      * .
      */
+    @Test
     public void testSetTitle() {
         final ContentDescription chunk = createChunk(0, BigInteger.ZERO);
         assertTrue(chunk.isEmpty());

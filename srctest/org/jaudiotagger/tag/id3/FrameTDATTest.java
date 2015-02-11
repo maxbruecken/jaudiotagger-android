@@ -1,14 +1,12 @@
 package org.jaudiotagger.tag.id3;
 
 import org.jaudiotagger.AbstractTestCase;
-import org.jaudiotagger.tag.id3.ID3v23Frame;
-import org.jaudiotagger.tag.id3.ID3v23Tag;
-import org.jaudiotagger.tag.id3.ID3v24Tag;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTDAT;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTDRC;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTIME;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTYER;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -18,6 +16,7 @@ import static org.junit.Assert.assertNull;
  */
 public class FrameTDATTest extends AbstractTestCase
 {
+    @Test
     public void testID3Specific() throws Exception
     {
         Exception e=null;
@@ -41,6 +40,8 @@ public class FrameTDATTest extends AbstractTestCase
         }
         assertNull(e);
     }
+
+    @Test
 
     public void testID3SpecificWithYearAndTime() throws Exception
     {
@@ -95,6 +96,8 @@ public class FrameTDATTest extends AbstractTestCase
         }
         assertNull(e);
     }
+
+    @Test
 
     public void testConvertingPartialDate() throws Exception
     {

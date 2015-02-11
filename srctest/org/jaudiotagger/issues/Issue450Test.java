@@ -7,6 +7,7 @@ import org.jaudiotagger.tag.id3.AbstractID3v2Frame;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyWOAR;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -18,6 +19,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class Issue450Test extends AbstractTestCase
 {
+    @Test
     public void testSaveUrl() throws Exception
     {
         File orig = new File("testdata", "test108.mp3");

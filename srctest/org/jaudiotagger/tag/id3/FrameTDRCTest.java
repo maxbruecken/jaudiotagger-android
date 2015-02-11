@@ -2,6 +2,7 @@ package org.jaudiotagger.tag.id3;
 
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -10,6 +11,7 @@ import java.io.File;
  */
 public class FrameTDRCTest extends AbstractTestCase
 {
+    @Test
     public void testReadFileContainingTDRCAndTYERFrames() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue73.id3", "testV1.mp3");

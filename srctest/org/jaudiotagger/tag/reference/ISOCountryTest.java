@@ -1,7 +1,11 @@
 package org.jaudiotagger.tag.reference;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 /**
  * Testing of ISCountries
@@ -11,6 +15,7 @@ public class ISOCountryTest extends AbstractTestCase
     /**
      * This tests lower case genre names identifications
      */
+    @Test
     public void testCountryMatches()
     {
         //Find by Code

@@ -4,6 +4,7 @@ import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.Date;
@@ -18,6 +19,7 @@ public class Issue178Test extends AbstractTestCase
     /**
      * Test Read empty file pretenidng to be an Ogg, should fail quickly
      */
+    @Test
     public void testReadBadOgg()
     {
         File orig = new File("testdata", "test36.ogg");

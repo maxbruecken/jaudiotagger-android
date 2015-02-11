@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyDeprecated;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTIME;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTYER;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.List;
@@ -17,6 +18,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class DeprecatedFrameTest extends AbstractTestCase
 {
+    @Test
     public void testv24TagWithDeprecatedFrameShouldCreateAsDeprecated() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue88.id3", "testV1.mp3");
@@ -27,6 +29,8 @@ public class DeprecatedFrameTest extends AbstractTestCase
         assertNotNull(v24frame);
         assertTrue(v24frame.getBody() instanceof FrameBodyDeprecated);
     }
+
+    @Test
 
     public void testConvertTagWithDeprecatedFrameToTagWhereFrameShouldNoLongerBeDeprecated() throws Exception
     {
@@ -49,6 +53,8 @@ public class DeprecatedFrameTest extends AbstractTestCase
         assertTrue(v23frame.getBody() instanceof FrameBodyTYER);
     }
 
+    @Test
+
     public void testSavingV24DeprecatedTIMETagToV23() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue122-1.id3", "testV1.mp3");
@@ -68,6 +74,8 @@ public class DeprecatedFrameTest extends AbstractTestCase
         ID3v23Frame v23frame = (ID3v23Frame) v23Tag.getFrame(ID3v23Frames.FRAME_ID_V3_TIME);
         assertTrue(v23frame.getBody() instanceof FrameBodyTIME);
     }
+
+    @Test
 
     public void testSavingV24DeprecatedTDATTagToV23() throws Exception
     {

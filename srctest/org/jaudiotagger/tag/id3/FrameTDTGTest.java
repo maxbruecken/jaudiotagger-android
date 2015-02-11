@@ -4,6 +4,7 @@ import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTDTG;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyUnsupported;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -14,6 +15,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class FrameTDTGTest extends AbstractTestCase
 {
+    @Test
     public void testID3Specific() throws Exception
     {
         Exception e=null;

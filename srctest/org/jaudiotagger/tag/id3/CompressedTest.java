@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyAPIC;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyCOMM;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTIT2;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -21,6 +22,7 @@ public class CompressedTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testv23TagReadCompressedCommentFrame() throws Exception
     {
         final String COMM_TEXT = "[P-M-S] Teampms [P-M-S]";
@@ -47,6 +49,7 @@ public class CompressedTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testv23TagReadCompressedAPICFrame() throws Exception
     {
         final int FRAME_SIZE = 3220;
@@ -77,6 +80,7 @@ public class CompressedTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testv24TagReadCompressedPictureFrame() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue98-3.id3", "testV1.mp3");

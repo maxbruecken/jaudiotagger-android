@@ -1,6 +1,5 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -9,8 +8,13 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.id3.ID3v22Tag;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test Writing to new urls with common interface
@@ -20,6 +24,7 @@ public class Issue242Test extends AbstractTestCase
     /**
      * Test New Urls ID3v24
      */
+    @Test
     public void testWriteNewUrlsFilev24()
     {
         Exception exceptionCaught = null;
@@ -100,6 +105,7 @@ public class Issue242Test extends AbstractTestCase
      /**
      * Test New Urls ID3v23
      */
+    @Test
     public void testWriteNewUrlsFilev23()
     {
         Exception exceptionCaught = null;
@@ -184,6 +190,7 @@ public class Issue242Test extends AbstractTestCase
      /**
      * Test New Urls ID3v24
      */
+    @Test
     public void testWriteNewUrlsFilev22()
     {
         Exception exceptionCaught = null;

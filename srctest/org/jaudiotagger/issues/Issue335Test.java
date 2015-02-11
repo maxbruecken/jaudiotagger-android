@@ -11,6 +11,7 @@ import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
 import org.jaudiotagger.tag.id3.framebody.AbstractFrameBodyTextInfo;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -22,6 +23,8 @@ import static org.junit.Assert.assertEquals;
  */
 public class Issue335Test extends AbstractTestCase
 {
+
+    @Test
 
     public void testConvertv24Tov23ConvertsUTF8ToISO8859IfItCan() throws Exception
     {
@@ -52,6 +55,8 @@ public class Issue335Test extends AbstractTestCase
         assertEquals(0, body.getTextEncoding());
 
     }
+
+    @Test
 
     public void testConvertv24Tov23OnlyConvertsUTF8ToISO8859IfItCan() throws Exception
     {
@@ -89,6 +94,8 @@ public class Issue335Test extends AbstractTestCase
         assertEquals(1, body.getTextEncoding());
 
     }
+
+    @Test
 
     public void testConvertv23Twice() throws Exception
     {
@@ -138,6 +145,8 @@ public class Issue335Test extends AbstractTestCase
         assertEquals(1, body.getTextEncoding());
 
     }
+
+    @Test
 
     public void testConvertCharsAtStartOfFile() throws Exception
     {

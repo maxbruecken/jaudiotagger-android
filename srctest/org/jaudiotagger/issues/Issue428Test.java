@@ -1,18 +1,23 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.flac.FlacAudioHeader;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Reading MD5 Integrity Checksum
  */
 public class Issue428Test extends AbstractTestCase
 {
+    @Test
     public void testGetMD5ForFlac()
     {
         Throwable e = null;

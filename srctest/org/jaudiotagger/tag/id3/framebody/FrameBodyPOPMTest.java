@@ -1,9 +1,12 @@
 package org.jaudiotagger.tag.id3.framebody;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test POPMFrameBody
@@ -19,6 +22,8 @@ public class FrameBodyPOPMTest extends AbstractTestCase
         FrameBodyPOPM fb = new FrameBodyPOPM(POPM_EMAIL, POPM_RATING, POPM_COUNTER);
         return fb;
     }
+
+    @Test
 
     public void testCreateFrameBody()
     {
@@ -40,6 +45,8 @@ public class FrameBodyPOPMTest extends AbstractTestCase
         assertEquals(FrameBodyPOPMTest.POPM_RATING, fb.getRating());
         assertEquals(FrameBodyPOPMTest.POPM_COUNTER, fb.getCounter());
     }
+
+    @Test
 
     public void testCreateFrameBodyEmptyConstructor()
     {
@@ -64,6 +71,8 @@ public class FrameBodyPOPMTest extends AbstractTestCase
         assertEquals(FrameBodyPOPMTest.POPM_RATING, fb.getRating());
         assertEquals(FrameBodyPOPMTest.POPM_COUNTER, fb.getCounter());
     }
+
+    @Test
 
     public void testCreateFrameBodyEmptyConstructorWithoutCounter()
     {

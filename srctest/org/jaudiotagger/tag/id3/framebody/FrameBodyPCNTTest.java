@@ -1,9 +1,12 @@
 package org.jaudiotagger.tag.id3.framebody;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test PCNTFrameBody
@@ -17,6 +20,8 @@ public class FrameBodyPCNTTest extends AbstractTestCase
         FrameBodyPCNT fb = new FrameBodyPCNT(FrameBodyPCNTTest.PCNT_COUNTER);
         return fb;
     }
+
+    @Test
 
     public void testCreateFrameBody()
     {
@@ -36,6 +41,8 @@ public class FrameBodyPCNTTest extends AbstractTestCase
         assertEquals(TextEncoding.ISO_8859_1, fb.getTextEncoding());
         assertEquals(FrameBodyPCNTTest.PCNT_COUNTER, fb.getCounter());
     }
+
+    @Test
 
     public void testCreateFrameBodyEmptyConstructor()
     {

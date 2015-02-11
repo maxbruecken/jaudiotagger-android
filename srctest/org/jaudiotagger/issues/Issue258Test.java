@@ -1,13 +1,15 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertNull;
 
 /**
  * Test Creating Temp file when filename < 3
@@ -17,6 +19,7 @@ public class Issue258Test extends AbstractTestCase
     /**
      * Test write of mp3 with very short filename
      */
+    @Test
     public void testWriteToShortMp3File()
     {
         File orig = new File("testdata", "01.mp3");
@@ -50,6 +53,7 @@ public class Issue258Test extends AbstractTestCase
     /**
      * Test write to mp4 with very short file name
      */
+    @Test
     public void testWriteToShortMp4File()
     {
         File orig = new File("testdata", "01.m4a");

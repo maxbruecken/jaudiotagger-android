@@ -2,8 +2,8 @@ package org.jaudiotagger.tag.id3;
 
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTDOR;
-import org.jaudiotagger.tag.id3.framebody.FrameBodyTDTG;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -12,6 +12,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class FrameTDORTest extends AbstractTestCase
 {
+    @Test
     public void testID3Specific() throws Exception
     {
         ID3v24Tag tag = new ID3v24Tag();

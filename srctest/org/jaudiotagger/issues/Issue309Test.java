@@ -3,6 +3,7 @@ package org.jaudiotagger.issues;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -15,6 +16,7 @@ public class Issue309Test extends AbstractTestCase
 {
     public static int countExceptions =0;
 
+    @Test
     public void testAddingLargeImageToOgg() throws Exception
     {
         File orig = new File("testdata", "test73.m4a");

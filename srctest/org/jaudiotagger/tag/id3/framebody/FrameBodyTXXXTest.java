@@ -1,9 +1,12 @@
 package org.jaudiotagger.tag.id3.framebody;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test WXXXFrameBody   (Artist)
@@ -29,6 +32,8 @@ public class FrameBodyTXXXTest extends AbstractTestCase
         FrameBodyTXXX fb = new FrameBodyTXXX(TextEncoding.ISO_8859_1, TXXX_TEST_STRING, TXXX_TEST_DESC);
         return fb;
     }
+
+    @Test
 
     public void testCreateFrameBody()
     {

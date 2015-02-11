@@ -4,6 +4,7 @@ import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,6 +17,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue005Test extends AbstractTestCase
 {
+    @Test
     public void testReadingNonExistentFile() throws Exception
     {
         Exception e=null;
@@ -31,6 +33,8 @@ public class Issue005Test extends AbstractTestCase
         assertTrue(e instanceof FileNotFoundException);
     }
 
+    @Test
+
     public void testReadingNonExistentFileMp3() throws Exception
     {
         Exception e=null;
@@ -45,6 +49,8 @@ public class Issue005Test extends AbstractTestCase
         }
         assertTrue(e instanceof FileNotFoundException);
     }
+
+    @Test
 
     public void testReadingNonExistentFileFlac() throws Exception
     {
@@ -63,6 +69,8 @@ public class Issue005Test extends AbstractTestCase
         assertTrue(e instanceof FileNotFoundException);
     }
 
+    @Test
+
     public void testReadingNonExistentFileOgg() throws Exception
     {
         Exception e=null;
@@ -79,6 +87,8 @@ public class Issue005Test extends AbstractTestCase
         assertNotNull(e);
         assertTrue(e instanceof FileNotFoundException);
     }
+
+    @Test
 
     public void testReadingNonExistentFileM4a() throws Exception
     {
@@ -97,6 +107,8 @@ public class Issue005Test extends AbstractTestCase
         assertTrue(e instanceof FileNotFoundException);
     }
 
+    @Test
+
     public void testReadingNonExistentFileWma() throws Exception
     {
         Exception e=null;
@@ -113,6 +125,8 @@ public class Issue005Test extends AbstractTestCase
         assertNotNull(e);
         assertTrue(e instanceof FileNotFoundException);
     }
+
+    @Test
 
     public void testReadingNonExistentFileWav() throws Exception
     {

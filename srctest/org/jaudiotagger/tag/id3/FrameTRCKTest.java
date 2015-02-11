@@ -1,14 +1,19 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTRCK;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTRCKTest;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test TRCKFrame
@@ -22,6 +27,8 @@ public class FrameTRCKTest extends AbstractTestCase
         frame.setBody(fb);
         return frame;
     }
+
+    @Test
 
     public void testCreateID3v24Frame()
     {
@@ -48,6 +55,9 @@ public class FrameTRCKTest extends AbstractTestCase
     }
 
 
+    @Test
+
+
     public void testCreateID3v23Frame()
     {
         Exception exceptionCaught = null;
@@ -71,6 +81,8 @@ public class FrameTRCKTest extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testSaveToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -90,6 +102,8 @@ public class FrameTRCKTest extends AbstractTestCase
         assertEquals("1/11", ((FrameBodyTRCK) frame.getBody()).getText());
 
     }
+
+    @Test
 
     public void testSaveEmptyFrameToFile() throws Exception
     {
@@ -112,6 +126,8 @@ public class FrameTRCKTest extends AbstractTestCase
         assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
         assertEquals("", ((FrameBodyTRCK) frame.getBody()).getText());
     }
+
+    @Test
 
     public void testMergingMultipleTrackFrames() throws Exception
     {

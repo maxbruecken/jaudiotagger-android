@@ -1,6 +1,5 @@
 package org.jaudiotagger.audio.ogg;
 
-import junit.framework.TestCase;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.ogg.util.OggPageHeader;
 import org.junit.Assert;

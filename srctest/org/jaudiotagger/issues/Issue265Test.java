@@ -6,6 +6,7 @@ import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagOptionSingleton;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -23,6 +24,7 @@ public class Issue265Test extends AbstractTestCase
     /**
      * Try an d write too large a file
      */
+    @Test
     public void testWriteTooLargeStringToFile()
     {
         File orig = new File("testdata", "test7.wma");
@@ -66,6 +68,7 @@ public class Issue265Test extends AbstractTestCase
     /**
      * Try and write too large a file, automtically truncated if option set
      */
+    @Test
     public void testWriteTruncateStringToFile()
     {
         File orig = new File("testdata", "test7.wma");
@@ -107,6 +110,7 @@ public class Issue265Test extends AbstractTestCase
     /**
         * Try an d write too large a file
         */
+       @Test
        public void testWriteTooLargeStringToFileContentDesc()
        {
            File orig = new File("testdata", "test7.wma");
@@ -146,6 +150,7 @@ public class Issue265Test extends AbstractTestCase
        /**
         * Try and write too large a file, automtically truncated if option set
         */
+       @Test
        public void testWriteTruncateStringToFileContentDesc()
        {
            File orig = new File("testdata", "test7.wma");

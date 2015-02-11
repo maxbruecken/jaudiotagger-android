@@ -6,6 +6,7 @@ import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyAPIC;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyCOMM;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTPE1;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.List;
@@ -41,6 +42,7 @@ public class ItunesTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testv24TagWithNonSyncSafeFrame() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue96-1.id3", "testV1.mp3");
@@ -59,6 +61,7 @@ public class ItunesTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testv24TagWithNonSyncSafeFrame2() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue96-3.id3", "testV1.mp3");
@@ -78,6 +81,7 @@ public class ItunesTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testv24TagWithNonSyncSafeFrame3() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue96-4.id3", "testV1.mp3");
@@ -95,6 +99,7 @@ public class ItunesTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testv24TagWithSyncSafeFrame() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue96-2.id3", "testV1.mp3");
@@ -113,6 +118,7 @@ public class ItunesTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testCanIgnoreSpuriousNullCharacters() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue92.id3", "testV1.mp3");
@@ -162,6 +168,7 @@ public class ItunesTest extends AbstractTestCase
     /**
      * Check can handle empty value when splitting strings into a list
      */
+    @Test
     public void testCanReadEmptyString() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue92-2.id3", "testV1.mp3");
@@ -177,6 +184,7 @@ public class ItunesTest extends AbstractTestCase
     /**
      * Check skips over tag to read mp3 audio
      */
+    @Test
     public void testCanFindStartOfMp3AudioWithinUTF16LETag() throws Exception
     {
         long START_OF_AUDIO_LOCATION = 2048;
@@ -196,6 +204,7 @@ public class ItunesTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testv24TagWithlargeSyncSafeFrameAndNoPadding() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("issue115.id3", "testV1.mp3");

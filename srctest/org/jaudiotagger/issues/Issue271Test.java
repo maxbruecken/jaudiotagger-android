@@ -1,6 +1,5 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -11,8 +10,14 @@ import org.jaudiotagger.tag.id3.AbstractID3v2Frame;
 import org.jaudiotagger.tag.id3.ID3v22Tag;
 import org.jaudiotagger.tag.id3.ID3v23Frames;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * ID3 Tag Specific flags
@@ -23,6 +28,7 @@ public class Issue271Test extends AbstractTestCase
     /**
      * Test read mp3 that says it has extended header but doesn't really
      */
+    @Test
     public void testReadMp3WithExtendedHeaderFlagSetButNoExtendedHeader()
     {
         File orig = new File("testdata", "test46.mp3");
@@ -64,6 +70,7 @@ public class Issue271Test extends AbstractTestCase
     /**
      * Test read mp3 with extended header and crc-32 check
      */
+    @Test
     public void testReadMp3WithExtendedHeaderAndCrc()
     {
         File orig = new File("testdata", "test47.mp3");
@@ -111,6 +118,7 @@ public class Issue271Test extends AbstractTestCase
      * <p/>
      * TODO currently we cant decrypt it, that will come later
      */
+    @Test
     public void testReadMp3WithEncryptedField()
     {
         File orig = new File("testdata", "test48.mp3");
@@ -158,6 +166,7 @@ public class Issue271Test extends AbstractTestCase
     /**
      * Test read flags
      */
+    @Test
     public void testReadFlagsCompressed()
     {
         File orig = new File("testdata", "test51.mp3");
@@ -216,6 +225,7 @@ public class Issue271Test extends AbstractTestCase
     /**
      * Test read flags
      */
+    @Test
     public void testReadFlagsUnsyced()
     {
         File orig = new File("testdata", "test52.mp3");
@@ -275,6 +285,7 @@ public class Issue271Test extends AbstractTestCase
     /**
      * Test read flags
      */
+    @Test
     public void testReadFlagsUnsycedCompressed()
     {
         File orig = new File("testdata", "test53.mp3");

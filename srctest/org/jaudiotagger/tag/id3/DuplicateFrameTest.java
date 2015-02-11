@@ -1,12 +1,15 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.Tag;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test if read a tag with a corrupt frame that in certain circumstances continue to read the other frames
@@ -14,6 +17,7 @@ import java.io.File;
  */
 public class DuplicateFrameTest extends AbstractTestCase
 {
+    @Test
     public void testReadingFileWithCorruptFirstFrame() throws Exception
     {
         File orig = new File("testdata", "test78.mp3");

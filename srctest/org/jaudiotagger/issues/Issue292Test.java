@@ -1,18 +1,22 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Unable to save changes to file if backup .old file already exists
  */
 public class Issue292Test extends AbstractTestCase
 {
+    @Test
     public void testSavingMp3File()
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1Cbr128ID3v2.mp3");
@@ -57,6 +61,8 @@ public class Issue292Test extends AbstractTestCase
         }
         assertNull(exceptionCaught);
     }
+
+    @Test
 
     public void testSavingMp4File()
     {

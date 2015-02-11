@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -15,6 +16,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class Issue421Test extends AbstractTestCase
 {
+    @Test
     public void testTrackField() throws Exception
     {
         File orig = new File("testdata", "Arizona.m4a");

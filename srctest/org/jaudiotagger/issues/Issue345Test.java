@@ -1,6 +1,5 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -12,12 +11,15 @@ import org.jaudiotagger.tag.id3.ID3v22Tag;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.ID3v24Frame;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
-import org.jaudiotagger.tag.id3.framebody.FrameBodyCOMM;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyPOPM;
-import org.jaudiotagger.tag.reference.Languages;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Support For Custom fields
@@ -126,6 +128,7 @@ public class Issue345Test extends AbstractTestCase
      /**
      * Test writing Custom fields
      */
+    @Test
     public void testWriteFieldsToMp3ID3v23()
     {
         File testFile = null;
@@ -211,6 +214,7 @@ public class Issue345Test extends AbstractTestCase
      /**
      * Test writing Custom fields to Mp3 ID3v23
      */
+    @Test
     public void testWriteFieldsToMp3ID3v22()
     {
         File testFile = null;
@@ -302,6 +306,7 @@ public class Issue345Test extends AbstractTestCase
      /**
      * Test writing Custom fields to Ogg Vorbis
      */
+    @Test
     public void testWriteFieldsToOggVorbis()
     {
         File testFile = null;
@@ -351,6 +356,7 @@ public class Issue345Test extends AbstractTestCase
     /**
      * Test writing Custom fields to Flac
      */
+    @Test
     public void testWriteFieldsToFlac()
     {
         File testFile = null;
@@ -398,6 +404,7 @@ public class Issue345Test extends AbstractTestCase
     /**
      * Test writing Custom fields to Wma
      */
+    @Test
     public void testWriteFieldsToWma()
     {
         File testFile = null;
@@ -447,6 +454,7 @@ public class Issue345Test extends AbstractTestCase
      /**
      * Test writing Custom fields to Mp4
      */
+    @Test
     public void testWriteFieldsToMp4()
     {
         File testFile = null;

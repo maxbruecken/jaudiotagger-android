@@ -1,16 +1,27 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.datatype.DataTypes;
-import org.jaudiotagger.tag.id3.*;
+import org.jaudiotagger.tag.id3.ID3v22Frame;
+import org.jaudiotagger.tag.id3.ID3v22Frames;
+import org.jaudiotagger.tag.id3.ID3v22Tag;
+import org.jaudiotagger.tag.id3.ID3v23Frame;
+import org.jaudiotagger.tag.id3.ID3v23Frames;
+import org.jaudiotagger.tag.id3.ID3v23Tag;
+import org.jaudiotagger.tag.id3.ID3v24Frame;
+import org.jaudiotagger.tag.id3.ID3v24Frames;
+import org.jaudiotagger.tag.id3.ID3v24Tag;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.Iterator;
 import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 
 /**
@@ -19,6 +30,7 @@ import java.util.Set;
  */
 public class Issue100Test extends AbstractTestCase
 {
+    @Test
     public void testID3v24WriteFieldsInPreferredOrder()
     {        
 
@@ -66,6 +78,8 @@ public class Issue100Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+     @Test
+
      public void testID3v23WriteFieldsInPreferredOrder()
     {
 
@@ -112,6 +126,8 @@ public class Issue100Test extends AbstractTestCase
         }
         assertNull(exceptionCaught);
     }
+
+      @Test
 
       public void testID3v22WriteFieldsInPreferredOrder()
     {

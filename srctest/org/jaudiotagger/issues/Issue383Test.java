@@ -1,12 +1,15 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test deletions of ID3v1 tag
@@ -19,6 +22,7 @@ public class Issue383Test extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testIssueIncorrectTrackLength() throws Exception
     {
         Exception caught = null;
@@ -48,6 +52,7 @@ public class Issue383Test extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testIssue() throws Exception
     {
         Exception caught = null;

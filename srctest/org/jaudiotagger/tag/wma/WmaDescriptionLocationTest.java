@@ -4,11 +4,16 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.asf.data.AsfHeader;
 import org.jaudiotagger.audio.asf.data.MetadataContainer;
-import org.jaudiotagger.audio.asf.io.*;
-import org.jaudiotagger.tag.asf.AsfFieldKey;
-import org.jaudiotagger.tag.asf.AsfTag;
+import org.jaudiotagger.audio.asf.io.AsfExtHeaderModifier;
+import org.jaudiotagger.audio.asf.io.AsfHeaderReader;
+import org.jaudiotagger.audio.asf.io.AsfStreamer;
+import org.jaudiotagger.audio.asf.io.ChunkModifier;
+import org.jaudiotagger.audio.asf.io.WriteableChunkModifer;
 import org.jaudiotagger.audio.asf.util.TagConverter;
 import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.asf.AsfFieldKey;
+import org.jaudiotagger.tag.asf.AsfTag;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -130,6 +135,7 @@ public class WmaDescriptionLocationTest extends WmaTestCase
      * 
      * @throws Exception On I/O Errors
      */
+    @Test
     public void testChunkLocations() throws Exception
     {
         File testFile = prepareTestFile(null);

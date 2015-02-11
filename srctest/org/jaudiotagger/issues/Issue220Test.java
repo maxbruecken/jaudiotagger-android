@@ -4,6 +4,7 @@ import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -19,6 +20,7 @@ public class Issue220Test extends AbstractTestCase
     /**
      * Test read mp4 ok without any udta atom (but does have meta atom under trak)
      */
+    @Test
     public void testReadMp4WithoutUdta()
     {
         File orig = new File("testdata", "test41.m4a");
@@ -50,6 +52,7 @@ public class Issue220Test extends AbstractTestCase
     /**
      * Test write mp4 ok without any udta atom (but does have meta atom under trak)
      */
+    @Test
     public void testWriteMp4WithoutUdta()
     {
         File orig = new File("testdata", "test41.m4a");
@@ -99,6 +102,7 @@ public class Issue220Test extends AbstractTestCase
      * Test read mp4 ok which originally had just meta under trak, then processed in picard and now has a seperate udta atom
      * before mvhd atom (and still has the meta atom under trak)
      */
+    @Test
     public void testReadMp4WithUdtaAndMetaHierachy()
     {
         File orig = new File("testdata", "test42.m4a");
@@ -133,6 +137,7 @@ public class Issue220Test extends AbstractTestCase
         * Test write mp4 ok which originally had just meta under trak, then processed in picard and now has a seperate udta atom
         * before mvhd atom (and still has the meta atom under trak)
         */
+       @Test
        public void testWriteMp4WithUdtaAndMetaHierachy()
        {
            File orig = new File("testdata", "test42.m4a");
@@ -176,6 +181,7 @@ public class Issue220Test extends AbstractTestCase
     /**
              * Test write mp4 ok without any udta atom (but does have meta atom under trak)
              */
+            @Test
             public void testWriteMp4WithUdtaAfterTrackSmaller()
             {
                 File orig = new File("testdata", "test44.m4a");
@@ -216,6 +222,7 @@ public class Issue220Test extends AbstractTestCase
         /**
              * Test write mp4 ok without any udta atom (but does have meta atom under trak)
              */
+            @Test
             public void testWriteMp4WithUdtaAfterTrack()
             {
                 File orig = new File("testdata", "test44.m4a");

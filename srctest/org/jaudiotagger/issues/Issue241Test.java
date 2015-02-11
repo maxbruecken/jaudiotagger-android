@@ -1,6 +1,5 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -15,8 +14,14 @@ import org.jaudiotagger.tag.id3.framebody.FrameBodyTKEY;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTLAN;
 import org.jaudiotagger.tag.reference.Languages;
 import org.jaudiotagger.tag.reference.MusicalKey;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Support For LANGUAGE and INITIAL_KEY
@@ -26,6 +31,7 @@ public class Issue241Test extends AbstractTestCase
     /**
      * Test writing INITIAL_KEY and LANGUAGE to Mp3 ID3v23
      */
+    @Test
     public void testWriteFieldsToMp3ID3v24()
     {
         File testFile = null;
@@ -86,6 +92,7 @@ public class Issue241Test extends AbstractTestCase
      /**
      * Test writing INITIAL_KEY and LANGUAGE to Mp3 ID3v23
      */
+    @Test
     public void testWriteFieldsToMp3ID3v23()
     {
         File testFile = null;
@@ -118,6 +125,7 @@ public class Issue241Test extends AbstractTestCase
      /**
      * Test writing INITIAL_KEY and LANGUAGE to Mp3 ID3v23
      */
+    @Test
     public void testWriteFieldsToMp3ID3v22()
     {
         File testFile = null;
@@ -150,6 +158,7 @@ public class Issue241Test extends AbstractTestCase
      /**
      * Test writing INITIAL_KEY and LANGUAGE to Ogg Vorbis
      */
+    @Test
     public void testWriteFieldsToOggVorbis()
     {
         File testFile = null;
@@ -181,6 +190,7 @@ public class Issue241Test extends AbstractTestCase
     /**
      * Test writing INITIAL_KEY and LANGUAGE to Flac
      */
+    @Test
     public void testWriteFieldsToFlac()
     {
         File testFile = null;
@@ -214,6 +224,7 @@ public class Issue241Test extends AbstractTestCase
     /**
      * Test writing INITIAL_KEY and LANGUAGE to Wma
      */
+    @Test
     public void testWriteFieldsToWma()
     {
         File testFile = null;
@@ -245,6 +256,7 @@ public class Issue241Test extends AbstractTestCase
      /**
      * Test writing INITIAL_KEY and LANGUAGE to Mp4
      */
+    @Test
     public void testWriteFieldsToMp4()
     {
         File testFile = null;
@@ -276,6 +288,7 @@ public class Issue241Test extends AbstractTestCase
      /**
      * Key Validation
      */
+    @Test
     public void testValidateMusicalKey()
     {
         File testFile = null;

@@ -1,9 +1,12 @@
 package org.jaudiotagger.tag.id3.framebody;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test Unique File Identifier FrameBody
@@ -11,6 +14,9 @@ import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
 public class FrameBodyTDRCTest extends AbstractTestCase
 {
     public static final String TEST_YEAR = "2002";
+
+
+    @Test
 
 
     public void testCreateFrameBody()

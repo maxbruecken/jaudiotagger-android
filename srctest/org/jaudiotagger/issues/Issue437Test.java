@@ -1,16 +1,21 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
+import org.junit.Test;
+
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Adding 'getBitsPerSample()' accessor to AudioHeader
  */
 public class Issue437Test extends AbstractTestCase
 {
+    @Test
     public void testGetBitsPerSampleFlac()
     {
         Throwable e = null;
@@ -26,6 +31,8 @@ public class Issue437Test extends AbstractTestCase
         }
         assertNull(e);
     }
+
+    @Test
 
     public void testGetBitsPerSampleMp4()
     {
@@ -43,6 +50,8 @@ public class Issue437Test extends AbstractTestCase
         assertNull(e);
     }
 
+    @Test
+
     public void testGetBitsPerSampleOgg()
     {
         Throwable e = null;
@@ -59,6 +68,8 @@ public class Issue437Test extends AbstractTestCase
         assertNull(e);
     }
 
+    @Test
+
     public void testGetBitsPerSampleWma()
     {
         Throwable e = null;
@@ -74,6 +85,8 @@ public class Issue437Test extends AbstractTestCase
         }
         assertNull(e);
     }
+
+    @Test
 
     public void testGetBitsPerSampleMp3()
     {

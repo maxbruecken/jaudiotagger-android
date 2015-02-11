@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyPOPM;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyPOPMTest;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -30,6 +31,8 @@ public class FramePOPMTest extends AbstractTestCase
         frame.setBody(fb);
         return frame;
     }
+
+    @Test
 
     public void testCreateID3v24Frame()
     {
@@ -58,6 +61,9 @@ public class FramePOPMTest extends AbstractTestCase
     }
 
 
+    @Test
+
+
     public void testCreateID3v23Frame()
     {
         Exception exceptionCaught = null;
@@ -82,6 +88,8 @@ public class FramePOPMTest extends AbstractTestCase
         assertEquals(FrameBodyPOPMTest.POPM_COUNTER, ((FrameBodyPOPM) frame.getBody()).getCounter());
     }
 
+    @Test
+
     public void testSaveToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -102,6 +110,8 @@ public class FramePOPMTest extends AbstractTestCase
         assertEquals(FrameBodyPOPMTest.POPM_RATING, body.getRating());
         assertEquals(FrameBodyPOPMTest.POPM_COUNTER, body.getCounter());
     }
+
+    @Test
 
     public void testSaveEmptyFrameToFile() throws Exception
     {
@@ -126,6 +136,8 @@ public class FramePOPMTest extends AbstractTestCase
         assertEquals(0, body.getRating());
         assertEquals(0, body.getCounter());
     }
+
+    @Test
 
     public void testReadFileContainingPOMFrameWithoutCounter() throws Exception
     {

@@ -12,6 +12,7 @@ import org.jaudiotagger.tag.id3.framebody.FrameBodyTPOS;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTRCK;
 import org.jaudiotagger.tag.id3.framebody.ID3v23FrameBody;
 import org.jaudiotagger.tag.options.PadNumberOption;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.RandomAccessFile;
@@ -26,6 +27,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue431Test extends AbstractTestCase
 {
+    @Test
     public void testSetTrackNo() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV25.mp3");
@@ -58,6 +60,9 @@ public class Issue431Test extends AbstractTestCase
     }
 
 
+    @Test
+
+
     public void testSetTrackNoWithPaddingAndLengthOne() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -87,6 +92,8 @@ public class Issue431Test extends AbstractTestCase
         tag = f.getTag();
         assertEquals("01", tag.getFirst(FieldKey.TRACK));
     }
+
+    @Test
 
     public void testSetTrackNoWithNoPaddingThenSetPaddingAndLengthOne() throws Exception
     {
@@ -138,6 +145,8 @@ public class Issue431Test extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testSetTrackNoWithPaddingAndLengthTwo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -151,6 +160,8 @@ public class Issue431Test extends AbstractTestCase
         tag = f.getTag();
         assertEquals("001", tag.getFirst(FieldKey.TRACK));
     }
+
+    @Test
 
     public void testSetTrackNoWithPaddingAndLengthThree() throws Exception
     {
@@ -166,6 +177,8 @@ public class Issue431Test extends AbstractTestCase
         assertEquals("0001", tag.getFirst(FieldKey.TRACK));
     }
 
+    @Test
+
     public void testSetTrackNoWithPaddingAndLengthThreeLargerNumber() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -180,6 +193,8 @@ public class Issue431Test extends AbstractTestCase
         assertEquals("0112", tag.getFirst(FieldKey.TRACK));
     }
 
+    @Test
+
     public void testSetTrackNoWithNoPaddingAndLengthTwo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -193,6 +208,9 @@ public class Issue431Test extends AbstractTestCase
         tag = f.getTag();
         assertEquals("1", tag.getFirst(FieldKey.TRACK));
     }
+
+
+    @Test
 
 
     public void testSetTrackNoAndTotalWithPaddingLengthOne() throws Exception
@@ -212,6 +230,8 @@ public class Issue431Test extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testSetTrackNoAndTotalWithPaddingLengthTwo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -229,6 +249,8 @@ public class Issue431Test extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testSetTrackNoFlac() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.flac");
@@ -240,6 +262,8 @@ public class Issue431Test extends AbstractTestCase
         tag = f.getTag();
         assertEquals("1", tag.getFirst(FieldKey.TRACK));
     }
+
+    @Test
 
     public void testSetTrackNoFlacWithPadding() throws Exception
     {
@@ -255,6 +279,8 @@ public class Issue431Test extends AbstractTestCase
         tag = f.getTag();
         assertEquals("1", tag.getFirst(FieldKey.TRACK));
     }
+
+    @Test
 
     public void testSetPrePaddedTrackNo() throws Exception
     {
@@ -285,6 +311,9 @@ public class Issue431Test extends AbstractTestCase
         tag = f.getTag();
         assertEquals("01", tag.getFirst(FieldKey.TRACK));
     }
+
+
+    @Test
 
 
     public void testSetDiscNo() throws Exception
@@ -319,6 +348,9 @@ public class Issue431Test extends AbstractTestCase
     }
 
 
+    @Test
+
+
     public void testSetDiscNoWithPaddingAndLengthOne() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -348,6 +380,8 @@ public class Issue431Test extends AbstractTestCase
         tag = f.getTag();
         assertEquals("01", tag.getFirst(FieldKey.DISC_NO));
     }
+
+    @Test
 
     public void testSetDiscNoWithNoPaddingThenSetPaddingAndLengthOne() throws Exception
     {
@@ -399,6 +433,8 @@ public class Issue431Test extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testSetDiscNoWithPaddingAndLengthTwo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -412,6 +448,8 @@ public class Issue431Test extends AbstractTestCase
         tag = f.getTag();
         assertEquals("001", tag.getFirst(FieldKey.DISC_NO));
     }
+
+    @Test
 
     public void testSetDiscNoWithPaddingAndLengthThree() throws Exception
     {
@@ -427,6 +465,8 @@ public class Issue431Test extends AbstractTestCase
         assertEquals("0001", tag.getFirst(FieldKey.DISC_NO));
     }
 
+    @Test
+
     public void testSetDiscNoWithPaddingAndLengthThreeLargerNumber() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -441,6 +481,8 @@ public class Issue431Test extends AbstractTestCase
         assertEquals("0112", tag.getFirst(FieldKey.DISC_NO));
     }
 
+    @Test
+
     public void testSetDiscNoWithNoPaddingAndLengthTwo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -454,6 +496,9 @@ public class Issue431Test extends AbstractTestCase
         tag = f.getTag();
         assertEquals("1", tag.getFirst(FieldKey.DISC_NO));
     }
+
+
+    @Test
 
 
     public void testSetDiscNoAndTotalWithPaddingLengthOne() throws Exception
@@ -473,6 +518,8 @@ public class Issue431Test extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testSetDiscNoAndTotalWithPaddingLengthTwo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -490,6 +537,8 @@ public class Issue431Test extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testSetDiscNoFlac() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.flac");
@@ -501,6 +550,8 @@ public class Issue431Test extends AbstractTestCase
         tag = f.getTag();
         assertEquals("1", tag.getFirst(FieldKey.DISC_NO));
     }
+
+    @Test
 
     public void testSetDiscNoFlacWithPadding() throws Exception
     {
@@ -516,6 +567,8 @@ public class Issue431Test extends AbstractTestCase
         tag = f.getTag();
         assertEquals("1", tag.getFirst(FieldKey.DISC_NO));
     }
+
+    @Test
 
     public void testSetPrePaddedDiscNo() throws Exception
     {
@@ -546,6 +599,8 @@ public class Issue431Test extends AbstractTestCase
         tag = f.getTag();
         assertEquals("01", tag.getFirst(FieldKey.DISC_NO));
     }
+
+    @Test
 
     public void testSetPrePaddedDiscAndDiscTotal() throws Exception
     {
@@ -580,6 +635,8 @@ public class Issue431Test extends AbstractTestCase
         tag = f.getTag();
         assertEquals("08", tag.getFirst(FieldKey.DISC_TOTAL));
     }
+
+    @Test
 
     public void testSetPrePaddedDiscTotal() throws Exception
     {

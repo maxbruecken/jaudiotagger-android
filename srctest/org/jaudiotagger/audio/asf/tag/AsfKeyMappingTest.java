@@ -1,6 +1,5 @@
 package org.jaudiotagger.audio.asf.tag;
 
-import junit.framework.TestCase;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.asf.AsfTag;

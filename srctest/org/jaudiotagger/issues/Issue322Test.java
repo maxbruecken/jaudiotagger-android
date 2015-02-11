@@ -6,6 +6,7 @@ import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldDataInvalidException;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -22,6 +23,8 @@ public class Issue322Test extends AbstractTestCase
      * Test exception thrown
      * @throws Exception
      */
+
+    @Test
 
     public void testNumberFieldHandling() throws Exception
     {

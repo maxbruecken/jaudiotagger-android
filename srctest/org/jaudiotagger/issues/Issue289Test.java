@@ -1,19 +1,23 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.ogg.OggFileReader;
 import org.jaudiotagger.tag.FieldKey;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  *File corrupt after write
  */
 public class Issue289Test extends AbstractTestCase
 {
+    @Test
     public void testSavingOggFile()
     {
         File orig = new File("testdata", "test58.ogg");

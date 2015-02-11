@@ -1,14 +1,19 @@
 package org.jaudiotagger.tag.id3.framebody;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test DeprecatedFrameBody
  */
 public class FrameBodyDeprecatedTest extends AbstractTestCase
 {
+
+    @Test
 
     public void testCreateFrameBody()
     {

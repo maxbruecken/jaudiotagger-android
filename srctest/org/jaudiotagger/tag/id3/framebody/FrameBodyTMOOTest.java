@@ -1,9 +1,12 @@
 package org.jaudiotagger.tag.id3.framebody;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test TMOOFrameBody
@@ -18,6 +21,8 @@ public class FrameBodyTMOOTest extends AbstractTestCase
         fb.setText(FrameBodyTMOOTest.MOOD);
         return fb;
     }
+
+    @Test
 
     public void testCreateFrameBody()
     {
@@ -38,6 +43,8 @@ public class FrameBodyTMOOTest extends AbstractTestCase
         assertEquals(FrameBodyTMOOTest.MOOD, fb.getText());
 
     }
+
+    @Test
 
     public void testCreateFrameBodyEmptyConstructor()
     {

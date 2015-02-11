@@ -1,12 +1,14 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test read large mp3 with extended header
@@ -17,6 +19,7 @@ public class Issue270Test extends AbstractTestCase
     /**
      * Test read mp3 that says it has extended header but doesnt really
      */
+    @Test
     public void testReadMp4WithCorruptMdata()
     {
         File orig = new File("testdata", "test49.m4a");

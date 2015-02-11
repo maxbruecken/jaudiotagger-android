@@ -1,13 +1,18 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTSO2;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTSO2Test;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test TSO2  Frame
@@ -38,6 +43,8 @@ public class FrameTSO2Test extends AbstractTestCase
         return frame;
     }
 
+    @Test
+
     public void testCreateID3v24Frame()
     {
         Exception exceptionCaught = null;
@@ -58,6 +65,9 @@ public class FrameTSO2Test extends AbstractTestCase
         assertFalse(ID3v24Frames.getInstanceOf().isSupportedFrames(frame.getIdentifier()));
         assertEquals(FrameBodyTSO2Test.ALBUM_ARTIST_SORT, ((FrameBodyTSO2) frame.getBody()).getText());
     }
+
+
+    @Test
 
 
     public void testCreateID3v23Frame()
@@ -83,6 +93,8 @@ public class FrameTSO2Test extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testCreateID3v22Frame()
     {
         Exception exceptionCaught = null;
@@ -107,6 +119,8 @@ public class FrameTSO2Test extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testSaveToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3",new File("test1017.mp3") );
@@ -124,6 +138,9 @@ public class FrameTSO2Test extends AbstractTestCase
         FrameBodyTSO2 body = (FrameBodyTSO2) frame.getBody();
         assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
     }
+
+
+    @Test
 
 
     public void testConvertV24ToV23() throws Exception
@@ -151,6 +168,8 @@ public class FrameTSO2Test extends AbstractTestCase
         assertEquals(FrameBodyTSO2Test.ALBUM_ARTIST_SORT, body.getText());
     }
 
+    @Test
+
     public void testConvertV24ToV22() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3",new File("test1019.mp3"));
@@ -176,6 +195,8 @@ public class FrameTSO2Test extends AbstractTestCase
         assertEquals(FrameBodyTSO2Test.ALBUM_ARTIST_SORT, body.getText());
     }
 
+    @Test
+
     public void testConvertV23ToV22() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3",new File("test1020.mp3"));
@@ -200,6 +221,9 @@ public class FrameTSO2Test extends AbstractTestCase
         assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
         assertEquals(FrameBodyTSO2Test.ALBUM_ARTIST_SORT, body.getText());
     }
+
+
+    @Test
 
 
     public void testConvertV22ToV24() throws Exception

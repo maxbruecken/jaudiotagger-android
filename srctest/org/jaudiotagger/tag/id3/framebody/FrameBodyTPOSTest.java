@@ -1,10 +1,13 @@
 package org.jaudiotagger.tag.id3.framebody;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test TPOSFrameBody
@@ -19,6 +22,8 @@ public class FrameBodyTPOSTest extends AbstractTestCase
         fb.setDiscTotal(11);
         return fb;
     }
+
+    @Test
 
     public void testCreateFrameBodyStringConstructor()
     {
@@ -43,6 +48,8 @@ public class FrameBodyTPOSTest extends AbstractTestCase
         assertEquals("1/11", fb.getText());
 
     }
+
+     @Test
 
      public void testCreateFrameBodyIntegerConstructor()
     {
@@ -69,6 +76,8 @@ public class FrameBodyTPOSTest extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testCreateFrameBodyEmptyConstructor()
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -93,6 +102,8 @@ public class FrameBodyTPOSTest extends AbstractTestCase
        assertEquals(11,fb.getDiscTotal().intValue());
     }
 
+    @Test
+
     public void testCreateFrameBodyDiscOnly()
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -116,6 +127,8 @@ public class FrameBodyTPOSTest extends AbstractTestCase
         assertNull(fb.getDiscTotal());
     }
 
+    @Test
+
     public void testCreateFrameBodyTotalOnly()
    {
        Exception exceptionCaught = null;
@@ -137,6 +150,8 @@ public class FrameBodyTPOSTest extends AbstractTestCase
        assertNull(fb.getDiscNo());
        assertEquals(11,fb.getDiscTotal().intValue());
    }
+
+      @Test
 
       public void testCreateFrameBodyWithPadding()
     {
@@ -161,6 +176,8 @@ public class FrameBodyTPOSTest extends AbstractTestCase
         assertEquals("01/11", fb.getText());
 
     }
+
+     @Test
 
      public void testCreateFrameBodyWithPaddingTwo()
     {
@@ -187,6 +204,7 @@ public class FrameBodyTPOSTest extends AbstractTestCase
     }
 
      // specify the value as a string with no padding. getText should still return with padding
+     @Test
      public void testCreateFrameBodyWithPaddedRawTextCount()
      {
          TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -196,6 +214,8 @@ public class FrameBodyTPOSTest extends AbstractTestCase
 
      }
      
+     @Test
+
      public void testCreateFrameBodyWithUnpaddedRawTextCount()
      {
          TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -203,6 +223,8 @@ public class FrameBodyTPOSTest extends AbstractTestCase
          assertEquals("1",fb.getDiscNoAsText());
          assertEquals("11",fb.getDiscTotalAsText());
      }
+
+     @Test
 
      public void testCreateFrameBodyWithPaddedRawTextTotal()
      {
@@ -212,6 +234,8 @@ public class FrameBodyTPOSTest extends AbstractTestCase
          assertEquals("03",fb.getDiscTotalAsText());
      }
 
+    @Test
+
     public void testCreateFrameBodyWithPaddedRawTextTotal2()
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -219,6 +243,8 @@ public class FrameBodyTPOSTest extends AbstractTestCase
         assertEquals("01",fb.getDiscNoAsText());
         assertEquals("03",fb.getDiscTotalAsText());
     }
+
+     @Test
 
      public void testCreateFrameBodyWithUnpaddedRawTextTotal()
      {
@@ -251,6 +277,9 @@ public class FrameBodyTPOSTest extends AbstractTestCase
 	}
 
 
+    @Test
+
+
     public void testCreateFrameBodyWithPaddedRawTextCountIsPadded()
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -275,6 +304,8 @@ public class FrameBodyTPOSTest extends AbstractTestCase
         assertEquals("11",fb.getDiscTotalAsText());
 
     }
+
+    @Test
 
     public void testCreateFrameBodyWithUnpaddedRawTextCountIsPadded()
     {
@@ -301,6 +332,8 @@ public class FrameBodyTPOSTest extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testCreateFrameBodyWithPaddedRawTextTotalIsPadded()
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -325,11 +358,15 @@ public class FrameBodyTPOSTest extends AbstractTestCase
         assertEquals("03",fb.getDiscTotalAsText());
     }
 
+    @Test
+
     public void testCreateFrameBodyWithPaddedRawTextTotal2IsPadded()
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
         createFrameBodyAndAssertNumericValuesAndRawValueRetained("01/03", 1, 3);
     }
+
+    @Test
 
     public void testCreateFrameBodyWithUnpaddedRawTextTotalIsPadded()
     {

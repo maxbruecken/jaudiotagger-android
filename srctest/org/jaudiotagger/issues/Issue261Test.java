@@ -4,6 +4,7 @@ import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -19,6 +20,7 @@ public class Issue261Test extends AbstractTestCase
     /**
      * Test write mp4 ok without any udta/meta atoms
      */
+    @Test
     public void testWriteMp4()
     {
         File orig = new File("testdata", "test45.m4a");

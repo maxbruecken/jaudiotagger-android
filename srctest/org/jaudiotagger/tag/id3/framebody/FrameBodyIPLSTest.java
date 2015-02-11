@@ -3,6 +3,7 @@ package org.jaudiotagger.tag.id3.framebody;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.ID3v23Frames;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -20,6 +21,8 @@ public class FrameBodyIPLSTest extends AbstractTestCase
         fb.setText(FrameBodyIPLSTest.INVOLVED_PEOPLE);
         return fb;
     }
+
+    @Test
 
     public void testCreateFrameBody()
     {
@@ -46,6 +49,8 @@ public class FrameBodyIPLSTest extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testCreateFrameBodyEmptyConstructor()
     {
         Exception exceptionCaught = null;
@@ -71,6 +76,8 @@ public class FrameBodyIPLSTest extends AbstractTestCase
         assertEquals("lillywhite",fb.getValueAtIndex(1));
 
     }
+
+     @Test
 
      public void testCreateFromTIPL()
     {

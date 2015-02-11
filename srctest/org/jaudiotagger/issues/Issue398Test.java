@@ -15,6 +15,7 @@ import org.jaudiotagger.tag.mp4.Mp4FieldKey;
 import org.jaudiotagger.tag.mp4.Mp4Tag;
 import org.jaudiotagger.tag.vorbiscomment.VorbisCommentFieldKey;
 import org.jaudiotagger.tag.vorbiscomment.VorbisCommentTag;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -27,6 +28,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue398Test extends AbstractTestCase
 {
+    @Test
     public void testID3v24() throws Exception
     {
         Exception caught = null;
@@ -67,6 +69,8 @@ public class Issue398Test extends AbstractTestCase
         assertNull(caught);
     }
 
+    @Test
+
     public void testID3v23() throws Exception
     {
         Exception caught = null;
@@ -100,6 +104,8 @@ public class Issue398Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+    @Test
 
     public void testID3v22() throws Exception
     {
@@ -136,6 +142,9 @@ public class Issue398Test extends AbstractTestCase
     }
 
 
+    @Test
+
+
     public void testID3v1() throws Exception
     {
         Exception caught = null;
@@ -156,6 +165,8 @@ public class Issue398Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+     @Test
 
      public void testMp4() throws Exception
     {
@@ -207,6 +218,7 @@ public class Issue398Test extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testMp4getValue() throws Exception
     {
         Exception caught = null;
@@ -231,6 +243,8 @@ public class Issue398Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+    @Test
 
     public void testVorbis() throws Exception
     {
@@ -276,6 +290,8 @@ public class Issue398Test extends AbstractTestCase
         assertNull(caught);
     }
 
+    @Test
+
     public void testFlac() throws Exception
     {
         Exception caught = null;
@@ -318,6 +334,8 @@ public class Issue398Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+     @Test
 
      public void testWma() throws Exception
     {

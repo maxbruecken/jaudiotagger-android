@@ -10,6 +10,7 @@ import org.jaudiotagger.tag.id3.ID3v22Tag;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
 import org.jaudiotagger.tag.reference.ID3V2Version;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -21,6 +22,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue429Test extends AbstractTestCase
 {
+    @Test
     public void testDefaultCreationv23() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV25.mp3");
@@ -33,6 +35,7 @@ public class Issue429Test extends AbstractTestCase
         assertTrue(tag instanceof ID3v23Tag);
     }
 
+    @Test
     public void testDefaultCreationv24() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV25.mp3");
@@ -46,6 +49,7 @@ public class Issue429Test extends AbstractTestCase
         assertTrue(tag instanceof ID3v24Tag);
     }
 
+    @Test
     public void testDefaultCreationv22() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV25.mp3");
@@ -59,6 +63,7 @@ public class Issue429Test extends AbstractTestCase
         assertTrue(tag instanceof ID3v22Tag);
     }
 
+    @Test
     public void testDefaultConvertv23tov24() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV25.mp3");
@@ -76,6 +81,7 @@ public class Issue429Test extends AbstractTestCase
         assertEquals(tag.getFirst(FieldKey.ARTIST),"fred");
     }
 
+    @Test
     public void testDefaultConvertv24tov23() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV25.mp3");

@@ -6,6 +6,7 @@ import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -19,6 +20,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue411Test extends AbstractTestCase
 {
+    @Test
     public void testIssue() throws Exception
     {
         Exception caught = null;
@@ -61,6 +63,8 @@ public class Issue411Test extends AbstractTestCase
         assertNull(caught);
     }
 
+    @Test
+
     public void testIssue2() throws Exception
     {
         Exception caught = null;
@@ -93,6 +97,8 @@ public class Issue411Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+    @Test
 
     public void testIssue3() throws Exception
     {
@@ -127,6 +133,8 @@ public class Issue411Test extends AbstractTestCase
         assertNull(caught);
     }
 
+    @Test
+
     public void testIssue4() throws Exception
     {
         Exception caught = null;
@@ -160,6 +168,8 @@ public class Issue411Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+    @Test
 
     public void testIssue5() throws Exception
     {
@@ -202,6 +212,8 @@ public class Issue411Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+    @Test
 
     public void testDeletions() throws Exception
     {

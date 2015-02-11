@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyPCNT;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyPCNTTest;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -26,6 +27,7 @@ public class FramePCNTTest extends AbstractTestCase
         return frame;
     }
 
+    @Test
     public void testCreateID3v24Frame()
     {
         Exception exceptionCaught = null;
@@ -51,6 +53,7 @@ public class FramePCNTTest extends AbstractTestCase
     }
 
 
+    @Test
     public void testCreateID3v23Frame()
     {
         Exception exceptionCaught = null;
@@ -73,6 +76,7 @@ public class FramePCNTTest extends AbstractTestCase
         assertEquals(FrameBodyPCNTTest.PCNT_COUNTER, ((FrameBodyPCNT) frame.getBody()).getCounter());
     }
 
+    @Test
     public void testSaveToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -92,6 +96,7 @@ public class FramePCNTTest extends AbstractTestCase
         assertEquals(FrameBodyPCNTTest.PCNT_COUNTER, body.getCounter());
     }
 
+    @Test
     public void testSaveEmptyFrameToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");

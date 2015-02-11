@@ -4,6 +4,7 @@ import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -15,6 +16,7 @@ import static org.junit.Assert.assertNull;
  */
 public class Issue285Test extends AbstractTestCase
 {
+    @Test
     public void testSavingOggFile()
     {
         File orig = new File("testdata", "test57.ogg");

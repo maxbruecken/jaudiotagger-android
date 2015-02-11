@@ -9,10 +9,9 @@ import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.AbstractID3v2Frame;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTPOS;
+import org.junit.Test;
 
 import java.io.File;
-import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -23,6 +22,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue412Test extends AbstractTestCase
 {
+    @Test
     public void testTXXXSameDescription() throws Exception
     {
         Exception caught = null;
@@ -64,6 +64,8 @@ public class Issue412Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+    @Test
 
     public void testTXXXDifferentDescription() throws Exception
     {
@@ -113,6 +115,8 @@ public class Issue412Test extends AbstractTestCase
         assertNull(caught);
     }
 
+    @Test
+
     public void testWXXXSameDescription() throws Exception
     {
         Exception caught = null;
@@ -154,6 +158,8 @@ public class Issue412Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+    @Test
 
     public void testTXXXSameDescriptionMultiples() throws Exception
     {
@@ -198,6 +204,8 @@ public class Issue412Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+    @Test
 
     public void testWXXXSameDescriptionMultiples() throws Exception
     {
@@ -244,6 +252,9 @@ public class Issue412Test extends AbstractTestCase
     }
 
 
+    @Test
+
+
     public void testTCOMMultiples() throws Exception
     {
         Exception caught = null;
@@ -288,6 +299,8 @@ public class Issue412Test extends AbstractTestCase
         assertNull(caught);
     }
 
+    @Test
+
     public void testTrackNoTotalCombinations()
     {
         Exception caught = null;
@@ -325,6 +338,8 @@ public class Issue412Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+    @Test
 
     public void testTrackNoTotalAddCombinations()
     {
@@ -364,6 +379,8 @@ public class Issue412Test extends AbstractTestCase
         assertNull(caught);
     }
 
+    @Test
+
     public void testDiscNoTotalCombinations()
     {
         Exception caught = null;
@@ -401,6 +418,8 @@ public class Issue412Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+    @Test
 
     public void testDiscNoTotalAddCombinations()
     {
@@ -445,6 +464,8 @@ public class Issue412Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+    @Test
 
     public void testDiscNoTotalAddCombinationsWithPadding()
     {
@@ -495,6 +516,8 @@ public class Issue412Test extends AbstractTestCase
         }
         assertNull(caught);
     }
+
+    @Test
 
     public void testDiscNoTotalAddCombinationsWithPaddingFlac()
     {

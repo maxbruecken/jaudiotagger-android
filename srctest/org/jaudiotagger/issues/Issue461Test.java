@@ -13,6 +13,7 @@ import org.jaudiotagger.tag.id3.TyerTdatAggregatedFrame;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTDAT;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTDRC;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTYER;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.Iterator;
@@ -26,6 +27,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class Issue461Test extends AbstractTestCase
 {
+    @Test
     public void testV23DateConversionFromGeneric() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -61,6 +63,8 @@ public class Issue461Test extends AbstractTestCase
         assertNotNull(fbTdat);
         assertEquals("3001", fbTdat.getText());
     }
+
+    @Test
 
     public void testV23DateConversionFromV24() throws Exception
     {
@@ -105,6 +109,8 @@ public class Issue461Test extends AbstractTestCase
         assertEquals("3001", fbTdat.getText());
     }
 
+    @Test
+
     public void testV23DateConversionFromV24YearOnly() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -130,6 +136,8 @@ public class Issue461Test extends AbstractTestCase
         assertEquals("2004", fbTyer.getText());
     }
 
+    @Test
+
     public void testV23DateConversionFromV24YearOnly2() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -152,6 +160,8 @@ public class Issue461Test extends AbstractTestCase
         v2Tag = (ID3v23Tag)mp3File.getID3v2Tag();
         assertEquals("2004", v2Tag.getFirst(ID3v23FieldKey.YEAR));
     }
+
+    @Test
 
     public void testV23DayMonthYearConversionFromV24() throws Exception
     {
@@ -186,6 +196,8 @@ public class Issue461Test extends AbstractTestCase
         assertNotNull(fbTdat);
         assertEquals("3006", fbTdat.getText());
     }
+
+    @Test
 
     public void testV23MonthYearConversionFromV24() throws Exception
     {

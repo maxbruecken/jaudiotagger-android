@@ -7,6 +7,7 @@ import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
 import org.jaudiotagger.tag.mp4.Mp4Tag;
 import org.jaudiotagger.tag.vorbiscomment.VorbisCommentTag;
+import org.junit.Test;
 
 import java.io.FileOutputStream;
 
@@ -19,6 +20,7 @@ import static org.junit.Assert.assertTrue;
 public class Issue221Test extends AbstractTestCase
 {
 
+    @Test
     public void testCreateNullMp4FrameTitle()
     {
         Exception exceptionCaught = null;
@@ -35,6 +37,7 @@ public class Issue221Test extends AbstractTestCase
         assertTrue(exceptionCaught instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testCreateNullOggVorbisFrameTitle()
     {
         Exception exceptionCaught = null;
@@ -52,6 +55,7 @@ public class Issue221Test extends AbstractTestCase
     }
 
 
+    @Test
     public void testCreateNullID3v23FrameTitle()
     {
         Exception exceptionCaught = null;
@@ -71,6 +75,7 @@ public class Issue221Test extends AbstractTestCase
         assertTrue(exceptionCaught instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testCreateNullID3v23FrameAlbum()
     {
         Exception exceptionCaught = null;
@@ -90,6 +95,7 @@ public class Issue221Test extends AbstractTestCase
         assertTrue(exceptionCaught instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testCreateNullID3v23FrameArtist()
     {
         Exception exceptionCaught = null;
@@ -109,6 +115,7 @@ public class Issue221Test extends AbstractTestCase
         assertTrue(exceptionCaught instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testCreateNullID3v23FrameComment()
     {
         Exception exceptionCaught = null;
@@ -128,6 +135,7 @@ public class Issue221Test extends AbstractTestCase
         assertTrue(exceptionCaught instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testCreateNullID3v23FrameGenre()
     {
         Exception exceptionCaught = null;
@@ -147,6 +155,7 @@ public class Issue221Test extends AbstractTestCase
         assertTrue(exceptionCaught instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testCreateNullID3v23FrameTrack()
     {
         Exception exceptionCaught = null;
@@ -167,6 +176,7 @@ public class Issue221Test extends AbstractTestCase
 
     }
 
+    @Test
     public void testCreateNullID3v24Frame()
     {
         Exception exceptionCaught = null;
@@ -187,6 +197,7 @@ public class Issue221Test extends AbstractTestCase
         assertTrue(exceptionCaught instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testCreateNullID3v22Frame()
     {
         Exception exceptionCaught = null;

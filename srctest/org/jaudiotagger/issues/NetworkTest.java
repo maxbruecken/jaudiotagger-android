@@ -3,6 +3,7 @@ package org.jaudiotagger.issues;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFileFilter;
 import org.jaudiotagger.audio.AudioFileIO;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.Date;
@@ -44,6 +45,8 @@ public class NetworkTest extends AbstractTestCase
         }
     }
 
+    @Test
+
     public void testNetworkSpeed() throws Exception
     {
         Exception caught = null;
@@ -66,6 +69,7 @@ public class NetworkTest extends AbstractTestCase
     }
 
     /*
+    @Test
     public void testDataCopySpeed() throws Exception
     {
         File file = new File("Z:\\Music\\Replay Music Recordings\\Beirut\\The Rip Tide\\Beirut-The Rip Tide-05-Payne's Bay.mp3");
@@ -77,6 +81,8 @@ public class NetworkTest extends AbstractTestCase
         System.out.println("end:"+new Date());
 
     }
+
+    @Test
 
     public void testDataCopySpeed2() throws Exception
     {

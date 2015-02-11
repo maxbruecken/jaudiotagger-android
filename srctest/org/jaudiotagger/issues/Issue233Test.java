@@ -1,6 +1,5 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -9,14 +8,21 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.id3.ID3v22Tag;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test Deleting v2 tags
  */
 public class Issue233Test extends AbstractTestCase
 {
+    @Test
     public void testDeletingID3v2Tag()
     {
         Exception exceptionCaught = null;
@@ -76,6 +82,8 @@ public class Issue233Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
+
     public void testDeletingID3v1Tag()
     {
         File orig = new File("testdata", "test32.mp3");
@@ -98,6 +106,8 @@ public class Issue233Test extends AbstractTestCase
         }
         assertNull(exceptionCaught);
     }
+
+    @Test
 
     public void testReadingID3v1Tag()
     {

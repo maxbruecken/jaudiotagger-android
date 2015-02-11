@@ -6,6 +6,7 @@ import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyETCO;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyETCOTest;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class FrameETCOTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testReadFile() throws Exception
     {
         File orig = new File("testdata", "test20.mp3");
@@ -64,6 +66,8 @@ public class FrameETCOTest extends AbstractTestCase
         }
         assertNull(exceptionCaught);
     }
+
+    @Test
 
     public void testSaveToFile() throws Exception
     {
@@ -95,6 +99,8 @@ public class FrameETCOTest extends AbstractTestCase
         assertFalse(reference.hasNext());
         assertFalse(loaded.hasNext());
     }
+
+    @Test
 
     public void testSaveEmptyFrameToFile() throws Exception
     {

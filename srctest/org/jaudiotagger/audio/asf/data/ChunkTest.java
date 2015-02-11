@@ -1,7 +1,11 @@
 package org.jaudiotagger.audio.asf.data;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+
 import java.math.BigInteger;
+
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test for simple {@link Chunk}.
@@ -61,6 +65,7 @@ public class ChunkTest extends AbstractChunk<Chunk> {
      * Test method for
      * {@link org.jaudiotagger.audio.asf.data.Chunk#Chunk(GUID, BigInteger)}.
      */
+    @Test
     public void testChunk() {
         assertTrue("IllegalArgumentException expected",
                 failOn(null, 0, null) instanceof IllegalArgumentException);

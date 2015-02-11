@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.id3.ID3v1Tag;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -17,6 +18,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue443Test extends AbstractTestCase
 {
+    @Test
     public void testID3v2DefaultCreateOrConvertWhenOnlyHasID3v1()
     {
         try
@@ -44,6 +46,8 @@ public class Issue443Test extends AbstractTestCase
         }
     }
 
+    @Test
+
     public void testID3v2DefaultCreatedWhenOnlyHasID3v1()
     {
         try
@@ -70,6 +74,8 @@ public class Issue443Test extends AbstractTestCase
             ex.printStackTrace();
         }
     }
+
+    @Test
 
     public void testID3v2CreatedWhenOnlyHasID3v1()
     {

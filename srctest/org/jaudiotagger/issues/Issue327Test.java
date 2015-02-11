@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.RandomAccessFile;
@@ -19,6 +20,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class Issue327Test extends AbstractTestCase
 {
+    @Test
     public void testUTF16BOMMultipleFieldSeperators() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");

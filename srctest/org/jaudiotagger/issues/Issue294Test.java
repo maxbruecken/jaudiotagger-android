@@ -1,27 +1,33 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.audio.mp3.MPEGFrameHeader;
 import org.jaudiotagger.logging.Hex;
 import org.jaudiotagger.tag.TagOptionSingleton;
-import org.jaudiotagger.tag.images.Artwork;
 import org.jaudiotagger.tag.id3.valuepair.ImageFormats;
+import org.jaudiotagger.tag.images.Artwork;
 import org.jaudiotagger.tag.images.ArtworkFactory;
 import org.jaudiotagger.tag.images.Images;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Jpg added to this mp3 fails on read back
  */
 public class Issue294Test extends AbstractTestCase
 {
+    @Test
     public void testSavingArtworkToMp3File()
     {
 

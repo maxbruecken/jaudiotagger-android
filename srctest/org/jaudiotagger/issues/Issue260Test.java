@@ -1,12 +1,16 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test read m4a without udta/meta atom
@@ -16,6 +20,7 @@ public class Issue260Test extends AbstractTestCase
     /**
      * Test read mp4 ok without any udta/meta atoms
      */
+    @Test
     public void testReadMp4WithoutUdta()
     {
         File orig = new File("testdata", "test40.m4a");
@@ -47,6 +52,7 @@ public class Issue260Test extends AbstractTestCase
     /**
      * Test write mp4 ok without any udta/meta atoms
      */
+    @Test
     public void testWriteMp4WithoutUdta()
     {
         File orig = new File("testdata", "test40.m4a");
@@ -95,6 +101,7 @@ public class Issue260Test extends AbstractTestCase
      /**
      * Test read mp4 ok with udta at start of moov (created by picardqt)
      */
+    @Test
     public void testReadMp4WithUdtaAtStart()
     {
         File orig = new File("testdata", "test43.m4a");
@@ -126,6 +133,7 @@ public class Issue260Test extends AbstractTestCase
     /**
      * Test write mp4 ok udta at start of moov (created by picardqt)
      */
+    @Test
     public void testWriteMp4WithUdtaAtStart()
     {
         File orig = new File("testdata", "test43.m4a");

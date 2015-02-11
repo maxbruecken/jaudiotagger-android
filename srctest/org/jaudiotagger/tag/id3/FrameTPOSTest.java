@@ -6,6 +6,7 @@ import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagField;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.Iterator;
@@ -19,6 +20,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class FrameTPOSTest extends AbstractTestCase
 {
+    @Test
     public void testMergingMultipleFrames() throws Exception
     {
         ID3v24Tag tag = new ID3v24Tag();
@@ -28,6 +30,8 @@ public class FrameTPOSTest extends AbstractTestCase
         assertEquals("10",tag.getFirst(FieldKey.DISC_TOTAL));
         assertTrue(tag.getFrame("TPOS") instanceof AbstractID3v2Frame);
     }
+
+    @Test
 
     public void testDiscNo()
     {

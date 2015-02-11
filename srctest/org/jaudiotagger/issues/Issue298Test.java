@@ -11,6 +11,7 @@ import org.jaudiotagger.tag.id3.ID3v24Frame;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyCOMM;
 import org.jaudiotagger.tag.reference.Languages;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -158,6 +159,7 @@ public class Issue298Test extends AbstractTestCase
      /**
      * Test writing Custom fields
      */
+    @Test
     public void testWriteFieldsToMp3ID3v23()
     {
         File testFile = null;
@@ -227,6 +229,7 @@ public class Issue298Test extends AbstractTestCase
      /**
      * Test writing Custom fields to Mp3 ID3v23
      */
+    @Test
     public void testWriteFieldsToMp3ID3v22()
     {
         File testFile = null;
@@ -292,6 +295,7 @@ public class Issue298Test extends AbstractTestCase
      /**
      * Test writing Custom fields to Ogg Vorbis
      */
+    @Test
     public void testWriteFieldsToOggVorbis()
     {
         File testFile = null;
@@ -356,6 +360,7 @@ public class Issue298Test extends AbstractTestCase
     /**
      * Test writing Custom fields to Flac
      */
+    @Test
     public void testWriteFieldsToFlac()
     {
         File testFile = null;
@@ -422,6 +427,7 @@ public class Issue298Test extends AbstractTestCase
     /**
      * Test writing Custom fields to Wma
      */
+    @Test
     public void testWriteFieldsToWma()
     {
         File testFile = null;
@@ -486,6 +492,7 @@ public class Issue298Test extends AbstractTestCase
      /**
      * Test writing Custom fields to Mp4
      */
+    @Test
     public void testWriteFieldsToMp4()
     {
         File testFile = null;

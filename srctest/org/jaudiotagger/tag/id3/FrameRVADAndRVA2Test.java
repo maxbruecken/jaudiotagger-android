@@ -1,6 +1,5 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.datatype.DataTypes;
@@ -8,8 +7,14 @@ import org.jaudiotagger.tag.id3.framebody.FrameBodyRVA2;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyRVA2Test;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyRVAD;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyRVADTest;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test RVAD (v23) and RVA2 (V24) frames
@@ -56,6 +61,8 @@ public class FrameRVADAndRVA2Test extends AbstractTestCase
         return frame;
     }
 
+    @Test
+
     public void testCreateID3v24Frame()
     {
         Exception exceptionCaught = null;
@@ -78,6 +85,9 @@ public class FrameRVADAndRVA2Test extends AbstractTestCase
         assertTrue(ID3v24Frames.getInstanceOf().isSupportedFrames(frame.getIdentifier()));
         assertEquals(FrameBodyRVA2Test.TEST_BYTES, frame.getBody().getObjectValue(DataTypes.OBJ_DATA));
     }
+
+
+    @Test
 
 
     public void testCreateID3v23Frame()
@@ -105,6 +115,9 @@ public class FrameRVADAndRVA2Test extends AbstractTestCase
     }
 
 
+    @Test
+
+
     public void testCreateID3v22Frame()
     {
         Exception exceptionCaught = null;
@@ -129,6 +142,8 @@ public class FrameRVADAndRVA2Test extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testSaveToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -149,6 +164,9 @@ public class FrameRVADAndRVA2Test extends AbstractTestCase
         assertTrue(cmp(FrameBodyRVA2Test.TEST_BYTES, (byte[]) body.getObjectValue(DataTypes.OBJ_DATA)) == null);
 
     }
+
+
+    @Test
 
 
     public void testConvertV24ToV23() throws Exception
@@ -178,6 +196,8 @@ public class FrameRVADAndRVA2Test extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testConvertV24ToV22() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -202,6 +222,9 @@ public class FrameRVADAndRVA2Test extends AbstractTestCase
         FrameBodyRVAD body = (FrameBodyRVAD) frame.getBody();
         assertTrue(body instanceof FrameBodyRVAD);
     }
+
+
+    @Test
 
 
     public void testConvertV22ToV24() throws Exception

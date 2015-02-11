@@ -1,13 +1,10 @@
 package org.jaudiotagger.issues;
 
 import org.jaudiotagger.AbstractTestCase;
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3AudioHeader;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.audio.mp3.MPEGFrameHeader;
-import org.jaudiotagger.tag.FieldKey;
-import org.jaudiotagger.tag.id3.ID3v23Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -20,6 +17,7 @@ import static org.junit.Assert.assertNull;
  */
 public class Issue028Test extends AbstractTestCase
 {
+    @Test
     public void testReadV2L3Stereo()
     {
         File orig = new File("testdata", "test97.mp3");

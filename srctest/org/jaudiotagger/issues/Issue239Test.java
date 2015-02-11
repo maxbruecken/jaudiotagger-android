@@ -1,14 +1,18 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test Deleteing comments with common interface
@@ -18,6 +22,7 @@ public class Issue239Test extends AbstractTestCase
     /**
      * Test Deleting Plain Comments
      */
+    @Test
     public void testDeletingCOMMFrames()
     {
         Exception exceptionCaught = null;
@@ -70,6 +75,7 @@ public class Issue239Test extends AbstractTestCase
     /**
      * Test Deleting  Comments with Description field
      */
+    @Test
     public void testDeletingFieldThatUsesCOMMFrames()
     {
         Exception exceptionCaught = null;
@@ -122,6 +128,7 @@ public class Issue239Test extends AbstractTestCase
     /**
      * Test Deleting  Comments with Description field only deletes the correct comments
      */
+    @Test
     public void testDeletingFieldThatUsesCOMMFramesDoesntDeleteOtherCOMMFrame()
     {
         Exception exceptionCaught = null;

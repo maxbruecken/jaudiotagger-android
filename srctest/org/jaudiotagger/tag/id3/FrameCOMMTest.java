@@ -1,11 +1,15 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyCOMM;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test POPMFrameBody
@@ -16,6 +20,7 @@ public class FrameCOMMTest extends AbstractTestCase
      * Should run without throwing Runtime excception, although COMMFrame wont be loaded and will
      * throwe invalid size exception
      */
+    @Test
     public void testReadFileContainingInvalidSizeCOMMFrame() throws Exception
     {
         Exception e = null;
@@ -35,6 +40,7 @@ public class FrameCOMMTest extends AbstractTestCase
      * Should run without throwing Runtime excception, although COMMFrame wont be loaded and will
      * throwe invalid datatype exception
      */
+    @Test
     public void testReadFileContainingInvalidTextEncodingCOMMFrame() throws Exception
     {
         Exception e = null;
@@ -54,6 +60,7 @@ public class FrameCOMMTest extends AbstractTestCase
      * Can read file containing a language code that does not actually map to a code , and write it back
      * In this real example the language code has been held as three space characters
      */
+    @Test
     public void testreadFrameContainingInvalidlanguageCodeCOMMFrame() throws Exception
     {
         final String INVALID_LANG_CODE = "   ";
@@ -81,6 +88,7 @@ public class FrameCOMMTest extends AbstractTestCase
     /**
      * Can write file containing a COMM Frame with null language code
      */
+    @Test
     public void testsaveFileContainingNullLanguageCodeCOMMFrame() throws Exception
     {
         final String SAFE_LANG_CODE = "   ";

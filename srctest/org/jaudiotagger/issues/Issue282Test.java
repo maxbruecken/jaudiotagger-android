@@ -1,18 +1,24 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.images.ArtworkFactory;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Problem when relative filename has been specified
  */
 public class Issue282Test extends AbstractTestCase
 {
+
+
+    @Test
 
 
     public void testWriteToRelativeWmaFile()
@@ -55,6 +61,8 @@ public class Issue282Test extends AbstractTestCase
 
         assertNull(exceptionCaught);
     }
+
+    @Test
 
     public void testWriteToRelativeMp3File()
        {

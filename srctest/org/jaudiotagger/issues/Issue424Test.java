@@ -1,20 +1,23 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
+import org.junit.Test;
 
 import java.io.File;
-import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test deleting track total field shouldn't delete track field
  */
 public class Issue424Test extends AbstractTestCase
 {
+    @Test
     public void testDeleteTrackTotalShouldNotEffectTrackNoMp4() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test2.m4a");
@@ -40,6 +43,8 @@ public class Issue424Test extends AbstractTestCase
         f.commit();
 
     }
+
+    @Test
 
     public void testDeleteTrackTotalShouldNotEffectTrackNoMp3() throws Exception
     {

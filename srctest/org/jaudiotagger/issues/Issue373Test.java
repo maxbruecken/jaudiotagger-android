@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -15,6 +16,7 @@ import static org.junit.Assert.assertNull;
  */
 public class Issue373Test extends AbstractTestCase
 {
+    @Test
     public void testIssue() throws Exception
     {
         Exception caught = null;

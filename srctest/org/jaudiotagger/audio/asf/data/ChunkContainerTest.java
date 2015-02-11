@@ -1,11 +1,18 @@
 package org.jaudiotagger.audio.asf.data;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * Tests the correctness of the {@link ChunkContainer} implementation.
@@ -42,6 +49,7 @@ public class ChunkContainerTest extends AbstractChunk<ChunkContainer> {
      * {@link org.jaudiotagger.audio.asf.data.ChunkContainer#addChunk(org.jaudiotagger.audio.asf.data.Chunk)}
      * .
      */
+    @Test
     public void testAddChunk() {
         final ChunkContainer container = createFilledChunk();
         long position = container.getChunks().size() + 1;
@@ -69,6 +77,7 @@ public class ChunkContainerTest extends AbstractChunk<ChunkContainer> {
      * Test method for
      * {@link org.jaudiotagger.audio.asf.data.ChunkContainer#getChunks()}.
      */
+    @Test
     public void testGetChunks() {
         /*
          * We know createFilledChunk(), so we work with all GUIDs
@@ -88,6 +97,7 @@ public class ChunkContainerTest extends AbstractChunk<ChunkContainer> {
      * {@link org.jaudiotagger.audio.asf.data.ChunkContainer#getFirst(org.jaudiotagger.audio.asf.data.GUID, java.lang.Class)}
      * .
      */
+    @Test
     public void testGetFirst() {
         final AudioStreamChunk audio = new AudioStreamChunk(BigInteger.ZERO);
         final VideoStreamChunk video = new VideoStreamChunk(BigInteger.ZERO);
@@ -111,6 +121,7 @@ public class ChunkContainerTest extends AbstractChunk<ChunkContainer> {
      * {@link org.jaudiotagger.audio.asf.data.ChunkContainer#hasChunkByGUID(org.jaudiotagger.audio.asf.data.GUID)}
      * .
      */
+    @Test
     public void testHasChunkByGUID() {
         final ChunkContainer container = createChunk(0, BigInteger.ZERO);
         final ChunkContainer container2 = createFilledChunk();

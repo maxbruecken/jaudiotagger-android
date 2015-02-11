@@ -1,15 +1,27 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.FieldKey;
-import org.jaudiotagger.tag.id3.*;
+import org.jaudiotagger.tag.id3.ID3v22Frame;
+import org.jaudiotagger.tag.id3.ID3v22Frames;
+import org.jaudiotagger.tag.id3.ID3v22Tag;
+import org.jaudiotagger.tag.id3.ID3v23Frame;
+import org.jaudiotagger.tag.id3.ID3v23Frames;
+import org.jaudiotagger.tag.id3.ID3v23Tag;
+import org.jaudiotagger.tag.id3.ID3v24Frame;
+import org.jaudiotagger.tag.id3.ID3v24Frames;
+import org.jaudiotagger.tag.id3.ID3v24Tag;
+import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test frame and Tag Equality
  */
 public class Issue036Test extends AbstractTestCase
 {
+    @Test
     public void testIDv24Frame() throws Exception
     {
         ID3v24Frame frame1 = new ID3v24Frame();
@@ -28,6 +40,8 @@ public class Issue036Test extends AbstractTestCase
         assertFalse(frame3.equals(frame5));
     }
 
+    @Test
+
     public void testAllID3v24Frames() throws Exception
     {
         for(String frameId : ID3v24Frames.getInstanceOf().getSupportedFrames())
@@ -38,6 +52,8 @@ public class Issue036Test extends AbstractTestCase
             assertTrue(frame1.equals(frame2));
         }
     }
+
+    @Test
 
     public void testIDv24Tag() throws Exception
     {
@@ -61,6 +77,9 @@ public class Issue036Test extends AbstractTestCase
     }
 
 
+    @Test
+
+
     public void testIDv23Frame() throws Exception
     {
         ID3v23Frame frame1 = new ID3v23Frame();
@@ -79,6 +98,8 @@ public class Issue036Test extends AbstractTestCase
         assertFalse(frame3.equals(frame5));
     }
 
+    @Test
+
     public void testAllID3v23Frames() throws Exception
     {
         for(String frameId : ID3v23Frames.getInstanceOf().getSupportedFrames())
@@ -89,6 +110,8 @@ public class Issue036Test extends AbstractTestCase
             assertTrue(frame1.equals(frame2));
         }
     }
+
+    @Test
 
     public void testIDv23Tag() throws Exception
     {
@@ -111,6 +134,8 @@ public class Issue036Test extends AbstractTestCase
         assertFalse(tag3.equals(tag5));
     }
 
+    @Test
+
     public void testIDv22Frame() throws Exception
     {
         ID3v22Frame frame1 = new ID3v22Frame();
@@ -129,6 +154,8 @@ public class Issue036Test extends AbstractTestCase
         assertFalse(frame3.equals(frame5));
     }
 
+    @Test
+
     public void testAllID3v22Frames() throws Exception
     {
         for(String frameId : ID3v22Frames.getInstanceOf().getSupportedFrames())
@@ -138,6 +165,8 @@ public class Issue036Test extends AbstractTestCase
             assertTrue(frame1.equals(frame2));
         }
     }
+
+    @Test
 
     public void testIDv22Tag() throws Exception
     {

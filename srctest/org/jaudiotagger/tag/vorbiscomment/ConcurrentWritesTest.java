@@ -1,6 +1,5 @@
 package org.jaudiotagger.tag.vorbiscomment;
 
-import junit.framework.TestCase;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;

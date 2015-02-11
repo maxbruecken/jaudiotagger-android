@@ -1,16 +1,19 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTOPE;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  */
 public class FrameTOPETest extends AbstractTestCase
 {
+    @Test
     public void testSavingV24ToV23() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue122.id3", "testV1.mp3");

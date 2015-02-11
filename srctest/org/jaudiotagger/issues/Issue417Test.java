@@ -5,9 +5,13 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  *
@@ -19,6 +23,7 @@ public class Issue417Test extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testWOARMultiples() throws Exception
     {
         Exception caught = null;

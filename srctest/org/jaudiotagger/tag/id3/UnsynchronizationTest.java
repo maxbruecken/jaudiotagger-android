@@ -1,6 +1,5 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import android.graphics.Bitmap;
 
 import org.jaudiotagger.AbstractTestCase;
@@ -14,12 +13,24 @@ import org.jaudiotagger.tag.id3.framebody.FrameBodyAPIC;
 import org.jaudiotagger.tag.images.Artwork;
 import org.jaudiotagger.tag.images.ArtworkFactory;
 import org.jaudiotagger.utils.BitmapUtils;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test Itunes problems
  */
+@Config(emulateSdk = 18)
+@RunWith(RobolectricTestRunner.class)
 public class UnsynchronizationTest extends AbstractTestCase
 {
     private static final int FRAME_SIZE = 2049;
@@ -29,6 +40,7 @@ public class UnsynchronizationTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testv24TagCreateFrameUnsynced() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue1.id3", "testV1.mp3");
@@ -90,6 +102,7 @@ public class UnsynchronizationTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testv23TagCreateTagUnsynced() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue1.id3", "testV1.mp3");
@@ -127,6 +140,7 @@ public class UnsynchronizationTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testv22TagCreateTagUnsynced() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue1.id3", "testV1.mp3");
@@ -160,6 +174,7 @@ public class UnsynchronizationTest extends AbstractTestCase
     /**
      * Test writing Artwork  to Mp3 ID3v23 compares not synchronized to unsynchronised
      */
+    @Test
     public void testWriteLargeunsynchronizedFields()
     {
         File testFile = null;

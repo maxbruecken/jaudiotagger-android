@@ -2,7 +2,7 @@ package org.jaudiotagger.issues;
 
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
-import org.jaudiotagger.tag.FieldKey;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class Issue409Test extends AbstractTestCase
 {
+    @Test
     public void testFindAudioHeaderWhenTagSizeIsTooShortAndHasNullPadding() throws Exception
     {
         Exception ex=null;

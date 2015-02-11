@@ -1,6 +1,7 @@
 package org.jaudiotagger.tag.wma;
 
 import junit.framework.TestCase;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;

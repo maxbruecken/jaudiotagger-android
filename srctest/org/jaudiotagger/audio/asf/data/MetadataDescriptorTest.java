@@ -1,6 +1,5 @@
 package org.jaudiotagger.audio.asf.data;
 
-import junit.framework.TestCase;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.junit.Assert;
 import org.junit.Test;

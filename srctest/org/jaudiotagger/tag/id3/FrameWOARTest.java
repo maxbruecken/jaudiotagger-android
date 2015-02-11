@@ -1,13 +1,18 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyWOAR;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import java.io.File;
 import java.net.URLEncoder;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test WOAR Frame
@@ -54,6 +59,8 @@ public class FrameWOARTest extends AbstractTestCase
         return frame;
     }
 
+    @Test
+
     public void testCreateID3v24Frame()
     {
         Exception exceptionCaught = null;
@@ -74,6 +81,8 @@ public class FrameWOARTest extends AbstractTestCase
         assertTrue(ID3v24Frames.getInstanceOf().isSupportedFrames(frame.getIdentifier()));
         assertEquals(FrameWOARTest.NORMAL_LINK, ((FrameBodyWOAR) frame.getBody()).getUrlLink());
     }
+
+    @Test
 
     public void testSaveToFile() throws Exception
     {
@@ -97,6 +106,8 @@ public class FrameWOARTest extends AbstractTestCase
         assertEquals(FrameWOARTest.NORMAL_LINK, ((FrameBodyWOAR) frame.getBody()).getUrlLink());
     }
 
+    @Test
+
     public void testCreateID3v24UnicodeFrame()
     {
         Exception exceptionCaught = null;
@@ -119,6 +130,7 @@ public class FrameWOARTest extends AbstractTestCase
     }
 
     //This fails beccause cant save Unicode to WOAR fields
+    @Test
     public void testSaveUnicodeToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -142,6 +154,7 @@ public class FrameWOARTest extends AbstractTestCase
     }
 
     //This fails beccause cant save Unicode to WOAR fields
+    @Test
     public void testSaveUnicodeToFile2() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");

@@ -1,12 +1,14 @@
 package org.jaudiotagger.tag.id3.framebody;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import static org.junit.Assert.fail;
 
 /**
  */
@@ -14,6 +16,8 @@ public class FrameBodyUSLTTest extends AbstractTestCase
 {
 
     public static final String UTF16_REQUIRED = "\u2026";
+
+    @Test
 
     public void testWriteUnicodeBody() throws IOException
     {

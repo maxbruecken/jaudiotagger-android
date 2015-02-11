@@ -15,7 +15,6 @@
  */
 package org.jaudiotagger.audio.mp3;
 
-import junit.framework.TestCase;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
 import org.jaudiotagger.tag.FieldKey;

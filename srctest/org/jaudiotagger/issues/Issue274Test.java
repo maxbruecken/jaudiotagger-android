@@ -1,11 +1,9 @@
 package org.jaudiotagger.issues;
 
 import org.jaudiotagger.AbstractTestCase;
-import org.jaudiotagger.tag.id3.ID3v22Tag;
-import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.audio.mp3.MP3File;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -19,6 +17,7 @@ public class Issue274Test extends AbstractTestCase
     /**
      * Test Flac
      */
+    @Test
     public void testReadFlac()
     {
         File orig = new File("testdata", "test54.flac");

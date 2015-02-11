@@ -1,10 +1,13 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test SyncSafe integers read correctly
@@ -14,6 +17,7 @@ public class SyncSafeIntegerTest extends AbstractTestCase
     /**
      * Ensure bytes contian value >128 are read as a postive integer rather  than a negative integer
      */
+    @Test
     public void testReadFileContainingLargeSyncSizedFrame() throws Exception
     {
         Exception e = null;

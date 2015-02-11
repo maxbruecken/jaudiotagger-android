@@ -1,12 +1,14 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertNull;
 
 /**
      * Test can read FlacTag with spec breaking PICTUREBLOCK as first block and then write chnages
@@ -18,6 +20,7 @@ public class Issue315Test extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testReadWriteTagWithPictureBlockAtStart() throws Exception
     {
         File orig = new File("testdata", "test54.flac");

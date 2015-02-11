@@ -1,10 +1,12 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * testing of reading compressed frames
@@ -14,6 +16,7 @@ public class FileClosingTest extends AbstractTestCase
     /**
      * This tests checks files are closed after reading attempt
      */
+    @Test
     public void testClosingFileAfterFailedRead()
     {
         Exception exception = null;
@@ -40,6 +43,7 @@ public class FileClosingTest extends AbstractTestCase
     /**
      * This tests checks files are closed after succesful reading attempt
      */
+    @Test
     public void testClosingFileAfterSuccessfulRead()
     {
         Exception exception = null;
@@ -66,6 +70,7 @@ public class FileClosingTest extends AbstractTestCase
     /**
      * This tests checks files are closed after failed reading attempt (read only)
      */
+    @Test
     public void testClosingFileAfterFailedReadOnly()
     {
         Exception exception = null;

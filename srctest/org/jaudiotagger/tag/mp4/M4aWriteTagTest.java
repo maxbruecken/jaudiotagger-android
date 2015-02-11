@@ -1,18 +1,20 @@
 package org.jaudiotagger.tag.mp4;
 
-import junit.framework.TestCase;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagField;
 import org.jaudiotagger.tag.TagOptionSingleton;
-import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.mp4.atom.Mp4ContentTypeValue;
 import org.jaudiotagger.tag.mp4.atom.Mp4RatingValue;
-import org.jaudiotagger.tag.mp4.field.*;
+import org.jaudiotagger.tag.mp4.field.Mp4DiscNoField;
+import org.jaudiotagger.tag.mp4.field.Mp4FieldType;
+import org.jaudiotagger.tag.mp4.field.Mp4TagCoverField;
+import org.jaudiotagger.tag.mp4.field.Mp4TagReverseDnsField;
+import org.jaudiotagger.tag.mp4.field.Mp4TagTextNumberField;
+import org.jaudiotagger.tag.mp4.field.Mp4TrackField;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

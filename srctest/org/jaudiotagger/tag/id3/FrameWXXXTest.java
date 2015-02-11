@@ -4,6 +4,7 @@ import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyWXXX;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -62,6 +63,8 @@ public class FrameWXXXTest extends AbstractTestCase
         return frame;
     }
 
+    @Test
+
     public void testCreateID3v24Frame()
     {
         Exception exceptionCaught = null;
@@ -82,6 +85,8 @@ public class FrameWXXXTest extends AbstractTestCase
         assertTrue(ID3v24Frames.getInstanceOf().isSupportedFrames(frame.getIdentifier()));
         assertEquals(NORMAL_LINK, ((FrameBodyWXXX) frame.getBody()).getUrlLink());
     }
+
+    @Test
 
     public void testSaveToFile() throws Exception
     {
@@ -104,6 +109,8 @@ public class FrameWXXXTest extends AbstractTestCase
         assertTrue(ID3v24Frames.getInstanceOf().isSupportedFrames(frame.getIdentifier()));
         assertEquals(NORMAL_LINK, ((FrameBodyWXXX) frame.getBody()).getUrlLink());
     }
+
+    @Test
 
     public void testCreateID3v24UnicodeFrame()
     {
@@ -131,6 +138,7 @@ public class FrameWXXXTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testSaveUnicodeToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -158,6 +166,7 @@ public class FrameWXXXTest extends AbstractTestCase
      *
      * @throws Exception
      */
+    @Test
     public void testSaveUnicodeToFile2() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -179,6 +188,9 @@ public class FrameWXXXTest extends AbstractTestCase
         assertTrue(ID3v24Frames.getInstanceOf().isSupportedFrames(frame.getIdentifier()));
         assertEquals(UNICODE_ENCODED, ((FrameBodyWXXX) frame.getBody()).getUrlLink());
     }
+
+
+    @Test
 
 
     public void testEncodeURL() throws UnsupportedEncodingException

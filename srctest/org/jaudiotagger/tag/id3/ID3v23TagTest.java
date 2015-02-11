@@ -369,6 +369,7 @@ public class ID3v23TagTest {
      * @throws Exception
      */
     /*
+    @Test
     public void testCreateID3v23FromID3v24UnknownInV3AndV4()throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");

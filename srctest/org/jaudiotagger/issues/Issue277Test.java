@@ -1,14 +1,18 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.mp4.Mp4FieldKey;
 import org.jaudiotagger.tag.mp4.Mp4Tag;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test writing booleans to mp4
@@ -19,6 +23,7 @@ public class Issue277Test extends AbstractTestCase
     /**
      * Set isCompilation
      */
+    @Test
     public void testSetIsCompilation()
     {
         File orig = new File("testdata", "test1.m4a");
@@ -57,6 +62,7 @@ public class Issue277Test extends AbstractTestCase
     /**
      * Set isCompilation new way
      */
+    @Test
     public void testSetIsCompilation2()
     {
         File orig = new File("testdata", "test1.m4a");
@@ -95,6 +101,7 @@ public class Issue277Test extends AbstractTestCase
     /**
      * Set isCompilation and rating fields
      */
+    @Test
     public void testSetRating()
     {
         File orig = new File("testdata", "test1.m4a");
@@ -134,6 +141,7 @@ public class Issue277Test extends AbstractTestCase
      /**
      * Set rating is one byte but not true and false so should fail
      */
+    @Test
     public void testSetRating2()
     {
         File orig = new File("testdata", "test1.m4a");

@@ -1,9 +1,12 @@
 package org.jaudiotagger.tag.id3.framebody;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.datatype.DataTypes;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test RVA2FrameBody
@@ -35,6 +38,8 @@ public class FrameBodyRVA2Test extends AbstractTestCase
         return bs;
     }
 
+    @Test
+
     public void testCreateFrameBody()
     {
         Exception exceptionCaught = null;
@@ -51,6 +56,8 @@ public class FrameBodyRVA2Test extends AbstractTestCase
         assertNull(exceptionCaught);
 
     }
+
+    @Test
 
     public void testCreateFrameBodyEmptyConstructor()
     {

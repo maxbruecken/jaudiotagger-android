@@ -1,6 +1,7 @@
 package org.jaudiotagger.issues;
 
 import org.jaudiotagger.AbstractTestCase;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -11,6 +12,7 @@ import static org.junit.Assert.assertNull;
  */
 public class Issue370Test extends AbstractTestCase
 {
+    @Test
     public void testIssue() throws Exception
     {
         Exception caught = null;

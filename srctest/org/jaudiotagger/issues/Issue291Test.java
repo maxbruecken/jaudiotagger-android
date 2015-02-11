@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp4.Mp4AtomTree;
 import org.jaudiotagger.tag.FieldKey;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.RandomAccessFile;
@@ -17,6 +18,7 @@ import static org.junit.Assert.assertNull;
  */
 public class Issue291Test extends AbstractTestCase
 {
+    @Test
     public void testSavingFile()
     {
         File orig = new File("testdata", "test83.mp4");
@@ -48,6 +50,9 @@ public class Issue291Test extends AbstractTestCase
 
         assertNull(exceptionCaught);
     }
+
+
+    @Test
 
 
     public void testPrintAtomTree()

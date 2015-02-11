@@ -6,6 +6,7 @@ import org.jaudiotagger.tag.KeyNotFoundException;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.id3.ID3v11Tag;
 import org.jaudiotagger.tag.id3.ID3v1Tag;
+import org.junit.Test;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -15,6 +16,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue403Test extends AbstractTestCase
 {
+    @Test
     public void testSetInvalidField() throws Exception
     {
         Exception caught = null;
@@ -30,6 +32,8 @@ public class Issue403Test extends AbstractTestCase
         }
         assertTrue(caught instanceof KeyNotFoundException);
     }
+
+    @Test
 
     public void testAddInvalidField() throws Exception
     {
@@ -47,6 +51,8 @@ public class Issue403Test extends AbstractTestCase
         assertTrue(caught instanceof KeyNotFoundException);
     }
 
+    @Test
+
     public void testCreateInvalidField() throws Exception
     {
         Exception caught = null;
@@ -62,6 +68,8 @@ public class Issue403Test extends AbstractTestCase
         }
         assertTrue(caught instanceof KeyNotFoundException);
     }
+
+    @Test
 
     public void testDeleteInvalidField() throws Exception
     {
@@ -80,6 +88,8 @@ public class Issue403Test extends AbstractTestCase
         assertNull(caught);
     }
 
+    @Test
+
     public void testSetInvalidFieldV11() throws Exception
     {
         Exception caught = null;
@@ -95,6 +105,8 @@ public class Issue403Test extends AbstractTestCase
         }
         assertTrue(caught instanceof KeyNotFoundException);
     }
+
+    @Test
 
     public void testAddInvalidFieldV11() throws Exception
     {
@@ -112,6 +124,8 @@ public class Issue403Test extends AbstractTestCase
         assertTrue(caught instanceof KeyNotFoundException);
     }
 
+    @Test
+
     public void testCreateInvalidFieldV11() throws Exception
     {
         Exception caught = null;
@@ -127,6 +141,8 @@ public class Issue403Test extends AbstractTestCase
         }
         assertTrue(caught instanceof KeyNotFoundException);
     }
+
+    @Test
 
     public void testDeleteInvalidFieldV11() throws Exception
     {

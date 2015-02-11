@@ -9,6 +9,7 @@ import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
 import org.jaudiotagger.tag.images.Artwork;
 import org.jaudiotagger.tag.images.ArtworkFactory;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.List;
@@ -21,6 +22,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue356Test extends AbstractTestCase
 {
+    @Test
     public void testWritingLinkedUrlToID3v24() throws Exception
     {
         AudioFile audioFile;
@@ -42,6 +44,8 @@ public class Issue356Test extends AbstractTestCase
         assertEquals(IMAGE_URL, onlyArt.getImageUrl());
     }
 
+     @Test
+
      public void testWritingLinkedUrlToID3v23() throws Exception
     {
         AudioFile audioFile;
@@ -62,6 +66,8 @@ public class Issue356Test extends AbstractTestCase
         assertTrue(onlyArt.isLinked());
         assertEquals(IMAGE_URL, onlyArt.getImageUrl());
     }
+
+     @Test
 
      public void testWritingLinkedUrlToID3v22() throws Exception
     {

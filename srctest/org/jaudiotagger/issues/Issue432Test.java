@@ -3,6 +3,7 @@ package org.jaudiotagger.issues;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -15,6 +16,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue432Test extends AbstractTestCase
 {
+    @Test
     public void testGetBitsPerSampleFlac()
     {
         Throwable e = null;
@@ -30,6 +32,8 @@ public class Issue432Test extends AbstractTestCase
         }
         assertNull(e);
     }
+
+    @Test
 
     public void testGetBitsPerSampleMp4()
     {
@@ -47,6 +51,8 @@ public class Issue432Test extends AbstractTestCase
         assertNull(e);
     }
 
+    @Test
+
     public void testGetBitsPerSampleOgg()
     {
         Throwable e = null;
@@ -63,6 +69,8 @@ public class Issue432Test extends AbstractTestCase
         assertNull(e);
     }
 
+    @Test
+
     public void testGetBitsPerSampleWma()
     {
         Throwable e = null;
@@ -78,6 +86,8 @@ public class Issue432Test extends AbstractTestCase
         }
         assertNull(e);
     }
+
+    @Test
 
     public void testGetBitsPerSampleMp3()
     {

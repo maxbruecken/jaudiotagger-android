@@ -3,6 +3,7 @@ package org.jaudiotagger.tag.id3;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTPE1;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -11,6 +12,7 @@ import static org.junit.Assert.assertNull;
  */
 public class FrameTIT1Test extends AbstractTestCase
 {
+    @Test
     public void testID3Specific() throws Exception
     {
         Exception e=null;

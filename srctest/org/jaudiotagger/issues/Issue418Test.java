@@ -7,6 +7,7 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.mp4.Mp4FieldKey;
 import org.jaudiotagger.tag.mp4.Mp4Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -17,6 +18,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class Issue418Test extends AbstractTestCase
 {
+    @Test
     public void testGetCustomGenreField() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.m4a");

@@ -14,6 +14,7 @@ import org.jaudiotagger.tag.id3.framebody.FrameBodyTCON;
 import org.jaudiotagger.tag.mp4.Mp4FieldKey;
 import org.jaudiotagger.tag.mp4.Mp4Tag;
 import org.jaudiotagger.tag.reference.ID3V2Version;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.List;
@@ -27,6 +28,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue173Test extends AbstractTestCase
 {
+    @Test
     public void testMp4GenresUsingGenericInterface()
     {
         File orig = new File("testdata", "01.m4a");
@@ -112,6 +114,8 @@ public class Issue173Test extends AbstractTestCase
         }
     }
 
+    @Test
+
     public void testMp4GenresUsingMp4Interface()
     {
         File orig = new File("testdata", "01.m4a");
@@ -148,6 +152,8 @@ public class Issue173Test extends AbstractTestCase
         }
     }
 
+    @Test
+
     public void testMp4InvalidGenresUsingMp4Interface()
     {
         File orig = new File("testdata", "01.m4a");
@@ -174,6 +180,8 @@ public class Issue173Test extends AbstractTestCase
             assertTrue(ex.getMessage().equals(ErrorMessage.NOT_STANDARD_MP$_GENRE.getMsg()));
         }
     }
+
+    @Test
 
     public void testMp3ID3v24sGenresUsingGenericInterface()
     {
@@ -264,6 +272,9 @@ public class Issue173Test extends AbstractTestCase
     }
 
 
+    @Test
+
+
     public void testMp3ID3v22sGenresUsingGenericInterface()
     {
         File orig = new File("testdata", "01.mp3");
@@ -347,6 +358,8 @@ public class Issue173Test extends AbstractTestCase
         }
         assertNull(e);
     }
+
+    @Test
 
     public void testMp3ID3v23sGenresUsingGenericInterface()
     {

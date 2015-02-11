@@ -1,14 +1,18 @@
 package org.jaudiotagger.tag.wav;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.generic.GenericTag;
 import org.jaudiotagger.audio.wav.WavTag;
 import org.jaudiotagger.tag.FieldKey;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * User: paul
@@ -16,6 +20,7 @@ import java.io.File;
  */
 public class WavSimpleTest extends AbstractTestCase
 {
+    @Test
     public void testReadFile()
     {
         Exception exceptionCaught = null;
@@ -49,6 +54,8 @@ public class WavSimpleTest extends AbstractTestCase
         }
         assertNull(exceptionCaught);
     }
+
+    @Test
 
     public void testRead24BitFile()
     {
@@ -92,6 +99,7 @@ public class WavSimpleTest extends AbstractTestCase
     }
 
     /* Doesnt support writing currently
+     @Test
      public void testWriteFile()
     {
         Exception exceptionCaught = null;

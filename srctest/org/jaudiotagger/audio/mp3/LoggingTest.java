@@ -1,21 +1,21 @@
 package org.jaudiotagger.audio.mp3;
 
-import junit.framework.TestCase;
 import org.jaudiotagger.AbstractTestCase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
+import java.io.File;
+import java.io.StringReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
-import java.io.File;
-import java.io.StringReader;
-import java.util.Date;
-import java.util.Locale;
-import java.text.SimpleDateFormat;
 
 
 /**

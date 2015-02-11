@@ -2,6 +2,7 @@ package org.jaudiotagger.issues;
 
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -11,6 +12,8 @@ import static org.junit.Assert.assertEquals;
 public class Issue248Test extends AbstractTestCase
 {
     public static int countExceptions =0;
+
+    @Test
     public void testMultiThreadedMP3HeaderAccess() throws Exception
     {
         final File testFile = AbstractTestCase.copyAudioToTmp("testV1vbrOld0.mp3");

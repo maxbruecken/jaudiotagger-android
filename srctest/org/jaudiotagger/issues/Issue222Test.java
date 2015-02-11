@@ -1,11 +1,14 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test read m4a without udta/meta atom
@@ -15,6 +18,7 @@ public class Issue222Test extends AbstractTestCase
     /**
      * Test read mp4 with meta but not udata atom
      */
+    @Test
     public void testreadMp4WithoutUUuidButNoUdta()
     {
         File orig = new File("testdata", "test4.m4a");

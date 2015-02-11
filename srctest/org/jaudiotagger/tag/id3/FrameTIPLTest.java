@@ -1,13 +1,19 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
-import org.jaudiotagger.tag.id3.framebody.*;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyIPLS;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyTIPL;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyTIPLTest;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import java.io.File;
-import java.util.Iterator;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test TIPL Frame
@@ -38,6 +44,8 @@ public class FrameTIPLTest extends AbstractTestCase
         return frame;
     }
 
+    @Test
+
     public void testCreateID3v24Frame()
     {
         Exception exceptionCaught = null;
@@ -63,6 +71,8 @@ public class FrameTIPLTest extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testCreateID3v23Frame()
     {
         Exception exceptionCaught = null;
@@ -87,6 +97,8 @@ public class FrameTIPLTest extends AbstractTestCase
         assertEquals(FrameBodyTIPLTest.INVOLVED_PEOPLE, fb.getText());
     }
 
+    @Test
+
     public void testSaveToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3",new File("test1016.mp3"));
@@ -105,6 +117,8 @@ public class FrameTIPLTest extends AbstractTestCase
         assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
     }
 
+    @Test
+
     public void testSaveToFileOdd() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3",new File("test1016.mp3"));
@@ -122,6 +136,8 @@ public class FrameTIPLTest extends AbstractTestCase
         FrameBodyTIPL body = (FrameBodyTIPL) frame.getBody();
         assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
     }
+
+    @Test
 
     public void testSaveEmptyFrameToFile() throws Exception
     {
@@ -143,6 +159,8 @@ public class FrameTIPLTest extends AbstractTestCase
         FrameBodyTIPL body = (FrameBodyTIPL) frame.getBody();
         assertEquals(TextEncoding.ISO_8859_1, body.getTextEncoding());
     }
+
+    @Test
 
     public void testConvertV24ToV23() throws Exception
     {

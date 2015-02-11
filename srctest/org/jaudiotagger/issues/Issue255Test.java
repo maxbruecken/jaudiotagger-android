@@ -1,15 +1,19 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.mp4.Mp4AtomTree;
 import org.jaudiotagger.tag.FieldKey;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.RandomAccessFile;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test Writing to new urls with common interface
@@ -19,6 +23,7 @@ public class Issue255Test extends AbstractTestCase
     /**
      * Test Mp4 with padding after last atom
      */
+    @Test
     public void testReadMp4FileWithPaddingAfterLastAtom()
     {
         File orig = new File("testdata", "test35.m4a");                 
@@ -66,6 +71,7 @@ public class Issue255Test extends AbstractTestCase
      * Test to write all data to a m4p which has a padding but no MDAT Dat aso fails on read
      * <p/>    
      */
+    @Test
     public void testReadFileWithInvalidPadding()
     {
         File orig = new File("testdata", "test28.m4p");
@@ -93,6 +99,7 @@ public class Issue255Test extends AbstractTestCase
     /**
      * Test Mp4 with padding after last atom
      */
+    @Test
     public void testWriteMp4FileWithPaddingAfterLastAtom()
     {
         File orig = new File("testdata", "test35.m4a");

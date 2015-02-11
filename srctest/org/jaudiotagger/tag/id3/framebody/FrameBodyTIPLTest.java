@@ -3,6 +3,7 @@ package org.jaudiotagger.tag.id3.framebody;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -29,6 +30,8 @@ public class FrameBodyTIPLTest extends AbstractTestCase
         return fb;
     }
 
+    @Test
+
     public void testCreateFrameBody()
     {
         Exception exceptionCaught = null;
@@ -53,6 +56,8 @@ public class FrameBodyTIPLTest extends AbstractTestCase
         assertEquals("eno,lanois",fb.getValueAtIndex(0));
 
     }
+
+    @Test
 
     public void testCreateFrameBodyodd()
     {
@@ -79,6 +84,7 @@ public class FrameBodyTIPLTest extends AbstractTestCase
         assertEquals("eno,lanois",fb.getValueAtIndex(0));
 
     }
+    @Test
     public void testCreateFrameBodyEmptyConstructor()
     {
         Exception exceptionCaught = null;
@@ -99,6 +105,8 @@ public class FrameBodyTIPLTest extends AbstractTestCase
         assertEquals(FrameBodyTIPLTest.INVOLVED_PEOPLE, fb.getText());
 
     }
+
+     @Test
 
      public void testCreateFromIPLS()
     {

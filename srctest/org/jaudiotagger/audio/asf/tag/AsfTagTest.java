@@ -1,6 +1,5 @@
 package org.jaudiotagger.audio.asf.tag;
 
-import junit.framework.TestCase;
 import org.jaudiotagger.tag.FieldDataInvalidException;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagField;

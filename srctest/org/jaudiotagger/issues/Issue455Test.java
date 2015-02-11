@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagField;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -16,6 +17,7 @@ import static org.junit.Assert.assertNull;
  */
 public class Issue455Test extends AbstractTestCase
 {
+    @Test
     public void testMp4IsCompilationTrue() throws Exception
     {
         File orig = new File("testdata", "test1.m4a");
@@ -49,6 +51,9 @@ public class Issue455Test extends AbstractTestCase
         assertEquals("1",mp4File.getTag().getFirst(FieldKey.IS_COMPILATION));
 
     }
+
+
+    @Test
 
 
     public void testMp4IsCompilationTrue2() throws Exception
@@ -88,6 +93,9 @@ public class Issue455Test extends AbstractTestCase
     }
 
 
+    @Test
+
+
     public void testMp4IsCompilationFalse() throws Exception
     {
         File orig = new File("testdata", "test1.m4a");
@@ -119,6 +127,8 @@ public class Issue455Test extends AbstractTestCase
         mp4File = AudioFileIO.read(testFile);
         assertEquals("0",mp4File.getTag().getFirst(FieldKey.IS_COMPILATION));
     }
+
+    @Test
 
     public void testMp4IsCompilationFalse2() throws Exception
     {
@@ -153,6 +163,8 @@ public class Issue455Test extends AbstractTestCase
         assertEquals("0",mp4File.getTag().getFirst(FieldKey.IS_COMPILATION));
     }
 
+    @Test
+
     public void testMp3IsCompilationTrue() throws Exception
     {
 
@@ -182,6 +194,7 @@ public class Issue455Test extends AbstractTestCase
     }
 
     /** set properly when use function */
+    @Test
     public void testMp3IsCompilationTrue2() throws Exception
     {
         AudioFile mp3File = null;
@@ -210,6 +223,9 @@ public class Issue455Test extends AbstractTestCase
         assertEquals("1",mp3File.getTagOrCreateAndSetDefault().getFirst(FieldKey.IS_COMPILATION));
 
     }
+
+
+    @Test
 
 
     public void testMp3IsCompilationFalse() throws Exception

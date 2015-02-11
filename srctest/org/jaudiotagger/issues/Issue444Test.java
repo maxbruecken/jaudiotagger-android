@@ -10,6 +10,7 @@ import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
 import org.jaudiotagger.tag.id3.TyerTdatAggregatedFrame;
 import org.jaudiotagger.tag.reference.ID3V2Version;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.Iterator;
@@ -23,6 +24,7 @@ import static org.junit.Assert.assertNull;
  */
 public class Issue444Test extends AbstractTestCase
 {
+    @Test
     public void testFullDateWrittenToID3v24()
     {
 
@@ -45,6 +47,8 @@ public class Issue444Test extends AbstractTestCase
             ex.printStackTrace();
         }
     }
+
+    @Test
 
     public void testFullDateWrittenToID3v23NeedsToBeSplitIntoFrames()
     {
@@ -86,6 +90,8 @@ public class Issue444Test extends AbstractTestCase
         }
     }
 
+    @Test
+
     public void testYearAndMonthWrittenToID3v23NeedsToBeSplitIntoFrames()
     {
         try
@@ -126,6 +132,8 @@ public class Issue444Test extends AbstractTestCase
         }
     }
 
+    @Test
+
     public void testYearWrittenToID3v23NeedsToBePutInTyerFrame()
     {
         try
@@ -156,6 +164,8 @@ public class Issue444Test extends AbstractTestCase
         }
     }
 
+    @Test
+
     public void testInvalidYearNotWrittenToID3v23()
     {
         Exception e=null;
@@ -176,6 +186,8 @@ public class Issue444Test extends AbstractTestCase
         }
         assertNull(e);
     }
+
+    @Test
 
     public void testDuplicates()
     {

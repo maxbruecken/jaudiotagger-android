@@ -1,10 +1,13 @@
 package org.jaudiotagger.tag.id3.framebody;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
+import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
-import org.jaudiotagger.tag.TagOptionSingleton;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test TRCKFrameBody
@@ -22,6 +25,8 @@ public class FrameBodyTRCKTest extends AbstractTestCase
         fb.setTrackTotal(11);
         return fb;
     }
+
+    @Test
 
     public void testCreateFrameBodyStringConstructor()
     {
@@ -48,6 +53,8 @@ public class FrameBodyTRCKTest extends AbstractTestCase
 
     }
 
+     @Test
+
      public void testCreateFrameBodyIntegerConstructor()
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -73,6 +80,8 @@ public class FrameBodyTRCKTest extends AbstractTestCase
 
     }
 
+    @Test
+
     public void testCreateFrameBodyEmptyConstructor()
     {
         Exception exceptionCaught = null;
@@ -93,6 +102,8 @@ public class FrameBodyTRCKTest extends AbstractTestCase
         assertNull(fb.getTrackNo());
         assertNull(fb.getTrackTotal());
     }
+
+    @Test
 
     public void testCreateFrameBodyTrackOnly()
     {
@@ -118,6 +129,8 @@ public class FrameBodyTRCKTest extends AbstractTestCase
         assertNull(fb.getTrackTotal());
     }
 
+    @Test
+
     public void testCreateFrameBodyTotalOnly()
    {
        Exception exceptionCaught = null;
@@ -140,6 +153,8 @@ public class FrameBodyTRCKTest extends AbstractTestCase
        assertEquals(11,fb.getTrackTotal().intValue());
 
    }
+
+      @Test
 
       public void testCreateFrameBodyWithPadding()
     {
@@ -164,6 +179,8 @@ public class FrameBodyTRCKTest extends AbstractTestCase
         assertEquals("01/11", fb.getText());
 
     }
+
+      @Test
 
       public void testCreateFrameBodyWithPaddingTwo()
     {
@@ -190,21 +207,28 @@ public class FrameBodyTRCKTest extends AbstractTestCase
     }
 
       // specify the value as a string with no padding. getText should still return with padding
+      @Test
       public void testCreateFrameBodyWithPaddedRawTextCount()
       {
      	 createFrameBodyAndAssertNumericValuesAndRawPaddingRetained("01/11", 1, 11);
       }
       
+      @Test
+
       public void testCreateFrameBodyWithUnpaddedRawTextCount()
       {
      	 createFrameBodyAndAssertNumericValuesAndRawPaddingRetained("1/11", 1, 11);
       }
+
+      @Test
 
       public void testCreateFrameBodyWithPaddedRawTextTotal()
       {
      	 createFrameBodyAndAssertNumericValuesAndRawPaddingRetained("1/03", 1, 3);
       }
       
+      @Test
+
       public void testCreateFrameBodyWithUnpaddedRawTextTotal()
       {
      	 createFrameBodyAndAssertNumericValuesAndRawPaddingRetained("1/3", 1, 3);

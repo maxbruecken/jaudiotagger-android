@@ -1,13 +1,16 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodySYLT;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTPE1;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class FrameSYLTTest extends AbstractTestCase
 {
@@ -16,6 +19,9 @@ public class FrameSYLTTest extends AbstractTestCase
     private static final int TEXT_ENCODING_KEY = 1;
     private static final int TIMESTAMP_FORMAT_KEY = 1;
     private static final int CONTENT_TYPE_KEY = 2;
+
+
+    @Test
 
 
     public void testWriteFrame() throws Exception

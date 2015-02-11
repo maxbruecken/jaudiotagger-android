@@ -1,26 +1,37 @@
 package org.jaudiotagger.issues;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.Tag;
-import org.jaudiotagger.tag.images.Artwork;
 import org.jaudiotagger.tag.id3.valuepair.ImageFormats;
+import org.jaudiotagger.tag.images.Artwork;
 import org.jaudiotagger.tag.images.ArtworkFactory;
 import org.jaudiotagger.tag.images.Images;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
   Vorbis Comment reading new Image Format
 */
+@Config(emulateSdk = 18)
+@RunWith(RobolectricTestRunner.class)
 public class Issue286Test extends AbstractTestCase
 {
     /*
      * TestRead Vorbis COverArt One
      * @throws Exception
      */
+    @Test
     public void testReadVorbisCoverartOne() throws Exception
     {
         File file = new File("testdata", "test76.ogg");
@@ -39,6 +50,7 @@ public class Issue286Test extends AbstractTestCase
      * TestRead Vorbis CoverArt Two
      * @throws Exception
      */
+    @Test
     public void testReadVorbisCoverartTwo() throws Exception
     {
         File file = new File("testdata", "test77.ogg");
@@ -56,6 +68,7 @@ public class Issue286Test extends AbstractTestCase
     /**
      * Test reading/writing artwork to Ogg
      */
+    @Test
     public void testReadWriteArtworkFieldsToOggVorbis()
     {
         File testFile = null;

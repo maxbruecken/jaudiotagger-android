@@ -4,6 +4,7 @@ import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodySYTC;
 import org.jaudiotagger.tag.id3.framebody.FrameBodySYTCTest;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.Iterator;
@@ -25,6 +26,8 @@ public class FrameSYTCTest extends AbstractTestCase
         frame.setBody(fb);
         return frame;
     }
+
+    @Test
 
     public void testSaveToFile() throws Exception
     {
@@ -56,6 +59,8 @@ public class FrameSYTCTest extends AbstractTestCase
         assertFalse(reference.hasNext());
         assertFalse(loaded.hasNext());
     }
+
+    @Test
 
     public void testSaveEmptyFrameToFile() throws Exception
     {

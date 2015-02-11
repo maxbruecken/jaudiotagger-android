@@ -1,8 +1,12 @@
 package org.jaudiotagger.tag.id3.framebody;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test APICFrameBody
@@ -17,6 +21,9 @@ public class FrameBodyAPICTest extends AbstractTestCase
         fb.setDescription(DESCRIPTION);
         return fb;
     }
+
+
+    @Test
 
 
     public void testCreateFrameBody()
@@ -37,6 +44,8 @@ public class FrameBodyAPICTest extends AbstractTestCase
         assertTrue(fb.getDescription() == null);
 
     }
+
+    @Test
 
     public void testCreateFrameBodyEmptyConstructor()
     {

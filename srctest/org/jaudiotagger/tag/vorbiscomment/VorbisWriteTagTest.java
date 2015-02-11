@@ -1,6 +1,5 @@
 package org.jaudiotagger.tag.vorbiscomment;
 
-import static org.junit.Assert.*;
 import android.graphics.Bitmap;
 
 import org.jaudiotagger.AbstractTestCase;
@@ -12,19 +11,31 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagField;
 import org.jaudiotagger.tag.vorbiscomment.util.Base64Coder;
 import org.jaudiotagger.utils.BitmapUtils;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Vorbis Write tsgs
  */
+@Config(emulateSdk = 18)
+@RunWith(RobolectricTestRunner.class)
 public class VorbisWriteTagTest extends AbstractTestCase
 {
     /**
      * Can summarize file
      */
+    @Test
     public void testSummarizeFile()
     {
         Exception exceptionCaught = null;
@@ -48,6 +59,7 @@ public class VorbisWriteTagTest extends AbstractTestCase
     /**
      * Testing of writing various fields
      */
+    @Test
     public void testWriteTagToFile()
     {
         Exception exceptionCaught = null;
@@ -235,6 +247,7 @@ public class VorbisWriteTagTest extends AbstractTestCase
     /**
      * Test writing to file, comments too large to fit on single page anymore
      */
+    @Test
     public void testWriteToFileMuchLarger()
     {
         File orig = new File("testdata", "test.ogg");
@@ -293,6 +306,7 @@ public class VorbisWriteTagTest extends AbstractTestCase
     /**
      * Test writing to file, comments too large to fit on single page anymore, and also setup header gets split
      */
+    @Test
     public void testWriteToFileMuchLargerSetupHeaderSplit()
     {
         File orig = new File("testdata", "test.ogg");
@@ -355,6 +369,7 @@ public class VorbisWriteTagTest extends AbstractTestCase
      * Issue 197, test writing to file when audio packet come straight after setup packet on same oggPage, edit so
      * comment data is changed but size of comment header is same length
      */
+    @Test
     public void testWriteToFileWithExtraPacketsOnSamePageAsSetupHeader()
     {
         File orig = new File("testdata", "test2.ogg");
@@ -413,6 +428,7 @@ public class VorbisWriteTagTest extends AbstractTestCase
      * Issue 197, test writing to file when audio packet come straight after setup packet on same oggPage, edit enough
      * so that comment is larger, but the comment, header and extra packets can still all fit on page 2
      */
+    @Test
     public void testWriteToFileWithExtraPacketsOnSamePageAsSetupHeaderLarger()
     {
         File orig = new File("testdata", "test2.ogg");
@@ -470,6 +486,7 @@ public class VorbisWriteTagTest extends AbstractTestCase
      * Issue 197, test writing to file when audio packet come straight after setup packet on same oggPage, edit enough
      * so that comment is much larger, so that comment, header and extra packets can no longer fit on page 2
      */
+    @Test
     public void testWriteToFileWithExtraPacketsOnSamePageAsSetupHeaderMuchLarger()
     {
         File orig = new File("testdata", "test2.ogg");
@@ -530,6 +547,7 @@ public class VorbisWriteTagTest extends AbstractTestCase
      * so that comment is much larger, so that comment, header and extra packets can no longer fit on page 2 AND
      * setup header is also split over two
      */
+    @Test
     public void testWriteToFileWithExtraPacketsOnSamePageAsSetupHeaderMuchLargerAndSplit()
     {
         File orig = new File("testdata", "test2.ogg");
@@ -593,6 +611,7 @@ public class VorbisWriteTagTest extends AbstractTestCase
     /**
      * Test writing to file, comments was too large for one page but not anymore
      */
+    @Test
     public void testWriteToFileNoLongerRequiresTwoPages()
     {
         File orig = new File("testdata", "test3.ogg");
@@ -647,6 +666,7 @@ public class VorbisWriteTagTest extends AbstractTestCase
     /**
      * Test writing to file, comments was too large for one page and setup header split but not anymore
      */
+    @Test
     public void testWriteToFileNoLongerRequiresTwoPagesNorSplit()
     {
         File orig = new File("testdata", "test5.ogg");
@@ -700,6 +720,7 @@ public class VorbisWriteTagTest extends AbstractTestCase
     /**
      * Test writing to file, comments was too large for one page but not anymore
      */
+    @Test
     public void testWriteToFileWriteToFileWithExtraPacketsNoLongerRequiresTwoPages()
     {
         File orig = new File("testdata", "test4.ogg");
@@ -752,6 +773,8 @@ public class VorbisWriteTagTest extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
+
     public void testDeleteTag() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.ogg", new File("testDelete.ogg"));
@@ -764,6 +787,8 @@ public class VorbisWriteTagTest extends AbstractTestCase
         assertEquals("jaudiotagger", ((VorbisCommentTag) f.getTag()).getVendor());
     }
 
+    @Test
+
     public void testDeleteTag2() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.ogg", new File("testDelete2.ogg"));
@@ -774,6 +799,8 @@ public class VorbisWriteTagTest extends AbstractTestCase
         assertTrue(f.getTag().isEmpty());
         assertEquals("jaudiotagger", ((VorbisCommentTag) f.getTag()).getVendor());
     }
+
+    @Test
 
     public void testWriteMultipleFields() throws Exception
     {
@@ -786,6 +813,8 @@ public class VorbisWriteTagTest extends AbstractTestCase
         List<TagField> tagFields = f.getTag().getFields(FieldKey.ALBUM_ARTIST);
         assertEquals(tagFields.size(),2);
     }
+
+     @Test
 
      public void testDeleteFields() throws Exception
     {

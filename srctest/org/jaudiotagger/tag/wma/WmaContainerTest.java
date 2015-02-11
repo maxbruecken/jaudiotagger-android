@@ -1,20 +1,20 @@
 package org.jaudiotagger.tag.wma;
 
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.asf.data.Chunk;
+import org.jaudiotagger.audio.asf.data.GUID;
 import org.jaudiotagger.audio.asf.data.MetadataContainer;
 import org.jaudiotagger.audio.asf.data.MetadataContainerUtils;
+import org.jaudiotagger.audio.asf.io.AsfHeaderUtils;
 import org.jaudiotagger.audio.asf.io.MetadataReader;
 import org.jaudiotagger.audio.asf.util.Utils;
+import org.junit.Test;
 
-import org.jaudiotagger.audio.AudioFile;
-
-import org.jaudiotagger.audio.AudioFileIO;
-
-import org.jaudiotagger.audio.asf.data.GUID;
-
-import org.jaudiotagger.audio.asf.io.AsfHeaderUtils;
-
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 
 /**
@@ -29,6 +29,8 @@ public class WmaContainerTest extends WmaTestCase {
         super(TEST_FILE);
     }
 
+    @Test
+
     public void testExtContentAfterWrite() throws Exception {
         File prepareTestFile = prepareTestFile(null);
         AudioFile read = AudioFileIO.read(prepareTestFile);
@@ -39,6 +41,8 @@ public class WmaContainerTest extends WmaTestCase {
         assertTrue(Arrays.equals(ext, ext2));
 //        assertEquals(ext, ext2);
     }
+
+    @Test
 
     public void testReadWriteEquality() throws IOException {
         File prepareTestFile = prepareTestFile(null);

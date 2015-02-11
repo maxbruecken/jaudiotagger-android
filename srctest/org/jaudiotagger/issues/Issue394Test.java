@@ -6,12 +6,14 @@ import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.id3.AbstractTag;
 import org.jaudiotagger.tag.id3.ID3v1Tag;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
+import org.junit.Test;
 
 import static org.junit.Assert.assertNull;
 
 
 public class Issue394Test extends AbstractTestCase
 {
+    @Test
     public void testCreatingID3v1TagfromID3v2tagWithMultipleComments() throws Exception
     {
         Exception caught = null;

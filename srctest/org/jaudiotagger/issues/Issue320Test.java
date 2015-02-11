@@ -4,6 +4,7 @@ import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -18,6 +19,7 @@ public class Issue320Test extends AbstractTestCase
      * Test File Equality
      * @throws Exception
      */
+    @Test
     public void testTagEquality() throws Exception
     {
         File orig = new File("testdata", "test26.mp3");

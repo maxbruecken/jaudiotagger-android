@@ -7,6 +7,7 @@ import org.jaudiotagger.tag.id3.ID3v23Frame;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTXXX;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.Iterator;
@@ -19,6 +20,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue446Test extends AbstractTestCase
 {
+    @Test
     public void testReadReplayGain() throws Exception
     {
         boolean isMatchedPeak=false;
@@ -56,6 +58,8 @@ public class Issue446Test extends AbstractTestCase
         assertTrue(isMatchedPeak);
         assertTrue(isMatchedGain);
     }
+
+    @Test
 
     public void testWriteReplayGain() throws Exception
     {

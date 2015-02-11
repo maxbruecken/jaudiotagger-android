@@ -1,19 +1,15 @@
 package org.jaudiotagger.issues;
 
 import org.jaudiotagger.AbstractTestCase;
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
-import org.jaudiotagger.tag.id3.*;
+import org.jaudiotagger.tag.id3.ID3v23Frame;
+import org.jaudiotagger.tag.id3.ID3v23Frames;
+import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyIPLS;
-import org.jaudiotagger.tag.id3.framebody.FrameBodyTIPL;
-import org.jaudiotagger.tag.id3.framebody.FrameBodyTMOO;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTXXX;
+import org.junit.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 import static org.junit.Assert.assertNull;
 
@@ -22,6 +18,7 @@ import static org.junit.Assert.assertNull;
  */
 public class Issue001Test extends AbstractTestCase
 {
+    @Test
     public void testHandlingOfUnmappedChars()
     {
         Exception ex=null;
@@ -48,6 +45,8 @@ public class Issue001Test extends AbstractTestCase
         }
         assertNull(ex);
     }
+
+    @Test
 
     public void testHandlingOfUnmappedChars2()
     {

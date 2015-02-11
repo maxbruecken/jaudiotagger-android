@@ -1,10 +1,12 @@
 package org.jaudiotagger.tag.id3.framebody;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Map;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * FrameBodyETCOTest.
@@ -20,6 +22,8 @@ public class FrameBodyETCOTest extends AbstractTestCase
         fb.setTimestampFormat(2);
         return fb;
     }
+
+    @Test
 
     public void testAddTimingCode()
     {
@@ -44,6 +48,8 @@ public class FrameBodyETCOTest extends AbstractTestCase
         }
     }
 
+    @Test
+
     public void testRemoveTimingCode()
     {
         final FrameBodyETCO body = new FrameBodyETCO();
@@ -59,6 +65,8 @@ public class FrameBodyETCOTest extends AbstractTestCase
         assertTrue(Arrays.equals(new int[]{1}, timingCodes.get(5L)));
         assertTrue(Arrays.equals(new int[]{1, 2}, timingCodes.get(11L)));
     }
+
+    @Test
 
     public void testClearTimingCode()
     {

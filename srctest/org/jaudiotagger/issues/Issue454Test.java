@@ -3,6 +3,7 @@ package org.jaudiotagger.issues;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3AudioHeader;
 import org.jaudiotagger.audio.mp3.MP3File;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -13,6 +14,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class Issue454Test extends AbstractTestCase
 {
+    @Test
     public void testMpeg3layer2_64bit() throws Exception
     {
         Exception ex=null;

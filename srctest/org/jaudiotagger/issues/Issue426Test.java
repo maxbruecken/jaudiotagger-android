@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -16,6 +17,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class Issue426Test extends AbstractTestCase
 {
+    @Test
     public void testHasField() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV25.mp3");

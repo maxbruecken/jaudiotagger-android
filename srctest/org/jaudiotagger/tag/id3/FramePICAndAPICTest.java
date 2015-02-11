@@ -1,14 +1,19 @@
 package org.jaudiotagger.tag.id3;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyAPIC;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyAPICTest;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyPIC;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyPICTest;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test PIC (v22) and APIC (v23,v24) frames
@@ -55,6 +60,8 @@ public class FramePICAndAPICTest extends AbstractTestCase
         return frame;
     }
 
+    @Test
+
     public void testCreateID3v24Frame()
     {
         Exception exceptionCaught = null;
@@ -77,6 +84,9 @@ public class FramePICAndAPICTest extends AbstractTestCase
         assertTrue(ID3v24Frames.getInstanceOf().isSupportedFrames(frame.getIdentifier()));
         assertEquals(FrameBodyAPICTest.DESCRIPTION, fb.getDescription());
     }
+
+
+    @Test
 
 
     public void testCreateID3v23Frame()
@@ -103,6 +113,9 @@ public class FramePICAndAPICTest extends AbstractTestCase
     }
 
 
+    @Test
+
+
     public void testCreateID3v22Frame()
     {
         Exception exceptionCaught = null;
@@ -126,6 +139,8 @@ public class FramePICAndAPICTest extends AbstractTestCase
         assertEquals(FrameBodyPICTest.DESCRIPTION, fb.getDescription());
     }
 
+    @Test
+
     public void testSaveToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -146,6 +161,9 @@ public class FramePICAndAPICTest extends AbstractTestCase
         assertEquals(FrameBodyAPICTest.DESCRIPTION, body.getDescription());
 
     }
+
+
+    @Test
 
 
     public void testConvertV24ToV23() throws Exception
@@ -174,6 +192,8 @@ public class FramePICAndAPICTest extends AbstractTestCase
         assertEquals(FrameBodyAPICTest.DESCRIPTION, body.getDescription());
     }
 
+    @Test
+
     public void testConvertV24ToV22() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -199,6 +219,9 @@ public class FramePICAndAPICTest extends AbstractTestCase
         assertTrue(body instanceof FrameBodyPIC);
         assertEquals(FrameBodyAPICTest.DESCRIPTION, body.getDescription());
     }
+
+
+    @Test
 
 
     public void testConvertV22ToV24() throws Exception

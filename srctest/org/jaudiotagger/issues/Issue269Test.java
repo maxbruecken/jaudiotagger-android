@@ -9,6 +9,7 @@ import org.jaudiotagger.tag.id3.ID3v23Frame;
 import org.jaudiotagger.tag.id3.ID3v23Frames;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTCOP;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -25,6 +26,7 @@ public class Issue269Test extends AbstractTestCase
     /**
      * Test read mp3 that says it has extended header but doesnt really
      */
+    @Test
     public void testReadMp3WithExtendedHeaderFlagSetButNoExtendedHeader()
     {
         File orig = new File("testdata", "test46.mp3");
@@ -66,6 +68,7 @@ public class Issue269Test extends AbstractTestCase
      /**
      * Test read mp3 with extended header and crc-32 check
      */
+    @Test
     public void testReadID3v23Mp3WithExtendedHeaderAndCrc()
     {
         File orig = new File("testdata", "test47.mp3");
@@ -112,6 +115,7 @@ public class Issue269Test extends AbstractTestCase
      * Test read and stores encrypted frames separately, and that they are preserved when writing frame
      *
      */
+    @Test
     public void testReadMp3WithEncryptedField()
     {
         File orig = new File("testdata", "test48.mp3");
@@ -183,6 +187,7 @@ public class Issue269Test extends AbstractTestCase
     /**
         * Test read mp3 with extended header and crc-32 check
         */
+       @Test
        public void testReadID3v24Mp3WithExtendedHeaderAndCrc()
        {
            File orig = new File("testdata", "test47.mp3");

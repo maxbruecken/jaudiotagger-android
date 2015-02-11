@@ -1,10 +1,15 @@
 package org.jaudiotagger.audio.asf.data;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Implementation of {@link AbstractMetadataContainer} which tests
@@ -97,6 +102,7 @@ public class MetadataContainerTest extends
      * {@link org.jaudiotagger.audio.asf.data.MetadataContainer#assertDescriptor(java.lang.String)}
      * .
      */
+    @Test
     public void testAssertDescriptorString() {
         for (MetadataContainer curr : createTestContainers()) {
             curr.assertDescriptor("testKey");
@@ -109,6 +115,7 @@ public class MetadataContainerTest extends
      * {@link org.jaudiotagger.audio.asf.data.MetadataContainer#assertDescriptor(java.lang.String, int)}
      * .
      */
+    @Test
     public void testAssertDescriptorStringInt() {
         for (int i = 0; i <= 5; i++) {
             for (MetadataContainer curr : createTestContainers()) {
@@ -124,6 +131,7 @@ public class MetadataContainerTest extends
      * {@link org.jaudiotagger.audio.asf.data.MetadataContainer#getValueFor(java.lang.String)}
      * .
      */
+    @Test
     public void testGetValueFor() {
         for (MetadataContainer curr : createTestContainers()) {
             assertEquals("", curr.getValueFor("testKey"));

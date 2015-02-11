@@ -1,9 +1,13 @@
 package org.jaudiotagger.tag.id3.framebody;
 
-import static org.junit.Assert.*;
 import org.jaudiotagger.AbstractTestCase;
+import org.junit.Test;
 
 import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * FrameBodySYTCTest.
@@ -19,6 +23,8 @@ public class FrameBodySYTCTest extends AbstractTestCase
         fb.setTimestampFormat(2);
         return fb;
     }
+
+    @Test
 
     public void testAddTempo()
     {
@@ -43,6 +49,8 @@ public class FrameBodySYTCTest extends AbstractTestCase
         }
     }
 
+    @Test
+
     public void testRemoveTempo()
     {
         final FrameBodySYTC body = new FrameBodySYTC();
@@ -58,6 +66,8 @@ public class FrameBodySYTCTest extends AbstractTestCase
         assertEquals(400, (int)timingCodes.get(11L));
         assertNull(timingCodes.get(5L));
     }
+
+    @Test
 
     public void testClearTempi()
     {

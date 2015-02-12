@@ -9,6 +9,7 @@ import org.jaudiotagger.audio.asf.data.ContentBranding;
 import org.jaudiotagger.audio.asf.data.GUID;
 import org.jaudiotagger.audio.asf.data.MetadataContainerUtils;
 import org.jaudiotagger.audio.asf.util.Utils;
+import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -20,6 +21,7 @@ import java.io.IOException;
  */
 public class ContentBrandingData extends TestCase {
 
+    @Test
     public void testContentBrandingWriteRead() throws IOException {
         ContentBranding cb = new ContentBranding();
         cb.setCopyRightURL("CP URL");

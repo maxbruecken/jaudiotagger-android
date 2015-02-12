@@ -1,5 +1,7 @@
 package org.jaudiotagger.audio.asf.data;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,6 +59,7 @@ public abstract class AbstractMetadataContainer<T extends MetadataContainer>
      * <li>{@link MetadataContainer#removeDescriptorsByName(String)}</li>
      * </ul>
      */
+    @Test
     public void testVariousDescriptorMethods() {
         for (T curr : createTestContainers()) {
             assertTrue(curr.isEmpty());

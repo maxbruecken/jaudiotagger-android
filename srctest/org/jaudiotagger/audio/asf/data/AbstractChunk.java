@@ -1,6 +1,7 @@
 package org.jaudiotagger.audio.asf.data;
 
 import org.jaudiotagger.AbstractTestCase;
+import org.junit.Test;
 
 import java.math.BigInteger;
 
@@ -74,6 +75,7 @@ public abstract class AbstractChunk<T extends Chunk> extends AbstractTestCase {
      * Tests the correctness of various methods from {@link Chunk} directly
      * after construction.<br>
      */
+    @Test
     public void testBasicChunkMethods() {
         final BigInteger size = BigInteger.TEN;
         final long position = 300;
@@ -98,6 +100,7 @@ public abstract class AbstractChunk<T extends Chunk> extends AbstractTestCase {
      * Tests chunk creation by using invalid and valid creation arguments on
      * {@link #createChunk(long, BigInteger)}.
      */
+    @Test
     public void testChunkCreation() {
         assertTrue(failOn(-1, null) instanceof IllegalArgumentException);
         assertTrue(failOn(0, null) instanceof IllegalArgumentException);

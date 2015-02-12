@@ -28,7 +28,7 @@ public class BitmapUtils {
     }
 
     public static Bitmap decodeFile(File file) throws FileNotFoundException {
-        return BitmapFactory.decodeStream(new FileInputStream(file));
+        return decodeInputStream(new FileInputStream(file));
     }
 
     public static byte[] getBytes(Bitmap bitmap) {

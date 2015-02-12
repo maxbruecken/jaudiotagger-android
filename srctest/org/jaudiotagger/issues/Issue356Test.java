@@ -45,7 +45,6 @@ public class Issue356Test extends AbstractTestCase
     }
 
      @Test
-
      public void testWritingLinkedUrlToID3v23() throws Exception
     {
         AudioFile audioFile;
@@ -68,7 +67,6 @@ public class Issue356Test extends AbstractTestCase
     }
 
      @Test
-
      public void testWritingLinkedUrlToID3v22() throws Exception
     {
         AudioFile audioFile;

@@ -42,7 +42,6 @@ public class FrameTDATTest extends AbstractTestCase
     }
 
     @Test
-
     public void testID3SpecificWithYearAndTime() throws Exception
     {
         Exception e=null;
@@ -98,7 +97,6 @@ public class FrameTDATTest extends AbstractTestCase
     }
 
     @Test
-
     public void testConvertingPartialDate() throws Exception
     {
         Exception e=null;

@@ -54,8 +54,6 @@ public class Issue455Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testMp4IsCompilationTrue2() throws Exception
     {
 
@@ -94,8 +92,6 @@ public class Issue455Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testMp4IsCompilationFalse() throws Exception
     {
         File orig = new File("testdata", "test1.m4a");
@@ -129,7 +125,6 @@ public class Issue455Test extends AbstractTestCase
     }
 
     @Test
-
     public void testMp4IsCompilationFalse2() throws Exception
     {
         File orig = new File("testdata", "test1.m4a");
@@ -164,7 +159,6 @@ public class Issue455Test extends AbstractTestCase
     }
 
     @Test
-
     public void testMp3IsCompilationTrue() throws Exception
     {
 
@@ -226,8 +220,6 @@ public class Issue455Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testMp3IsCompilationFalse() throws Exception
     {
         AudioFile mp3File = null;

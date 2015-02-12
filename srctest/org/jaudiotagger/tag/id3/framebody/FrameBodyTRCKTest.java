@@ -27,7 +27,6 @@ public class FrameBodyTRCKTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyStringConstructor()
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -54,7 +53,6 @@ public class FrameBodyTRCKTest extends AbstractTestCase
     }
 
      @Test
-
      public void testCreateFrameBodyIntegerConstructor()
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -81,7 +79,6 @@ public class FrameBodyTRCKTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyEmptyConstructor()
     {
         Exception exceptionCaught = null;
@@ -104,7 +101,6 @@ public class FrameBodyTRCKTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyTrackOnly()
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -130,7 +126,6 @@ public class FrameBodyTRCKTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyTotalOnly()
    {
        Exception exceptionCaught = null;
@@ -155,7 +150,6 @@ public class FrameBodyTRCKTest extends AbstractTestCase
    }
 
       @Test
-
       public void testCreateFrameBodyWithPadding()
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -181,7 +175,6 @@ public class FrameBodyTRCKTest extends AbstractTestCase
     }
 
       @Test
-
       public void testCreateFrameBodyWithPaddingTwo()
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -214,21 +207,18 @@ public class FrameBodyTRCKTest extends AbstractTestCase
       }
       
       @Test
-
       public void testCreateFrameBodyWithUnpaddedRawTextCount()
       {
      	 createFrameBodyAndAssertNumericValuesAndRawPaddingRetained("1/11", 1, 11);
       }
 
       @Test
-
       public void testCreateFrameBodyWithPaddedRawTextTotal()
       {
      	 createFrameBodyAndAssertNumericValuesAndRawPaddingRetained("1/03", 1, 3);
       }
       
       @Test
-
       public void testCreateFrameBodyWithUnpaddedRawTextTotal()
       {
      	 createFrameBodyAndAssertNumericValuesAndRawPaddingRetained("1/3", 1, 3);

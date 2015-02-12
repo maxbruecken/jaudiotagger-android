@@ -64,7 +64,6 @@ public class FrameWXXXTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateID3v24Frame()
     {
         Exception exceptionCaught = null;
@@ -87,7 +86,6 @@ public class FrameWXXXTest extends AbstractTestCase
     }
 
     @Test
-
     public void testSaveToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -111,7 +109,6 @@ public class FrameWXXXTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateID3v24UnicodeFrame()
     {
         Exception exceptionCaught = null;
@@ -191,8 +188,6 @@ public class FrameWXXXTest extends AbstractTestCase
 
 
     @Test
-
-
     public void testEncodeURL() throws UnsupportedEncodingException
     {
         String url = UNICODE_LINK;

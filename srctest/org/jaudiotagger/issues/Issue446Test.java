@@ -60,7 +60,6 @@ public class Issue446Test extends AbstractTestCase
     }
 
     @Test
-
     public void testWriteReplayGain() throws Exception
     {
         File orig = new File("testdata", "test110.mp3");

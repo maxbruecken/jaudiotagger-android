@@ -63,7 +63,6 @@ public class Issue292Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSavingMp4File()
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test8.m4a");

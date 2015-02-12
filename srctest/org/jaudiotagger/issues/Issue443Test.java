@@ -47,7 +47,6 @@ public class Issue443Test extends AbstractTestCase
     }
 
     @Test
-
     public void testID3v2DefaultCreatedWhenOnlyHasID3v1()
     {
         try
@@ -76,7 +75,6 @@ public class Issue443Test extends AbstractTestCase
     }
 
     @Test
-
     public void testID3v2CreatedWhenOnlyHasID3v1()
     {
         try

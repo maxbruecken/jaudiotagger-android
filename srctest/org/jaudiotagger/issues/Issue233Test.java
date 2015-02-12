@@ -83,7 +83,6 @@ public class Issue233Test extends AbstractTestCase
     }
 
     @Test
-
     public void testDeletingID3v1Tag()
     {
         File orig = new File("testdata", "test32.mp3");
@@ -108,7 +107,6 @@ public class Issue233Test extends AbstractTestCase
     }
 
     @Test
-
     public void testReadingID3v1Tag()
     {
         File orig = new File("testdata", "test32.mp3");

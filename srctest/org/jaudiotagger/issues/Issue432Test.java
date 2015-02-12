@@ -34,7 +34,6 @@ public class Issue432Test extends AbstractTestCase
     }
 
     @Test
-
     public void testGetBitsPerSampleMp4()
     {
         Throwable e = null;
@@ -52,7 +51,6 @@ public class Issue432Test extends AbstractTestCase
     }
 
     @Test
-
     public void testGetBitsPerSampleOgg()
     {
         Throwable e = null;
@@ -70,7 +68,6 @@ public class Issue432Test extends AbstractTestCase
     }
 
     @Test
-
     public void testGetBitsPerSampleWma()
     {
         Throwable e = null;
@@ -88,7 +85,6 @@ public class Issue432Test extends AbstractTestCase
     }
 
     @Test
-
     public void testGetBitsPerSampleMp3()
     {
         Throwable e = null;

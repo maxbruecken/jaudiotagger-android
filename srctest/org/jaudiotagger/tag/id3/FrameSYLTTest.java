@@ -22,8 +22,6 @@ public class FrameSYLTTest extends AbstractTestCase
 
 
     @Test
-
-
     public void testWriteFrame() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");

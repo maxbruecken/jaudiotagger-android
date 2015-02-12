@@ -18,6 +18,7 @@ package org.jaudiotagger;
 import org.jaudiotagger.logging.ErrorMessage;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.junit.Before;
+import org.robolectric.shadows.ShadowBitmapFactory;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -38,7 +39,7 @@ public abstract class AbstractTestCase {
     @Before
     public void setUp()
     {
-        TagOptionSingleton.getInstance().setToDefault();    
+        TagOptionSingleton.getInstance().setToDefault();
     }
     /**
      * Stores a {@link Pattern} for each {@link ErrorMessage}.<br>

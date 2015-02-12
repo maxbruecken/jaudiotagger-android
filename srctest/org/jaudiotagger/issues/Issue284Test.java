@@ -57,7 +57,6 @@ public class Issue284Test extends AbstractTestCase
     }
 
     @Test
-
     public void testConvertv22v24()
     {
         File orig = new File("testdata", "testV1.mp3");
@@ -91,7 +90,6 @@ public class Issue284Test extends AbstractTestCase
     }
 
     @Test
-
     public void testConvertv24v23()
     {
         File orig = new File("testdata", "testV1.mp3");
@@ -125,7 +123,6 @@ public class Issue284Test extends AbstractTestCase
     }
 
     @Test
-
     public void testConvertv24v22()
     {
         File orig = new File("testdata", "testV1.mp3");
@@ -159,7 +156,6 @@ public class Issue284Test extends AbstractTestCase
     }
 
     @Test
-
     public void testConvertv22v23()
     {
         File orig = new File("testdata", "testV1.mp3");

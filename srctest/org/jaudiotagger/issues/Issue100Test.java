@@ -79,7 +79,6 @@ public class Issue100Test extends AbstractTestCase
     }
 
      @Test
-
      public void testID3v23WriteFieldsInPreferredOrder()
     {
 
@@ -128,7 +127,6 @@ public class Issue100Test extends AbstractTestCase
     }
 
       @Test
-
       public void testID3v22WriteFieldsInPreferredOrder()
     {
 

@@ -42,7 +42,6 @@ public class FrameTMOOTest extends AbstractTestCase
     } */
 
     @Test
-
     public void testCreateID3v24Frame()
     {
         Exception exceptionCaught = null;
@@ -142,7 +141,6 @@ public void testCreateID3v22Frame()
     }
 
     @Test
-
     public void testSaveEmptyFrameToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3", new File("test1004.mp3"));
@@ -248,7 +246,6 @@ public void testCreateID3v22Frame()
     }
 
       @Test
-
       public void testConvertMultiV23ToV24() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3", new File("test1005.mp3"));

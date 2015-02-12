@@ -28,7 +28,6 @@ public class FrameSYTCTest extends AbstractTestCase
     }
 
     @Test
-
     public void testSaveToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -61,7 +60,6 @@ public class FrameSYTCTest extends AbstractTestCase
     }
 
     @Test
-
     public void testSaveEmptyFrameToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");

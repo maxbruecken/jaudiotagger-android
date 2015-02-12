@@ -24,7 +24,6 @@ public class FrameBodyPOPMTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBody()
     {
         Exception exceptionCaught = null;
@@ -47,7 +46,6 @@ public class FrameBodyPOPMTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyEmptyConstructor()
     {
         Exception exceptionCaught = null;
@@ -73,7 +71,6 @@ public class FrameBodyPOPMTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyEmptyConstructorWithoutCounter()
     {
         Exception exceptionCaught = null;

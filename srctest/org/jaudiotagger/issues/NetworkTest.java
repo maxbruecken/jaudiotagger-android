@@ -46,7 +46,6 @@ public class NetworkTest extends AbstractTestCase
     }
 
     @Test
-
     public void testNetworkSpeed() throws Exception
     {
         Exception caught = null;
@@ -83,7 +82,6 @@ public class NetworkTest extends AbstractTestCase
     }
 
     @Test
-
     public void testDataCopySpeed2() throws Exception
     {
         File file = new File("Z:\\Music\\Replay Music Recordings\\Beirut\\The Rip Tide\\Beirut-The Rip Tide-05-Payne's Bay.mp3");

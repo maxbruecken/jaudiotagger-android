@@ -60,7 +60,6 @@ public class FrameWOARTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateID3v24Frame()
     {
         Exception exceptionCaught = null;
@@ -83,7 +82,6 @@ public class FrameWOARTest extends AbstractTestCase
     }
 
     @Test
-
     public void testSaveToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -107,7 +105,6 @@ public class FrameWOARTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateID3v24UnicodeFrame()
     {
         Exception exceptionCaught = null;

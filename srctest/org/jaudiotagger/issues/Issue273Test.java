@@ -83,7 +83,6 @@ public class Issue273Test extends AbstractTestCase
     }
 
     @Test
-
     public void testCommentSetGet()
     {
         FrameBodyCOMM comm = new FrameBodyCOMM();

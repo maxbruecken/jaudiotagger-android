@@ -115,7 +115,6 @@ public class Issue173Test extends AbstractTestCase
     }
 
     @Test
-
     public void testMp4GenresUsingMp4Interface()
     {
         File orig = new File("testdata", "01.m4a");
@@ -153,7 +152,6 @@ public class Issue173Test extends AbstractTestCase
     }
 
     @Test
-
     public void testMp4InvalidGenresUsingMp4Interface()
     {
         File orig = new File("testdata", "01.m4a");
@@ -182,7 +180,6 @@ public class Issue173Test extends AbstractTestCase
     }
 
     @Test
-
     public void testMp3ID3v24sGenresUsingGenericInterface()
     {
         File orig = new File("testdata", "01.mp3");
@@ -273,8 +270,6 @@ public class Issue173Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testMp3ID3v22sGenresUsingGenericInterface()
     {
         File orig = new File("testdata", "01.mp3");
@@ -360,7 +355,6 @@ public class Issue173Test extends AbstractTestCase
     }
 
     @Test
-
     public void testMp3ID3v23sGenresUsingGenericInterface()
     {
         File orig = new File("testdata", "01.mp3");

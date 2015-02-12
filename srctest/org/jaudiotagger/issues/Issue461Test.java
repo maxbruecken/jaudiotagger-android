@@ -65,7 +65,6 @@ public class Issue461Test extends AbstractTestCase
     }
 
     @Test
-
     public void testV23DateConversionFromV24() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -110,7 +109,6 @@ public class Issue461Test extends AbstractTestCase
     }
 
     @Test
-
     public void testV23DateConversionFromV24YearOnly() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -137,7 +135,6 @@ public class Issue461Test extends AbstractTestCase
     }
 
     @Test
-
     public void testV23DateConversionFromV24YearOnly2() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -162,7 +159,6 @@ public class Issue461Test extends AbstractTestCase
     }
 
     @Test
-
     public void testV23DayMonthYearConversionFromV24() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -198,7 +194,6 @@ public class Issue461Test extends AbstractTestCase
     }
 
     @Test
-
     public void testV23MonthYearConversionFromV24() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");

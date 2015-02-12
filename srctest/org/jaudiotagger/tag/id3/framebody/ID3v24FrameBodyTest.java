@@ -12,7 +12,6 @@ public class ID3v24FrameBodyTest {
   protected final Logger log = Logger.getLogger(getClass().getSimpleName());
 
   @Test
-
   public void testBodyImplementationsAreComplete() throws Exception {
     boolean success = true;
     for (Field field : ID3v24Frames.class.getDeclaredFields()) {

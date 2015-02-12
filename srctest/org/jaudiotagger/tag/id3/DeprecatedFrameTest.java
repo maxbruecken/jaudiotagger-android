@@ -31,7 +31,6 @@ public class DeprecatedFrameTest extends AbstractTestCase
     }
 
     @Test
-
     public void testConvertTagWithDeprecatedFrameToTagWhereFrameShouldNoLongerBeDeprecated() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue88.id3", "testV1.mp3");
@@ -54,7 +53,6 @@ public class DeprecatedFrameTest extends AbstractTestCase
     }
 
     @Test
-
     public void testSavingV24DeprecatedTIMETagToV23() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue122-1.id3", "testV1.mp3");
@@ -76,7 +74,6 @@ public class DeprecatedFrameTest extends AbstractTestCase
     }
 
     @Test
-
     public void testSavingV24DeprecatedTDATTagToV23() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("Issue122-2.id3", "testV1.mp3");

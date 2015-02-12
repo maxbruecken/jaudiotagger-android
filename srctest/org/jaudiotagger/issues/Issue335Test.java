@@ -25,7 +25,6 @@ public class Issue335Test extends AbstractTestCase
 {
 
     @Test
-
     public void testConvertv24Tov23ConvertsUTF8ToISO8859IfItCan() throws Exception
     {
         File orig = new File("testdata", "test79.mp3");
@@ -57,7 +56,6 @@ public class Issue335Test extends AbstractTestCase
     }
 
     @Test
-
     public void testConvertv24Tov23OnlyConvertsUTF8ToISO8859IfItCan() throws Exception
     {
         File orig = new File("testdata", "test79.mp3");
@@ -96,7 +94,6 @@ public class Issue335Test extends AbstractTestCase
     }
 
     @Test
-
     public void testConvertv23Twice() throws Exception
     {
         File orig = new File("testdata", "test79.mp3");
@@ -147,7 +144,6 @@ public class Issue335Test extends AbstractTestCase
     }
 
     @Test
-
     public void testConvertCharsAtStartOfFile() throws Exception
     {
         File orig = new File("testdata", "test79.mp3");

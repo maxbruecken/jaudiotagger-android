@@ -34,7 +34,6 @@ public class Issue423Test extends AbstractTestCase
     }
 
     @Test
-
     public void testGetAllMp3() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -53,7 +52,6 @@ public class Issue423Test extends AbstractTestCase
     }
 
     @Test
-
     public void testGetAllOgg() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.ogg");
@@ -72,7 +70,6 @@ public class Issue423Test extends AbstractTestCase
     }
 
     @Test
-
     public void testGetAllFlac() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.flac");
@@ -91,7 +88,6 @@ public class Issue423Test extends AbstractTestCase
     }
 
     @Test
-
     public void testGetAllWma() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test1.wma");

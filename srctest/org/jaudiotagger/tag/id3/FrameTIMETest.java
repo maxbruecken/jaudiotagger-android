@@ -40,7 +40,6 @@ public class FrameTIMETest extends AbstractTestCase
     }
 
     @Test
-
     public void testConvertingPartialTime() throws Exception
        {
            Exception e=null;

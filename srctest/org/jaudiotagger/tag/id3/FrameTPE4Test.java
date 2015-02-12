@@ -34,7 +34,6 @@ public class FrameTPE4Test extends AbstractTestCase
     }
 
     @Test
-
     public void testID3Specificv22() throws Exception
     {
         Exception e=null;
@@ -56,7 +55,6 @@ public class FrameTPE4Test extends AbstractTestCase
     }
 
     @Test
-
     public void testGenericv23() throws Exception
     {
         Exception e=null;
@@ -76,7 +74,6 @@ public class FrameTPE4Test extends AbstractTestCase
     }
 
     @Test
-
     public void testID3Specificv23() throws Exception
     {
         Exception e=null;
@@ -98,7 +95,6 @@ public class FrameTPE4Test extends AbstractTestCase
     }
 
     @Test
-
     public void testGenericv24() throws Exception
        {
            Exception e=null;
@@ -118,7 +114,6 @@ public class FrameTPE4Test extends AbstractTestCase
        }
 
        @Test
-
        public void testID3Specificv24() throws Exception
        {
            Exception e=null;

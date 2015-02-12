@@ -38,7 +38,6 @@ public class FrameBodyRVADTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBody()
     {
         Exception exceptionCaught = null;
@@ -58,7 +57,6 @@ public class FrameBodyRVADTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyEmptyConstructor()
     {
         Exception exceptionCaught = null;

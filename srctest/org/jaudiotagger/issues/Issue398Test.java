@@ -70,7 +70,6 @@ public class Issue398Test extends AbstractTestCase
     }
 
     @Test
-
     public void testID3v23() throws Exception
     {
         Exception caught = null;
@@ -106,7 +105,6 @@ public class Issue398Test extends AbstractTestCase
     }
 
     @Test
-
     public void testID3v22() throws Exception
     {
         Exception caught = null;
@@ -143,8 +141,6 @@ public class Issue398Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testID3v1() throws Exception
     {
         Exception caught = null;
@@ -167,7 +163,6 @@ public class Issue398Test extends AbstractTestCase
     }
 
      @Test
-
      public void testMp4() throws Exception
     {
         Exception caught = null;
@@ -245,7 +240,6 @@ public class Issue398Test extends AbstractTestCase
     }
 
     @Test
-
     public void testVorbis() throws Exception
     {
         Exception caught = null;
@@ -291,7 +285,6 @@ public class Issue398Test extends AbstractTestCase
     }
 
     @Test
-
     public void testFlac() throws Exception
     {
         Exception caught = null;
@@ -336,7 +329,6 @@ public class Issue398Test extends AbstractTestCase
     }
 
      @Test
-
      public void testWma() throws Exception
     {
         Exception caught = null;

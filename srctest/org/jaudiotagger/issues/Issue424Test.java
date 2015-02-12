@@ -45,7 +45,6 @@ public class Issue424Test extends AbstractTestCase
     }
 
     @Test
-
     public void testDeleteTrackTotalShouldNotEffectTrackNoMp3() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV25.mp3");

@@ -47,7 +47,6 @@ public class Issue001Test extends AbstractTestCase
     }
 
     @Test
-
     public void testHandlingOfUnmappedChars2()
     {
         Exception ex=null;

@@ -49,7 +49,6 @@ public class Issue444Test extends AbstractTestCase
     }
 
     @Test
-
     public void testFullDateWrittenToID3v23NeedsToBeSplitIntoFrames()
     {
         try
@@ -91,7 +90,6 @@ public class Issue444Test extends AbstractTestCase
     }
 
     @Test
-
     public void testYearAndMonthWrittenToID3v23NeedsToBeSplitIntoFrames()
     {
         try
@@ -133,7 +131,6 @@ public class Issue444Test extends AbstractTestCase
     }
 
     @Test
-
     public void testYearWrittenToID3v23NeedsToBePutInTyerFrame()
     {
         try
@@ -165,7 +162,6 @@ public class Issue444Test extends AbstractTestCase
     }
 
     @Test
-
     public void testInvalidYearNotWrittenToID3v23()
     {
         Exception e=null;
@@ -188,7 +184,6 @@ public class Issue444Test extends AbstractTestCase
     }
 
     @Test
-
     public void testDuplicates()
     {
         File orig = new File("testdata", "test106.mp3");

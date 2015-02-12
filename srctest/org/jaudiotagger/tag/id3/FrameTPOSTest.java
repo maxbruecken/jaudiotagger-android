@@ -32,7 +32,6 @@ public class FrameTPOSTest extends AbstractTestCase
     }
 
     @Test
-
     public void testDiscNo()
     {
         Exception exceptionCaught=null;

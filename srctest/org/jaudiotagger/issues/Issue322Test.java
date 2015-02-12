@@ -25,7 +25,6 @@ public class Issue322Test extends AbstractTestCase
      */
 
     @Test
-
     public void testNumberFieldHandling() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.m4a");

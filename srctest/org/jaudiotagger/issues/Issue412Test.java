@@ -66,7 +66,6 @@ public class Issue412Test extends AbstractTestCase
     }
 
     @Test
-
     public void testTXXXDifferentDescription() throws Exception
     {
         Exception caught = null;
@@ -116,7 +115,6 @@ public class Issue412Test extends AbstractTestCase
     }
 
     @Test
-
     public void testWXXXSameDescription() throws Exception
     {
         Exception caught = null;
@@ -160,7 +158,6 @@ public class Issue412Test extends AbstractTestCase
     }
 
     @Test
-
     public void testTXXXSameDescriptionMultiples() throws Exception
     {
         Exception caught = null;
@@ -206,7 +203,6 @@ public class Issue412Test extends AbstractTestCase
     }
 
     @Test
-
     public void testWXXXSameDescriptionMultiples() throws Exception
     {
         Exception caught = null;
@@ -253,8 +249,6 @@ public class Issue412Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testTCOMMultiples() throws Exception
     {
         Exception caught = null;
@@ -300,7 +294,6 @@ public class Issue412Test extends AbstractTestCase
     }
 
     @Test
-
     public void testTrackNoTotalCombinations()
     {
         Exception caught = null;
@@ -340,7 +333,6 @@ public class Issue412Test extends AbstractTestCase
     }
 
     @Test
-
     public void testTrackNoTotalAddCombinations()
     {
         Exception caught = null;
@@ -380,7 +372,6 @@ public class Issue412Test extends AbstractTestCase
     }
 
     @Test
-
     public void testDiscNoTotalCombinations()
     {
         Exception caught = null;
@@ -420,7 +411,6 @@ public class Issue412Test extends AbstractTestCase
     }
 
     @Test
-
     public void testDiscNoTotalAddCombinations()
     {
         Exception caught = null;
@@ -466,7 +456,6 @@ public class Issue412Test extends AbstractTestCase
     }
 
     @Test
-
     public void testDiscNoTotalAddCombinationsWithPadding()
     {
         Exception caught = null;
@@ -518,7 +507,6 @@ public class Issue412Test extends AbstractTestCase
     }
 
     @Test
-
     public void testDiscNoTotalAddCombinationsWithPaddingFlac()
     {
         Exception caught = null;

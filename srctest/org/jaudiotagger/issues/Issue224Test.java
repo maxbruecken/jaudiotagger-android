@@ -27,7 +27,6 @@ public class Issue224Test extends AbstractTestCase
 {
 
     @Test
-
     public void testReadInvalidPicture()
     {
         String genre = null;

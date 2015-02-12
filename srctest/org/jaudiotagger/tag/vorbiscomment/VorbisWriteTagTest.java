@@ -774,7 +774,6 @@ public class VorbisWriteTagTest extends AbstractTestCase
     }
 
     @Test
-
     public void testDeleteTag() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.ogg", new File("testDelete.ogg"));
@@ -788,7 +787,6 @@ public class VorbisWriteTagTest extends AbstractTestCase
     }
 
     @Test
-
     public void testDeleteTag2() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.ogg", new File("testDelete2.ogg"));
@@ -801,7 +799,6 @@ public class VorbisWriteTagTest extends AbstractTestCase
     }
 
     @Test
-
     public void testWriteMultipleFields() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.ogg", new File("testWriteMultiple.ogg"));
@@ -815,7 +812,6 @@ public class VorbisWriteTagTest extends AbstractTestCase
     }
 
      @Test
-
      public void testDeleteFields() throws Exception
     {
         //Delete using generic key

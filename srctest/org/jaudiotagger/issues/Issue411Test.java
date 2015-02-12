@@ -64,7 +64,6 @@ public class Issue411Test extends AbstractTestCase
     }
 
     @Test
-
     public void testIssue2() throws Exception
     {
         Exception caught = null;
@@ -99,7 +98,6 @@ public class Issue411Test extends AbstractTestCase
     }
 
     @Test
-
     public void testIssue3() throws Exception
     {
         Exception caught = null;
@@ -134,7 +132,6 @@ public class Issue411Test extends AbstractTestCase
     }
 
     @Test
-
     public void testIssue4() throws Exception
     {
         Exception caught = null;
@@ -170,7 +167,6 @@ public class Issue411Test extends AbstractTestCase
     }
 
     @Test
-
     public void testIssue5() throws Exception
     {
         Exception caught = null;
@@ -214,7 +210,6 @@ public class Issue411Test extends AbstractTestCase
     }
 
     @Test
-
     public void testDeletions() throws Exception
     {
         Exception caught = null;

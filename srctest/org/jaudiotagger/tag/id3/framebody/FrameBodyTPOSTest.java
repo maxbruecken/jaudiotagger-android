@@ -24,7 +24,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyStringConstructor()
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -50,7 +49,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
     }
 
      @Test
-
      public void testCreateFrameBodyIntegerConstructor()
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -77,7 +75,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyEmptyConstructor()
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -103,7 +100,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyDiscOnly()
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -128,7 +124,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyTotalOnly()
    {
        Exception exceptionCaught = null;
@@ -152,7 +147,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
    }
 
       @Test
-
       public void testCreateFrameBodyWithPadding()
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -178,7 +172,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
     }
 
      @Test
-
      public void testCreateFrameBodyWithPaddingTwo()
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -215,7 +208,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
      }
      
      @Test
-
      public void testCreateFrameBodyWithUnpaddedRawTextCount()
      {
          TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -225,7 +217,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
      }
 
      @Test
-
      public void testCreateFrameBodyWithPaddedRawTextTotal()
      {
          TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -235,7 +226,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
      }
 
     @Test
-
     public void testCreateFrameBodyWithPaddedRawTextTotal2()
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -245,7 +235,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
     }
 
      @Test
-
      public void testCreateFrameBodyWithUnpaddedRawTextTotal()
      {
          TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -278,8 +267,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
 
 
     @Test
-
-
     public void testCreateFrameBodyWithPaddedRawTextCountIsPadded()
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -306,7 +293,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyWithUnpaddedRawTextCountIsPadded()
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -333,7 +319,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyWithPaddedRawTextTotalIsPadded()
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -359,7 +344,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyWithPaddedRawTextTotal2IsPadded()
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -367,7 +351,6 @@ public class FrameBodyTPOSTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyWithUnpaddedRawTextTotalIsPadded()
     {
 

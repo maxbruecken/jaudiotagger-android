@@ -34,7 +34,6 @@ public class FrameTIT2Test extends AbstractTestCase
     }
 
     @Test
-
     public void testID3Specific() throws Exception
     {
         Exception e=null;

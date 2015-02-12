@@ -35,7 +35,6 @@ public class FrameBodyWXXXTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBody()
     {
         Exception exceptionCaught = null;

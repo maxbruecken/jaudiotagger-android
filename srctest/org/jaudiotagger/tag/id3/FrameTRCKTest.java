@@ -29,7 +29,6 @@ public class FrameTRCKTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateID3v24Frame()
     {
         Exception exceptionCaught = null;
@@ -56,8 +55,6 @@ public class FrameTRCKTest extends AbstractTestCase
 
 
     @Test
-
-
     public void testCreateID3v23Frame()
     {
         Exception exceptionCaught = null;
@@ -82,7 +79,6 @@ public class FrameTRCKTest extends AbstractTestCase
     }
 
     @Test
-
     public void testSaveToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -104,7 +100,6 @@ public class FrameTRCKTest extends AbstractTestCase
     }
 
     @Test
-
     public void testSaveEmptyFrameToFile() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -128,7 +123,6 @@ public class FrameTRCKTest extends AbstractTestCase
     }
 
     @Test
-
     public void testMergingMultipleTrackFrames() throws Exception
     {
         ID3v24Tag tag = new ID3v24Tag();

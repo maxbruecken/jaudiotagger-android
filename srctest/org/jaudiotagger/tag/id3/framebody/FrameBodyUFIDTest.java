@@ -19,8 +19,6 @@ public class FrameBodyUFIDTest extends AbstractTestCase
 
 
     @Test
-
-
     public void testCreateFrameBody()
     {
         Exception exceptionCaught = null;

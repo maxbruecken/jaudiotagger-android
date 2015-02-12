@@ -38,7 +38,6 @@ public class FrameULSTTest extends AbstractTestCase
     }
 
     @Test
-
     public void testWriteULSTID3v24() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test23.mp3");
@@ -87,7 +86,6 @@ public class FrameULSTTest extends AbstractTestCase
     }
 
     @Test
-
     public void testWriteULSTID3v23() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -147,7 +145,6 @@ public class FrameULSTTest extends AbstractTestCase
     }
 
     @Test
-
     public void testWriteULSTID3v23Test2() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");

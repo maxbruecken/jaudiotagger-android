@@ -34,7 +34,6 @@ public class Issue403Test extends AbstractTestCase
     }
 
     @Test
-
     public void testAddInvalidField() throws Exception
     {
         Exception caught = null;
@@ -52,7 +51,6 @@ public class Issue403Test extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateInvalidField() throws Exception
     {
         Exception caught = null;
@@ -70,7 +68,6 @@ public class Issue403Test extends AbstractTestCase
     }
 
     @Test
-
     public void testDeleteInvalidField() throws Exception
     {
         Exception caught = null;
@@ -89,7 +86,6 @@ public class Issue403Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetInvalidFieldV11() throws Exception
     {
         Exception caught = null;
@@ -107,7 +103,6 @@ public class Issue403Test extends AbstractTestCase
     }
 
     @Test
-
     public void testAddInvalidFieldV11() throws Exception
     {
         Exception caught = null;
@@ -125,7 +120,6 @@ public class Issue403Test extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateInvalidFieldV11() throws Exception
     {
         Exception caught = null;
@@ -143,7 +137,6 @@ public class Issue403Test extends AbstractTestCase
     }
 
     @Test
-
     public void testDeleteInvalidFieldV11() throws Exception
     {
         Exception caught = null;

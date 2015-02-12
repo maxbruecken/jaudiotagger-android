@@ -56,7 +56,6 @@ public class WavSimpleTest extends AbstractTestCase
     }
 
     @Test
-
     public void testRead24BitFile()
     {
         File orig = new File("testdata", "test105.wav");

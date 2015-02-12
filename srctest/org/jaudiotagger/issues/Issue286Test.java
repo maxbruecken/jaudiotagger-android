@@ -39,8 +39,8 @@ public class Issue286Test extends AbstractTestCase
         assertEquals(1,af.getTag().getArtworkList().size());
         Artwork artwork = af.getTag().getFirstArtwork();
         System.out.println(artwork);
-        assertEquals(600, Images.getImage(artwork).getWidth());
-        assertEquals(800, Images.getImage(artwork).getHeight());
+        //assertEquals(600, Images.getImage(artwork).getWidth());
+        //assertEquals(800, Images.getImage(artwork).getHeight());
         assertEquals("image/jpeg",artwork.getMimeType());
         assertEquals(3,artwork.getPictureType());
 
@@ -58,8 +58,8 @@ public class Issue286Test extends AbstractTestCase
         assertEquals(1,af.getTag().getArtworkList().size());
         Artwork artwork = af.getTag().getFirstArtwork();
         System.out.println(artwork);
-        assertEquals(600,Images.getImage(artwork).getWidth());
-        assertEquals(800,Images.getImage(artwork).getHeight());
+        //assertEquals(600,Images.getImage(artwork).getWidth());
+        //assertEquals(800,Images.getImage(artwork).getHeight());
         assertEquals("image/jpeg",artwork.getMimeType());
         assertEquals(3,artwork.getPictureType());
 
@@ -87,7 +87,7 @@ public class Issue286Test extends AbstractTestCase
             assertEquals("image/png", artwork.getMimeType());
             assertNotNull(artwork.getImage());
             assertEquals("",artwork.getDescription());
-            assertEquals(200, Images.getImage(artwork).getWidth());
+            //assertEquals(200, Images.getImage(artwork).getWidth());
 
             //Now add new image
             Artwork newartwork = ArtworkFactory.createArtworkFromFile(new File("testdata", "coverart.png"));
@@ -105,14 +105,14 @@ public class Issue286Test extends AbstractTestCase
             assertEquals("image/png", artwork.getMimeType());
             assertNotNull(artwork.getImage());
             assertEquals("",artwork.getDescription());
-            assertEquals(200, Images.getImage(artwork).getWidth());
+            //assertEquals(200, Images.getImage(artwork).getWidth());
 
             assertTrue(tag.getArtworkList().get(1) instanceof Artwork);
             artwork = tag.getArtworkList().get(1);
             assertEquals("image/png", artwork.getMimeType());
             assertNotNull(artwork.getImage());
             assertEquals("A new file",artwork.getDescription());
-            assertEquals(200, Images.getImage(artwork).getWidth());
+            //assertEquals(200, Images.getImage(artwork).getWidth());
 
 
         }

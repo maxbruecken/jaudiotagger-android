@@ -113,7 +113,7 @@ public final class AsfHeaderUtils extends TestCase
     {
         Date date1 = new Date((1601-1900),0,1);
         Date date2 = new Date((1970-1900),0,1);
-        assertEquals(11644470000000l,date2.getTime() - date1.getTime());
+        assertEquals(11644473600000l,date2.getTime() - date1.getTime());
     }
 
 }

@@ -45,7 +45,6 @@ public class Issue397Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetSubtitleForMp3v22() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -73,7 +72,6 @@ public class Issue397Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetSubtitleForMp3v23() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -101,7 +99,6 @@ public class Issue397Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetSubtitleForMp3v24() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
@@ -128,7 +125,6 @@ public class Issue397Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetSubtitleForOgg() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.ogg");
@@ -154,7 +150,6 @@ public class Issue397Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetSubtitleForFlac() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.flac");
@@ -180,7 +175,6 @@ public class Issue397Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetSubtitleForWma() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test1.wma");

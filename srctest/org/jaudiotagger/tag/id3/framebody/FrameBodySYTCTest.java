@@ -25,7 +25,6 @@ public class FrameBodySYTCTest extends AbstractTestCase
     }
 
     @Test
-
     public void testAddTempo()
     {
         final FrameBodySYTC body = new FrameBodySYTC();
@@ -50,7 +49,6 @@ public class FrameBodySYTCTest extends AbstractTestCase
     }
 
     @Test
-
     public void testRemoveTempo()
     {
         final FrameBodySYTC body = new FrameBodySYTC();
@@ -68,7 +66,6 @@ public class FrameBodySYTCTest extends AbstractTestCase
     }
 
     @Test
-
     public void testClearTempi()
     {
         final FrameBodySYTC body = new FrameBodySYTC();

@@ -61,8 +61,6 @@ public class Issue431Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testSetTrackNoWithPaddingAndLengthOne() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -94,7 +92,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetTrackNoWithNoPaddingThenSetPaddingAndLengthOne() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -146,7 +143,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetTrackNoWithPaddingAndLengthTwo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -162,7 +158,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetTrackNoWithPaddingAndLengthThree() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -178,7 +173,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetTrackNoWithPaddingAndLengthThreeLargerNumber() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -194,7 +188,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetTrackNoWithNoPaddingAndLengthTwo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -211,8 +204,6 @@ public class Issue431Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testSetTrackNoAndTotalWithPaddingLengthOne() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -231,7 +222,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetTrackNoAndTotalWithPaddingLengthTwo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -250,7 +240,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetTrackNoFlac() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.flac");
@@ -264,7 +253,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetTrackNoFlacWithPadding() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.flac");
@@ -281,7 +269,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetPrePaddedTrackNo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -314,8 +301,6 @@ public class Issue431Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testSetDiscNo() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV25.mp3");
@@ -349,8 +334,6 @@ public class Issue431Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testSetDiscNoWithPaddingAndLengthOne() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -382,7 +365,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetDiscNoWithNoPaddingThenSetPaddingAndLengthOne() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -434,7 +416,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetDiscNoWithPaddingAndLengthTwo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -450,7 +431,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetDiscNoWithPaddingAndLengthThree() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -466,7 +446,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetDiscNoWithPaddingAndLengthThreeLargerNumber() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -482,7 +461,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetDiscNoWithNoPaddingAndLengthTwo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -499,8 +477,6 @@ public class Issue431Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testSetDiscNoAndTotalWithPaddingLengthOne() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -519,7 +495,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetDiscNoAndTotalWithPaddingLengthTwo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(true);
@@ -538,7 +513,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetDiscNoFlac() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.flac");
@@ -552,7 +526,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetDiscNoFlacWithPadding() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("test.flac");
@@ -569,7 +542,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetPrePaddedDiscNo() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -601,7 +573,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetPrePaddedDiscAndDiscTotal() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);
@@ -637,7 +608,6 @@ public class Issue431Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSetPrePaddedDiscTotal() throws Exception
     {
         TagOptionSingleton.getInstance().setPadNumbers(false);

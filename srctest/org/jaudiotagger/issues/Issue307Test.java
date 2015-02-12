@@ -20,7 +20,6 @@ public class Issue307Test extends AbstractTestCase
     public static int countExceptions =0;
 
     @Test
-
     public void testMultiThreadedMP3HeaderAccess() throws Exception
     {
         File orig = new File("testdata", "test71.mp3");

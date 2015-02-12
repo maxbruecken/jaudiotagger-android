@@ -34,7 +34,6 @@ public class Issue005Test extends AbstractTestCase
     }
 
     @Test
-
     public void testReadingNonExistentFileMp3() throws Exception
     {
         Exception e=null;
@@ -51,7 +50,6 @@ public class Issue005Test extends AbstractTestCase
     }
 
     @Test
-
     public void testReadingNonExistentFileFlac() throws Exception
     {
         Exception e=null;
@@ -70,7 +68,6 @@ public class Issue005Test extends AbstractTestCase
     }
 
     @Test
-
     public void testReadingNonExistentFileOgg() throws Exception
     {
         Exception e=null;
@@ -89,7 +86,6 @@ public class Issue005Test extends AbstractTestCase
     }
 
     @Test
-
     public void testReadingNonExistentFileM4a() throws Exception
     {
         Exception e=null;
@@ -108,7 +104,6 @@ public class Issue005Test extends AbstractTestCase
     }
 
     @Test
-
     public void testReadingNonExistentFileWma() throws Exception
     {
         Exception e=null;
@@ -127,7 +122,6 @@ public class Issue005Test extends AbstractTestCase
     }
 
     @Test
-
     public void testReadingNonExistentFileWav() throws Exception
     {
         Exception e=null;

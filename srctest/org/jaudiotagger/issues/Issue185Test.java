@@ -19,7 +19,6 @@ public class Issue185Test extends AbstractTestCase
 {
 
     @Test
-
     public void testDefaultTagMp3()
     {
         Exception exceptionCaught = null;
@@ -58,8 +57,6 @@ public class Issue185Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testDefaultTagMp3AndCreate()
     {
         Exception exceptionCaught = null;

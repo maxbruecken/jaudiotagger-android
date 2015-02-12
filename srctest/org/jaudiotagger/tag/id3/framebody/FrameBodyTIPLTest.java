@@ -31,7 +31,6 @@ public class FrameBodyTIPLTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBody()
     {
         Exception exceptionCaught = null;
@@ -58,7 +57,6 @@ public class FrameBodyTIPLTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyodd()
     {
         Exception exceptionCaught = null;
@@ -107,7 +105,6 @@ public class FrameBodyTIPLTest extends AbstractTestCase
     }
 
      @Test
-
      public void testCreateFromIPLS()
     {
         Exception exceptionCaught = null;

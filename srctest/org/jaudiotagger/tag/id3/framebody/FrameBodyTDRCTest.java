@@ -17,8 +17,6 @@ public class FrameBodyTDRCTest extends AbstractTestCase
 
 
     @Test
-
-
     public void testCreateFrameBody()
     {
         Exception exceptionCaught = null;

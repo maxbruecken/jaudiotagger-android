@@ -24,7 +24,6 @@ public class FrameBodyETCOTest extends AbstractTestCase
     }
 
     @Test
-
     public void testAddTimingCode()
     {
         final FrameBodyETCO body = new FrameBodyETCO();
@@ -49,7 +48,6 @@ public class FrameBodyETCOTest extends AbstractTestCase
     }
 
     @Test
-
     public void testRemoveTimingCode()
     {
         final FrameBodyETCO body = new FrameBodyETCO();
@@ -67,7 +65,6 @@ public class FrameBodyETCOTest extends AbstractTestCase
     }
 
     @Test
-
     public void testClearTimingCode()
     {
         final FrameBodyETCO body = new FrameBodyETCO();

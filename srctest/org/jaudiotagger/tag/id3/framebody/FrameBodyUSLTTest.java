@@ -18,7 +18,6 @@ public class FrameBodyUSLTTest extends AbstractTestCase
     public static final String UTF16_REQUIRED = "\u2026";
 
     @Test
-
     public void testWriteUnicodeBody() throws IOException
     {
         FrameBodyUSLT fb = new FrameBodyUSLT(TextEncoding.UTF_16, "eng", "", UTF16_REQUIRED);

@@ -53,8 +53,6 @@ public class Issue291Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testPrintAtomTree()
     {
        File orig = new File("testdata", "test83.mp4");

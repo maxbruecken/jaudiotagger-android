@@ -24,8 +24,6 @@ public class FrameBodyAPICTest extends AbstractTestCase
 
 
     @Test
-
-
     public void testCreateFrameBody()
     {
         Exception exceptionCaught = null;
@@ -46,7 +44,6 @@ public class FrameBodyAPICTest extends AbstractTestCase
     }
 
     @Test
-
     public void testCreateFrameBodyEmptyConstructor()
     {
 

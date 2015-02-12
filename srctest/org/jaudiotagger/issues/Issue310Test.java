@@ -52,7 +52,6 @@ public class Issue310Test extends AbstractTestCase
     }
 
     @Test
-
     public void testSavingFile2()
        {
            File orig = new File("testdata", "test85.mp4");
@@ -87,8 +86,6 @@ public class Issue310Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testSavingFile3()
     {
         File orig = new File("testdata", "test85.mp4");
@@ -120,7 +117,6 @@ public class Issue310Test extends AbstractTestCase
     }
 
     @Test
-
     public void testPrintAtomTree()
     {
        File orig = new File("testdata", "test85.mp4");

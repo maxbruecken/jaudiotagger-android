@@ -19,8 +19,6 @@ public class Issue282Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testWriteToRelativeWmaFile()
     {
         File orig = new File("testdata", "test1.wma");
@@ -63,7 +61,6 @@ public class Issue282Test extends AbstractTestCase
     }
 
     @Test
-
     public void testWriteToRelativeMp3File()
        {
            File orig = new File("testdata", "testV1.mp3");

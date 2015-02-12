@@ -41,7 +41,6 @@ public class Issue036Test extends AbstractTestCase
     }
 
     @Test
-
     public void testAllID3v24Frames() throws Exception
     {
         for(String frameId : ID3v24Frames.getInstanceOf().getSupportedFrames())
@@ -54,7 +53,6 @@ public class Issue036Test extends AbstractTestCase
     }
 
     @Test
-
     public void testIDv24Tag() throws Exception
     {
         ID3v24Tag tag1 = new ID3v24Tag();
@@ -78,8 +76,6 @@ public class Issue036Test extends AbstractTestCase
 
 
     @Test
-
-
     public void testIDv23Frame() throws Exception
     {
         ID3v23Frame frame1 = new ID3v23Frame();
@@ -99,7 +95,6 @@ public class Issue036Test extends AbstractTestCase
     }
 
     @Test
-
     public void testAllID3v23Frames() throws Exception
     {
         for(String frameId : ID3v23Frames.getInstanceOf().getSupportedFrames())
@@ -112,7 +107,6 @@ public class Issue036Test extends AbstractTestCase
     }
 
     @Test
-
     public void testIDv23Tag() throws Exception
     {
         ID3v23Tag tag1 = new ID3v23Tag();
@@ -135,7 +129,6 @@ public class Issue036Test extends AbstractTestCase
     }
 
     @Test
-
     public void testIDv22Frame() throws Exception
     {
         ID3v22Frame frame1 = new ID3v22Frame();
@@ -155,7 +148,6 @@ public class Issue036Test extends AbstractTestCase
     }
 
     @Test
-
     public void testAllID3v22Frames() throws Exception
     {
         for(String frameId : ID3v22Frames.getInstanceOf().getSupportedFrames())
@@ -167,7 +159,6 @@ public class Issue036Test extends AbstractTestCase
     }
 
     @Test
-
     public void testIDv22Tag() throws Exception
     {
         ID3v22Tag tag1 = new ID3v22Tag();

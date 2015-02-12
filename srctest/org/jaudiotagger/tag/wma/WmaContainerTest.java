@@ -30,7 +30,6 @@ public class WmaContainerTest extends WmaTestCase {
     }
 
     @Test
-
     public void testExtContentAfterWrite() throws Exception {
         File prepareTestFile = prepareTestFile(null);
         AudioFile read = AudioFileIO.read(prepareTestFile);
@@ -43,7 +42,6 @@ public class WmaContainerTest extends WmaTestCase {
     }
 
     @Test
-
     public void testReadWriteEquality() throws IOException {
         File prepareTestFile = prepareTestFile(null);
         byte[] tmp = AsfHeaderUtils.getFirstChunk(prepareTestFile, GUID.GUID_EXTENDED_CONTENT_DESCRIPTION);

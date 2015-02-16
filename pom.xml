@@ -126,6 +126,7 @@
                <encoding>UTF-8</encoding>
                <source>1.6</source>
                <target>1.6</target>
+               <executable>${jdk}/bin/javac</executable>
             </configuration>
          </plugin>
          <plugin>
@@ -133,6 +134,7 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <configuration>
               <argLine>-Dfile.encoding=UTF-8</argLine>
+              <jvm>${jdk}/bin/java</jvm>
             </configuration>        
          </plugin>
          <plugin>
@@ -168,5 +170,25 @@
    </build>
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-   </properties>   
+   </properties>
+    <profiles>
+      <profile>
+          <id>default_jdk</id>
+          <activation>
+              <activeByDefault>true</activeByDefault>
+          </activation>
+          <properties>
+              <jdk>${env.JAVA_HOME}</jdk>
+          </properties>
+      </profile>
+      <profile>
+          <id>jdk17</id>
+          <activation>
+             <activeByDefault>false</activeByDefault>
+          </activation>
+          <properties>
+              <jdk>${env.JAVA_HOME_17}</jdk>
+          </properties>
+      </profile>
+    </profiles>
 </project>

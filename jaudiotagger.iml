@@ -9,8 +9,11 @@
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
     <orderEntry type="inheritedJdk" />
+    <orderEntry type="library" name="junit-4.11" level="project" />
+    <orderEntry type="library" name="robolectric-2.4" level="project" />
+    <orderEntry type="library" name="robolectric-annotations-2.4" level="project" />
+    <orderEntry type="library" name="hamcrest-all-1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="android-all-5.0.0_r2-robolectric-0" level="project" />
   </component>
 </module>
-

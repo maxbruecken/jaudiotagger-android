@@ -1,5 +1,7 @@
 package org.jaudiotagger.issues;
 
+import static org.junit.Assert.*;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -15,6 +17,7 @@ import org.jaudiotagger.tag.mp4.Mp4Tag;
 import org.jaudiotagger.tag.vorbiscomment.VorbisCommentTag;
 import org.jaudiotagger.tag.wav.WavInfoTag;
 import org.jaudiotagger.tag.wav.WavTag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -23,6 +26,7 @@ import java.io.File;
  */
 public class Issue061Test extends AbstractTestCase
 {
+    @Test
     public void testMp3SetNull1() throws Exception
     {
         Exception ex=null;
@@ -39,6 +43,7 @@ public class Issue061Test extends AbstractTestCase
         assertTrue(ex instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testMp3SetNull2() throws Exception
     {
         Exception ex=null;
@@ -55,6 +60,7 @@ public class Issue061Test extends AbstractTestCase
         assertTrue(ex instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testSetMp4Null() throws Exception
     {
         Exception ex=null;
@@ -71,6 +77,7 @@ public class Issue061Test extends AbstractTestCase
         assertTrue(ex instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testSetFlacNull() throws Exception
     {
         Exception ex=null;
@@ -87,6 +94,7 @@ public class Issue061Test extends AbstractTestCase
         assertTrue(ex instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testSetOggNull() throws Exception
     {
         Exception ex=null;
@@ -103,6 +111,7 @@ public class Issue061Test extends AbstractTestCase
         assertTrue(ex instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testSetAifNull() throws Exception
     {
         Exception ex=null;
@@ -120,6 +129,7 @@ public class Issue061Test extends AbstractTestCase
         assertTrue(ex instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testSetWavNull() throws Exception
     {
         Exception ex=null;
@@ -137,6 +147,7 @@ public class Issue061Test extends AbstractTestCase
         assertTrue(ex instanceof IllegalArgumentException);
     }
 
+    @Test
     public void testSetWavInfoNull() throws Exception
     {
         Exception ex=null;
@@ -154,6 +165,8 @@ public class Issue061Test extends AbstractTestCase
         assertNotNull(ex);
         assertTrue(ex instanceof IllegalArgumentException);
     }
+
+    @Test
     public void testSetWmaNull() throws Exception
     {
         Exception ex=null;

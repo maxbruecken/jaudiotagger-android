@@ -1,7 +1,16 @@
 
 package org.jaudiotagger.audio.aiff;
 
-import org.jaudiotagger.audio.aiff.chunk.*;
+import org.jaudiotagger.audio.aiff.chunk.AiffChunkReader;
+import org.jaudiotagger.audio.aiff.chunk.AiffChunkType;
+import org.jaudiotagger.audio.aiff.chunk.AnnotationChunk;
+import org.jaudiotagger.audio.aiff.chunk.ApplicationChunk;
+import org.jaudiotagger.audio.aiff.chunk.AuthorChunk;
+import org.jaudiotagger.audio.aiff.chunk.CommentsChunk;
+import org.jaudiotagger.audio.aiff.chunk.CommonChunk;
+import org.jaudiotagger.audio.aiff.chunk.CopyrightChunk;
+import org.jaudiotagger.audio.aiff.chunk.FormatVersionChunk;
+import org.jaudiotagger.audio.aiff.chunk.NameChunk;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.generic.GenericAudioHeader;
 import org.jaudiotagger.audio.generic.Utils;
@@ -10,10 +19,11 @@ import org.jaudiotagger.audio.iff.ChunkHeader;
 import org.jaudiotagger.audio.iff.IffHeaderChunk;
 import org.jaudiotagger.logging.Hex;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
-import java.nio.file.Path;
 import java.util.logging.Logger;
 
 /**
@@ -24,9 +34,9 @@ public class AiffInfoReader extends AiffChunkReader
     public static Logger logger = Logger.getLogger("org.jaudiotagger.audio.aiff");
 
 
-    protected GenericAudioHeader read(Path file) throws CannotReadException, IOException
+    protected GenericAudioHeader read(File file) throws CannotReadException, IOException
     {
-        try(FileChannel fc = FileChannel.open(file))
+        try(FileChannel fc = new RandomAccessFile(file, "r").getChannel())
         {
             logger.config(file + " Reading AIFF file size:" + Hex.asDecAndHex(fc.size()));
             AiffAudioHeader aiffAudioHeader = new AiffAudioHeader();

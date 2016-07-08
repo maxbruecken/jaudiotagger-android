@@ -20,22 +20,28 @@ package org.jaudiotagger.audio.flac;
 
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.CannotWriteException;
-import org.jaudiotagger.audio.exceptions.NoWritePermissionsException;
-import org.jaudiotagger.audio.flac.metadatablock.*;
+import org.jaudiotagger.audio.flac.metadatablock.MetadataBlock;
+import org.jaudiotagger.audio.flac.metadatablock.MetadataBlockData;
+import org.jaudiotagger.audio.flac.metadatablock.MetadataBlockDataApplication;
+import org.jaudiotagger.audio.flac.metadatablock.MetadataBlockDataCueSheet;
+import org.jaudiotagger.audio.flac.metadatablock.MetadataBlockDataPadding;
+import org.jaudiotagger.audio.flac.metadatablock.MetadataBlockDataPicture;
+import org.jaudiotagger.audio.flac.metadatablock.MetadataBlockDataSeekTable;
+import org.jaudiotagger.audio.flac.metadatablock.MetadataBlockDataStreamInfo;
+import org.jaudiotagger.audio.flac.metadatablock.MetadataBlockHeader;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.flac.FlacTag;
 import org.jaudiotagger.utils.DirectByteBufferUtils;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileChannel.MapMode;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -58,7 +64,7 @@ public class FlacTagWriter
      * @throws IOException
      * @throws CannotWriteException
      */
-    public void delete(Tag tag, Path file) throws CannotWriteException
+    public void delete(Tag tag, File file) throws CannotWriteException
     {
         //This will save the file without any Comment or PictureData blocks  
         FlacTag emptyTag = new FlacTag(null, new ArrayList<MetadataBlockDataPicture>());
@@ -80,10 +86,10 @@ public class FlacTagWriter
      * @throws CannotWriteException
      * @throws IOException
      */
-    public void write(Tag tag, Path file) throws CannotWriteException
+    public void write(Tag tag, File file) throws CannotWriteException
     {
         logger.config(file + " Writing tag");
-        try (FileChannel fc = FileChannel.open(file, StandardOpenOption.WRITE, StandardOpenOption.READ))
+        try (FileChannel fc = new RandomAccessFile(file, "rw").getChannel())
         {
             MetadataBlockInfo blockInfo = new MetadataBlockInfo();
 
@@ -190,10 +196,6 @@ public class FlacTagWriter
                 logger.config(file + " No Room to Rewrite");
                 insertTagAndShiftViaMappedByteBuffer(tag, fc, blockInfo, flacStream, neededRoom, availableRoom);
             }
-        }
-        catch (AccessDeniedException ade)
-        {
-            throw new NoWritePermissionsException(file + ":" + ade.getMessage());
         }
         catch (IOException ioe)
         {

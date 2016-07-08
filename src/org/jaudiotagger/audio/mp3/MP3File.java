@@ -728,8 +728,7 @@ public class MP3File extends AudioFile
 		id3v1TagSize  = id1tag.getSize();
 		}
 
-		InputStream inStream = Files
-				.newInputStream(Paths.get(mp3File.getAbsolutePath()));
+		InputStream inStream = new FileInputStream(mp3File);
 
 		byte[] buffer = new byte[bufferSize];
 
@@ -930,16 +929,15 @@ public class MP3File extends AudioFile
      */
     public void precheck(File file) throws IOException
     {
-        Path path = file.toPath();
-        if (!Files.exists(path))
+        if (!file.exists())
         {
             logger.severe(ErrorMessage.GENERAL_WRITE_FAILED_BECAUSE_FILE_NOT_FOUND.getMsg(file.getName()));
             throw new IOException(ErrorMessage.GENERAL_WRITE_FAILED_BECAUSE_FILE_NOT_FOUND.getMsg(file.getName()));
         }
 
-        if (TagOptionSingleton.getInstance().isCheckIsWritable() && !Files.isWritable(path))
+        if (TagOptionSingleton.getInstance().isCheckIsWritable() && !file.canWrite())
         {
-            logger.severe(Permissions.displayPermissions(path));
+            logger.severe(Permissions.displayPermissions(file));
             logger.severe(ErrorMessage.GENERAL_WRITE_FAILED.getMsg(file.getName()));
             throw new IOException(ErrorMessage.GENERAL_WRITE_FAILED.getMsg(file.getName()));
         }

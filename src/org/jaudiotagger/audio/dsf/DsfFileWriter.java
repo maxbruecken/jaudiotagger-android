@@ -18,31 +18,28 @@
  */
 package org.jaudiotagger.audio.dsf;
 
-import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.exceptions.CannotWriteException;
-import org.jaudiotagger.audio.exceptions.NoWritePermissionsException;
-import org.jaudiotagger.audio.generic.AudioFileWriter;
 import org.jaudiotagger.audio.generic.AudioFileWriter2;
 import org.jaudiotagger.audio.generic.Utils;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.OpenOption;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 
 /**
  * Write/delete tag info for Dsf file
  */
 public class DsfFileWriter extends AudioFileWriter2
 {
-    protected void writeTag(Tag tag, Path file) throws CannotWriteException
+    protected void writeTag(Tag tag, File file) throws CannotWriteException
     {
-        try(FileChannel fc = FileChannel.open(file, StandardOpenOption.WRITE, StandardOpenOption.READ))
+        try(FileChannel fc = new RandomAccessFile(file, "rw").getChannel())
         {
             DsdChunk dsd = DsdChunk.readChunk(Utils.readFileDataIntoBufferLE(fc, DsdChunk.DSD_HEADER_LENGTH));
             if (dsd != null)
@@ -75,10 +72,6 @@ public class DsfFileWriter extends AudioFileWriter2
                     fc.write(dsd.write());
                 }
             }
-        }
-        catch(AccessDeniedException ade)
-        {
-            throw new NoWritePermissionsException(file + ":" + ade.getMessage());
         }
         catch(IOException ioe)
         {
@@ -140,9 +133,9 @@ public class DsfFileWriter extends AudioFileWriter2
      * @throws IOException
      */
     @Override
-    protected void deleteTag(Tag tag, Path file) throws CannotWriteException
+    protected void deleteTag(Tag tag, File file) throws CannotWriteException
     {
-        try(FileChannel fc = FileChannel.open(file, StandardOpenOption.WRITE, StandardOpenOption.READ))
+        try(FileChannel fc = new RandomAccessFile(file, "rw").getChannel())
         {
             DsdChunk dsd = DsdChunk.readChunk(Utils.readFileDataIntoBufferLE(fc, DsdChunk.DSD_HEADER_LENGTH));
             if (dsd != null)

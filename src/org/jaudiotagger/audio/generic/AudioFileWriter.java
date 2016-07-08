@@ -30,8 +30,6 @@ import org.jaudiotagger.tag.TagOptionSingleton;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -79,8 +77,8 @@ public abstract class AudioFileWriter
      */
     public void delete(AudioFile af) throws CannotReadException, CannotWriteException
     {
-        Path file = af.getFile().toPath();
-        if (TagOptionSingleton.getInstance().isCheckIsWritable() && !Files.isWritable(file))
+        File file = af.getFile();
+        if (TagOptionSingleton.getInstance().isCheckIsWritable() && !file.canWrite())
         {
             logger.severe(Permissions.displayPermissions(file));
             throw new CannotWriteException(ErrorMessage.GENERAL_DELETE_FAILED
@@ -287,8 +285,8 @@ public abstract class AudioFileWriter
                     .getMsg(af.getFile().getPath()));
         }
 
-        Path file = af.getFile().toPath();
-        if (TagOptionSingleton.getInstance().isCheckIsWritable() && !Files.isWritable(file))
+        File file = af.getFile();
+        if (TagOptionSingleton.getInstance().isCheckIsWritable() && !file.canWrite())
         {
             logger.severe(Permissions.displayPermissions(file));
             logger.severe(ErrorMessage.GENERAL_WRITE_FAILED.getMsg(af.getFile()

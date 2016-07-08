@@ -32,10 +32,11 @@ import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.wav.WavInfoTag;
 import org.jaudiotagger.tag.wav.WavTag;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
-import java.nio.file.Path;
 import java.util.logging.Logger;
 
 /**
@@ -60,11 +61,11 @@ public class WavTagReader
      * @throws CannotReadException
      * @throws IOException
      */
-    public WavTag read(Path path) throws CannotReadException, IOException
+    public WavTag read(File path) throws CannotReadException, IOException
     {
         logger.config(loggingName + " Read Tag:start");
         WavTag tag = new WavTag(TagOptionSingleton.getInstance().getWavOptions());
-        try(FileChannel fc = FileChannel.open(path))
+        try(FileChannel fc = new RandomAccessFile(path, "r").getChannel())
         {
             if (WavRIFFHeader.isValidHeader(fc))
             {

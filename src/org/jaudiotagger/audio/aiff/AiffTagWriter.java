@@ -22,7 +22,6 @@ import org.jaudiotagger.audio.aiff.chunk.AiffChunkSummary;
 import org.jaudiotagger.audio.aiff.chunk.AiffChunkType;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.CannotWriteException;
-import org.jaudiotagger.audio.exceptions.NoWritePermissionsException;
 import org.jaudiotagger.audio.generic.Utils;
 import org.jaudiotagger.audio.iff.Chunk;
 import org.jaudiotagger.audio.iff.ChunkHeader;
@@ -33,14 +32,13 @@ import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.aiff.AiffTag;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.logging.Logger;
 
 import static org.jaudiotagger.audio.iff.IffHeaderChunk.SIGNATURE_LENGTH;
@@ -63,7 +61,7 @@ public class AiffTagWriter
      * @throws IOException
      * @throws CannotWriteException
      */
-    private AiffTag getExistingMetadata(Path file) throws IOException, CannotWriteException
+    private AiffTag getExistingMetadata(File file) throws IOException, CannotWriteException
     {
         try
         {
@@ -128,9 +126,9 @@ public class AiffTagWriter
      * @throws java.io.IOException
      * @throws org.jaudiotagger.audio.exceptions.CannotWriteException
      */
-    public void delete(final Tag tag, Path file) throws CannotWriteException
+    public void delete(final Tag tag, File file) throws CannotWriteException
     {
-        try(FileChannel fc = FileChannel.open(file, StandardOpenOption.WRITE, StandardOpenOption.READ))
+        try(FileChannel fc = new RandomAccessFile(file, "rw").getChannel())
         {
             logger.severe(file +" Deleting tag from file");
             final AiffTag existingTag = getExistingMetadata(file);
@@ -267,7 +265,7 @@ public class AiffTagWriter
      * @throws CannotWriteException
      * @throws IOException
      */
-    public void write(final Tag tag, Path file) throws CannotWriteException
+    public void write(final Tag tag, File file) throws CannotWriteException
     {
         logger.severe(file + " Writing Aiff tag to file");
          AiffTag existingTag = null;
@@ -280,7 +278,7 @@ public class AiffTagWriter
             throw new CannotWriteException(file + ":" + ioe.getMessage());
         }
 
-        try(FileChannel fc = FileChannel.open(file, StandardOpenOption.WRITE, StandardOpenOption.READ))
+        try(FileChannel fc = new RandomAccessFile(file, "rw").getChannel())
         {
             long existingFileLength = fc.size();
 
@@ -339,10 +337,6 @@ public class AiffTagWriter
             {
                 rewriteRiffHeaderSize(fc);
             }
-        }
-        catch(AccessDeniedException ade)
-        {
-            throw new NoWritePermissionsException(file + ":" + ade.getMessage());
         }
         catch(IOException ioe)
         {

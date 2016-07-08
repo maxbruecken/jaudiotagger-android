@@ -1,5 +1,7 @@
 package org.jaudiotagger.audio;
 
+import static org.junit.Assert.*;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.CannotWriteException;

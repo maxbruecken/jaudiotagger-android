@@ -1,5 +1,7 @@
 package org.jaudiotagger.issues;
 
+import static org.junit.Assert.*;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -7,6 +9,7 @@ import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -15,6 +18,7 @@ import java.io.File;
  */
 public class Issue481Test extends AbstractTestCase
 {
+    @Test
     public void testReadYear() throws Exception
     {
         File orig = new File("testdata", "test139.mp3");

@@ -26,8 +26,8 @@ import org.jaudiotagger.audio.generic.Utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.channels.FileChannel;
-import java.nio.file.Path;
 import java.util.logging.Logger;
 
 /**
@@ -40,10 +40,10 @@ public class FlacInfoReader
 
 
 
-    public FlacAudioHeader read(Path path) throws CannotReadException, IOException
+    public FlacAudioHeader read(File path) throws CannotReadException, IOException
     {
         logger.config(path + ":start");
-        try(FileChannel fc = FileChannel.open(path))
+        try(FileChannel fc = new RandomAccessFile(path, "r").getChannel())
         {
             FlacStreamReader flacStream = new FlacStreamReader(fc, path.toString() + " ");
             flacStream.findStream();
@@ -113,9 +113,9 @@ public class FlacInfoReader
      */
     public int countMetaBlocks(File f) throws CannotReadException, IOException
     {
-        try(FileChannel fc = FileChannel.open(f.toPath()))
+        try(FileChannel fc = new RandomAccessFile(f, "r").getChannel())
         {
-            FlacStreamReader flacStream = new FlacStreamReader(fc, f.toPath().toString() + " ");
+            FlacStreamReader flacStream = new FlacStreamReader(fc, f.toString() + " ");
             flacStream.findStream();
 
             boolean isLastBlock = false;

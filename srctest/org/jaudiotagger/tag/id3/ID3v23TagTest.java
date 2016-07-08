@@ -15,6 +15,8 @@
  */
 package org.jaudiotagger.tag.id3;
 
+import static org.junit.Assert.*;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.FilePermissionsTest;
 import org.jaudiotagger.audio.AudioFile;

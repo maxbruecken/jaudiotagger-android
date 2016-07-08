@@ -1,5 +1,7 @@
 package org.jaudiotagger.tag.wav;
 
+import static org.junit.Assert.*;
+
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -12,6 +14,7 @@ import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -28,6 +31,7 @@ public class WavMetadataNewTagsInfobeforeId3Test extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
+    @Test
     public void testModifyFileMetadataSaveBoth()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
@@ -93,6 +97,7 @@ public class WavMetadataNewTagsInfobeforeId3Test extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
+    @Test
     public void testModifyFileWithMoreMetadataSaveBoth()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
@@ -161,6 +166,7 @@ public class WavMetadataNewTagsInfobeforeId3Test extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
+    @Test
     public void testModifyFileMetadataSaveExistingActiveId3Info()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);
@@ -226,6 +232,7 @@ public class WavMetadataNewTagsInfobeforeId3Test extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
+    @Test
     public void testModifyFileMetadataSaveActiveId3()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);
@@ -296,6 +303,7 @@ public class WavMetadataNewTagsInfobeforeId3Test extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
+    @Test
     public void testModifyFileMetadataSaveActiveId32()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);
@@ -369,6 +377,7 @@ public class WavMetadataNewTagsInfobeforeId3Test extends AbstractTestCase
      * so can still read, then we write to it padding bit added and when read/write again we
      * correctly work out ID3chunk is still at end of file.
      */
+    @Test
     public void testFileDeleteWithInfoAndOddLengthData()
     {
         Exception exceptionCaught = null;

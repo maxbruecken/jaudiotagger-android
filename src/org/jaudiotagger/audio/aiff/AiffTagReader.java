@@ -1,7 +1,9 @@
 
 package org.jaudiotagger.audio.aiff;
 
-import org.jaudiotagger.audio.aiff.chunk.*;
+import org.jaudiotagger.audio.aiff.chunk.AiffChunkReader;
+import org.jaudiotagger.audio.aiff.chunk.AiffChunkType;
+import org.jaudiotagger.audio.aiff.chunk.ID3Chunk;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.iff.Chunk;
 import org.jaudiotagger.audio.iff.ChunkHeader;
@@ -11,11 +13,12 @@ import org.jaudiotagger.logging.Hex;
 import org.jaudiotagger.tag.aiff.AiffTag;
 import org.jaudiotagger.tag.id3.ID3v22Tag;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
-import java.nio.file.Path;
 import java.util.logging.Logger;
 
 /**
@@ -35,9 +38,9 @@ public class AiffTagReader extends AiffChunkReader
      * @throws CannotReadException
      * @throws IOException
      */
-    public AiffTag read(Path file) throws CannotReadException, IOException
+    public AiffTag read(File file) throws CannotReadException, IOException
     {
-        try(FileChannel fc = FileChannel.open(file))
+        try(FileChannel fc = new RandomAccessFile(file, "r").getChannel())
         {
             AiffAudioHeader aiffAudioHeader = new AiffAudioHeader();
             AiffTag aiffTag = new AiffTag();

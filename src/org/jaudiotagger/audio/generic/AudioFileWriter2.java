@@ -7,10 +7,9 @@ import org.jaudiotagger.logging.ErrorMessage;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagOptionSingleton;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 /**
  * Created by Paul on 28/01/2016.
@@ -28,9 +27,9 @@ public abstract class AudioFileWriter2 extends AudioFileWriter
     @Override
     public void delete(AudioFile af) throws CannotReadException, CannotWriteException
     {
-        Path file = af.getFile().toPath();
+        File file = af.getFile();
 
-        if (TagOptionSingleton.getInstance().isCheckIsWritable() && !Files.isWritable(file))
+        if (TagOptionSingleton.getInstance().isCheckIsWritable() && !file.canWrite())
         {
             logger.severe(Permissions.displayPermissions(file));
             throw new CannotWriteException(ErrorMessage.GENERAL_DELETE_FAILED
@@ -54,9 +53,9 @@ public abstract class AudioFileWriter2 extends AudioFileWriter
     @Override
     public void write(AudioFile af) throws CannotWriteException
     {
-        Path file = af.getFile().toPath();
+        File file = af.getFile();
 
-        if (TagOptionSingleton.getInstance().isCheckIsWritable() && !Files.isWritable(file))
+        if (TagOptionSingleton.getInstance().isCheckIsWritable() && !file.canWrite())
         {
             logger.severe(Permissions.displayPermissions(file));
             logger.severe(ErrorMessage.GENERAL_WRITE_FAILED.getMsg(af.getFile()
@@ -81,7 +80,7 @@ public abstract class AudioFileWriter2 extends AudioFileWriter
      * @throws CannotReadException
      * @throws CannotWriteException
      */
-    protected abstract void deleteTag(Tag tag, Path file) throws CannotReadException, CannotWriteException;
+    protected abstract void deleteTag(Tag tag, File file) throws CannotReadException, CannotWriteException;
 
 
     public void deleteTag(Tag tag, RandomAccessFile raf, RandomAccessFile tempRaf) throws CannotReadException, CannotWriteException, IOException
@@ -96,7 +95,7 @@ public abstract class AudioFileWriter2 extends AudioFileWriter
      * @param file
      * @throws CannotWriteException
      */
-    protected abstract void writeTag(Tag tag, Path file) throws CannotWriteException;
+    protected abstract void writeTag(Tag tag, File file) throws CannotWriteException;
 
     protected   void writeTag(AudioFile audioFile, Tag tag, RandomAccessFile raf, RandomAccessFile rafTemp) throws CannotReadException, CannotWriteException, IOException
     {

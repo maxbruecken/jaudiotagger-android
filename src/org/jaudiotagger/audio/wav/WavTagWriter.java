@@ -20,27 +20,29 @@ package org.jaudiotagger.audio.wav;
 
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.CannotWriteException;
-import org.jaudiotagger.audio.exceptions.NoWritePermissionsException;
 import org.jaudiotagger.audio.generic.Utils;
 import org.jaudiotagger.audio.iff.ChunkHeader;
 import org.jaudiotagger.audio.iff.ChunkSummary;
 import org.jaudiotagger.audio.iff.IffHeaderChunk;
 import org.jaudiotagger.audio.wav.chunk.WavChunkSummary;
 import org.jaudiotagger.audio.wav.chunk.WavInfoIdentifier;
-import org.jaudiotagger.tag.*;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.Tag;
+import org.jaudiotagger.tag.TagField;
+import org.jaudiotagger.tag.TagOptionSingleton;
+import org.jaudiotagger.tag.TagTextField;
 import org.jaudiotagger.tag.wav.WavInfoTag;
 import org.jaudiotagger.tag.wav.WavTag;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
@@ -70,7 +72,7 @@ public class WavTagWriter
      * @throws IOException
      * @throws CannotWriteException
      */
-    private WavTag getExistingMetadata(Path path) throws IOException, CannotWriteException
+    private WavTag getExistingMetadata(File path) throws IOException, CannotWriteException
     {
         try
         {
@@ -135,10 +137,10 @@ public class WavTagWriter
      * @throws IOException
      * @throws CannotWriteException
      */
-    public void delete (Tag tag, Path file) throws CannotWriteException
+    public void delete (Tag tag, File file) throws CannotWriteException
     {
         logger.info(loggingName + " Deleting metadata from file");
-        try(FileChannel fc = FileChannel.open(file, StandardOpenOption.WRITE, StandardOpenOption.READ))
+        try(FileChannel fc = new RandomAccessFile(file, "rw").getChannel())
         {
             WavTag existingTag = getExistingMetadata(file);
 
@@ -318,7 +320,7 @@ public class WavTagWriter
      * @param file
      * @throws CannotWriteException
      */
-    public void write(final Tag tag, Path file) throws CannotWriteException
+    public void write(final Tag tag, File file) throws CannotWriteException
     {
         logger.config(loggingName + " Writing tag to file:start");
 
@@ -333,42 +335,27 @@ public class WavTagWriter
             throw new CannotWriteException(file + ":" + ioe.getMessage());
         }
 
-        try(FileChannel fc = FileChannel.open(file, StandardOpenOption.WRITE, StandardOpenOption.READ))
-        {
+        try(FileChannel fc = new RandomAccessFile(file, "rw").getChannel()) {
 
             final WavTag wavTag = (WavTag) tag;
-            if (wso == WavSaveOptions.SAVE_BOTH)
-            {
+            if (wso == WavSaveOptions.SAVE_BOTH) {
                 saveBoth(wavTag, fc, existingTag);
-            }
-            else if (wso == WavSaveOptions.SAVE_ACTIVE)
-            {
+            } else if (wso == WavSaveOptions.SAVE_ACTIVE) {
                 saveActive(wavTag, fc, existingTag);
-            }
-            else if (wso == WavSaveOptions.SAVE_EXISTING_AND_ACTIVE)
-            {
+            } else if (wso == WavSaveOptions.SAVE_EXISTING_AND_ACTIVE) {
                 saveActiveExisting(wavTag, fc, existingTag);
-            }
-            else if (wso == WavSaveOptions.SAVE_BOTH_AND_SYNC)
-            {
+            } else if (wso == WavSaveOptions.SAVE_BOTH_AND_SYNC) {
                 wavTag.syncTagBeforeWrite();
                 saveBoth(wavTag, fc, existingTag);
-            }
-            else if (wso == WavSaveOptions.SAVE_EXISTING_AND_ACTIVE_AND_SYNC)
-            {
+            } else if (wso == WavSaveOptions.SAVE_EXISTING_AND_ACTIVE_AND_SYNC) {
                 wavTag.syncTagBeforeWrite();
                 saveActiveExisting(wavTag, fc, existingTag);
             }
             //Invalid Option, should never happen
-            else
-            {
+            else {
                 throw new RuntimeException(loggingName + " No setting for:WavSaveOptions");
             }
             rewriteRiffHeaderSize(fc);
-        }
-        catch(AccessDeniedException ade)
-        {
-            throw new NoWritePermissionsException(file + ":" + ade.getMessage());
         }
         catch(IOException ioe)
         {

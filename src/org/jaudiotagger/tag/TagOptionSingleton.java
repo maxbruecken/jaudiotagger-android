@@ -24,6 +24,9 @@
  */
 package org.jaudiotagger.tag;
 
+import org.jaudiotagger.audio.wav.WavOptions;
+import org.jaudiotagger.audio.wav.WavSaveOptions;
+import org.jaudiotagger.audio.wav.WavSaveOrder;
 import org.jaudiotagger.tag.id3.framebody.AbstractID3v2FrameBody;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyCOMM;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTIPL;
@@ -34,6 +37,8 @@ import org.jaudiotagger.tag.options.PadNumberOption;
 import org.jaudiotagger.tag.reference.GenreTypes;
 import org.jaudiotagger.tag.reference.ID3V2Version;
 import org.jaudiotagger.tag.reference.Languages;
+import org.jaudiotagger.tag.vorbiscomment.VorbisAlbumArtistReadOptions;
+import org.jaudiotagger.tag.vorbiscomment.VorbisAlbumArtistSaveOptions;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -41,6 +46,66 @@ import java.util.LinkedList;
 
 public class TagOptionSingleton
 {
+    private WavOptions wavOptions = WavOptions.READ_ID3_ONLY;
+
+    public void setWavOptions(WavOptions wavOptions)
+    {
+        this.wavOptions = wavOptions;
+    }
+
+    public WavOptions getWavOptions()
+    {
+        return wavOptions;
+    }
+
+    private WavSaveOptions wavSaveOptions = WavSaveOptions.SAVE_BOTH;
+
+    public void setWavSaveOptions(WavSaveOptions wavSaveOptions)
+    {
+        this.wavSaveOptions = wavSaveOptions;
+    }
+
+    public WavSaveOptions getWavSaveOptions()
+    {
+        return wavSaveOptions;
+    }
+
+    private WavSaveOrder wavSaveOrder = WavSaveOrder.INFO_THEN_ID3;
+
+    public void setWavSaveOrder(WavSaveOrder wavSaveOrder)
+    {
+        this.wavSaveOrder = wavSaveOrder;
+    }
+
+    public WavSaveOrder getWavSaveOrder()
+    {
+        return wavSaveOrder;
+    }
+
+    private VorbisAlbumArtistSaveOptions vorbisAlbumArtistSaveOptions = VorbisAlbumArtistSaveOptions.WRITE_ALBUMARTIST;
+
+    public void setVorbisAlbumArtistSaveOptions(VorbisAlbumArtistSaveOptions vorbisAlbumArtistSaveOptions)
+    {
+        this.vorbisAlbumArtistSaveOptions = vorbisAlbumArtistSaveOptions;
+    }
+
+    public VorbisAlbumArtistSaveOptions getVorbisAlbumArtistSaveOptions()
+    {
+        return vorbisAlbumArtistSaveOptions;
+    }
+
+    private VorbisAlbumArtistReadOptions vorbisAlbumArtistReadOptions = VorbisAlbumArtistReadOptions.READ_ALBUMARTIST_THEN_JRIVER;
+
+    public void setVorbisAlbumArtistReadOptions(VorbisAlbumArtistReadOptions vorbisAlbumArtistReadOptions)
+    {
+        this.vorbisAlbumArtistReadOptions = vorbisAlbumArtistReadOptions;
+    }
+
+    public VorbisAlbumArtistReadOptions getVorbisAlbumArtisReadOptions()
+    {
+        return vorbisAlbumArtistReadOptions;
+    }
+
     /**
      *
      */
@@ -275,14 +340,26 @@ public class TagOptionSingleton
     private int playerCompatability=-1;
 
     /**
-     * max size of data to copy when copying audiodata from one file to another
+     * max size of data to copy when copying audiodata from one file to , default to 4mb
      */
-    private long writeChunkSize=5000000;
+    private long writeChunkSize= (4 * 1024 * 1024);
 
     private boolean isWriteMp4GenresAsText=false;
 
-    private ID3V2Version id3v2Version = ID3V2Version.ID3_V23;
+    private boolean isWriteMp3GenresAsText=false;
 
+    private ID3V2Version id3v2Version = ID3V2Version.ID3_V23;
+    
+    /**
+     * Whether Files.isWritable should be used to check if a file can be written. In some
+     * cases, isWritable can return false negatives. 
+     */
+    private boolean checkIsWritable = false;
+
+    /**
+     * 
+     */
+    
     /**
      * Creates a new TagOptions datatype. All Options are set to their default
      * values
@@ -786,6 +863,8 @@ public class TagOptionSingleton
      */
     public void setToDefault()
     {
+        wavOptions = WavOptions.READ_ID3_UNLESS_ONLY_INFO;
+        wavSaveOptions = WavSaveOptions.SAVE_BOTH;
         keywordMap = new HashMap<Class<? extends ID3v24FrameBody>, LinkedList<String>>();
         filenameTagSave = false;
         id3v1Save = true;
@@ -823,6 +902,7 @@ public class TagOptionSingleton
         isWriteMp4GenresAsText=false;
         padNumberTotalLength = PadNumberOption.PAD_ONE_ZERO;
         id3v2Version = ID3V2Version.ID3_V23;
+        checkIsWritable = false;
         //default all lyrics3 fields to save. id3v1 fields are individual
         // settings. id3v2 fields are always looked at to save.
         Iterator<String> iterator = Lyrics3v2Fields.getInstanceOf().getIdToValueMap().keySet().iterator();
@@ -1197,6 +1277,20 @@ public class TagOptionSingleton
     }
 
     /**
+     * If enabled we always use the ©gen atom rather than the gnre atom when writing genres to mp4s
+     * This is known to help some android apps
+     */
+    public boolean isWriteMp3GenresAsText()
+    {
+        return isWriteMp3GenresAsText;
+    }
+
+    public void setWriteMp3GenresAsText(boolean writeMp3GenresAsText)
+    {
+        isWriteMp3GenresAsText = writeMp3GenresAsText;
+    }
+
+    /**
      * Total length of number, i.e if set to 2 the value 1 would be stored as 01, if set to 3 would bs stored as 001
      */
     public PadNumberOption getPadNumberTotalLength()
@@ -1221,4 +1315,17 @@ public class TagOptionSingleton
     {
         isAPICDescriptionITunesCompatible = APICDescriptionITunesCompatible;
     }
+
+    /**
+     * Whether Files.isWritable should be used to check if a file can be written. In some
+     * cases, isWritable can return false negatives. 
+     */
+	public boolean isCheckIsWritable() {
+		return checkIsWritable;
+	}
+
+	public void setCheckIsWritable(boolean checkIsWritable) {
+		this.checkIsWritable = checkIsWritable;
+	}
+    
 }

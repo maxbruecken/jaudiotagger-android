@@ -1,3 +1,4 @@
+package org.jaudiotagger.audio.mp3;
 /**
  *  @author : Paul Taylor
  *  @author : Eric Farng
@@ -19,12 +20,16 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  *
  */
-package org.jaudiotagger.audio.mp3;
+
 
 import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.CannotWriteException;
 import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
+import org.jaudiotagger.audio.exceptions.NoWritePermissionsException;
 import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
+import org.jaudiotagger.audio.exceptions.UnableToModifyFileException;
+import org.jaudiotagger.audio.generic.Permissions;
 import org.jaudiotagger.logging.*;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagException;
@@ -35,8 +40,12 @@ import org.jaudiotagger.tag.lyrics3.AbstractLyrics3;
 import org.jaudiotagger.tag.reference.ID3V2Version;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 
 /**
@@ -86,7 +95,7 @@ public class MP3File extends AudioFile
      * @throws org.jaudiotagger.audio.exceptions.ReadOnlyFileException
      * @throws org.jaudiotagger.audio.exceptions.InvalidAudioFrameException
      */
-    public MP3File(String filename) throws IOException, TagException, ReadOnlyFileException, InvalidAudioFrameException
+    public MP3File(String filename) throws IOException, TagException, ReadOnlyFileException, CannotReadException, InvalidAudioFrameException
     {
         this(new File(filename));
     }
@@ -116,7 +125,7 @@ public class MP3File extends AudioFile
      * @throws org.jaudiotagger.audio.exceptions.ReadOnlyFileException
      * @throws org.jaudiotagger.audio.exceptions.InvalidAudioFrameException
      */
-    public MP3File(File file, int loadOptions) throws IOException, TagException, ReadOnlyFileException, InvalidAudioFrameException
+    public MP3File(File file, int loadOptions) throws IOException, TagException, ReadOnlyFileException, CannotReadException, InvalidAudioFrameException
     {
         this(file, loadOptions, false);
     }
@@ -432,7 +441,7 @@ public class MP3File extends AudioFile
      * @throws org.jaudiotagger.audio.exceptions.ReadOnlyFileException
      * @throws org.jaudiotagger.audio.exceptions.InvalidAudioFrameException
      */
-    public MP3File(File file, int loadOptions, boolean readOnly) throws IOException, TagException, ReadOnlyFileException, InvalidAudioFrameException
+    public MP3File(File file, int loadOptions, boolean readOnly) throws IOException, TagException, ReadOnlyFileException, CannotReadException, InvalidAudioFrameException
     {
         RandomAccessFile newFile = null;
         try
@@ -601,7 +610,7 @@ public class MP3File extends AudioFile
      * @throws org.jaudiotagger.audio.exceptions.ReadOnlyFileException
      * @throws org.jaudiotagger.audio.exceptions.InvalidAudioFrameException
      */
-    public MP3File(File file) throws IOException, TagException, ReadOnlyFileException, InvalidAudioFrameException
+    public MP3File(File file) throws IOException, TagException, ReadOnlyFileException, CannotReadException, InvalidAudioFrameException
     {
         this(file, LOAD_ALL);
     }
@@ -645,6 +654,107 @@ public class MP3File extends AudioFile
     public ID3v1Tag getID3v1Tag()
     {
         return id3v1tag;
+    }
+
+    /**
+     * Calculates hash with given algorithm. Buffer size is 32768 byte.
+     * Hash is calculated EXCLUDING meta-data, like id3v1 or id3v2
+     *
+     * @return hash value in byte
+     * @param algorithm options MD5,SHA-1,SHA-256
+     * @throws IOException
+     * @throws InvalidAudioFrameException
+     * @throws NoSuchAlgorithmException
+     */
+
+    public byte[] getHash(String algorithm) throws NoSuchAlgorithmException, InvalidAudioFrameException, IOException{
+
+			return getHash(algorithm, 32768);
+
+
+    }
+
+    /**
+     * Calculates hash with given buffer size.
+     * Hash is calculated EXCLUDING meta-data, like id3v1 or id3v2
+     *
+     * @return byte[] hash value in byte
+     * @param  int buffer buffersize
+     * @throws IOException
+     * @throws InvalidAudioFrameException
+     * @throws NoSuchAlgorithmException
+     */
+
+    public byte[] getHash(int buffer) throws NoSuchAlgorithmException, InvalidAudioFrameException, IOException{
+
+			return getHash("MD5", buffer);
+
+
+    }
+    /**
+     * Calculates hash with algorithm "MD5". Buffer size is 32768 byte.
+     * Hash is calculated EXCLUDING meta-data, like id3v1 or id3v2
+     *
+     * @return byte[] hash value.
+     * @throws IOException
+     * @throws InvalidAudioFrameException
+     * @throws NoSuchAlgorithmException
+     */
+
+    public byte[] getHash() throws NoSuchAlgorithmException, InvalidAudioFrameException, IOException{
+
+			return getHash("MD5", 32768);
+
+    }
+
+    /**
+     * Calculates hash with algorithm "MD5", "SHA-1" or SHA-256".
+     * Hash is calculated EXCLUDING meta-data, like id3v1 or id3v2
+     *
+     * @return byte[] hash value in byte
+     * @throws IOException
+     * @throws InvalidAudioFrameException
+     * @throws NoSuchAlgorithmException
+     */
+
+    public byte[] getHash(String algorithm, int bufferSize) throws InvalidAudioFrameException, IOException, NoSuchAlgorithmException
+    {
+    	File mp3File = getFile();
+    	long startByte = getMP3StartByte(mp3File);
+
+    	int id3v1TagSize = 0;
+		if (hasID3v1Tag()){
+		ID3v1Tag id1tag= getID3v1Tag();
+		id3v1TagSize  = id1tag.getSize();
+		}
+
+		InputStream inStream = Files
+				.newInputStream(Paths.get(mp3File.getAbsolutePath()));
+
+		byte[] buffer = new byte[bufferSize];
+
+		MessageDigest digest = MessageDigest.getInstance(algorithm);
+
+		inStream.skip(startByte);
+
+		int read;
+		long totalSize = mp3File.length() - startByte - id3v1TagSize;
+		int pointer  = buffer.length;
+
+		while (pointer <= totalSize ) {
+
+			read = inStream.read(buffer);
+
+			digest.update(buffer, 0, read);
+			pointer += buffer.length;
+			}
+		read = inStream.read(buffer,0,(int)totalSize - pointer + buffer.length);
+		digest.update(buffer, 0, read);
+
+		byte[] hash = digest.digest();
+
+
+        return hash;
     }
 
     /**
@@ -789,6 +899,7 @@ public class MP3File extends AudioFile
     /**
      * Overridden for compatibility with merged code
      *
+     * @throws NoWritePermissionsException if the file could not be written to due to file permissions
      * @throws CannotWriteException
      */
     public void commit() throws CannotWriteException
@@ -796,6 +907,10 @@ public class MP3File extends AudioFile
         try
         {
             save();
+        }
+        catch (UnableToModifyFileException umfe)
+        {
+            throw new NoWritePermissionsException(umfe);
         }
         catch (IOException ioe)
         {
@@ -815,14 +930,16 @@ public class MP3File extends AudioFile
      */
     public void precheck(File file) throws IOException
     {
-        if (!file.exists())
+        Path path = file.toPath();
+        if (!Files.exists(path))
         {
             logger.severe(ErrorMessage.GENERAL_WRITE_FAILED_BECAUSE_FILE_NOT_FOUND.getMsg(file.getName()));
             throw new IOException(ErrorMessage.GENERAL_WRITE_FAILED_BECAUSE_FILE_NOT_FOUND.getMsg(file.getName()));
         }
 
-        if (!file.canWrite())
+        if (TagOptionSingleton.getInstance().isCheckIsWritable() && !Files.isWritable(path))
         {
+            logger.severe(Permissions.displayPermissions(path));
             logger.severe(ErrorMessage.GENERAL_WRITE_FAILED.getMsg(file.getName()));
             throw new IOException(ErrorMessage.GENERAL_WRITE_FAILED.getMsg(file.getName()));
         }

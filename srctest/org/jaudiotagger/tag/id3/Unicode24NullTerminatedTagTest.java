@@ -1,6 +1,7 @@
 package org.jaudiotagger.tag.id3;
 
 import org.jaudiotagger.AbstractTestCase;
+import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
 import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.audio.mp3.MP3File;
@@ -53,7 +54,7 @@ public class Unicode24NullTerminatedTagTest {
      *
      */
     @Test
-    public void testUTF8WithNullTerminator() throws IOException, TagException, ReadOnlyFileException, InvalidAudioFrameException, RuntimeException
+    public void testUTF8WithNullTerminator() throws IOException, TagException, ReadOnlyFileException, InvalidAudioFrameException, CannotReadException, RuntimeException
     {
         MP3File mp3File = new MP3File(AbstractTestCase.copyAudioToTmp("testV24-comments-utf8.mp3"));
         AbstractID3v2Tag id3v2Tag = mp3File.getID3v2Tag();

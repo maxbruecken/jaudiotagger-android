@@ -166,6 +166,11 @@ public class M4aWriteDataBeforeMoovTagTest {
         {
             File testFile = AbstractTestCase.copyAudioToTmp("test15.m4a", new File("testWriteWhenMDatAtStart8.m4a"));
             AudioFile f = AudioFileIO.read(testFile);
+
+            //First lets just createField tree
+            Mp4AtomTree atomTree = new Mp4AtomTree(new RandomAccessFile(testFile, "r"));
+            atomTree.printAtomTree();
+
             Tag tag = f.getTag();
 
             //Change values
@@ -194,6 +199,10 @@ public class M4aWriteDataBeforeMoovTagTest {
             tag.setField(tag.createField(FieldKey.ENCODER, "encoder"));
             //Save changes and reread from disk
             f.commit();
+
+            atomTree = new Mp4AtomTree(new RandomAccessFile(testFile, "r"));
+            atomTree.printAtomTree();
+
             f = AudioFileIO.read(testFile);
             tag = f.getTag();
             System.out.println(f.getAudioHeader());
@@ -248,7 +257,7 @@ public class M4aWriteDataBeforeMoovTagTest {
      * <p/>
      */
     @Test
-    public void testWriteFileOption9CannoutUseTopLevelFree()
+    public void testWriteFileOption9CannotUseTopLevelFree()
     {
         Exception exceptionCaught = null;
         try

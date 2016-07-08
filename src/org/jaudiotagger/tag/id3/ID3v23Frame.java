@@ -16,25 +16,26 @@
 package org.jaudiotagger.tag.id3;
 
 import org.jaudiotagger.FileConstants;
-import org.jaudiotagger.audio.generic.Utils;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.logging.Hex;
 import org.jaudiotagger.tag.EmptyFrameException;
 import org.jaudiotagger.tag.InvalidDataTypeException;
 import org.jaudiotagger.tag.InvalidFrameException;
 import org.jaudiotagger.tag.InvalidFrameIdentifierException;
-import org.jaudiotagger.tag.id3.framebody.*;
+import org.jaudiotagger.tag.id3.framebody.AbstractID3v2FrameBody;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyDeprecated;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyUnsupported;
+import org.jaudiotagger.tag.id3.framebody.ID3v23FrameBody;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
 import org.jaudiotagger.utils.EqualsUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.logging.Logger;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.zip.DataFormatException;
-import java.util.zip.Inflater;
 
 /**
  * Represents an ID3v2.3 frame.
@@ -350,8 +351,8 @@ public class ID3v23Frame extends AbstractID3v2Frame
         frameSize = byteBuffer.getInt();
         if (frameSize < 0)
         {
-            logger.warning(getLoggingFilename() + ":Invalid Frame Size:" + identifier);
-            throw new InvalidFrameException(identifier + " is invalid frame");
+            logger.warning(getLoggingFilename() + ":Invalid Frame Size:"+frameSize+":" + identifier);
+            throw new InvalidFrameException(identifier + " is invalid frame:"+frameSize);
         }
         else if (frameSize == 0)
         {
@@ -365,7 +366,7 @@ public class ID3v23Frame extends AbstractID3v2Frame
         else if (frameSize > byteBuffer.remaining())
         {
             logger.warning(getLoggingFilename() + ":Invalid Frame size of " +frameSize +" larger than size of" + byteBuffer.remaining() + " before mp3 audio:" + identifier);
-            throw new InvalidFrameException(identifier + " is invalid frame");
+            throw new InvalidFrameException(identifier + " is invalid frame:"+frameSize +" larger than size of" + byteBuffer.remaining() + " before mp3 audio:" + identifier);
         }
 
         //Read the flag bytes
@@ -398,6 +399,7 @@ public class ID3v23Frame extends AbstractID3v2Frame
         //try to read the frame body data
         int extraHeaderBytesCount = 0;
         int decompressedFrameSize = -1;
+
         if (((EncodingFlags) encodingFlags).isCompression())
         {
             //Read the Decompressed Size
@@ -408,7 +410,7 @@ public class ID3v23Frame extends AbstractID3v2Frame
 
         if (((EncodingFlags) encodingFlags).isEncryption())
         {
-           //Consume the encryption byte
+            //Consume the encryption byte
             extraHeaderBytesCount += FRAME_ENCRYPTION_INDICATOR_SIZE;
             encryptionMethod = byteBuffer.get();
         }
@@ -420,8 +422,27 @@ public class ID3v23Frame extends AbstractID3v2Frame
             groupIdentifier = byteBuffer.get();
         }
 
+        if(((EncodingFlags)encodingFlags).isNonStandardFlags())
+        {
+            //Probably corrupt so treat as a standard frame
+            logger.severe(getLoggingFilename() + ":InvalidEncodingFlags:" + Hex.asHex(((EncodingFlags)encodingFlags).getFlags()));
+        }
+
+        if (((EncodingFlags) encodingFlags).isCompression())
+        {
+            if (decompressedFrameSize > (100 * frameSize))
+            {
+                throw new InvalidFrameException(identifier + " is invalid frame, frame size " + frameSize + " cannot be:" + decompressedFrameSize + " when uncompressed");
+            }
+        }
+
         //Work out the real size of the frameBody data
         int realFrameSize = frameSize - extraHeaderBytesCount;
+
+        if(realFrameSize<=0)
+        {
+            throw new InvalidFrameException(identifier + " is invalid frame, realframeSize is:" + realFrameSize);
+        }
 
         ByteBuffer frameBodyBuffer;
         //Read the body data
@@ -430,13 +451,18 @@ public class ID3v23Frame extends AbstractID3v2Frame
             if (((EncodingFlags) encodingFlags).isCompression())
             {
                 frameBodyBuffer = ID3Compression.uncompress(identifier,getLoggingFilename(),byteBuffer, decompressedFrameSize, realFrameSize);
-                frameBody = readBody(id, frameBodyBuffer, decompressedFrameSize);
+                if(((EncodingFlags) encodingFlags).isEncryption())
+                {
+                    frameBody = readEncryptedBody(id, frameBodyBuffer, decompressedFrameSize);
+                }
+                else
+                {
+                    frameBody = readBody(id, frameBodyBuffer, decompressedFrameSize);
+                }
             }
             else if (((EncodingFlags) encodingFlags).isEncryption())
             {
-                frameBodyBuffer = byteBuffer.slice();
-                frameBodyBuffer.limit(realFrameSize);
-                frameBody = readEncryptedBody(identifier, byteBuffer,frameSize);
+                frameBody = readEncryptedBody(identifier, byteBuffer, frameSize);
             }
             else
             {
@@ -480,7 +506,7 @@ public class ID3v23Frame extends AbstractID3v2Frame
         {
             identifier = identifier + ' ';
         }
-        headerBuffer.put(Utils.getDefaultBytes(getIdentifier(), "ISO-8859-1"), 0, FRAME_ID_SIZE);
+        headerBuffer.put(getIdentifier().getBytes(StandardCharsets.ISO_8859_1), 0, FRAME_ID_SIZE);
         //Write Frame Size
         int size = frameBody.getSize();
         logger.fine("Frame Size Is:" + size);
@@ -815,12 +841,12 @@ public class ID3v23Frame extends AbstractID3v2Frame
      /**
      * Sets the charset encoding used by the field.
      *
-     * @param encoding charset.
-     */
-    public void setEncoding(String encoding)
+      * @param encoding charset.
+      */
+    public void setEncoding(final Charset encoding)
     {
-        Integer encodingId = TextEncoding.getInstanceOf().getIdForValue(encoding);
-        if(encoding!=null)
+        Integer encodingId = TextEncoding.getInstanceOf().getIdForCharset(encoding);
+        if(encodingId!=null)
         {
             if(encodingId <2)
             {

@@ -40,7 +40,7 @@ public class Issue374Test extends AbstractTestCase
                     return;
                 }
 
-                File testFile = AbstractTestCase.copyAudioToTmp(next.getName());
+                File testFile = AbstractTestCase.copyAudioToTmp(next.getName(), new File(next.getName().substring(0, next.getName().length() -4)+count+".mp3"));
 
 
                 AudioFile af = AudioFileIO.read(testFile);
@@ -56,7 +56,7 @@ public class Issue374Test extends AbstractTestCase
                 }
                 tag.addField(ArtworkFactory.createArtworkFromFile(new File("testdata", "coverart_large.jpg")));
                 af.commit();
-
+                System.out.println("Checking:"+testFile);
                 af = AudioFileIO.read(testFile);
                 String s11 = af.getAudioHeader().getBitRate();
                 String s22 = String.valueOf(af.getAudioHeader().getTrackLength());
@@ -122,6 +122,7 @@ public class Issue374Test extends AbstractTestCase
                file.getName().equals("Issue79.mp3")||
                file.getName().equals("test22.mp3")||
                file.getName().equals("test92.mp3")||
+               file.getName().equals("issue52.mp3")||
                file.getName().equals("Issue81.mp3"))
             {
                 return false;

@@ -3,13 +3,7 @@ package org.jaudiotagger.issues;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.FieldKey;
-import org.jaudiotagger.tag.id3.AbstractID3v2Frame;
-import org.jaudiotagger.tag.id3.ID3v23FieldKey;
-import org.jaudiotagger.tag.id3.ID3v23Tag;
-import org.jaudiotagger.tag.id3.ID3v24FieldKey;
-import org.jaudiotagger.tag.id3.ID3v24Frame;
-import org.jaudiotagger.tag.id3.ID3v24Tag;
-import org.jaudiotagger.tag.id3.TyerTdatAggregatedFrame;
+import org.jaudiotagger.tag.id3.*;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTDAT;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTDRC;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTYER;
@@ -30,7 +24,7 @@ public class Issue461Test extends AbstractTestCase
     @Test
     public void testV23DateConversionFromGeneric() throws Exception
     {
-        File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
+        File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3",new File("testV23DateConversionFromGeneric.mp3"));
         MP3File mp3File = new MP3File(testFile);
         ID3v23Tag v2Tag = new ID3v23Tag();
         v2Tag.setField(FieldKey.YEAR,"2004-01-30");
@@ -67,7 +61,7 @@ public class Issue461Test extends AbstractTestCase
     @Test
     public void testV23DateConversionFromV24() throws Exception
     {
-        File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
+        File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3",new File("testV23DateConversionFromV24.mp3"));
         MP3File mp3File = new MP3File(testFile);
         ID3v24Tag v24Tag = new ID3v24Tag();
         v24Tag.setField(FieldKey.YEAR,"2004-01-30");
@@ -111,7 +105,7 @@ public class Issue461Test extends AbstractTestCase
     @Test
     public void testV23DateConversionFromV24YearOnly() throws Exception
     {
-        File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
+        File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3",new File("testV23DateConversionFromV24YearOnly.mp3"));
         MP3File mp3File = new MP3File(testFile);
         ID3v24Tag v24Tag = new ID3v24Tag();
         v24Tag.setField(FieldKey.YEAR,"2004");
@@ -137,7 +131,7 @@ public class Issue461Test extends AbstractTestCase
     @Test
     public void testV23DateConversionFromV24YearOnly2() throws Exception
     {
-        File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
+        File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3",new File("testV23DateConversionFromV24YearOnly2.mp3"));
         MP3File mp3File = new MP3File(testFile);
         ID3v24Tag   v24Tag   = new ID3v24Tag();
         ID3v24Frame v24Frame = new ID3v24Frame("TDRC");
@@ -161,7 +155,7 @@ public class Issue461Test extends AbstractTestCase
     @Test
     public void testV23DayMonthYearConversionFromV24() throws Exception
     {
-        File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
+        File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3",new File("testV23DayMonthYearConversionFromV24.mp3"));
         MP3File mp3File = new MP3File(testFile);
         ID3v24Tag v24Tag = new ID3v24Tag();
         v24Tag.setField(FieldKey.YEAR,"2004-06-30");
@@ -196,7 +190,8 @@ public class Issue461Test extends AbstractTestCase
     @Test
     public void testV23MonthYearConversionFromV24() throws Exception
     {
-        File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");
+        File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3",new File("testV23MonthYearConversionFromV24.mp3"));
+
         MP3File mp3File = new MP3File(testFile);
         ID3v24Tag v24Tag = new ID3v24Tag();
         v24Tag.setField(FieldKey.YEAR,"2004-06");

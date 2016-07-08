@@ -421,11 +421,12 @@ public class Issue245Test extends AbstractTestCase
 
 
     /**
-     * Test Artwork cannot be written to Wav
+     * Test Artwork cannot be written to Wav Info Chunk
      */
     @Test
     public void testReadWriteArtworkFieldsToWav()
     {
+        TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
         File testFile = null;
         Exception exceptionCaught = null;
         try

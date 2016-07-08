@@ -25,10 +25,13 @@ import org.jaudiotagger.audio.exceptions.ModifyVetoException;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.logging.ErrorMessage;
 import org.jaudiotagger.tag.Tag;
+import org.jaudiotagger.tag.TagOptionSingleton;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,7 +52,7 @@ public abstract class AudioFileWriter
 {
     private static final String TEMP_FILENAME_SUFFIX = ".tmp";
     private static final String WRITE_MODE = "rw";
-    private static final int MINIMUM_FILESIZE = 150;
+    protected static final int MINIMUM_FILESIZE = 100;
 
     // Logger Object
     public static Logger logger = Logger
@@ -76,16 +79,18 @@ public abstract class AudioFileWriter
      */
     public void delete(AudioFile af) throws CannotReadException, CannotWriteException
     {
-        if (!af.getFile().canWrite())
+        Path file = af.getFile().toPath();
+        if (TagOptionSingleton.getInstance().isCheckIsWritable() && !Files.isWritable(file))
         {
+            logger.severe(Permissions.displayPermissions(file));
             throw new CannotWriteException(ErrorMessage.GENERAL_DELETE_FAILED
-                    .getMsg(af.getFile().getPath()));
+                    .getMsg(file));
         }
 
         if (af.getFile().length() <= MINIMUM_FILESIZE)
         {
-            throw new CannotWriteException(ErrorMessage.GENERAL_DELETE_FAILED
-                    .getMsg(af.getFile().getPath()));
+            throw new CannotWriteException(ErrorMessage.GENERAL_DELETE_FAILED_BECAUSE_FILE_IS_TOO_SMALL
+                    .getMsg(file));
         }
 
         RandomAccessFile raf = null;
@@ -113,7 +118,7 @@ public abstract class AudioFileWriter
                 {
                     this.modificationListener.fileWillBeModified(af, true);
                 }
-                deleteTag(raf, rafTemp);
+                deleteTag(af.getTag(), raf, rafTemp);
                 if (this.modificationListener != null)
                 {
                     this.modificationListener.fileModified(af, tempF);
@@ -211,22 +216,25 @@ public abstract class AudioFileWriter
      * Delete the tag (if any) present in the given randomaccessfile, and do not
      * close it at the end.
      *
+     * @param tag
      * @param raf     The source file, already opened in r-write mode
      * @param tempRaf The temporary file opened in r-write mode
      * @throws CannotWriteException if anything went wrong
      * @throws org.jaudiotagger.audio.exceptions.CannotReadException
      * @throws java.io.IOException
      */
-    public void delete(RandomAccessFile raf, RandomAccessFile tempRaf) throws CannotReadException, CannotWriteException, IOException
+    public void delete(Tag tag, RandomAccessFile raf, RandomAccessFile tempRaf) throws CannotReadException, CannotWriteException, IOException
     {
         raf.seek(0);
         tempRaf.seek(0);
-        deleteTag(raf, tempRaf);
+        deleteTag(tag, raf, tempRaf);
     }
 
     /**
      * Same as above, but delete tag in the file.
      *
+     *
+     * @param tag
      * @param raf
      * @param tempRaf
      * @throws IOException          is thrown when the RandomAccessFile operations throw it (you
@@ -234,7 +242,7 @@ public abstract class AudioFileWriter
      * @throws CannotWriteException when an error occured during the deletion of the tag
      * @throws org.jaudiotagger.audio.exceptions.CannotReadException
      */
-    protected abstract void deleteTag(RandomAccessFile raf, RandomAccessFile tempRaf) throws CannotReadException, CannotWriteException, IOException;
+    protected abstract void deleteTag(Tag tag, RandomAccessFile raf, RandomAccessFile tempRaf) throws CannotReadException, CannotWriteException, IOException;
 
     /**
      * This method sets the {@link AudioFileModificationListener}.<br>
@@ -279,21 +287,22 @@ public abstract class AudioFileWriter
                     .getMsg(af.getFile().getPath()));
         }
 
-        if (!af.getFile().canWrite())
+        Path file = af.getFile().toPath();
+        if (TagOptionSingleton.getInstance().isCheckIsWritable() && !Files.isWritable(file))
         {
+            logger.severe(Permissions.displayPermissions(file));
             logger.severe(ErrorMessage.GENERAL_WRITE_FAILED.getMsg(af.getFile()
                     .getPath()));
-            throw new CannotWriteException(ErrorMessage.GENERAL_WRITE_FAILED
-                    .getMsg(af.getFile().getPath()));
+            throw new CannotWriteException(ErrorMessage.GENERAL_WRITE_FAILED_TO_OPEN_FILE_FOR_EDITING
+                    .getMsg(file));
         }
 
         if (af.getFile().length() <= MINIMUM_FILESIZE)
         {
-            logger
-                    .severe(ErrorMessage.GENERAL_WRITE_FAILED_BECAUSE_FILE_IS_TOO_SMALL
-                            .getMsg(af.getFile().getPath()));
+            logger.severe(ErrorMessage.GENERAL_WRITE_FAILED_BECAUSE_FILE_IS_TOO_SMALL
+                            .getMsg(file));
             throw new CannotWriteException(ErrorMessage.GENERAL_WRITE_FAILED_BECAUSE_FILE_IS_TOO_SMALL
-                    .getMsg(af.getFile().getPath()));
+                    .getMsg(file));
         }
     }
 
@@ -426,7 +435,7 @@ public abstract class AudioFileWriter
                 {
                     this.modificationListener.fileWillBeModified(af, false);
                 }
-                writeTag(af.getTag(), raf, rafTemp);
+                writeTag(af, af.getTag(), raf, rafTemp);
                 if (this.modificationListener != null)
                 {
                     this.modificationListener.fileModified(af, newFile);
@@ -628,6 +637,7 @@ public abstract class AudioFileWriter
      * the file. The subclass must not close these two files when the method
      * returns.
      *
+     * @param audioFile
      * @param tag
      * @param raf
      * @param rafTemp
@@ -636,5 +646,5 @@ public abstract class AudioFileWriter
      * @throws CannotWriteException when an error occured during the generation of the tag
      * @throws org.jaudiotagger.audio.exceptions.CannotReadException
      */
-    protected abstract void writeTag(Tag tag, RandomAccessFile raf, RandomAccessFile rafTemp) throws CannotReadException, CannotWriteException, IOException;
+    protected abstract void writeTag(AudioFile audioFile, Tag tag, RandomAccessFile raf, RandomAccessFile rafTemp) throws CannotReadException, CannotWriteException, IOException;
 }

@@ -3,6 +3,7 @@ package org.jaudiotagger.tag.mp4;
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.audio.mp4.Mp4AtomTree;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagField;
@@ -1621,12 +1622,16 @@ public class M4aWriteTagTest {
      * * Test to write tag data,no tagdata currently exists in the file
      */
     @Test
-    public void testWriteFileWhichDoesntHaveAMetadataAtom()
+    public void testWriteFileWhichHasUtdataMetaAndHdlrButNotIlst()
     {
         Exception exceptionCaught = null;
         try
         {
+
             File testFile = AbstractTestCase.copyAudioToTmp("test4.m4a", new File("testWriteNewMetadata.m4a"));
+            Mp4AtomTree atomTree = new Mp4AtomTree(new RandomAccessFile(testFile, "r"));
+            atomTree.printAtomTree();
+
             AudioFile f = AudioFileIO.read(testFile);
             Tag tag = f.getTag();
 
@@ -2428,7 +2433,7 @@ public class M4aWriteTagTest {
      @Test
      public void testDeleteFields() throws Exception
     {
-        File testFile = AbstractTestCase.copyAudioToTmp("test.m4a");
+        File testFile = AbstractTestCase.copyAudioToTmp("test.m4a", new File("testDeleteFields.m4a"));
 
         //Delete using generic key
         AudioFile f = AudioFileIO.read(testFile);

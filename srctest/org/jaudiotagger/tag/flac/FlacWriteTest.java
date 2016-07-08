@@ -1,11 +1,20 @@
 package org.jaudiotagger.tag.flac;
 
 import org.jaudiotagger.AbstractTestCase;
+import org.jaudiotagger.FilePermissionsTest;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.audio.exceptions.CannotReadException;
+import org.jaudiotagger.audio.exceptions.CannotWriteException;
+import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
+import org.jaudiotagger.audio.exceptions.NoWritePermissionsException;
+import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.audio.flac.FlacInfoReader;
 import org.jaudiotagger.audio.flac.metadatablock.MetadataBlockDataPicture;
+import org.jaudiotagger.tag.FieldDataInvalidException;
 import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.Tag;
+import org.jaudiotagger.tag.TagException;
 import org.jaudiotagger.tag.TagField;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.valuepair.ImageFormats;
@@ -15,6 +24,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.List;
 
@@ -374,10 +384,10 @@ public class FlacWriteTest {
     }
 
      /**
-     * test read flac file with just streaminfo header
+     * test read flac file with just streaminfo and padding header
      */
     @Test
-    public void testWriteFileThatOnlyHadStreamInfoHeader()
+    public void testWriteFileThatOnlyHadStreamAndPaddingInfoHeader()
     {
         Exception exceptionCaught = null;
         try
@@ -391,7 +401,7 @@ public class FlacWriteTest {
             File testFile = AbstractTestCase.copyAudioToTmp("test102.flac", new File("test102.flac"));
             AudioFile f = AudioFileIO.read(testFile);
             FlacInfoReader infoReader = new FlacInfoReader();
-            Assert.assertEquals(1, infoReader.countMetaBlocks(f.getFile()));
+            Assert.assertEquals(2, infoReader.countMetaBlocks(f.getFile()));
 
             f.getTag().setField(FieldKey.ARTIST,"fred");
             f.commit();
@@ -409,4 +419,21 @@ public class FlacWriteTest {
         }
         Assert.assertNull(exceptionCaught);
     }
+
+    public void testWriteWriteProtectedFileWithCheckDisabled() throws Exception {
+
+        FilePermissionsTest.runWriteWriteProtectedFileWithCheckDisabled("test2.flac");
+	}
+
+    public void testWriteWriteProtectedFileWithCheckEnabled() throws Exception {
+
+    	FilePermissionsTest.runWriteWriteProtectedFileWithCheckEnabled("test2.flac");
+	}
+
+    public void testWriteReadOnlyFileWithCheckDisabled() throws Exception {
+
+    	FilePermissionsTest.runWriteReadOnlyFileWithCheckDisabled("test2.flac");
+	}
+
+
 }

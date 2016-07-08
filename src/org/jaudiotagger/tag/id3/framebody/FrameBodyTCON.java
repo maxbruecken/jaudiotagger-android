@@ -19,7 +19,6 @@ import org.jaudiotagger.tag.InvalidTagException;
 import org.jaudiotagger.tag.datatype.DataTypes;
 import org.jaudiotagger.tag.datatype.NumberHashMap;
 import org.jaudiotagger.tag.datatype.TCONString;
-import org.jaudiotagger.tag.datatype.TextEncodedStringSizeTerminated;
 import org.jaudiotagger.tag.id3.ID3v24Frames;
 import org.jaudiotagger.tag.id3.valuepair.ID3V2ExtendedGenreTypes;
 import org.jaudiotagger.tag.id3.valuepair.TextEncoding;
@@ -130,8 +129,9 @@ public class FrameBodyTCON extends AbstractFrameBodyTextInfo implements ID3v24Fr
     {
         try
         {
+            //If passed id and known value use it
             int genreId = Integer.parseInt(value);
-            if (genreId < GenreTypes.getMaxGenreId())
+            if (genreId <= GenreTypes.getMaxGenreId())
             {
                 return String.valueOf(genreId);
             }
@@ -142,12 +142,15 @@ public class FrameBodyTCON extends AbstractFrameBodyTextInfo implements ID3v24Fr
         }
         catch (NumberFormatException nfe)
         {
+            // If passed String, use matching integral value if can
             Integer genreId = GenreTypes.getInstanceOf().getIdForName(value);
-            if (genreId != null)
+            // to preserve iTunes compatibility, don't write genre ids higher than getMaxStandardGenreId, rather use string
+            if (genreId != null && genreId <= GenreTypes.getMaxStandardGenreId())
             {
                 return String.valueOf(genreId);
             }
 
+            //Covert special string values
             if (value.equalsIgnoreCase(ID3V2ExtendedGenreTypes.RX.getDescription()))
             {
                 value = ID3V2ExtendedGenreTypes.RX.name();
@@ -178,8 +181,9 @@ public class FrameBodyTCON extends AbstractFrameBodyTextInfo implements ID3v24Fr
     {
         try
         {
+            //If passed integer and in list use numeric form else use original value
             int genreId = Integer.parseInt(value);
-            if (genreId < GenreTypes.getMaxGenreId())
+            if (genreId <= GenreTypes.getMaxGenreId())
             {
                 return bracketWrap(String.valueOf(genreId));
             }
@@ -190,12 +194,15 @@ public class FrameBodyTCON extends AbstractFrameBodyTextInfo implements ID3v24Fr
         }
         catch (NumberFormatException nfe)
         {
+            //if passed text try and find integral value otherwise use text
             Integer genreId = GenreTypes.getInstanceOf().getIdForName(value);
-            if (genreId != null)
+            // to preserve iTunes compatibility, don't write genre ids higher than getMaxStandardGenreId, rather use string
+            if (genreId != null && genreId <= GenreTypes.getMaxStandardGenreId())
             {
                 return bracketWrap(String.valueOf(genreId));
             }
 
+            //But special handling for these text values
             if (value.equalsIgnoreCase(ID3V2ExtendedGenreTypes.RX.getDescription()))
             {
                 value = bracketWrap(ID3V2ExtendedGenreTypes.RX.name());
@@ -237,7 +244,7 @@ public class FrameBodyTCON extends AbstractFrameBodyTextInfo implements ID3v24Fr
         try
         {
             int genreId = Integer.parseInt(value);
-            if (genreId < GenreTypes.getMaxStandardGenreId())
+            if (genreId <= GenreTypes.getMaxGenreId())
             {
                 return GenreTypes.getInstanceOf().getValueForId(genreId);
             }
@@ -271,8 +278,7 @@ public class FrameBodyTCON extends AbstractFrameBodyTextInfo implements ID3v24Fr
         try
         {
             int genreId = Integer.parseInt(value);
-            if (genreId < GenreTypes.getMaxStandardGenreId())
-            {
+            if (genreId <= GenreTypes.getMaxGenreId()) {
                 return GenreTypes.getInstanceOf().getValueForId(genreId);
             }
             else

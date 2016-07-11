@@ -1509,7 +1509,7 @@ public abstract class AbstractID3v2Tag extends AbstractID3Tag implements Tag
         catch (FileNotFoundException fe)
         {
             logger.log(Level.SEVERE, getLoggingFilename() + fe.getMessage(), fe);
-            if (fe.getMessage().contains(FileSystemMessage.ACCESS_IS_DENIED.getMsg()) || fe.getMessage().contains(FileSystemMessage.PERMISSION_DENIED.getMsg()))
+            if (!file.canWrite())
             {
                 logger.severe(ErrorMessage.GENERAL_WRITE_FAILED_TO_OPEN_FILE_FOR_EDITING.getMsg(file.getPath()));
                 throw new UnableToModifyFileException(ErrorMessage.GENERAL_WRITE_FAILED_TO_OPEN_FILE_FOR_EDITING.getMsg(file.getPath()));
@@ -1523,7 +1523,7 @@ public abstract class AbstractID3v2Tag extends AbstractID3Tag implements Tag
         catch (IOException ioe)
         {
             logger.log(Level.SEVERE, getLoggingFilename() + ioe.getMessage(), ioe);
-            if (ioe.getMessage().equals(FileSystemMessage.ACCESS_IS_DENIED.getMsg()))
+            if (!file.canWrite())
             {
                 logger.severe(ErrorMessage.GENERAL_WRITE_FAILED_TO_OPEN_FILE_FOR_EDITING.getMsg(file.getParentFile().getPath()));
                 throw new UnableToModifyFileException(ErrorMessage.GENERAL_WRITE_FAILED_TO_OPEN_FILE_FOR_EDITING.getMsg(file.getParentFile().getPath()));

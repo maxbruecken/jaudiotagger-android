@@ -8,11 +8,13 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
+import org.junit.Test;
 
 import java.io.File;
 
 public class DsfAudioFileTest extends TestCase {
 
+    @Test
     public void testReadDsfMetadata() {
         Exception exceptionCaught = null;
 
@@ -49,16 +51,19 @@ public class DsfAudioFileTest extends TestCase {
 
     }
     
+    @Test
     public void testWriteWriteProtectedFileWithCheckDisabled() throws Exception {
     	
         FilePermissionsTest.runWriteWriteProtectedFileWithCheckDisabled("test122.dsf");
 	}
 
+    @Test
     public void testWriteWriteProtectedFileWithCheckEnabled() throws Exception {
     	
     	FilePermissionsTest.runWriteWriteProtectedFileWithCheckEnabled("test122.dsf");
 	}
 
+    @Test
     public void testWriteReadOnlyFileWithCheckDisabled() throws Exception {
     	
     	FilePermissionsTest.runWriteReadOnlyFileWithCheckDisabled("test122.dsf");

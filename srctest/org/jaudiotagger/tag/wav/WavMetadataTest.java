@@ -19,6 +19,7 @@ import org.jaudiotagger.tag.TagException;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,7 +35,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
-    public void testReadFileWithListInfoMetadata()
+    @Test    public void testReadFileWithListInfoMetadata()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
         TagOptionSingleton.getInstance().setWavSaveOptions(WavSaveOptions.SAVE_EXISTING_AND_ACTIVE);
@@ -90,7 +91,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
-    public void testModifyFileMetadataSaveBoth()
+    @Test    public void testModifyFileMetadataSaveBoth()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
         TagOptionSingleton.getInstance().setWavSaveOptions(WavSaveOptions.SAVE_BOTH);
@@ -158,7 +159,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
-    public void testModifyFileWithMoreMetadataSaveBothInfoThenId3()
+    @Test    public void testModifyFileWithMoreMetadataSaveBothInfoThenId3()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
         TagOptionSingleton.getInstance().setWavSaveOptions(WavSaveOptions.SAVE_BOTH);
@@ -229,6 +230,7 @@ public class WavMetadataTest extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testModifyFileWithMoreMetadataSaveBothId3ThenInfo()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
@@ -305,7 +307,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Delete file with Info metadata
      */
-    public void testDeleteFileInfoMetadata()
+    @Test    public void testDeleteFileInfoMetadata()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
         TagOptionSingleton.getInstance().setWavSaveOrder(WavSaveOrder.INFO_THEN_ID3);
@@ -367,7 +369,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Delete file with Id3 metadata
      */
-    public void testDeleteFileId3Metadata()
+    @Test    public void testDeleteFileId3Metadata()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);
         TagOptionSingleton.getInstance().setWavSaveOrder(WavSaveOrder.INFO_THEN_ID3);
@@ -429,7 +431,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
-    public void testReadFileWithID3AndListInfoMetadata()
+    @Test    public void testReadFileWithID3AndListInfoMetadata()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
         TagOptionSingleton.getInstance().setWavSaveOptions(WavSaveOptions.SAVE_EXISTING_AND_ACTIVE);
@@ -500,7 +502,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Delete file with Info and ID3 metadata
      */
-    public void testDeleteFileInfoAndID3Metadata()
+    @Test    public void testDeleteFileInfoAndID3Metadata()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
         TagOptionSingleton.getInstance().setWavSaveOptions(WavSaveOptions.SAVE_EXISTING_AND_ACTIVE);
@@ -551,7 +553,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
-    public void testWavReadOptionsHasId3AndInfo()
+    @Test    public void testWavReadOptionsHasId3AndInfo()
     {
 
         Exception exceptionCaught = null;
@@ -629,7 +631,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
-    public void testWavReadOptionsHasInfoOnly()
+    @Test    public void testWavReadOptionsHasInfoOnly()
     {
 
         Exception exceptionCaught = null;
@@ -712,7 +714,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
-    public void testModifyFileMetadataSaveActive()
+    @Test    public void testModifyFileMetadataSaveActive()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
         TagOptionSingleton.getInstance().setWavSaveOptions(WavSaveOptions.SAVE_ACTIVE);
@@ -779,7 +781,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
-    public void testModifyFileWithMoreMetadataSaveActive()
+    @Test    public void testModifyFileWithMoreMetadataSaveActive()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
         TagOptionSingleton.getInstance().setWavSaveOptions(WavSaveOptions.SAVE_ACTIVE);
@@ -841,7 +843,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
-    public void testModifyFileMetadataSaveExistingActiveInfo()
+    @Test    public void testModifyFileMetadataSaveExistingActiveInfo()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
         TagOptionSingleton.getInstance().setWavSaveOptions(WavSaveOptions.SAVE_EXISTING_AND_ACTIVE);
@@ -909,7 +911,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
-    public void testModifyFileMetadataSaveExistingActiveId3Info()
+    @Test    public void testModifyFileMetadataSaveExistingActiveId3Info()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);
         TagOptionSingleton.getInstance().setWavSaveOptions(WavSaveOptions.SAVE_EXISTING_AND_ACTIVE);
@@ -977,7 +979,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
-    public void testModifyFileMetadataSaveActiveId3()
+    @Test    public void testModifyFileMetadataSaveActiveId3()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);
         TagOptionSingleton.getInstance().setWavSaveOptions(WavSaveOptions.SAVE_ACTIVE);
@@ -1050,7 +1052,7 @@ public class WavMetadataTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
-    public void testModifyFileMetadataSaveActiveId32()
+    @Test    public void testModifyFileMetadataSaveActiveId32()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);
         TagOptionSingleton.getInstance().setWavSaveOptions(WavSaveOptions.SAVE_ACTIVE);
@@ -1121,6 +1123,7 @@ public class WavMetadataTest extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testWriteNumberedOddSaveActive()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);
@@ -1174,6 +1177,7 @@ public class WavMetadataTest extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testWriteNumberedOddSaveBoth()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);
@@ -1243,7 +1247,7 @@ public class WavMetadataTest extends AbstractTestCase
     }
 
     /** This file has three bytes of padding data at end of file */
-    public void testReadFileWithPaddingAtEndOfListInfoMetadata()
+    @Test    public void testReadFileWithPaddingAtEndOfListInfoMetadata()
     {
         File orig = new File("testdata", "test146.wav");
         if (!orig.isFile())
@@ -1284,6 +1288,7 @@ public class WavMetadataTest extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testNaimRip()
     {
         File orig = new File("testdata", "test149.wav");
@@ -1313,6 +1318,7 @@ public class WavMetadataTest extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testCreationOfDefaultTag()
     {
         File orig = new File("testdata", "test126.wav");
@@ -1342,6 +1348,7 @@ public class WavMetadataTest extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testRip2()
     {
         File orig = new File("testdata", "test500.wav");
@@ -1378,6 +1385,7 @@ public class WavMetadataTest extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testRip3()
     {
         File orig = new File("testdata", "test501.wav");
@@ -1410,6 +1418,7 @@ public class WavMetadataTest extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testRip4()
     {
         File orig = new File("testdata", "test502.wav");
@@ -1446,7 +1455,7 @@ public class WavMetadataTest extends AbstractTestCase
      *  When chunk header has negative size we know something has gone wrong and should throw exception accordingly
      *
      */
-    public void testWavWithCorruptDataAfterDataChunkHeaderSize()
+    @Test    public void testWavWithCorruptDataAfterDataChunkHeaderSize()
     {
         File orig = new File("testdata", "test503.wav");
         if (!orig.isFile())
@@ -1478,6 +1487,7 @@ public class WavMetadataTest extends AbstractTestCase
         assert(exceptionCaught instanceof CannotReadException);
     }
 
+    @Test
     public void testCleanAndThenWriteWavWithCorruptDataChunkHeaderSize()
     {
         File orig = new File("testdata", "test504.wav");
@@ -1527,6 +1537,7 @@ public class WavMetadataTest extends AbstractTestCase
         assertNull(exceptionCaught2);
     }
 
+    @Test
     public void testWavRead()
     {
         File orig = new File("testdata", "test505.wav");
@@ -1558,6 +1569,7 @@ public class WavMetadataTest extends AbstractTestCase
         }
     }
 
+    @Test
     public void testWavReadNew()
     {
         File orig = new File("testdata", "test506.wav");
@@ -1592,21 +1604,25 @@ public class WavMetadataTest extends AbstractTestCase
         assertTrue(exceptionCaught instanceof CannotReadException);
     }
 
+    @Test
     public void testWriteWriteProtectedFileWithCheckDisabled() throws Exception {
     	
         FilePermissionsTest.runWriteWriteProtectedFileWithCheckDisabled("test123.wav");
 	}
 
+    @Test
     public void testWriteWriteProtectedFileWithCheckEnabled() throws Exception {
     	
     	FilePermissionsTest.runWriteWriteProtectedFileWithCheckEnabled("test123.wav");
 	}
 
+    @Test
     public void testWriteReadOnlyFileWithCheckDisabled() throws Exception {
     	
     	FilePermissionsTest.runWriteReadOnlyFileWithCheckDisabled("test123.wav");
 	}
 
+    @Test
     public void testReadJacobPavluk()
     {
         File orig = new File("testdata", "GreenLight.wav");
@@ -1646,6 +1662,7 @@ public class WavMetadataTest extends AbstractTestCase
      * bug153.wav has two tags: an info tag with title, album and track number, and an ID3 tag with
      * artist. This test ensures the track number is copied over.
      */
+    @Test
     public void testTrackNumbersSyncedWhenNullTerminated() throws Exception
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_UNLESS_ONLY_INFO_AND_SYNC);

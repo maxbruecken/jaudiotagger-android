@@ -1393,6 +1393,7 @@ public class M4aReadTagTest {
 
     }
 
+    @Test
     public void testReadAudioBook() throws Exception
     {
         File orig = new File("testdata", "test147.m4a");

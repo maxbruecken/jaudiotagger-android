@@ -6,6 +6,7 @@ import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -14,7 +15,7 @@ import java.io.File;
  */
 public class Issue483Test extends AbstractTestCase
 {
-    public void testCompareMp3Tag() throws Exception
+    @Test    public void testCompareMp3Tag() throws Exception
     {
         File orig = new File("testdata", "test113.mp3");
         if (!orig.isFile())
@@ -30,6 +31,7 @@ public class Issue483Test extends AbstractTestCase
         assertEquals(af1.getTag(),af2.getTag());
     }
 
+    @Test
     public void testCompareMp4Tag() throws Exception
     {
         File orig = new File("testdata", "test.m4a");
@@ -39,6 +41,7 @@ public class Issue483Test extends AbstractTestCase
         assertNotSame(af1.getTag(),af2.getTag());
     }
 
+    @Test
     public void testCompareFlacTag() throws Exception
     {
         File orig = new File("testdata", "test.flac");
@@ -48,6 +51,7 @@ public class Issue483Test extends AbstractTestCase
         assertNotSame(af1.getTag(),af2.getTag());
     }
 
+    @Test
     public void testCompareOggTag() throws Exception
     {
         File orig = new File("testdata", "test.ogg");
@@ -57,6 +61,7 @@ public class Issue483Test extends AbstractTestCase
         assertNotSame(af1.getTag(),af2.getTag());
     }
 
+    @Test
     public void testCompareAifTag() throws Exception
     {
         File orig = new File("testdata", "test132.aif");
@@ -66,6 +71,7 @@ public class Issue483Test extends AbstractTestCase
         assertNotSame(af1.getTag(),af2.getTag());
     }
 
+    @Test
     public void testCompareWavTag() throws Exception
     {
         File orig = new File("testdata", "test125.wav");
@@ -75,6 +81,7 @@ public class Issue483Test extends AbstractTestCase
         assertNotSame(af1.getTag(),af2.getTag());
     }
 
+    @Test
     public void testCompareWmaTag() throws Exception
     {
         File orig = new File("testdata", "test1.wma");

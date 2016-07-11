@@ -12,6 +12,7 @@ import org.jaudiotagger.tag.id3.ID3v24Frame;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTCON;
 import org.jaudiotagger.tag.reference.ID3V2Version;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -20,6 +21,7 @@ import java.io.File;
  */
 public class Issue055Test extends AbstractTestCase
 {
+    @Test
     public void testId3v23GenreWritingDefault()
     {
         Exception ex=null;
@@ -50,6 +52,7 @@ public class Issue055Test extends AbstractTestCase
         assertNull(ex);
     }
 
+    @Test
     public void testId3v23GenreWritingDefaultcaseInsensitive()
     {
         Exception ex=null;
@@ -80,6 +83,7 @@ public class Issue055Test extends AbstractTestCase
         assertNull(ex);
     }
 
+    @Test
     public void testId3v23GenreWritingTextAlways()
     {
         Exception ex=null;
@@ -110,6 +114,7 @@ public class Issue055Test extends AbstractTestCase
         assertNull(ex);
     }
 
+    @Test
     public void testId3v24GenreWritingDefault()
     {
         Exception ex=null;
@@ -140,6 +145,7 @@ public class Issue055Test extends AbstractTestCase
         assertNull(ex);
     }
 
+    @Test
     public void testId3v24GenreWritingDefaultcaseInsensitive()
     {
         Exception ex=null;
@@ -170,6 +176,7 @@ public class Issue055Test extends AbstractTestCase
         assertNull(ex);
     }
 
+    @Test
     public void testId3v24GenreWritingTextAlways()
     {
         Exception ex=null;

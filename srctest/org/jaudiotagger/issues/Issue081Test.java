@@ -10,6 +10,7 @@ import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
 import org.jaudiotagger.tag.wav.WavInfoTag;
 import org.jaudiotagger.tag.wav.WavTag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -18,6 +19,7 @@ import java.io.File;
  */
 public class Issue081Test extends AbstractTestCase
 {
+    @Test
     public void testReadFileWithInfoChunkLE() throws Exception {
 
         File orig = new File("testdata", "test142.wav");
@@ -34,6 +36,7 @@ public class Issue081Test extends AbstractTestCase
         System.out.println(tag.getInfoTag());
     }
 
+    @Test
     public  void testId3TagFile() throws Exception {
 
         File orig = new File("testdata", "test142.wav");
@@ -63,6 +66,7 @@ public class Issue081Test extends AbstractTestCase
         audioFile.commit();
     }
 
+    @Test
     public void testInfoTagFile() throws Exception {
 
         File orig = new File("testdata", "test142.wav");

@@ -17,6 +17,7 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.ID3v22Tag;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +28,8 @@ import java.util.List;
 
 public class AiffAudioTagTest extends TestCase {
 
+
+    @Test
 
     public void testReadAiff1() {
         Exception exceptionCaught = null;
@@ -64,6 +67,7 @@ public class AiffAudioTagTest extends TestCase {
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testReadAiff2() {
         Exception exceptionCaught = null;
 
@@ -107,6 +111,7 @@ public class AiffAudioTagTest extends TestCase {
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testReadAiff3() {
         Exception exceptionCaught = null;
 
@@ -156,6 +161,7 @@ public class AiffAudioTagTest extends TestCase {
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testReadAiff4() {
         Exception exceptionCaught = null;
 
@@ -205,6 +211,7 @@ public class AiffAudioTagTest extends TestCase {
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testWriteAiff3() {
         Exception exceptionCaught = null;
 
@@ -262,6 +269,7 @@ public class AiffAudioTagTest extends TestCase {
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testWriteAiffWithoutTag() {
         Exception exceptionCaught = null;
 
@@ -298,6 +306,7 @@ public class AiffAudioTagTest extends TestCase {
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testDeleteAiff3() {
         Exception exceptionCaught = null;
 
@@ -341,6 +350,7 @@ public class AiffAudioTagTest extends TestCase {
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testDeleteAiff4() {
         Exception exceptionCaught = null;
 
@@ -397,6 +407,7 @@ public class AiffAudioTagTest extends TestCase {
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testWriteNotLastChunk() {
         Exception exceptionCaught = null;
 
@@ -484,6 +495,7 @@ public class AiffAudioTagTest extends TestCase {
         return chunkIds;
     }
 
+    @Test
     public void testWriteMetadataAifcWhenSSNDBeforeCOMMChunk() {
         Exception exceptionCaught = null;
 
@@ -519,7 +531,7 @@ public class AiffAudioTagTest extends TestCase {
 
 
     }
-    public void testWriteMetadataAifcWithUnknonwExtraChunk() {
+    @Test    public void testWriteMetadataAifcWithUnknonwExtraChunk() {
         Exception exceptionCaught = null;
 
         File orig = new File("testdata", "test136.aif");
@@ -560,7 +572,7 @@ public class AiffAudioTagTest extends TestCase {
     /** TODO this file had bad zzzz chunk so when we write back unable to read data back because cant find
      * start of ID3 chunk
       */
-    public void testWriteMetadataAifcWithJunk() {
+    @Test    public void testWriteMetadataAifcWithJunk() {
         Exception exceptionCaught = null;
 
         File orig = new File("testdata", "test137.aif");
@@ -598,6 +610,7 @@ public class AiffAudioTagTest extends TestCase {
 
     }
 
+    @Test
     public void testWriteMetadataAiffWithNameAndAuthorChunks() {
         Exception exceptionCaught = null;
 
@@ -639,7 +652,7 @@ public class AiffAudioTagTest extends TestCase {
      * so can still read, then we write to it padding bit added and when read/write again we
      * correctly work out ID3chunk is still at end of file.
      */
-    public void testOddLengthID3ChunkFile() {
+    @Test    public void testOddLengthID3ChunkFile() {
         Exception exceptionCaught = null;
 
         File orig = new File("testdata", "test144.aif");
@@ -674,6 +687,7 @@ public class AiffAudioTagTest extends TestCase {
 
     }
 
+    @Test
     public void testDeleteOddLengthID3ChunkFile() {
         Exception exceptionCaught = null;
 
@@ -710,6 +724,7 @@ public class AiffAudioTagTest extends TestCase {
 
     }
 
+    @Test
     public void testDeleteAiff4Odd() {
         Exception exceptionCaught = null;
 
@@ -766,6 +781,7 @@ public class AiffAudioTagTest extends TestCase {
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testWriteMetadataAifcWithUnknonwExtraChunkID3DatSizeOdd() {
         Exception exceptionCaught = null;
 
@@ -816,16 +832,19 @@ public class AiffAudioTagTest extends TestCase {
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testWriteWriteProtectedFileWithCheckDisabled() throws Exception {
     	
         FilePermissionsTest.runWriteWriteProtectedFileWithCheckDisabled("test121.aif");
 	}
 
+    @Test
     public void testWriteWriteProtectedFileWithCheckEnabled() throws Exception {
     	
     	FilePermissionsTest.runWriteWriteProtectedFileWithCheckEnabled("test121.aif");
 	}
 
+    @Test
     public void testWriteReadOnlyFileWithCheckDisabled() throws Exception {
     	
     	FilePermissionsTest.runWriteReadOnlyFileWithCheckDisabled("test121.aif");

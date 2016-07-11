@@ -8,6 +8,7 @@ import org.jaudiotagger.tag.id3.ID3v23Frame;
 import org.jaudiotagger.tag.id3.ID3v23Frames;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyTXXX;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -16,6 +17,7 @@ import java.io.File;
  */
 public class Issue052Test extends AbstractTestCase
 {
+    @Test
     public void testOutOfMemory()
     {
         Exception ex=null;

@@ -16,6 +16,7 @@ import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 import org.jaudiotagger.tag.wav.WavInfoTag;
 import org.jaudiotagger.tag.wav.WavTag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -24,7 +25,7 @@ import java.io.File;
  */
 public class Issue119Test extends AbstractTestCase
 {
-    public void testWriteAiffWithOddLengthDataChunk() {
+    @Test    public void testWriteAiffWithOddLengthDataChunk() {
 
         Exception exceptionCaught = null;
 
@@ -60,6 +61,7 @@ public class Issue119Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testWriteFileWithOddLengthLastDataChunkInfo()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
@@ -95,6 +97,7 @@ public class Issue119Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testWriteFileWithOddLengthLastDataChunkId3()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);
@@ -130,6 +133,7 @@ public class Issue119Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testWriteFileWithOddLengthLastDataChunkId3AndInfo()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);

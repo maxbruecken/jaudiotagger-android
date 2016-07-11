@@ -8,6 +8,7 @@ import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.AudioHeader;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -16,6 +17,7 @@ import java.io.File;
  */
 public class Issue66Test extends AbstractTestCase
 {
+    @Test
     public void testIssue() throws Exception
     {
         Exception caught = null;

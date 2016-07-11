@@ -459,21 +459,25 @@ public class ID3v23TagTest {
         Assert.assertEquals(0, tagFields.size());
     }
      
+    @Test
     public void testWriteWriteProtectedFileWithCheckDisabled() throws Exception {
      	
          FilePermissionsTest.runWriteWriteProtectedFileWithCheckDisabled("testV1Cbr128ID3v2.mp3");
  	}
 
+    @Test
     public void testWriteWriteProtectedFileWithCheckEnabled() throws Exception {
      	
      	FilePermissionsTest.runWriteWriteProtectedFileWithCheckEnabled("testV1Cbr128ID3v2.mp3");
  	}
 
+    @Test
     public void testWriteReadOnlyFileWithCheckDisabled() throws Exception {
      	
      	FilePermissionsTest.runWriteReadOnlyFileWithCheckDisabled("testV1Cbr128ID3v2.mp3");
  	}
 
+    @Test
     public void testWriteMultipleGenresToID3v23TagUsingDefault() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1Cbr128ID3v2.mp3");

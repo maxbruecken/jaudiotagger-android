@@ -11,6 +11,7 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.wav.WavTag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -21,6 +22,7 @@ public class Issue086Test extends AbstractTestCase
 {
 
 
+    @Test
     public void testEnsureWritingID3SkipBytesWhenChunkNotEven()
     {
 

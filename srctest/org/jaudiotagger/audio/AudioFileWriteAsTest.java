@@ -9,6 +9,7 @@ import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
 import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagException;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,6 +37,7 @@ public class AudioFileWriteAsTest extends AbstractTestCase {
         }
     }
 
+    @Test
     public void testWriteAs() throws Exception
     {
         af.getTagOrCreateAndSetDefault().setField(FieldKey.LANGUAGE, LANGUAGE);
@@ -49,6 +51,7 @@ public class AudioFileWriteAsTest extends AbstractTestCase {
         assertEquals(LANGUAGE, af.getTag().getFirst(FieldKey.LANGUAGE));
     }
 
+    @Test
     public void testWriteAsWithNull() throws Exception
     {
         try {

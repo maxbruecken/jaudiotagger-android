@@ -12,6 +12,7 @@ import org.jaudiotagger.audio.wav.WavSaveOptions;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagOptionSingleton;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -20,6 +21,7 @@ import java.io.File;
  */
 public class Issue093Test extends AbstractTestCase
 {
+    @Test
     public void testWriteAiffWithCorruptID3Tag1()
     {
         Exception exceptionCaught = null;
@@ -55,6 +57,7 @@ public class Issue093Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testWriteAiffWithCorruptID3Tag2() {
 
         Exception exceptionCaught = null;
@@ -91,6 +94,7 @@ public class Issue093Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testNaimRipMultipleTagsFixId3()
     {
         File orig = new File("testdata", "test152.wav");
@@ -126,6 +130,7 @@ public class Issue093Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testNaimRipMultipleFixTagsInfo()
     {
         File orig = new File("testdata", "test152.wav");
@@ -161,6 +166,7 @@ public class Issue093Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testNaimRipMultipleFixTagsExistingId3()
     {
         File orig = new File("testdata", "test152.wav");
@@ -196,6 +202,7 @@ public class Issue093Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testNaimRipMultipleFixTagsExistingInfo()
     {
         File orig = new File("testdata", "test152.wav");
@@ -231,6 +238,7 @@ public class Issue093Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testNaimRipMultipleTagsFixId3Both()
     {
         File orig = new File("testdata", "test152.wav");
@@ -266,6 +274,7 @@ public class Issue093Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testNaimRipMultipleFixTagsInfoBoth()
     {
         File orig = new File("testdata", "test152.wav");
@@ -301,6 +310,7 @@ public class Issue093Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testNaimRipMultipleTagsFixId3BothSync()
     {
         File orig = new File("testdata", "test152.wav");
@@ -336,6 +346,7 @@ public class Issue093Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testNaimRipMultipleFixTagsInfoBothSync()
     {
         File orig = new File("testdata", "test152.wav");

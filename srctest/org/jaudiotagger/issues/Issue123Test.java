@@ -12,6 +12,7 @@ import org.jaudiotagger.tag.vorbiscomment.VorbisAlbumArtistReadOptions;
 import org.jaudiotagger.tag.vorbiscomment.VorbisAlbumArtistSaveOptions;
 import org.jaudiotagger.tag.vorbiscomment.VorbisCommentFieldKey;
 import org.jaudiotagger.tag.vorbiscomment.VorbisCommentTag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -20,7 +21,7 @@ import java.io.File;
  */
 public class Issue123Test extends AbstractTestCase
 {
-    public void testWriteJRiverAlbumArtistOgg() throws Exception
+    @Test    public void testWriteJRiverAlbumArtistOgg() throws Exception
     {
         File orig = new File("testdata", "test.ogg");
         if (!orig.isFile())
@@ -94,6 +95,7 @@ public class Issue123Test extends AbstractTestCase
         assertNull(ex);
     }
 
+    @Test
     public void testWriteJRiverAlbumArtistFlac() throws Exception
     {
         File orig = new File("testdata", "test.flac");
@@ -168,6 +170,7 @@ public class Issue123Test extends AbstractTestCase
         assertNull(ex);
     }
 
+    @Test
     public void testReadJRiverAlbumArtistOgg() throws Exception
     {
         File orig = new File("testdata", "test.ogg");
@@ -227,6 +230,7 @@ public class Issue123Test extends AbstractTestCase
         assertNull(ex);
     }
 
+    @Test
     public void testReadJRiverAlbumArtistFlac() throws Exception
     {
         File orig = new File("testdata", "test.flac");

@@ -3,6 +3,7 @@ package org.jaudiotagger.audio.aiff;
 import junit.framework.TestCase;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.generic.GenericAudioHeader;
+import org.junit.Test;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
@@ -15,6 +16,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class AiffInfoReaderTest extends TestCase {
 
+    @Test
     public void testWithSomeLocalChunks() throws IOException, CannotReadException {
 
         final String author = "AUTH4567";
@@ -43,6 +45,7 @@ public class AiffInfoReaderTest extends TestCase {
         aiff.delete();
     }
 
+    @Test
     public void testWithUnknownChunk() throws IOException, CannotReadException {
 
         final String author = "AUTH4567";

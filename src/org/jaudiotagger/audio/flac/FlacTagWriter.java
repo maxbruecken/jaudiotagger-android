@@ -20,6 +20,7 @@ package org.jaudiotagger.audio.flac;
 
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.CannotWriteException;
+import org.jaudiotagger.audio.exceptions.NoWritePermissionsException;
 import org.jaudiotagger.audio.flac.metadatablock.MetadataBlock;
 import org.jaudiotagger.audio.flac.metadatablock.MetadataBlockData;
 import org.jaudiotagger.audio.flac.metadatablock.MetadataBlockDataApplication;
@@ -199,6 +200,9 @@ public class FlacTagWriter
         }
         catch (IOException ioe)
         {
+            if (!file.canRead() || !file.canWrite()) {
+                throw new NoWritePermissionsException(file + ":" + ioe.getMessage());
+            }
             throw new CannotWriteException(file + ":" + ioe.getMessage());
         }
     }

@@ -11,6 +11,7 @@ import org.jaudiotagger.audio.wav.WavSaveOrder;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.id3.ID3v24Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -20,13 +21,10 @@ import java.io.File;
  */
 public class WavMetadataNewTagsId3BeforeInfoTest extends AbstractTestCase
 {
-
-
-
-
     /**
      * Read file with metadata added by MediaMonkey
      */
+    @Test
     public void testModifyFileMetadataSaveBoth()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
@@ -92,6 +90,7 @@ public class WavMetadataNewTagsId3BeforeInfoTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
+    @Test
     public void testModifyFileWithMoreMetadataSaveBoth()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_INFO_ONLY);
@@ -160,6 +159,7 @@ public class WavMetadataNewTagsId3BeforeInfoTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
+    @Test
     public void testModifyFileMetadataSaveExistingActiveId3Info()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);
@@ -224,6 +224,7 @@ public class WavMetadataNewTagsId3BeforeInfoTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
+    @Test
     public void testModifyFileMetadataSaveActiveId3()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);
@@ -294,6 +295,7 @@ public class WavMetadataNewTagsId3BeforeInfoTest extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
+    @Test
     public void testModifyFileMetadataSaveActiveId32()
     {
         TagOptionSingleton.getInstance().setWavOptions(WavOptions.READ_ID3_ONLY);
@@ -367,6 +369,7 @@ public class WavMetadataNewTagsId3BeforeInfoTest extends AbstractTestCase
      * so can still read, then we write to it padding bit added and when read/write again we
      * correctly work out ID3chunk is still at end of file.
      */
+    @Test
     public void testFileDeleteWithInfoAndOddLengthData()
     {
         Exception exceptionCaught = null;

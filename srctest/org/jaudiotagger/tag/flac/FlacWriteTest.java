@@ -420,16 +420,19 @@ public class FlacWriteTest {
         Assert.assertNull(exceptionCaught);
     }
 
+    @Test
     public void testWriteWriteProtectedFileWithCheckDisabled() throws Exception {
 
         FilePermissionsTest.runWriteWriteProtectedFileWithCheckDisabled("test2.flac");
 	}
 
+    @Test
     public void testWriteWriteProtectedFileWithCheckEnabled() throws Exception {
 
     	FilePermissionsTest.runWriteWriteProtectedFileWithCheckEnabled("test2.flac");
 	}
 
+    @Test
     public void testWriteReadOnlyFileWithCheckDisabled() throws Exception {
 
     	FilePermissionsTest.runWriteReadOnlyFileWithCheckDisabled("test2.flac");

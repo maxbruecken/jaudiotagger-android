@@ -226,6 +226,7 @@ public class ID3v22TagTest {
         Assert.assertEquals(0, tagFields.size());
     }
 
+    @Test
     public void testWriteMultipleGenresToID3v22TagUsingDefault() throws Exception
     {
         File testFile = AbstractTestCase.copyAudioToTmp("testV1.mp3");

@@ -27,7 +27,7 @@ public class Issue298Test extends AbstractTestCase
     /**
      * Test writing Custom fields
      */
-    public void  testWriteFieldsToMp3ID3v24()
+    @Test    public void  testWriteFieldsToMp3ID3v24()
     {
         File testFile = null;
         Exception exceptionCaught = null;

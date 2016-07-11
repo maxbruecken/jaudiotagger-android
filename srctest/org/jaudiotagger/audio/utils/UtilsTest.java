@@ -2,6 +2,7 @@ package org.jaudiotagger.audio.utils;
 
 import junit.framework.TestCase;
 import org.jaudiotagger.audio.generic.Utils;
+import org.junit.Test;
 
 /**
  * Created by Paul on 18/09/2015.
@@ -9,6 +10,7 @@ import org.jaudiotagger.audio.generic.Utils;
 public class UtilsTest extends TestCase
 {
 
+    @Test
     public void testByteToUnsignedIntConversion()
     {
         byte maxByte = (byte)0xff;
@@ -18,6 +20,7 @@ public class UtilsTest extends TestCase
         assertEquals(255,maxConverted);
     }
 
+    @Test
     public void testShortToUnsignedIntConversion()
     {
         short maxShort = (short)0xffff;
@@ -27,6 +30,8 @@ public class UtilsTest extends TestCase
         assertEquals(65535,maxConverted);
     }
 
+
+    @Test
 
     public void testIntToUnsignedLongConversion()
     {

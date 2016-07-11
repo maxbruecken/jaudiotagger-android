@@ -5,6 +5,7 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -13,6 +14,7 @@ import java.io.File;
  */
 public class Issue146Test extends AbstractTestCase
 {
+    @Test
     public void testIssue146() throws Exception
     {
         File orig = new File("testdata", "test158.mp3");

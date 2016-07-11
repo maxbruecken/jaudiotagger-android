@@ -160,6 +160,7 @@ public class FlacHeaderTest
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testReadFile2()
     {
         File orig = new File("testdata", "test102.flac");
@@ -198,6 +199,7 @@ public class FlacHeaderTest
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testReadWithID3Header()
     {
         File orig = new File("testdata", "test158.flac");
@@ -236,6 +238,7 @@ public class FlacHeaderTest
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testReadWriteWithID3Header()
     {
         File orig = new File("testdata", "test158.flac");

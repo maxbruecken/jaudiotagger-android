@@ -147,6 +147,7 @@ public class UtilsTest {
         Assert.assertEquals(0X32807018, val);
     }
 
+    @Test
     public void testGetShortBE()
     {
         ByteBuffer bb = ByteBuffer.allocate(8);

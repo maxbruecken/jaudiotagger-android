@@ -11,6 +11,7 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.wav.WavTag;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -22,6 +23,7 @@ public class Issue084Test extends AbstractTestCase
     /**
      * Read file with metadata added by MediaMonkey
      */
+    @Test
     public void testSyncToId3HasInfoOnly()
     {
 
@@ -59,6 +61,7 @@ public class Issue084Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testSyncToInfoHasId3Only()
     {
 
@@ -97,6 +100,8 @@ public class Issue084Test extends AbstractTestCase
     }
 
 
+    @Test
+
     public void testSyncBeforeReadAfterWriteId3Only()
     {
 
@@ -134,6 +139,7 @@ public class Issue084Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testAutoSyncBeforeReadId3Only()
     {
 
@@ -159,6 +165,7 @@ public class Issue084Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testAutoSyncBeforeReadInfoOnly()
     {
 
@@ -184,6 +191,7 @@ public class Issue084Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testAutoSyncAfterWriteInfoOnly()
     {
 
@@ -218,6 +226,7 @@ public class Issue084Test extends AbstractTestCase
         assertNull(exceptionCaught);
     }
 
+    @Test
     public void testAutoSyncAfterWriteId3Only()
     {
 

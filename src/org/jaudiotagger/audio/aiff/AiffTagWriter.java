@@ -22,6 +22,7 @@ import org.jaudiotagger.audio.aiff.chunk.AiffChunkSummary;
 import org.jaudiotagger.audio.aiff.chunk.AiffChunkType;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.CannotWriteException;
+import org.jaudiotagger.audio.exceptions.NoWritePermissionsException;
 import org.jaudiotagger.audio.generic.Utils;
 import org.jaudiotagger.audio.iff.Chunk;
 import org.jaudiotagger.audio.iff.ChunkHeader;
@@ -338,8 +339,10 @@ public class AiffTagWriter
                 rewriteRiffHeaderSize(fc);
             }
         }
-        catch(IOException ioe)
-        {
+        catch(IOException ioe) {
+            if (!file.canRead() || !file.canWrite()) {
+                throw new NoWritePermissionsException(file + ":" + ioe.getMessage());
+            }
             throw new CannotWriteException(file + ":" + ioe.getMessage());
         }
     }

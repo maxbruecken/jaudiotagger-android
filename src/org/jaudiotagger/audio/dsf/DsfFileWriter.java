@@ -19,6 +19,7 @@
 package org.jaudiotagger.audio.dsf;
 
 import org.jaudiotagger.audio.exceptions.CannotWriteException;
+import org.jaudiotagger.audio.exceptions.NoWritePermissionsException;
 import org.jaudiotagger.audio.generic.AudioFileWriter2;
 import org.jaudiotagger.audio.generic.Utils;
 import org.jaudiotagger.tag.Tag;
@@ -75,6 +76,9 @@ public class DsfFileWriter extends AudioFileWriter2
         }
         catch(IOException ioe)
         {
+            if (!file.canRead() || !file.canWrite()) {
+                throw new NoWritePermissionsException(file + ":" + ioe.getMessage());
+            }
             throw new CannotWriteException(ioe.getMessage());
         }
     }

@@ -3,6 +3,8 @@
 .ignore*
 .classpath
 .project
+jaudiotagger.iws
+
 test80.mp3
 test82.mp3
 test88.mp3
@@ -130,5 +132,4 @@ test115.flac
 test115.mp3
 test116.m4a
 test118.m4a
-
 
